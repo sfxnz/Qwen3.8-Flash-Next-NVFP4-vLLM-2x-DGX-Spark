@@ -1,0 +1,42 @@
+{
+  "id": "chatcmpl-b5540ce4496a89fa",
+  "object": "chat.completion",
+  "created": 1788536761,
+  "model": "RadixArk/Qwen3.8-Flash-Next-NVFP4",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hi",
+        "refusal": null,
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "reasoning": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "token_ids": null,
+      "routed_experts": null
+    }
+  ],
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev20073+g8e685d198-tp2-2bba7f9e",
+  "usage": {
+    "prompt_tokens": 18,
+    "total_tokens": 20,
+    "completion_tokens": 2,
+    "prompt_tokens_details": null,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "prompt_text": null,
+  "kv_transfer_params": null,
+  "ec_transfer_params": null,
+  "metrics": null
+}

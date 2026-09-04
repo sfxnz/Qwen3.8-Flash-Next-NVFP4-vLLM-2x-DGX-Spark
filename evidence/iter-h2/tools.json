@@ -1,0 +1,14 @@
+{
+  "tool_calls": [
+    {
+      "id": "chatcmpl-tool-a5c4155f4c911c1d",
+      "type": "function",
+      "function": {
+        "name": "get_weather",
+        "arguments": "{\"city\": \"Wellington\"}"
+      }
+    }
+  ],
+  "finish_reason": "tool_calls",
+  "content": null
+}

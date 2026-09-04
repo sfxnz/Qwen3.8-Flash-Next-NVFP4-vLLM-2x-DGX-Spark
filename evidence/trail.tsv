@@ -1,0 +1,4 @@
+ts	phase	decision	why	evidence	result
+2026-09-04T15:48:28Z	h0-baseline	kept live seqs=2 as the occupancy baseline	first frozen SUMMARY and correctness gate on the boot pin	evidence/baseline/bench.txt.summary.json	thinking-off PING; tools get_weather; vision Red; count 200/200; prose_c1=37.16 struct_c1=66.82
+2026-09-04T16:05:10Z	h1-seqs4	kept MAX_NUM_SEQS=4 after live measure	c=4 waves did not drop a stream; frozen c=1/c=2 stayed inside noise; correctness still green	evidence/iter-h1/bench.txt.summary.json	prose_c1=35.80 struct_c1=65.80 prose_c4=29.80 n=12 uma_avail_spark1=11Gi swap=6.5Gi
+2026-09-04T16:22:29Z	h2-seqs8	kept MAX_NUM_SEQS=8 as the occupancy pin	eight short streams completed with no drop; frozen c=1/c=2 held; UMA leftover did not collapse	evidence/iter-h2/bench.txt.summary.json	prose_c1=39.45 struct_c1=66.58 prose_c8=23.26 n=24 uma_avail_spark1=9.2Gi swap=5.6Gi
