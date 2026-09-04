@@ -1,0 +1,80 @@
+(Worker_TP0 pid=440) Capturing prefill CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing prefill CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00, 51.29it/s]
+(Worker_TP0 pid=440) Capturing decode CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing decode CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  2.22it/s]Capturing decode CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  2.22it/s]
+(Worker_TP0 pid=440) INFO 09-04 15:35:42 [model_runner.py:953] Graph capturing finished in 3 secs, took 0.18 GiB
+(Worker_TP0 pid=440) INFO 09-04 15:35:42 [gpu_worker.py:919] Free memory on device (108.99/121.69 GiB) on startup. Desired GPU memory utilization is (0.8, 97.35 GiB). Actual usage is 65.23 GiB for consumed memory (weights + non-torch), 2.04 GiB for peak activation, and 0.18 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=31942712525` (29.75 GiB) to fit into requested memory, or `--kv-cache-memory=44439834624` (41.39 GiB) to fully utilize gpu memory. Current kv cache memory in use is 30.08 GiB.
+(EngineCore pid=368) INFO 09-04 15:35:44 [shm_broadcast.py:801] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP0 pid=440) INFO 09-04 15:35:51 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0 pid=440) INFO 09-04 15:35:51 [torch_utils.py:262] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=368) INFO 09-04 15:35:51 [core.py:354] init engine (profile, create kv cache, warmup model) took 138.52 s
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=368) [ERROR] `min_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /usr/local/lib/python3.12/dist-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(EngineCore pid=368) [ERROR] `max_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /usr/local/lib/python3.12/dist-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(EngineCore pid=368) WARNING 09-04 15:36:05 [vllm.py:1341] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=368) INFO 09-04 15:36:05 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(EngineCore pid=368) INFO 09-04 15:36:05 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=1) INFO 09-04 15:36:10 [api_server.py:653] Supported tasks: ['generate']
+(APIServer pid=1) INFO 09-04 15:36:13 [parser_manager.py:58] "auto" tool choice has been enabled.
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1) INFO 09-04 15:36:15 [hf.py:551] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1) INFO 09-04 15:36:34 [base.py:235] Multi-modal warmup completed in 19.001s
+(APIServer pid=1) INFO 09-04 15:36:37 [base.py:235] Readonly multi-modal warmup completed in 2.359s
+(APIServer pid=1) WARNING 09-04 15:36:37 [model.py:1713] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=1) INFO 09-04 15:36:37 [api_server.py:657] Starting vLLM server on http://0.0.0.0:8000
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:51] Available routes are:
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /docs, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /load, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /version, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /health, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /metrics, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /tokenize, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /detokenize, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/models, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /ping, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /ping, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /invocations, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/responses, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/completions, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/messages, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /generative_scoring, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/completions/render, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/chat/completions/derender, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /v1/completions/derender, Methods: POST
+(APIServer pid=1) INFO 09-04 15:36:37 [launcher.py:60] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=1) INFO:     Started server process [1]
+(APIServer pid=1) INFO:     Waiting for application startup.
+(APIServer pid=1) INFO:     Application startup complete.
+(APIServer pid=1) INFO:     127.0.0.1:53280 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53284 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53284 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53284 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53284 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53296 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53312 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53318 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:59176 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:59186 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:59196 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:59208 - "GET /v1/models HTTP/1.1" 200 OK

@@ -1,0 +1,24 @@
+date=2026-09-04T15:37:02Z
+host=spark1
+
+== health ==
+http_code=200
+
+== models ==
+{"object":"list","data":[{"id":"RadixArk/Qwen3.8-Flash-Next-NVFP4","object":"model","created":1788536222,"owned_by":"vllm","root":"/cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594","parent":null,"max_model_len":1048576,"permission":[{"id":"modelperm-af206874dd54ed06","object":"model_permission","created":1788536222,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+
+== containers ==
+NAMES                     IMAGE                                STATUS
+qwen38-flash-next-nvfp4   vllm/vllm-openai:qwen38-flash-next   Up 12 minutes
+NAMES                     IMAGE                                STATUS
+qwen38-flash-next-nvfp4   vllm/vllm-openai:qwen38-flash-next   Up 12 minutes
+
+== free -h spark1 ==
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       111Gi       5.9Gi       2.4Gi       7.8Gi       9.7Gi
+Swap:           15Gi       5.5Gi        10Gi
+
+== free -h spark2 ==
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       106Gi       3.6Gi       2.4Gi        14Gi        14Gi
+Swap:           15Gi       2.6Gi        13Gi

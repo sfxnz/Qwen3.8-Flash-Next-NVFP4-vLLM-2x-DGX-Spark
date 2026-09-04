@@ -1,0 +1,11 @@
+.run-state/
+.env
+*.log
+!evidence/**/*.log
+.DS_Store
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+docker/ple_layer.stock.py

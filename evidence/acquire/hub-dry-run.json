@@ -1,0 +1,1678 @@
+[
+  {
+    "file": ".gitattributes",
+    "size": "1.6K"
+  },
+  {
+    "file": "README.md",
+    "size": "5.9K"
+  },
+  {
+    "file": "aime26_metrics.json",
+    "size": "1.1K"
+  },
+  {
+    "file": "audit_unchanged_report.json",
+    "size": "110.0"
+  },
+  {
+    "file": "chat_template.jinja",
+    "size": "9.0K"
+  },
+  {
+    "file": "config.json",
+    "size": "5.0K"
+  },
+  {
+    "file": "conversion_environment.json",
+    "size": "344.0"
+  },
+  {
+    "file": "generation_config.json",
+    "size": "202.0"
+  },
+  {
+    "file": "gsm8k_metrics.json",
+    "size": "869.0"
+  },
+  {
+    "file": "hf_quant_config.json",
+    "size": "504.0"
+  },
+  {
+    "file": "layer-00000-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00000-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00000-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00000-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00000-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00000-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00000-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00000-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00001-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00001-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00001-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00001-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00001-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00001-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00001-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00001-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00002-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00002-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00002-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00002-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00002-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00002-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00002-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00002-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00003-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00003-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00003-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00003-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00003-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00003-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00003-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00003-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00004-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00004-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00004-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00004-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00004-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00004-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00004-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00004-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00005-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00005-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00005-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00005-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00005-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00005-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00005-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00005-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00006-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00006-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00006-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00006-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00006-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00006-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00006-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00006-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00007-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00007-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00007-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00007-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00007-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00007-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00007-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00007-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00008-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00008-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00008-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00008-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00008-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00008-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00008-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00008-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00009-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00009-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00009-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00009-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00009-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00009-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00009-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00009-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00010-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00010-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00010-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00010-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00010-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00010-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00010-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00010-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00011-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00011-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00011-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00011-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00011-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00011-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00011-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00011-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00012-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00012-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00012-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00012-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00012-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00012-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00012-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00012-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00013-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00013-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00013-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00013-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00013-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00013-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00013-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00013-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00014-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00014-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00014-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00014-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00014-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00014-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00014-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00014-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00015-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00015-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00015-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00015-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00015-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00015-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00015-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00015-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00016-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00016-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00016-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00016-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00016-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00016-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00016-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00016-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00017-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00017-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00017-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00017-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00017-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00017-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00017-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00017-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00018-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00018-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00018-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00018-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00018-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00018-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00018-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00018-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00019-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00019-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00019-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00019-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00019-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00019-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00019-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00019-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00020-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00020-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00020-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00020-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00020-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00020-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00020-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00020-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00021-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00021-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00021-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00021-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00021-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00021-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00021-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00021-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00022-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00022-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00022-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00022-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00022-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00022-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00022-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00022-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00023-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00023-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00023-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00023-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00023-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00023-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00023-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00023-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00024-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00024-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00024-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00024-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00024-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00024-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00024-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00024-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00025-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00025-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00025-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00025-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00025-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00025-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00025-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00025-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00026-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00026-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00026-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00026-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00026-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00026-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00026-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00026-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00027-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00027-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00027-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00027-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00027-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00027-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00027-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00027-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00028-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00028-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00028-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00028-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00028-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00028-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00028-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00028-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00029-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00029-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00029-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00029-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00029-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00029-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00029-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00029-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00030-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00030-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00030-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00030-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00030-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00030-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00030-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00030-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00031-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00031-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00031-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00031-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00031-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00031-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00031-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00031-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00032-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00032-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00032-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00032-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00032-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00032-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00032-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00032-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00033-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00033-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00033-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00033-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00033-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00033-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00033-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00033-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00034-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00034-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00034-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00034-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00034-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00034-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00034-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00034-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00035-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00035-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00035-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00035-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00035-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00035-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00035-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00035-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00036-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00036-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00036-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00036-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00036-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00036-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00036-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00036-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00037-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00037-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00037-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00037-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00037-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00037-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00037-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00037-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00038-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00038-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00038-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00038-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00038-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00038-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00038-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00038-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00039-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00039-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00039-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00039-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00039-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00039-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00039-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00039-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00040-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00040-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00040-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00040-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00040-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00040-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00040-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00040-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00041-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00041-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00041-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00041-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00041-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00041-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00041-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00041-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00042-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00042-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00042-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00042-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00042-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00042-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00042-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00042-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00043-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00043-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00043-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00043-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00043-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00043-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00043-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00043-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00044-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00044-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00044-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00044-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00044-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00044-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00044-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00044-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00045-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00045-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00045-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00045-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00045-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00045-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00045-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00045-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00046-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00046-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00046-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00046-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00046-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00046-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00046-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00046-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00047-experts-0000-0127.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00047-experts-0000-0127.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00047-experts-0128-0255.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00047-experts-0128-0255.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00047-experts-0256-0383.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00047-experts-0256-0383.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "layer-00047-experts-0384-0511.complete.json",
+    "size": "5.9K"
+  },
+  {
+    "file": "layer-00047-experts-0384-0511.safetensors",
+    "size": "354.1M"
+  },
+  {
+    "file": "merges.txt",
+    "size": "3.4M"
+  },
+  {
+    "file": "model-bf16-00001.safetensors",
+    "size": "1.3G"
+  },
+  {
+    "file": "model-bf16-00010.safetensors",
+    "size": "323.6M"
+  },
+  {
+    "file": "model-bf16-00011.safetensors",
+    "size": "10.7G"
+  },
+  {
+    "file": "model-bf16-00012.safetensors",
+    "size": "3.7G"
+  },
+  {
+    "file": "model-plefp8-00000.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00001.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00002.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00003.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00004.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00005.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00006.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00007.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00008.safetensors",
+    "size": "5.2G"
+  },
+  {
+    "file": "model-plefp8-00009.safetensors",
+    "size": "4.4G"
+  },
+  {
+    "file": "model.safetensors.index.json",
+    "size": "34.3M"
+  },
+  {
+    "file": "preprocessor_config.json",
+    "size": "390.0"
+  },
+  {
+    "file": "qualification-notes.md",
+    "size": "3.3K"
+  },
+  {
+    "file": "smoke_report.json",
+    "size": "389.0"
+  },
+  {
+    "file": "tokenizer.json",
+    "size": "12.8M"
+  },
+  {
+    "file": "tokenizer_config.json",
+    "size": "17.9K"
+  },
+  {
+    "file": "validate_checkpoint_report.json",
+    "size": "336.0"
+  },
+  {
+    "file": "validate_scales_report.json",
+    "size": "149.0"
+  },
+  {
+    "file": "video_preprocessor_config.json",
+    "size": "385.0"
+  },
+  {
+    "file": "vocab.json",
+    "size": "6.7M"
+  }
+]
