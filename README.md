@@ -10,14 +10,18 @@ Pinned snapshot: `7b719225242aacd3dbd3f9407468c2ee9a9d2594`.
 
 ## Measured on 2× DGX Spark (L.A.I.L lab)
 
-Decode is not tabled yet. This recipe is boot-verified only. `GET /health` 200 and `GET /v1/models` listing `RadixArk/Qwen3.8-Flash-Next-NVFP4` are the ready gate. Do not copy community tok/s into this table.
+Decode is streamed greedy, thinking off, 200 completion tokens, 3-run median. The table is `python3 bench_decode.py` at c=1 and c=2 on the seqs=8 pin. Do not copy community tok/s into this table.
 
 <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
 | Phase | Concurrency | Decode tok/s (median per stream) | Aggregate tok/s | TTFT p50 |
 |---|---|---:|---:|---:|
+| prose | 1 | 39.5 | 39.4 | 0.22 s |
+| prose | 2 | 34.9 | 64.4 | 0.23 s |
+| structured | 1 | 66.6 | 66.6 | 0.22 s |
+| structured | 2 | 65.2 | 130.4 | 0.23 s |
 <!-- END generated measured -->
 
-Native `max_position_embeddings` is 262144. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is frozen at two sequences. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8. Conservative boot is seqs=2.
+Native `max_position_embeddings` is 262144. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
 
 ## Requirements
 
@@ -77,7 +81,17 @@ curl -s http://127.0.0.1:8000/v1/chat/completions \
   }'
 ```
 
-The checkpoint is multimodal (`image_token_id` 248056). Vision smoke is not part of this boot gate.
+Correctness probes against the live API:
+
+```bash
+python3 smoke_thinking.py
+python3 smoke_tools.py
+python3 smoke_vision.py
+python3 smoke_count.py
+python3 bench_decode.py
+```
+
+`smoke_thinking.py` must not start `content` with chain-of-thought. `smoke_tools.py` must emit `get_weather`. `smoke_vision.py` posts an OpenAI `image_url` and must not return HTTP 400 `is not a multimodal model`. `smoke_count.py` must keep 1 to 200 consecutive with thinking off.
 
 Stop both ranks from the head:
 
@@ -96,7 +110,7 @@ Stop both ranks from the head:
 | Model | `RadixArk/Qwen3.8-Flash-Next-NVFP4` |
 | `--tensor-parallel-size` / `--nnodes` | 2 / 2 |
 | `--max-model-len` | 1048576 (native 262144; 1M is a lab ceiling, not a trained window) |
-| `--max-num-seqs` | 2 |
+| `--max-num-seqs` | 8 |
 | `--max-num-batched-tokens` | 8192 |
 | `--kv-cache-dtype` | `auto` |
 | `--moe-backend` | `auto` (NVFP4 walks flashinfer then marlin; MTP BF16 needs auto/triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`) |
@@ -113,7 +127,7 @@ Stop both ranks from the head:
 
 MTP draft experts stay BF16. A global `--moe-backend marlin` exits with `moe_backend='marlin' is not supported for unquantized MoE`. This recipe defaults to `--moe-backend auto`. This boot selected `FLASHINFER_CUTLASS` for both NVFP4 experts and unquantized MTP. Explicit `marlin` still fails on MTP. `run.sh` refuses `marlin` and `flashinfer_cutlass`.
 
-`--max-model-len` 1048576 is the refuse ceiling, not a needle result. The day-0 image derives 262144 from `max_position_embeddings` and exits unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 2, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing `VLLM_PLE_FP8_CHECKPOINT=1` overlay, and a 1M window without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
+`--max-model-len` 1048576 is the refuse ceiling, not a needle result. The day-0 image derives 262144 from `max_position_embeddings` and exits unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing `VLLM_PLE_FP8_CHECKPOINT=1` overlay, and a 1M window without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
 
 There is no extra Jinja file. The checkpoint `chat_template.jinja` honors `enable_thinking`. Tool calls use the card XML `<tool_call><function=...>` shape (`qwen3_xml`). Reasoning uses `qwen3`.
 
@@ -126,7 +140,7 @@ export IFACE=enp1s0f1np1
 export HCA=rocep1s0f1
 export PORT=8000
 export MAX_MODEL_LEN=1048576
-export MAX_NUM_SEQS=2
+export MAX_NUM_SEQS=8
 ```
 
 Pin `NCCL_IB_HCA`. GB10 exposes four HCAs and two of them are DOWN. Unpinned NCCL picks a dead one and fails with `unhandled system error`. Some Spark cookbooks use `enp1s0f0np0` / `rocep1s0f0`. This lab uses `enp1s0f1np1` / `rocep1s0f1`.

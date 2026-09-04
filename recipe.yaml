@@ -42,7 +42,7 @@ serve:
     TP: *tp
     NNODES: *nnodes
     MAX_MODEL_LEN: 1048576
-    MAX_NUM_SEQS: 2
+    MAX_NUM_SEQS: 8
     UTIL: 0.80
     KV_CACHE_DTYPE: auto
     NUM_SPECULATIVE_TOKENS: 3
@@ -87,9 +87,13 @@ measured:
   # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
   # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
   decode:
-    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=2, kv auto, context 1048576, MTP-3
+    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 1048576, MTP-3
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
-    rows: []
+    rows:
+      - {phase: prose, concurrency: 1, decode: 39.5, aggregate: 39.4, ttft_p50: 0.22, evidence: evidence/iter-h2/bench.txt}
+      - {phase: prose, concurrency: 2, decode: 34.9, aggregate: 64.4, ttft_p50: 0.23, evidence: evidence/iter-h2/bench.txt}
+      - {phase: structured, concurrency: 1, decode: 66.6, aggregate: 66.6, ttft_p50: 0.22, evidence: evidence/iter-h2/bench.txt}
+      - {phase: structured, concurrency: 2, decode: 65.2, aggregate: 130.4, ttft_p50: 0.23, evidence: evidence/iter-h2/bench.txt}
 
 links:
   model: https://huggingface.co/RadixArk/Qwen3.8-Flash-Next-NVFP4

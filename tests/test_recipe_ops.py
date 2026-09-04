@@ -150,10 +150,14 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn("validate-only", proc.stdout)
 
-    def test_validate_only_refuses_max_num_seqs(self) -> None:
+    def test_validate_only_accepts_occupancy_pin(self) -> None:
         proc = _run_sh(MAX_NUM_SEQS="8")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+
+    def test_validate_only_refuses_max_num_seqs(self) -> None:
+        proc = _run_sh(MAX_NUM_SEQS="16")
         self.assertNotEqual(proc.returncode, 0)
-        self.assertTrue(proc.stderr.strip())
+        self.assertIn("exceeds 8", proc.stderr)
 
     def test_validate_only_refuses_window_above_1m(self) -> None:
         proc = _run_sh(MAX_MODEL_LEN="2097152")

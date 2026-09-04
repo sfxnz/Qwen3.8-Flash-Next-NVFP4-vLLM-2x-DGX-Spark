@@ -7,7 +7,7 @@ Humans read [README.md](README.md).
 ## Working rules
 
 - `recipe.yaml` is the source of truth for pins and generated blocks. Edit it, then `python3 kit/render.py`. Do not hand-edit `# BEGIN generated` or `<!-- BEGIN generated` blocks.
-- Change one knob at a time against `python3 bench_decode.py` once that table exists. Revert if it does not beat noise or it regresses another cell. Record the revert in `evidence/`.
+- Change one knob at a time against `python3 bench_decode.py`. Revert if it does not beat noise or it regresses another cell. Record the revert in `evidence/`.
 - Read unified memory with `free -h`. Never `nvidia-smi` VRAM.
 - Exclusive GPUs. Do not start this while another `--gpus all` serve is up.
 - Pin `NCCL_IB_HCA`. GB10 exposes four HCAs and two are DOWN. Unpinned NCCL picks a dead one and fails with `unhandled system error`. Defaults in `run.sh` are `enp1s0f1np1` / `rocep1s0f1`.
@@ -23,13 +23,13 @@ Humans read [README.md](README.md).
 Exits unless `FORCE_UNSAFE_CTX=1` or `FORCE_UNSAFE_MOE=1`:
 
 - `--max-model-len` above 1048576
-- `MAX_NUM_SEQS` above 2
+- `MAX_NUM_SEQS` above 8
 - `MOE_BACKEND=marlin` (unquantized MTP MoE rejects it)
 - `MOE_BACKEND=flashinfer_cutlass` or `b12x`
 - `VLLM_PLE_FP8_CHECKPOINT` not `1`
 - `--max-model-len` above 262144 when `VLLM_ALLOW_LONG_MAX_MODEL_LEN` is not `1`
 
-Do not raise `MAX_NUM_SEQS` on this first occupancy pin.
+Default occupancy is eight sequences. That pin held eight short streams with no drop. Do not raise `MAX_NUM_SEQS` above 8 without a new occupancy row.
 
 ## Verify
 
@@ -37,9 +37,10 @@ Do not raise `MAX_NUM_SEQS` on this first occupancy pin.
 python3 -m unittest discover -s tests -q
 python3 kit/render.py --check
 VALIDATE_ONLY=1 ./run.sh
+python3 bench_decode.py
 ```
 
-After `./run.sh` is up, `GET /health` must be 200 and `GET /v1/models` must list `RadixArk/Qwen3.8-Flash-Next-NVFP4`.
+After `./run.sh` is up, `GET /health` must be 200 and `GET /v1/models` must list `RadixArk/Qwen3.8-Flash-Next-NVFP4`. Thinking-off smoke must not start `content` with chain-of-thought. `smoke_tools.py` must emit `get_weather`. `smoke_vision.py` must accept OpenAI `image_url` and must not return "is not a multimodal model". Greedy count 1 to 200 stays consecutive with thinking off. `python3 bench_decode.py` is the frozen 2x decode ruler.
 
 ## Never touch
 

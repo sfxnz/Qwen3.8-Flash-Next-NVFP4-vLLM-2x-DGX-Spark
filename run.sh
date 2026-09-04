@@ -16,7 +16,7 @@ HCA="${HCA:-rocep1s0f1}"
 TP="${TP:-2}"
 NNODES="${NNODES:-2}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-1048576}"
-MAX_NUM_SEQS="${MAX_NUM_SEQS:-2}"
+MAX_NUM_SEQS="${MAX_NUM_SEQS:-8}"
 UTIL="${UTIL:-0.80}"
 KV_CACHE_DTYPE="${KV_CACHE_DTYPE:-auto}"
 NUM_SPECULATIVE_TOKENS="${NUM_SPECULATIVE_TOKENS:-3}"
@@ -66,8 +66,8 @@ if [[ "$MAX_MODEL_LEN" -gt 1048576 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
   echo "--max-model-len $MAX_MODEL_LEN is above 1048576. Native max_position_embeddings is 262144. 1M is a lab ceiling. Community 1M YaRN on GB10 hangs on long prefills (vLLM #54629). FORCE_UNSAFE_CTX=1 overrides." >&2
   exit 1
 fi
-if [[ "$MAX_NUM_SEQS" -gt 2 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
-  echo "MAX_NUM_SEQS=$MAX_NUM_SEQS exceeds 2 on this occupancy pin. Spark Arena used 8 at 262144. Conservative boot is 2. FORCE_UNSAFE_CTX=1 overrides." >&2
+if [[ "$MAX_NUM_SEQS" -gt 8 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
+  echo "MAX_NUM_SEQS=$MAX_NUM_SEQS exceeds 8 on this occupancy pin. seqs=8 held eight short streams with no drop. seqs above 8 is unmeasured. FORCE_UNSAFE_CTX=1 overrides." >&2
   exit 1
 fi
 if [[ "$MOE_BACKEND" == marlin && "$FORCE_UNSAFE_MOE" != 1 ]]; then
