@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: run.sh dry-run with the shipped defaults
+        run: VALIDATE_ONLY=1 ./run.sh
+      - name: run.sh refuses a window above 1M
+        run: |
+          if VALIDATE_ONLY=1 MAX_MODEL_LEN=2097152 ./run.sh; then
+            echo "run.sh accepted MAX_MODEL_LEN=2097152 without FORCE_UNSAFE_CTX" >&2
+            exit 1
+          fi
+      - name: run.sh refuses marlin with in-band MTP
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=marlin ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=marlin without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses flashinfer_cutlass
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=flashinfer_cutlass ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=flashinfer_cutlass without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses seqs above 2
+        run: |
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=8 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=8 without FORCE_UNSAFE_CTX" >&2
+            exit 1
+          fi
+
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - run: shellcheck -S warning run.sh stop.sh
+
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -q
