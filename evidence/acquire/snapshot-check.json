@@ -1,0 +1,14 @@
+{
+  "snap": "/home/sfxnz/.cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594",
+  "expected_files": 419,
+  "missing": [],
+  "safetensors_expected": 206,
+  "safetensors_on_disk": 206,
+  "architectures": [
+    "Qwen4ExpForConditionalGeneration"
+  ],
+  "model_type": "qwen4_exp",
+  "quantization": "modelopt",
+  "max_position_embeddings": null,
+  "index_weight_map_entries": 296475
+}

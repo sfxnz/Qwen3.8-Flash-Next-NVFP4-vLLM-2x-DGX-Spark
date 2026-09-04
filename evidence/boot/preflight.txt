@@ -1,0 +1,17 @@
+date=2026-09-04T15:01:57Z
+host=spark1
+
+== free -h ==
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       6.6Gi       847Mi        19Mi       115Gi       115Gi
+Swap:           15Gi       604Ki        15Gi
+
+== docker ps ==
+NAMES     IMAGE                                 STATUS
+conduit   matrixconduit/matrix-conduit:latest   Up 16 hours
+
+== spark2 docker ps ==
+NAMES     IMAGE     STATUS
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       4.0Gi       1.4Gi       5.3Mi       117Gi       117Gi
+Swap:           15Gi       328Ki        15Gi

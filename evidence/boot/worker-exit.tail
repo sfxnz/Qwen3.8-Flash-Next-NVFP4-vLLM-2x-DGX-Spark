@@ -1,0 +1,100 @@
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 400, in load_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.speculator.load_model(self.model)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/autoregressive/speculator.py", line 48, in load_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     super().load_model(target_model)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/speculator.py", line 161, in load_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.model = self.load_draft_model(target_model, target_attn_layer_names)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/mtp/speculator.py", line 20, in load_draft_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     draft_model = load_eagle_model(target_model, self.vllm_config)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/eagle/utils.py", line 51, in load_eagle_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     eagle_model = get_model(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                   ^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/__init__.py", line 137, in get_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     return loader.load_model(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]            ^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     return func(*args, **kwargs)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     model = initialize_model(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]             ^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     return func(*args, **kwargs)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     old_init(self, *args, **kwargs)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/mtp.py", line 382, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.model = Qwen3_8FlashNextMultiTokenPredictor(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     old_init(self, *args, **kwargs)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/mtp.py", line 200, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.layers = nn.ModuleList(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                   ^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/container.py", line 364, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self += modules
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/container.py", line 413, in __iadd__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     return self.extend(modules)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]            ^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/container.py", line 498, in extend
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     for i, module in enumerate(modules):
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/mtp.py", line 201, in <genexpr>
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     Qwen3_8FlashNextDecoderLayer(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/model.py", line 242, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.mlp = Qwen3_8FlashNextSparseMoeBlock(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/model.py", line 166, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     super().__init__(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/qwen3_next.py", line 182, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.experts = FusedMoEFactory(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                    ^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/layer.py", line 375, in FusedMoEFactory
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     routed_experts = routed_experts_cls(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                      ^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/routed_experts.py", line 121, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.quant_method = self._get_quant_method(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                         ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/routed_experts.py", line 203, in _get_quant_method
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     quant_method = UnquantizedFusedMoEMethod(moe_config)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/unquantized_fused_moe_method.py", line 47, in __init__
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     self.unquantized_backend, self.experts_cls = select_unquantized_moe_backend(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/oracle/unquantized.py", line 290, in select_unquantized_moe_backend
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     requested_backend = map_unquantized_backend(runner_backend)
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/oracle/unquantized.py", line 177, in map_unquantized_backend
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945]     raise ValueError(
+(Worker_TP1 pid=381) ERROR 09-04 15:21:08 [multiproc_executor.py:945] ValueError: moe_backend='marlin' is not supported for unquantized MoE. Expected one of ['triton', 'batched_triton', 'flashinfer_trtllm', 'flashinfer_cutlass', 'aiter'].
+INFO 09-04 15:21:08 [multiproc_executor.py:469] [shutdown] Executor: waiting for worker exit count=1
+[rank1]:[W904 15:21:10.370917175 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+WARNING 09-04 15:21:14 [multiproc_executor.py:481] [shutdown] Executor: workers still running after grace period; sending SIGTERM count=1
+Traceback (most recent call last):
+  File "/usr/local/bin/vllm", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/main.py", line 97, in main
+    args.dispatch_function(args)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/serve.py", line 146, in cmd
+    run_headless(args)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/serve.py", line 223, in run_headless
+    executor = MultiprocExecutor(vllm_config, monitor_workers=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 116, in __init__
+    super().__init__(vllm_config)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+    self._init_executor()
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 211, in _init_executor
+    self.workers = WorkerProc.wait_for_ready(unready_workers)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 809, in wait_for_ready
+    raise e from None
+Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
