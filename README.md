@@ -2,7 +2,7 @@
 
 Serve [nvidia/Qwen3.8-Flash-Next-NVFP4](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) across two NVIDIA DGX Spark (GB10) nodes at tensor-parallel 2.
 
-Routed experts are ModelOpt NVFP4 W4A4. The PLE n-gram table is per-tensor FP8. MTP experts are FP8_BLOCK_SCALES with group size 128. Architecture class is `Qwen4ExpForConditionalGeneration`. Native context is 262,144. This recipe boots `--max-model-len` 1048576 with in-band MTP-3. 1M is a lab ceiling, not a trained window. Community 1M YaRN on GB10 hangs on long prefills ([vLLM #54629](https://github.com/vllm-project/vllm/issues/54629)).
+Routed experts are ModelOpt NVFP4 W4A4. The PLE n-gram table is per-tensor FP8. MTP experts are FP8_BLOCK_SCALES with group size 128. Architecture class is `Qwen4ExpForConditionalGeneration`. Native context is 262,144. This recipe boots `--max-model-len` 262144 with in-band MTP-3. 1M is a lab ceiling, not a trained window. Community 1M YaRN on GB10 hangs on long prefills ([vLLM #54629](https://github.com/vllm-project/vllm/issues/54629)).
 
 Stock `vllm/vllm-openai:v0.27.1` does not register `qwen4_exp`. The pin is official `vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b` (`0.28.1rc1.dev437+ge962733e0`). Nightly already selects MIXED_PRECISION FP8 PLE. Day-0 `qwen38-flash-next@3b0e188` and this nightly both fail MTP load until `docker/modelopt.py` remaps `mtp.layers.48` onto `mtp.layers.0` and dispatches `FP8_BLOCK_SCALES` to `Fp8MoEMethod`. `run.sh` bind-mounts that overlay and `docker/ple_layer.py`.
 
@@ -15,13 +15,13 @@ Decode is streamed greedy, thinking off, 200 completion tokens, 3-run median. Th
 <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
 | Phase | Concurrency | Decode tok/s (median per stream) | Aggregate tok/s | TTFT p50 |
 |---|---|---:|---:|---:|
-| prose | 1 | 39.6 | 39.6 | 0.15 s |
-| prose | 2 | 35.4 | 62.4 | 0.17 s |
-| structured | 1 | 66.8 | 66.7 | 0.15 s |
-| structured | 2 | 61.4 | 37.6 | 0.16 s |
+| prose | 1 | 43.2 | 43.1 | 0.17 s |
+| prose | 2 | 36.2 | 68.2 | 0.16 s |
+| structured | 1 | 55.5 | 55.5 | 0.15 s |
+| structured | 2 | 58.0 | 37.0 | 0.19 s |
 <!-- END generated measured -->
 
-Native `max_position_embeddings` is 262144. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
+Native `max_position_embeddings` is 262144. This recipe serves that window. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
 
 ## Requirements
 
@@ -109,7 +109,7 @@ Stop both ranks from the head:
 | Image | `vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b` |
 | Model | `nvidia/Qwen3.8-Flash-Next-NVFP4` |
 | `--tensor-parallel-size` / `--nnodes` | 2 / 2 |
-| `--max-model-len` | 1048576 (native 262144; 1M is a lab ceiling, not a trained window) |
+| `--max-model-len` | 262144 (native window; 1048576 is a lab ceiling, not a trained window) |
 | `--max-num-seqs` | 8 |
 | `--max-num-batched-tokens` | 8192 |
 | `--kv-cache-dtype` | `auto` |
@@ -117,7 +117,7 @@ Stop both ranks from the head:
 | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
 | Speculative | MTP-3 (`SPEC=mtp`, draft MoE `triton`; NVFP4 experts stay `auto`) |
 | PLE overlay | `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES |
-| Oversize window | `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1` (native 262144; this is not YaRN) |
+| Oversize window | `VLLM_ALLOW_LONG_MAX_MODEL_LEN=0` (required only above 262144; this is not YaRN) |
 | Tokenizers / tools / reasoning | auto / `qwen3_xml` / `qwen3` |
 | Default thinking | `enable_thinking=false` |
 | API | `http://<head>:8000/v1` |
@@ -127,7 +127,7 @@ Stop both ranks from the head:
 
 MTP draft experts are FP8_BLOCK_SCALES. A global `--moe-backend marlin` is still refused. This recipe defaults to `--moe-backend auto`. Nightly refined MTP block scales from 128x128 to 64x64 to fit TP-sharded intermediate size 320, then used Triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`.
 
-`--max-model-len` 1048576 is the refuse ceiling, not a needle result. vLLM derives 262144 from `max_position_embeddings` and exits unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing PLE or MTP overlay, and a 1M window without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. Nightly already selects MIXED_PRECISION FP8 PLE, so `VLLM_PLE_FP8_CHECKPOINT` is not required and is not passed into the container. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
+`--max-model-len` 262144 is the native window. 1048576 is the refuse ceiling, not a needle result. vLLM derives 262144 from `max_position_embeddings` and exits on a longer window unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing PLE or MTP overlay, and a window above 262144 without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. Nightly already selects MIXED_PRECISION FP8 PLE, so `VLLM_PLE_FP8_CHECKPOINT` is not required and is not passed into the container. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
 
 There is no extra Jinja file. The checkpoint `chat_template.jinja` honors `enable_thinking`. Tool calls use the card XML `<tool_call><function=...>` shape (`qwen3_xml`). Reasoning uses `qwen3`.
 
@@ -139,7 +139,7 @@ export WORKER_HOST=spark2
 export IFACE=enp1s0f1np1
 export HCA=rocep1s0f1
 export PORT=8000
-export MAX_MODEL_LEN=1048576
+export MAX_MODEL_LEN=262144
 export MAX_NUM_SEQS=8
 ```
 

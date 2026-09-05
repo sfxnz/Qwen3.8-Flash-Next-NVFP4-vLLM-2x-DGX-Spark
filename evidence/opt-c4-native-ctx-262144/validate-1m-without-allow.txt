@@ -1,0 +1,1 @@
+MAX_MODEL_LEN=1048576 exceeds native 262144. vLLM refuses that unless VLLM_ALLOW_LONG_MAX_MODEL_LEN=1. This does not enable YaRN. FORCE_UNSAFE_CTX=1 does not replace that env.

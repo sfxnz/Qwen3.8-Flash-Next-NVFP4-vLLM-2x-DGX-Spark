@@ -1,0 +1,3 @@
+allow=['VLLM_ALLOW_LONG_MAX_MODEL_LEN=0']
+arg_max_model_len=262144
+served_max_model_len=262144

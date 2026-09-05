@@ -1,0 +1,30 @@
+==> role=head host=spark1
+==> Starting worker on spark2 first
+==> role=worker host=spark2
+==> Ensuring image vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a
+==> Starting qwen38-flash-next-nvfp4 rank=1 model=/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a ctx=262144 kv=auto spec=mtp moe=auto
+a08e854c9b95a98fd9b1e79afbb01246711a31095adbe4d6642e7f593f182081
+==> Worker rank 1 is up. Head should start next.
+==> Worker container started. Waiting 25s for NCCL listen, then starting head
+==> Ensuring image vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a
+==> Starting qwen38-flash-next-nvfp4 rank=0 model=/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a ctx=262144 kv=auto spec=mtp moe=auto
+8aeaaf626fbddeb5b71f2eb6416521c49ec0b236745a330eb3e0eee219b8afc9
+==> Waiting for http://127.0.0.1:8000/health and /v1/models
+==> still loading… (12×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (24×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (36×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (48×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (60×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (72×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (84×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (96×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (108×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (120×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (132×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (144×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> Ready → http://127.0.0.1:8000/v1  (context=262144 health=200)
+{"object":"list","data":[{"id":"nvidia/Qwen3.8-Flash-Next-NVFP4","object":"model","created":1788621625,"owned_by":"vllm","root":"/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a","parent":null,"max_model_len":262144,"permission":[{"id":"modelperm-bc56f74282f12c5b","object":"model_permission","created":1788621625,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+
+==> Stop with: ./stop.sh

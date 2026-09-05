@@ -1,0 +1,26 @@
+kept
+
+Native --max-model-len 262144 with VLLM_ALLOW_LONG_MAX_MODEL_LEN=0.
+Image still nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b.
+NVIDIA MIXED_PRECISION fab0aec. GET /health 200. /v1/models lists
+nvidia/Qwen3.8-Flash-Next-NVFP4 max_model_len=262144.
+
+Quality. thinking-off PING, no CoT. tools get_weather Wellington. vision Red.
+count 200/200 consecutive.
+
+Frozen bench_decode.py vs last kept pin c2:
+prose c=1 43.16 vs 39.57 tok/s, TTFT 0.17s vs 0.15s
+prose c=2 36.22 vs 35.38 tok/s, TTFT 0.16s vs 0.17s
+prose c=8 24.39 vs 25.48 tok/s, n=24 no drop
+structured c=1 55.47 vs 66.76, acceptance_len 4.0 (run spread 52.62-67.16)
+structured c=2 57.98 vs 61.41, acceptance_len 2.00
+
+KV pool 1,965,371 tokens, 7.50x at 262144 (c2 was 2,182,339 tokens, 2.08x at 1M).
+UMA leftover spark1 10Gi available, swap 7.4Gi. spark2 15Gi available, swap 3.2Gi.
+c2 was spark1 9.7Gi / swap 7.0Gi, spark2 14Gi / swap 2.7Gi.
+
+Official-vendor native window from NVIDIA Usage sample. Reliability and quality hold.
+Decode prose improved. TTFT stayed inside c2 noise. Do not advertise 1M.
+
+Credits. NVIDIA ModelOpt Usage sample (sychen52).
+https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4
