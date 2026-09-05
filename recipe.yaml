@@ -52,7 +52,7 @@ serve:
     FORCE_UNSAFE_CTX: 0
     FORCE_UNSAFE_MOE: 0
     ENFORCE_EAGER: 0
-    VLLM_PLE_FP8_CHECKPOINT: 1
+    VLLM_PLE_FP8_CHECKPOINT: 0
     VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
     TOOL_CALL_PARSER: qwen3_xml
     REASONING_PARSER: qwen3
@@ -90,10 +90,10 @@ measured:
     conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 1048576, MTP-3
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
-      - {phase: prose, concurrency: 1, decode: 38.2, aggregate: 38.2, ttft_p50: 0.17, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
-      - {phase: prose, concurrency: 2, decode: 36.0, aggregate: 63.1, ttft_p50: 0.16, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
-      - {phase: structured, concurrency: 1, decode: 67.7, aggregate: 67.7, ttft_p50: 0.15, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
-      - {phase: structured, concurrency: 2, decode: 49.4, aggregate: 37.4, ttft_p50: 0.16, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
+      - {phase: prose, concurrency: 1, decode: 39.6, aggregate: 39.6, ttft_p50: 0.15, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
+      - {phase: prose, concurrency: 2, decode: 35.4, aggregate: 62.4, ttft_p50: 0.17, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
+      - {phase: structured, concurrency: 1, decode: 66.8, aggregate: 66.7, ttft_p50: 0.15, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
+      - {phase: structured, concurrency: 2, decode: 61.4, aggregate: 37.6, ttft_p50: 0.16, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4

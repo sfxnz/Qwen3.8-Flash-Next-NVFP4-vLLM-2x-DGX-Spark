@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cu129-nightly-e962733e08d10f7ca65dac4df99e116460b8b174",
+    "last_updated": "2026-09-05T06:22:58.286715Z",
+    "digest": "sha256:b569bf7ba7aed004bc1088a7f01f004830a38249b75f9d56719d0a292a6b4b91"
+  },
+  {
+    "name": "cu129-nightly",
+    "last_updated": "2026-09-05T06:22:56.873189Z",
+    "digest": "sha256:b569bf7ba7aed004bc1088a7f01f004830a38249b75f9d56719d0a292a6b4b91"
+  },
+  {
+    "name": "cu129-nightly-aarch64",
+    "last_updated": "2026-09-05T06:22:54.530095Z",
+    "digest": "sha256:b569bf7ba7aed004bc1088a7f01f004830a38249b75f9d56719d0a292a6b4b91"
+  },
+  {
+    "name": "nightly-e962733e08d10f7ca65dac4df99e116460b8b174",
+    "last_updated": "2026-09-05T06:16:31.617403Z",
+    "digest": "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"
+  },
+  {
+    "name": "nightly",
+    "last_updated": "2026-09-05T06:16:30.219083Z",
+    "digest": "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"
+  },
+  {
+    "name": "nightly-aarch64",
+    "last_updated": "2026-09-05T06:16:27.919109Z",
+    "digest": "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"
+  },
+  {
+    "name": "nightly-dev-arm64-cu13.0.1-728d3ad",
+    "last_updated": "2026-09-04T19:48:14.257685Z",
+    "digest": "sha256:815da6c2253bda19195b9ff8f36ecb28640edad445ab051fdd5d5f698144efb0"
+  },
+  {
+    "name": "cu129-nightly-8a728663c1c3eeace834a95f5654fa653cc1998c",
+    "last_updated": "2026-09-04T06:22:30.475385Z",
+    "digest": "sha256:d996ae3a9dd3a77283177c7d660b8223be8e1ed707ae0264b65a1098349d7be0"
+  },
+  {
+    "name": "nightly-8a728663c1c3eeace834a95f5654fa653cc1998c",
+    "last_updated": "2026-09-04T06:18:14.498794Z",
+    "digest": "sha256:a551e05307cd2e0092139d84db32af9c97e67d2eeeff072d21e429131d8c23f0"
+  },
+  {
+    "name": "cu129-nightly-27a94d1ce4e3fc100c4732439ccec10f8246a804",
+    "last_updated": "2026-09-03T06:27:09.542668Z",
+    "digest": "sha256:7758eae53a7c159c439f6b6d3482dc9854f4f93b85164f0919a325f6bef58e7a"
+  },
+  {
+    "name": "nightly-27a94d1ce4e3fc100c4732439ccec10f8246a804",
+    "last_updated": "2026-09-03T06:16:49.261651Z",
+    "digest": "sha256:1078534b371803274374a7e62142c34bb0fbb1e8ba5e38756ecdc9e9b91a34db"
+  },
+  {
+    "name": "nightly-dev-arm64-cu13.0.1-75c2eef",
+    "last_updated": "2026-09-03T00:07:00.220784Z",
+    "digest": "sha256:be4945a0ded064e1d275700e0e2aa4818549b8d69cffe7ed721834836e73f60d"
+  }
+]

@@ -15,10 +15,10 @@ Decode is streamed greedy, thinking off, 200 completion tokens, 3-run median. Th
 <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
 | Phase | Concurrency | Decode tok/s (median per stream) | Aggregate tok/s | TTFT p50 |
 |---|---|---:|---:|---:|
-| prose | 1 | 38.2 | 38.2 | 0.17 s |
-| prose | 2 | 36.0 | 63.1 | 0.16 s |
-| structured | 1 | 67.7 | 67.7 | 0.15 s |
-| structured | 2 | 49.4 | 37.4 | 0.16 s |
+| prose | 1 | 39.6 | 39.6 | 0.15 s |
+| prose | 2 | 35.4 | 62.4 | 0.17 s |
+| structured | 1 | 66.8 | 66.7 | 0.15 s |
+| structured | 2 | 61.4 | 37.6 | 0.16 s |
 <!-- END generated measured -->
 
 Native `max_position_embeddings` is 262144. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
@@ -127,7 +127,7 @@ Stop both ranks from the head:
 
 MTP draft experts are FP8_BLOCK_SCALES. A global `--moe-backend marlin` is still refused. This recipe defaults to `--moe-backend auto`. Nightly refined MTP block scales from 128x128 to 64x64 to fit TP-sharded intermediate size 320, then used Triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`.
 
-`--max-model-len` 1048576 is the refuse ceiling, not a needle result. vLLM derives 262144 from `max_position_embeddings` and exits unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing PLE or MTP overlay, and a 1M window without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
+`--max-model-len` 1048576 is the refuse ceiling, not a needle result. vLLM derives 262144 from `max_position_embeddings` and exits unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing PLE or MTP overlay, and a 1M window without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. Nightly already selects MIXED_PRECISION FP8 PLE, so `VLLM_PLE_FP8_CHECKPOINT` is not required and is not passed into the container. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
 
 There is no extra Jinja file. The checkpoint `chat_template.jinja` honors `enable_thinking`. Tool calls use the card XML `<tool_call><function=...>` shape (`qwen3_xml`). Reasoning uses `qwen3`.
 

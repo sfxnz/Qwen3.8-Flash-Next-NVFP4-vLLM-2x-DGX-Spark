@@ -1,0 +1,19 @@
+200
+has_env=False unknown=False mixed=True attr=False
+[
+  {
+    "phase": "prose",
+    "concurrency": 1,
+    "median_decode_tok_s": 39.56667062635563,
+    "median_ttft_s": 0.1539611780026462,
+    "median_agg_tok_s": 39.55651347372872,
+    "median_completion_tokens": 90,
+    "n": 3,
+    "acceptance_len": 2.2966101694915255,
+    "draft_acceptance_rate": 0.4322033898305085
+  },
+  {
+    "phase": "prose",
+    "concurrency": 2,
+    "median_decode_tok_s": 35
+probes-done

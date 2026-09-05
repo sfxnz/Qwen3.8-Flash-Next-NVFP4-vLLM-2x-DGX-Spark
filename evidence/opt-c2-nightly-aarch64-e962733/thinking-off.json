@@ -1,0 +1,9 @@
+{
+  "content": "PING",
+  "reasoning": "",
+  "content_chars": 4,
+  "leaked_think": false,
+  "starts_cot": false,
+  "looping": false,
+  "finish_reason": "stop"
+}

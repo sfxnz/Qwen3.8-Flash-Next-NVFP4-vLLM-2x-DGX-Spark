@@ -12,7 +12,7 @@ Humans read [README.md](README.md).
 - Exclusive GPUs. Do not start this while another `--gpus all` serve is up.
 - Pin `NCCL_IB_HCA`. GB10 exposes four HCAs and two are DOWN. Unpinned NCCL picks a dead one and fails with `unhandled system error`. Defaults in `run.sh` are `enp1s0f1np1` / `rocep1s0f1`.
 - Default thinking is off. `chat_template_kwargs`: `enable_thinking=false`. The card template seeds an empty `<think></think>` when thinking is off.
-- Keep `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8 PLE) and `docker/modelopt.py` (MTP FP8_BLOCK_SCALES). Day-0 `qwen38-flash-next@3b0e188` and stock nightly both raise `AttributeError: mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv'`. Regenerate with `python3 docker/apply_ple_overlay.py` and `python3 docker/apply_mtp_fp8_overlay.py`.
+- Keep `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8 PLE) and `docker/modelopt.py` (MTP FP8_BLOCK_SCALES). Nightly already selects FP8 PLE via `Qwen4ExpPLEFp8EmbeddingMethod`. Do not require `VLLM_PLE_FP8_CHECKPOINT`. Day-0 `qwen38-flash-next@3b0e188` and stock nightly both raise `AttributeError: mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv'`. Regenerate with `python3 docker/apply_ple_overlay.py` and `python3 docker/apply_mtp_fp8_overlay.py`.
 - Do not set global `--moe-backend marlin`. Default is `auto`. MTP experts are FP8_BLOCK_SCALES and use triton after a 64x64 refine.
 - Native `max_position_embeddings` and tokenizer `model_max_length` are 262144. 1048576 is a lab ceiling, not a trained window. Do not treat 1M as a quality pin. vLLM refuses that window unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN.
 
@@ -26,7 +26,6 @@ Exits unless `FORCE_UNSAFE_CTX=1` or `FORCE_UNSAFE_MOE=1`:
 - `MAX_NUM_SEQS` above 8
 - `MOE_BACKEND=marlin`
 - `MOE_BACKEND=flashinfer_cutlass` or `b12x`
-- `VLLM_PLE_FP8_CHECKPOINT` not `1`
 - `--max-model-len` above 262144 when `VLLM_ALLOW_LONG_MAX_MODEL_LEN` is not `1`
 - missing PLE overlay or MTP overlay
 

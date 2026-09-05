@@ -1,0 +1,22 @@
+kept
+
+vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+(0.28.1rc1.dev437+ge962733e0). NVIDIA MIXED_PRECISION fab0aec. No VLLM_PLE_FP8_CHECKPOINT
+in the container. Engine does not warn about that env. quantization=modelopt_mixed.
+
+GET /health 200. /v1/models lists nvidia/Qwen3.8-Flash-Next-NVFP4.
+
+Quality. thinking-off PING, no CoT. tools get_weather Wellington. vision Red.
+count 200/200 consecutive.
+
+Frozen bench_decode.py vs c1 (same digest, env still set) and vs opt-baseline:
+prose c=1 39.57 vs c1 38.20 vs baseline 37.29 tok/s, TTFT 0.15s vs 0.17s vs 0.23s
+prose c=2 35.38 vs c1 36.03 vs baseline 33.32 tok/s, TTFT 0.17s vs 0.16s vs 0.24s
+prose c=8 25.48 vs c1 24.58 vs baseline 24.01 tok/s, n=24 no drop
+structured c=1 66.76 vs c1 67.71, acceptance_len 4.0
+structured c=2 61.41 vs c1 49.42, acceptance_len 2.00
+
+Official-vendor image. Reliability and quality hold. Decode stays within noise of c1.
+UMA leftover spark1 10Gi available, swap 7.0Gi. spark2 13Gi available, swap 2.7Gi.
+
+Credits. NVIDIA ModelOpt (sychen52). vLLM nightly-aarch64 (vllmbot). This lab MTP overlay.
