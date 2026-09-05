@@ -1,0 +1,1 @@
+==> validate-only spec=mtp seqs=8 spec_tokens=2 eager=0 compilation={"mode":0,"cudagraph_mode":"FULL_DECODE_ONLY"} image=vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b moe=auto ple=0

@@ -1,0 +1,26 @@
+reverted
+
+MTP k=2 on the NVIDIA nightly pin at native 262144.
+Image still nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b.
+GET /health 200. /v1/models lists nvidia/Qwen3.8-Flash-Next-NVFP4 max_model_len=262144.
+Inspected --speculative-config num_speculative_tokens=2.
+
+Quality. thinking-off PING, no CoT. tools get_weather Wellington. vision Red.
+count 200/200 consecutive. Structured completion tokens 200 at c=1/2/8.
+
+Frozen bench_decode.py vs last kept pin c4:
+prose c=1 42.44 vs 43.16 tok/s, TTFT 0.14s vs 0.17s, acceptance_len 2.09 vs 2.46
+prose c=2 37.11 vs 36.22 tok/s, TTFT 0.17s vs 0.16s, acceptance_len 1.56 vs 1.70
+prose c=8 26.92 vs 24.39 tok/s, n=24 no drop
+structured c=1 58.34 vs 55.47, acceptance_len 3.0 vs 4.0 (rate 1.0)
+structured c=2 53.02 vs 57.98, acceptance_len 3.0 vs 2.00
+structured c=8 41.57 vs 48.55, acceptance_len 3.0 vs 2.29
+
+KV pool 1,982,735 tokens, 7.56x at 262144 (c4 was 1,965,371 tokens, 7.50x).
+UMA leftover spark1 11Gi available, swap 7.4Gi. spark2 14Gi available, swap 2.7Gi.
+
+Keep fails. This is not an official-vendor pin. Frozen prose c=1/c=2 stayed inside c4 run spread.
+Structured c=8 healthy cluster at k=3 was 47.6-50.2 tok/s. k=2 locked all 24 streams at 40.8-41.6.
+Candidate rule: keep k=3 if structured tok/s falls past noise. Restore NUM_SPECULATIVE_TOKENS 3.
+
+Credits. this lab (opt-baseline and iter-h2 acceptance_len). No third-party pin.
