@@ -41,7 +41,7 @@ serve:
     HCA: rocep1s0f1
     TP: *tp
     NNODES: *nnodes
-    MAX_MODEL_LEN: 1048576
+    MAX_MODEL_LEN: 262144
     MAX_NUM_SEQS: 8
     UTIL: 0.80
     KV_CACHE_DTYPE: auto
@@ -53,7 +53,7 @@ serve:
     FORCE_UNSAFE_MOE: 0
     ENFORCE_EAGER: 0
     VLLM_PLE_FP8_CHECKPOINT: 0
-    VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
+    VLLM_ALLOW_LONG_MAX_MODEL_LEN: 0
     TOOL_CALL_PARSER: qwen3_xml
     REASONING_PARSER: qwen3
     HF_CACHE: $HOME/.cache/huggingface
@@ -68,7 +68,7 @@ readme:
     - Image: "`{IMAGE}`"
     - Model: "`{MODEL}`"
     - "`--tensor-parallel-size` / `--nnodes`": "{TP} / {NNODES}"
-    - "`--max-model-len`": "{MAX_MODEL_LEN} (native 262144; 1M is a lab ceiling, not a trained window)"
+    - "`--max-model-len`": "{MAX_MODEL_LEN} (native window; 1048576 is a lab ceiling, not a trained window)"
     - "`--max-num-seqs`": "{MAX_NUM_SEQS}"
     - "`--max-num-batched-tokens`": "{MAX_NUM_BATCHED_TOKENS}"
     - "`--kv-cache-dtype`": "`{KV_CACHE_DTYPE}`"
@@ -76,7 +76,7 @@ readme:
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`, draft MoE `triton`; NVFP4 experts stay `{MOE_BACKEND}`)"
     - PLE overlay: "`docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES"
-    - Oversize window: "`VLLM_ALLOW_LONG_MAX_MODEL_LEN={VLLM_ALLOW_LONG_MAX_MODEL_LEN}` (native 262144; this is not YaRN)"
+    - Oversize window: "`VLLM_ALLOW_LONG_MAX_MODEL_LEN={VLLM_ALLOW_LONG_MAX_MODEL_LEN}` (required only above 262144; this is not YaRN)"
     - Tokenizers / tools / reasoning: "auto / `{TOOL_CALL_PARSER}` / `{REASONING_PARSER}`"
     - Default thinking: "`enable_thinking=false`"
     - API: "`http://<head>:{PORT}/v1`"
@@ -87,13 +87,13 @@ measured:
   # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
   # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
   decode:
-    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 1048576, MTP-3
+    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
-      - {phase: prose, concurrency: 1, decode: 39.6, aggregate: 39.6, ttft_p50: 0.15, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
-      - {phase: prose, concurrency: 2, decode: 35.4, aggregate: 62.4, ttft_p50: 0.17, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
-      - {phase: structured, concurrency: 1, decode: 66.8, aggregate: 66.7, ttft_p50: 0.15, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
-      - {phase: structured, concurrency: 2, decode: 61.4, aggregate: 37.6, ttft_p50: 0.16, evidence: evidence/opt-c2-nightly-aarch64-e962733/bench.txt}
+      - {phase: prose, concurrency: 1, decode: 43.2, aggregate: 43.1, ttft_p50: 0.17, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
+      - {phase: prose, concurrency: 2, decode: 36.2, aggregate: 68.2, ttft_p50: 0.16, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
+      - {phase: structured, concurrency: 1, decode: 55.5, aggregate: 55.5, ttft_p50: 0.15, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
+      - {phase: structured, concurrency: 2, decode: 58.0, aggregate: 37.0, ttft_p50: 0.19, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4

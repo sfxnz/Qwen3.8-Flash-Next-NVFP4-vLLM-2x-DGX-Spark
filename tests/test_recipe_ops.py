@@ -196,9 +196,13 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertNotIn('-e "VLLM_PLE_FP8_CHECKPOINT=$VLLM_PLE_FP8_CHECKPOINT"', run)
 
     def test_validate_only_refuses_1m_without_allow_long(self) -> None:
-        proc = _run_sh(VLLM_ALLOW_LONG_MAX_MODEL_LEN="0")
+        proc = _run_sh(MAX_MODEL_LEN="1048576", VLLM_ALLOW_LONG_MAX_MODEL_LEN="0")
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("VLLM_ALLOW_LONG_MAX_MODEL_LEN", proc.stderr)
+
+    def test_validate_only_accepts_native_window_without_allow(self) -> None:
+        proc = _run_sh(MAX_MODEL_LEN="262144", VLLM_ALLOW_LONG_MAX_MODEL_LEN="0")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
 
     def test_gitignore_run_state(self) -> None:
         self.assertIn(".run-state/", _read(".gitignore"))
