@@ -1,0 +1,2 @@
+ts	phase	decision	why	evidence	result
+2026-09-05T15:00:25Z	revert	reverted c3 MTP FP8 overlay recapture to last kept pin c2	skeptic rejected. c3 had no recipe delta versus 60bc4af. Overlay stays as the c1 keep. Live serve already c2 so no reboot.	evidence/opt-c3-mtp-fp8-block-scales-overlay/pin-diff-vs-c2.txt evidence/opt-c3-mtp-fp8-block-scales-overlay/restore-health.code	reverted. restore-health 200 nvidia id pin_diff=empty
