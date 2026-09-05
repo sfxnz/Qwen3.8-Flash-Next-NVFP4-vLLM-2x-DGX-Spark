@@ -1,0 +1,4 @@
+has_VLLM_PLE_FP8_CHECKPOINT=False
+unknown_env_warning=False
+quantization_modelopt_mixed=True
+mtp_attr_error=False

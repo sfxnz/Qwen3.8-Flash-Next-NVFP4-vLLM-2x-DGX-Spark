@@ -189,8 +189,11 @@ class RecipeOpsTests(unittest.TestCase):
 
     def test_validate_only_refuses_ple_gate_off(self) -> None:
         proc = _run_sh(VLLM_PLE_FP8_CHECKPOINT="0")
-        self.assertNotEqual(proc.returncode, 0)
-        self.assertTrue(proc.stderr.strip())
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("validate-only", proc.stdout)
+        run = _read("run.sh")
+        self.assertNotIn("VLLM_PLE_FP8_CHECKPOINT=$VLLM_PLE_FP8_CHECKPOINT. Mixed ModelOpt", run)
+        self.assertNotIn('-e "VLLM_PLE_FP8_CHECKPOINT=$VLLM_PLE_FP8_CHECKPOINT"', run)
 
     def test_validate_only_refuses_1m_without_allow_long(self) -> None:
         proc = _run_sh(VLLM_ALLOW_LONG_MAX_MODEL_LEN="0")

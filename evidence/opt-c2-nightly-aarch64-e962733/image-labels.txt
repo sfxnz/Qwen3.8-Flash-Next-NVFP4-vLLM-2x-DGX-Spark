@@ -1,0 +1,13 @@
+Id sha256:39584ec79a77d56dd4e3585dab26307e0c72bea1946427fe54e43a176f9e5b7a
+Created 2026-09-05T05:34:05.981310598Z
+RepoDigests ["vllm/vllm-openai@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"]
+ai.vllm.build.commit=e962733e08d10f7ca65dac4df99e116460b8b174
+ai.vllm.build.pipeline=019d130e-464e-4ff7-b84b-492992c0c06b
+ai.vllm.build.url=https://buildkite.com/vllm/release-v2/builds/6149
+ai.vllm.image.tag=vllm/vllm-openai:nightly-e962733e08d10f7ca65dac4df99e116460b8b174
+maintainer=NVIDIA CORPORATION <cudatools@nvidia.com>
+org.opencontainers.image.ref.name=ubuntu
+org.opencontainers.image.revision=e962733e08d10f7ca65dac4df99e116460b8b174
+org.opencontainers.image.source=https://github.com/vllm-project/vllm
+org.opencontainers.image.url=https://buildkite.com/vllm/release-v2/builds/6149
+org.opencontainers.image.version=vllm/vllm-openai:nightly-e962733e08d10f7ca65dac4df99e116460b8b174
