@@ -1,0 +1,18 @@
+kept
+
+nvidia/Qwen3.8-Flash-Next-NVFP4@fab0aec on nightly-aarch64@df871f17 plus docker/modelopt.py.
+
+GET /health 200. /v1/models lists nvidia/Qwen3.8-Flash-Next-NVFP4. quantization=modelopt_mixed. Engine needles show FP8 MoE block scales refined from [128, 128] to [64, 64].
+
+Quality. thinking-off PING, no CoT. tools get_weather Wellington. vision Red. count 200/200 consecutive.
+
+Frozen bench_decode.py vs opt-baseline RadixArk:
+prose c=1 38.20 vs 37.29 tok/s, TTFT 0.17s vs 0.23s
+prose c=2 36.03 vs 33.32 tok/s, TTFT 0.16s vs 0.24s
+prose c=8 24.58 vs 24.01 tok/s, n=24 no drop
+structured c=1 67.71 vs 59.76, acceptance_len 4.0
+structured c=2 49.42 vs 63.89, acceptance_len 2.00 (FP8 MTP draft under concurrency)
+
+Day-0 qwen38-flash-next@3b0e188 failed MTP load. Stock nightly failed the same AttributeError. Overlay was required to boot.
+
+Credits. NVIDIA ModelOpt (sychen52). vLLM nightly-aarch64. This lab MTP overlay.

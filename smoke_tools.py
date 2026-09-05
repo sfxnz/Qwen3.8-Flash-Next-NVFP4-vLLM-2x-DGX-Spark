@@ -25,7 +25,7 @@ WEATHER_TOOL = {
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8000/v1/chat/completions")
-    parser.add_argument("--model", default="RadixArk/Qwen3.8-Flash-Next-NVFP4")
+    parser.add_argument("--model", default="nvidia/Qwen3.8-Flash-Next-NVFP4")
     args = parser.parse_args()
     body = {
         "model": args.model,

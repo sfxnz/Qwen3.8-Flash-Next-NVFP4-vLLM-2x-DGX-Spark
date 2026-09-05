@@ -1,0 +1,15 @@
+==> role=head host=spark1
+==> Starting worker on spark2 first
+==> role=worker host=spark2
+==> Ensuring image vllm/vllm-openai:qwen38-flash-next@sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594
+==> Starting qwen38-flash-next-nvfp4 rank=1 model=/cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594 ctx=1048576 kv=auto spec=mtp moe=auto
+6662eb28012d88858e070610b418b6dc197ad1f4bef3437306cd70b8f1e2b647
+==> Worker rank 1 is up. Head should start next.
+==> Worker container started. Waiting 25s for NCCL listen, then starting head
+==> Ensuring image vllm/vllm-openai:qwen38-flash-next@sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594
+==> Starting qwen38-flash-next-nvfp4 rank=0 model=/cache/huggingface/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/7b719225242aacd3dbd3f9407468c2ee9a9d2594 ctx=1048576 kv=auto spec=mtp moe=auto
+96e22ec59ab322d65bf6c54baac88864df4a86c1b72b0717860e435ed1f7a5bd
+==> Waiting for http://127.0.0.1:8000/health and /v1/models
+==> still loading… (12×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4

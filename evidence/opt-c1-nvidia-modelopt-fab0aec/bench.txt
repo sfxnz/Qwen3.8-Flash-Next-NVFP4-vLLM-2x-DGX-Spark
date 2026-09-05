@@ -1,0 +1,87 @@
+url=http://127.0.0.1:8000/v1/chat/completions model=nvidia/Qwen3.8-Flash-Next-NVFP4 max_tokens=200 runs=3 concurrency=[1, 2, 8] phases=['prose', 'structured']
+phase=prose c=1 run=1 wall=2.92s agg=38.19 tok/s per_stream=[38.20] ttft=[0.168]
+phase=prose c=1 run=2 wall=2.28s agg=39.10 tok/s per_stream=[39.11] ttft=[0.154]
+phase=prose c=1 run=3 wall=2.63s agg=38.16 tok/s per_stream=[38.17] ttft=[0.167]
+phase=prose c=2 run=1 wall=3.00s agg=63.93 tok/s per_stream=[37.47,35.49] ttft=[0.157,0.157]
+phase=prose c=2 run=2 wall=10.54s agg=27.67 tok/s per_stream=[36.81,19.19] ttft=[0.165,0.164]
+phase=prose c=2 run=3 wall=3.17s agg=63.09 tok/s per_stream=[36.57,29.36] ttft=[0.523,0.133]
+phase=prose c=8 run=1 wall=4.09s agg=193.95 tok/s per_stream=[29.02,27.53,26.31,24.48,25.56,26.04,23.91,25.04] ttft=[0.250,0.248,0.249,0.249,0.249,0.249,0.251,0.249]
+phase=prose c=8 run=2 wall=13.52s agg=104.20 tok/s per_stream=[30.98,27.02,14.99,14.99,14.98,14.99,14.98,14.98] ttft=[0.238,0.240,0.237,0.238,0.238,0.238,0.237,0.236]
+phase=prose c=8 run=3 wall=4.39s agg=185.29 tok/s per_stream=[27.62,26.03,24.04,25.09,24.67,24.22,23.46,23.59] ttft=[0.101,0.358,0.358,0.359,0.359,0.359,0.358,0.360]
+phase=structured c=1 run=1 wall=3.08s agg=67.86 tok/s per_stream=[67.88] ttft=[0.145]
+phase=structured c=1 run=2 wall=3.09s agg=67.69 tok/s per_stream=[67.71] ttft=[0.154]
+phase=structured c=1 run=3 wall=3.10s agg=67.57 tok/s per_stream=[67.60] ttft=[0.158]
+phase=structured c=2 run=1 wall=10.85s agg=37.23 tok/s per_stream=[64.03,18.62] ttft=[0.154,0.155]
+phase=structured c=2 run=2 wall=4.27s agg=97.36 tok/s per_stream=[49.14,49.69] ttft=[0.097,0.261]
+phase=structured c=2 run=3 wall=10.80s agg=37.42 tok/s per_stream=[64.27,18.71] ttft=[0.167,0.167]
+phase=structured c=8 run=1 wall=4.38s agg=392.22 tok/s per_stream=[48.21,49.07,49.08,49.07,49.07,49.06,49.06,49.07] ttft=[0.096,0.326,0.326,0.326,0.327,0.327,0.325,0.326]
+phase=structured c=8 run=2 wall=13.45s agg=120.66 tok/s per_stream=[50.75,50.72,15.09,15.09,15.09,15.09,15.09,15.09] ttft=[0.263,0.261,0.259,0.261,0.262,0.261,0.261,0.260]
+phase=structured c=8 run=3 wall=4.52s agg=386.37 tok/s per_stream=[46.87,47.12,48.35,48.34,48.33,48.34,48.34,48.34] ttft=[0.105,0.210,0.398,0.396,0.397,0.397,0.396,0.396]
+SUMMARY [
+  {
+    "phase": "prose",
+    "concurrency": 1,
+    "median_decode_tok_s": 38.198599632363255,
+    "median_ttft_s": 0.1666726440016646,
+    "median_agg_tok_s": 38.19035999031866,
+    "median_completion_tokens": 95,
+    "n": 3,
+    "acceptance_len": 2.234375,
+    "draft_acceptance_rate": 0.4114583333333333
+  },
+  {
+    "phase": "prose",
+    "concurrency": 2,
+    "median_decode_tok_s": 36.028041763102344,
+    "median_ttft_s": 0.16071511998597998,
+    "median_agg_tok_s": 63.085365038237185,
+    "median_completion_tokens": 90.5,
+    "n": 6,
+    "acceptance_len": 1.63681592039801,
+    "draft_acceptance_rate": 0.21227197346600332
+  },
+  {
+    "phase": "prose",
+    "concurrency": 8,
+    "median_decode_tok_s": 24.576265602350986,
+    "median_ttft_s": 0.24930669300374575,
+    "median_agg_tok_s": 185.28864223728826,
+    "median_completion_tokens": 96.0,
+    "n": 24,
+    "acceptance_len": 1.5072840790842872,
+    "draft_acceptance_rate": 0.16909469302809574
+  },
+  {
+    "phase": "structured",
+    "concurrency": 1,
+    "median_decode_tok_s": 67.71128691225753,
+    "median_ttft_s": 0.1543729229888413,
+    "median_agg_tok_s": 67.6946050019978,
+    "median_completion_tokens": 200,
+    "n": 3,
+    "acceptance_len": 4.0,
+    "draft_acceptance_rate": 1.0
+  },
+  {
+    "phase": "structured",
+    "concurrency": 2,
+    "median_decode_tok_s": 49.4180848450775,
+    "median_ttft_s": 0.16067988850409165,
+    "median_agg_tok_s": 37.416303928649846,
+    "median_completion_tokens": 200.0,
+    "n": 6,
+    "acceptance_len": 2.0033444816053514,
+    "draft_acceptance_rate": 0.33444816053511706
+  },
+  {
+    "phase": "structured",
+    "concurrency": 8,
+    "median_decode_tok_s": 48.33845318212815,
+    "median_ttft_s": 0.32515967199287843,
+    "median_agg_tok_s": 386.36932225827627,
+    "median_completion_tokens": 200.0,
+    "n": 24,
+    "acceptance_len": 2.2893982808022924,
+    "draft_acceptance_rate": 0.4297994269340974
+  }
+]

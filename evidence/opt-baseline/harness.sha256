@@ -1,0 +1,7 @@
+2155a73427cd7f82d23ad655f2e2b2677fafd84bfc4e914c92c141eb0d518220  bench_decode.py
+81f5924108dd182f3dd0ee5da06e82546c9f7ad1ebf529bcd33f4755c5df6e55  smoke_thinking.py
+d362d9f28c0f174cd6f745ae30db4453a909f821bb618130c4164162c9abf51a  smoke_tools.py
+e46b227d3c32da08ecacb8f77d300be5020cc3edfacd8ba585523ab3ad974dae  smoke_vision.py
+6551328dd213cbd7f92026af7497bdde411574e5e2017ae57defb7defce12d0f  smoke_count.py
+24cd24a7a8b598edd92cdd2979c60a76f53a3d9b7070bedcdd332c9bebd836b8  /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark/evidence/opt-baseline/bench.txt
+3bf0e72a311ac75f79b4bfacdf4cfd3292bfad143fb7c1cd5720daf519dc8060  /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark/evidence/opt-baseline/bench.txt.summary.json

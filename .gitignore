@@ -9,3 +9,4 @@ __pycache__/
 dist/
 build/
 docker/ple_layer.stock.py
+docker/modelopt.stock.py
