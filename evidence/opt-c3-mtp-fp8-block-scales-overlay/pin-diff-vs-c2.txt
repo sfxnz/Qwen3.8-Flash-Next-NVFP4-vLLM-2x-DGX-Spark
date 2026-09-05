@@ -1,0 +1,5 @@
+last_kept_pin=60bc4af0b1d0839041b34cbf3cda6a34ed76c132
+revert_head=60bc4af0b1d0839041b34cbf3cda6a34ed76c132
+branch=revert/c3-mtp-fp8-block-scales-overlay
+pin_paths=recipe.yaml run.sh README.md AGENTS.md docker tests kit bench_decode.py smoke_count.py smoke_thinking.py smoke_tools.py smoke_vision.py stop.sh
+pin_diff=empty

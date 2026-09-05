@@ -1,0 +1,9 @@
+reverted
+
+Skeptic rejected c3-mtp-fp8-block-scales-overlay. The apply was a recapture of docker/modelopt.py already kept in c1. recipe.yaml, run.sh, docker/, tests, and README measured rows had no delta versus c2 60bc4af0b1d0839041b34cbf3cda6a34ed76c132.
+
+Last kept pin is opt/c2-nightly-aarch64-e962733. Live serve already is that pin. Container started 2026-09-05T14:09:49Z. No reboot. GET /health 200. /v1/models lists nvidia/Qwen3.8-Flash-Next-NVFP4@fab0aec. Image is nightly-aarch64@sha256:df871f17. Overlay stays mounted. VLLM_PLE_FP8_CHECKPOINT is not in the container.
+
+Do not delete docker/modelopt.py. That file is the c1 keep. Stock nightly still raises AttributeError on mtp.layers.48 w2_weight_scale_inv without it.
+
+Recapture receipts stay on closed PR https://github.com/sfxnz/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark/pull/4
