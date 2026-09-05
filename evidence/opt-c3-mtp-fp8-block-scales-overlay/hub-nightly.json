@@ -1,0 +1,27 @@
+[
+  {
+    "name": "nightly-aarch64",
+    "last_updated": "2026-09-05T06:16:27.919109Z",
+    "digest": "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+    "arch": "arm64"
+  },
+  {
+    "name": "nightly",
+    "last_updated": "2026-09-05T06:16:30.219083Z",
+    "digest": "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+    "arch": "arm64"
+  },
+  {
+    "name": "qwen38-flash-next",
+    "last_updated": "2026-08-26T13:06:10.219275Z",
+    "digest": "sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e",
+    "arch": "arm64"
+  },
+  {
+    "name": "cu129-nightly-aarch64",
+    "last_updated": "2026-09-05T06:22:54.530095Z",
+    "digest": "sha256:b569bf7ba7aed004bc1088a7f01f004830a38249b75f9d56719d0a292a6b4b91",
+    "arch": "arm64",
+    "note": "CUDA 12.9. Same e962733 commit as nightly-aarch64. Not the Spark cu130 pin."
+  }
+]

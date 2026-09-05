@@ -1,0 +1,29 @@
+kept
+
+docker/modelopt.py remaps mtp.layers.48 onto mtp.layers.0 and dispatches
+FP8_BLOCK_SCALES to Fp8MoEMethod. c1 already pulled this overlay after
+day-0 qwen38-flash-next@3b0e188 and stock nightly-aarch64@df871f17 both
+raised AttributeError on w2_weight_scale_inv. This run recaptured the
+live pin. No reboot. No newer official arm64 digest than df871f17.
+
+GET /health 200. /v1/models lists nvidia/Qwen3.8-Flash-Next-NVFP4.
+quantization=modelopt_mixed. Engine logs FP8 MoE block scales refined
+from [128, 128] to [64, 64]. Overlay is bind-mounted. No AttributeError.
+
+Quality. thinking-off PING, no CoT. tools get_weather Wellington. vision
+Red. count 200/200 consecutive.
+
+Frozen bench_decode.py vs opt-baseline RadixArk:
+prose c=1 39.00 vs 37.29 tok/s, TTFT 0.15s vs 0.23s
+prose c=2 38.78 vs 33.32 tok/s, TTFT 0.16s vs 0.24s
+prose c=8 24.95 vs 24.01 tok/s, n=24 no drop
+structured c=1 66.75 vs 59.76, acceptance_len 4.0
+structured c=2 62.76 vs 63.89, acceptance_len 2.00
+
+UMA leftover spark1 10Gi available, swap 7.0Gi. spark2 13Gi available,
+swap 2.7Gi. Same as c2.
+
+README measured rows stay on evidence/opt-c2-nightly-aarch64-e962733.
+This recapture is the same pin. c4 native 262144 stays queued.
+
+Credits. NVIDIA ModelOpt (sychen52). vLLM nightly-aarch64. This lab MTP overlay.

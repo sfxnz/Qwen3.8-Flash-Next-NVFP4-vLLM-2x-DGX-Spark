@@ -1,0 +1,157 @@
+WARNING 09-05 13:18:30 [envs.py:2282] Unknown vLLM environment variable detected: VLLM_PLE_FP8_CHECKPOINT
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+INFO 09-05 13:18:41 [model.py:691] Resolved architecture: Qwen4ExpForConditionalGeneration
+WARNING 09-05 13:18:41 [model.py:2525] User-specified max_model_len (1048576) is greater than the derived max_model_len (max_position_embeddings=262144.0 or model_max_length=None in model's config.json). VLLM_ALLOW_LONG_MAX_MODEL_LEN must be used with extreme caution. If the model uses relative position encoding (RoPE), positions exceeding derived_max_model_len lead to nan. If the model uses absolute position encoding, positions exceeding derived_max_model_len will cause a CUDA array out-of-bounds error.
+INFO 09-05 13:18:41 [model.py:2031] Using max model len 1048576
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+INFO 09-05 13:18:44 [arg_utils.py:2227] Inferred data_parallel_rank 0 from node_rank 1
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+INFO 09-05 13:18:50 [model.py:691] Resolved architecture: Qwen4ExpMTP
+INFO 09-05 13:18:50 [model.py:2031] Using max model len 262144
+WARNING 09-05 13:18:50 [speculative.py:1330] Enabling num_speculative_tokens > 1 will run multiple times of forward on same MTP layer,which may result in lower acceptance rate
+INFO 09-05 13:18:50 [scheduler.py:277] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 09-05 13:18:50 [config.py:625] Mamba cache mode is set to 'align' for Qwen4ExpForConditionalGeneration by default when prefix caching is enabled
+WARNING 09-05 13:18:50 [vllm.py:1414] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-05 13:18:50 [kernel.py:372] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 09-05 13:18:50 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+INFO 09-05 13:18:50 [serve.py:217] Launching vLLM (v0.28.1rc1.dev437+ge962733e0) headless multiproc executor, with head node address 10.100.8.1:29523 for torch.distributed process group.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker pid=382) INFO 09-05 13:18:56 [parallel_state.py:1798] world_size=2 rank=1 local_rank=0 distributed_init_method=tcp://10.100.8.1:29523 backend=nccl
+(Worker pid=382) WARNING 09-05 13:19:41 [symm_mem.py:67] SymmMemCommunicator: Device capability 12.1 not supported, communicator is not available.
+(Worker pid=382) WARNING 09-05 13:19:41 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=382) WARNING 09-05 13:19:41 [custom_all_reduce.py:201] Custom collectives are disabled because this multi-node group does not have MNNVL-capable GPUs on every rank.
+(Worker pid=382) INFO 09-05 13:19:43 [parallel_state.py:2142] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 1, EP rank 1, EPLB rank N/A
+(Worker pid=382) INFO 09-05 13:19:43 [gpu_worker.py:436] Using V2 Model Runner
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [model_runner.py:390] Loading model from scratch...
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [cuda.py:581] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [qwen_gdn_linear_attn.py:167] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [qwen_gdn_linear_attn.py:519] GDN decode kernel: cuda
+(Worker_TP1 pid=382) INFO 09-05 13:19:43 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+(Worker_TP1 pid=382) INFO 09-05 13:19:44 [flash_attn.py:897] Using FlashAttention version 2
+(Worker_TP1 pid=382) INFO 09-05 13:19:46 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 47.79 GiB.
+(Worker_TP1 pid=382) INFO 09-05 13:19:46 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (47.79 GiB).
+(Worker_TP1 pid=382) INFO 09-05 13:25:49 [default_loader.py:430] Loading weights took 362.26 seconds
+(Worker_TP1 pid=382) INFO 09-05 13:25:49 [nvfp4.py:613] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=382) WARNING 09-05 13:25:52 [vllm.py:1414] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(Worker_TP1 pid=382) INFO 09-05 13:25:52 [kernel.py:372] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP1 pid=382) INFO 09-05 13:25:52 [unquantized.py:319] Using FlashInfer CUTLASS Unquantized MoE backend out of potential backends: ['FlashInfer TRTLLM', 'FlashInfer CUTLASS', 'TRITON', 'BATCHED_TRITON'].
+(Worker_TP1 pid=382) INFO 09-05 13:25:53 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 41.27 GiB.
+(Worker_TP1 pid=382) INFO 09-05 13:25:53 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (41.27 GiB).
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944] WorkerProc failed to start.
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944] Traceback (most recent call last):
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 911, in worker_main
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return func(*args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 680, in __init__
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     self.worker.load_model()
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 502, in load_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 415, in load_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     self.speculator.load_model(self.model)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/autoregressive/speculator.py", line 51, in load_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     super().load_model(target_model)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/speculator.py", line 186, in load_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     self.model = self.load_draft_model(target_model, target_attn_layer_names)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/mtp/speculator.py", line 20, in load_draft_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     draft_model = load_eagle_model(target_model, self.vllm_config)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/spec_decode/eagle/utils.py", line 97, in load_eagle_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     eagle_model = get_model(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                   ^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/__init__.py", line 140, in get_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return loader.load_model(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return func(*args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/base_loader.py", line 65, in load_model
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     self.load_weights(model, model_config)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return func(*args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/default_loader.py", line 427, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     loaded_weights = model.load_weights(self.get_all_weights(model_config, model))
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/mtp.py", line 458, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return loader.load_weights(remap_weight_names(), mapper=mapper)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/reload/torchao_decorator.py", line 50, in patched_model_load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return original_load_weights(self, weights, *args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 444, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     autoloaded_weights = set(self._load_module("", self.module, weights))
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 382, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     yield from self._load_module(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 359, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     loaded_params = module_load_weights(weights)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/mtp.py", line 355, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return loader.load_weights(weights, mapper=mapper)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/reload/torchao_decorator.py", line 50, in patched_model_load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     return original_load_weights(self, weights, *args, **kwargs)
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 444, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     autoloaded_weights = set(self._load_module("", self.module, weights))
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 382, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     yield from self._load_module(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 382, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     yield from self._load_module(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 382, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     yield from self._load_module(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   [Previous line repeated 1 more time]
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/utils.py", line 366, in _load_module
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     yield from map(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/routed_experts.py", line 922, in load_weights
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944]     raise AttributeError(
+(Worker_TP1 pid=382) ERROR 09-05 13:26:46 [multiproc_executor.py:944] AttributeError: Layer mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv' for checkpoint weight 'mtp.layers.48.mlp.experts.0.down_proj.weight_scale_inv'
+INFO 09-05 13:26:46 [multiproc_executor.py:472] [shutdown] Executor: waiting for worker exit count=1
+[rank1]:[W905 13:26:48.227404255 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+WARNING 09-05 13:26:51 [multiproc_executor.py:484] [shutdown] Executor: workers still running after grace period; sending SIGTERM count=1
+Traceback (most recent call last):
+  File "/usr/local/bin/vllm", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/main.py", line 97, in main
+    args.dispatch_function(args)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/serve.py", line 147, in cmd
+    run_headless(args)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/serve.py", line 224, in run_headless
+    executor = MultiprocExecutor(vllm_config, monitor_workers=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 116, in __init__
+    super().__init__(vllm_config)
+  File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+    self._init_executor()
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 214, in _init_executor
+    self.workers = WorkerProc.wait_for_ready(unready_workers)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 808, in wait_for_ready
+    raise e from None
+Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.

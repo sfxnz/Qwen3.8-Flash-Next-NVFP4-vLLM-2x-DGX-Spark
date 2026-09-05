@@ -1,0 +1,5 @@
+mtp_overlay_mounted=True
+quantization_modelopt_mixed=True
+mtp_attr_error=False
+fp8_moe_block_scales=True
+has_VLLM_PLE_FP8_CHECKPOINT=False
