@@ -3,9 +3,9 @@
 set -euo pipefail
 
 # BEGIN generated from recipe.yaml — edit recipe.yaml and run kit/render.py
-MODEL="${MODEL:-RadixArk/Qwen3.8-Flash-Next-NVFP4}"
-SERVED_NAME="${SERVED_NAME:-RadixArk/Qwen3.8-Flash-Next-NVFP4}"
-IMAGE="${IMAGE:-vllm/vllm-openai:qwen38-flash-next@sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e}"
+MODEL="${MODEL:-nvidia/Qwen3.8-Flash-Next-NVFP4}"
+SERVED_NAME="${SERVED_NAME:-nvidia/Qwen3.8-Flash-Next-NVFP4}"
+IMAGE="${IMAGE:-vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b}"
 CONTAINER_NAME="${CONTAINER_NAME:-qwen38-flash-next-nvfp4}"
 PORT="${PORT:-8000}"
 MASTER_PORT="${MASTER_PORT:-29523}"
@@ -32,22 +32,24 @@ TOOL_CALL_PARSER="${TOOL_CALL_PARSER:-qwen3_xml}"
 REASONING_PARSER="${REASONING_PARSER:-qwen3}"
 HF_CACHE="${HF_CACHE:-$HOME/.cache/huggingface}"
 HF_HOME_IN_CONTAINER="/cache/huggingface"
-SNAPSHOT_SHA="${SNAPSHOT_SHA:-7b719225242aacd3dbd3f9407468c2ee9a9d2594}"
-SNAPSHOT="${HF_CACHE}/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/${SNAPSHOT_SHA}"
-SNAPSHOT_IN_CONTAINER="${HF_HOME_IN_CONTAINER}/hub/models--RadixArk--Qwen3.8-Flash-Next-NVFP4/snapshots/${SNAPSHOT_SHA}"
+SNAPSHOT_SHA="${SNAPSHOT_SHA:-fab0aecb760cec45227f6656abcaafa11abca87a}"
+SNAPSHOT="${HF_CACHE}/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/${SNAPSHOT_SHA}"
+SNAPSHOT_IN_CONTAINER="${HF_HOME_IN_CONTAINER}/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/${SNAPSHOT_SHA}"
 SKIP_DOWNLOAD="${SKIP_DOWNLOAD:-0}"
 ORCHESTRATE="${ORCHESTRATE:-auto}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 # END generated
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLE_OVERLAY="${PLE_OVERLAY:-$SCRIPT_DIR/docker/ple_layer.py}"
-PLE_IN_CONTAINER="/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/ple_layer.py"
+PLE_IN_CONTAINER="/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ple_layer.py"
+MTP_OVERLAY="${MTP_OVERLAY:-$SCRIPT_DIR/docker/modelopt.py}"
+MTP_IN_CONTAINER="/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py"
 
 if [[ -z "${SPEC_CONFIG:-}" ]]; then
   case "$SPEC" in
     mtp)
-      # MTP experts stay BF16. Global --moe-backend marlin is for NVFP4 routed
-      # experts only. marlin on the unquantized MTP MoE raises
+      # MTP experts are FP8_BLOCK_SCALES. Global --moe-backend marlin is for
+      # NVFP4 routed experts only. marlin on unquantized MoE raises
       # moe_backend='marlin' is not supported for unquantized MoE.
       SPEC_CONFIG='{"method":"mtp","num_speculative_tokens":'"$NUM_SPECULATIVE_TOKENS"',"moe_backend":"triton"}'
       ;;
@@ -149,8 +151,23 @@ ensure_ple_overlay() {
     echo "PLE overlay missing: $PLE_OVERLAY. Run python3 docker/apply_ple_overlay.py from the recipe root." >&2
     exit 1
   fi
-  if ! grep -q 'VLLM_PLE_FP8_CHECKPOINT' "$PLE_OVERLAY"; then
-    echo "PLE overlay $PLE_OVERLAY is missing the VLLM_PLE_FP8_CHECKPOINT gate." >&2
+  if grep -q 'VLLM_PLE_FP8_CHECKPOINT' "$PLE_OVERLAY"; then
+    :
+  elif grep -q 'ModelOptMixedPrecisionConfig' "$PLE_OVERLAY" && grep -q 'Qwen4ExpPLEFp8EmbeddingMethod' "$PLE_OVERLAY"; then
+    :
+  else
+    echo "PLE overlay $PLE_OVERLAY is missing an FP8 PLE selector." >&2
+    exit 1
+  fi
+}
+
+ensure_mtp_overlay() {
+  if [[ ! -f "$MTP_OVERLAY" ]]; then
+    echo "MTP overlay missing: $MTP_OVERLAY. Run python3 docker/apply_mtp_fp8_overlay.py from the recipe root." >&2
+    exit 1
+  fi
+  if ! grep -q 'FP8_BLOCK_SCALES' "$MTP_OVERLAY"; then
+    echo "MTP overlay $MTP_OVERLAY is missing FP8_BLOCK_SCALES dispatch." >&2
     exit 1
   fi
 }
@@ -223,6 +240,7 @@ start_local() {
   ensure_image
   ensure_weights
   ensure_ple_overlay
+  ensure_mtp_overlay
 
   local serve_model
   serve_model="$(resolve_model)"
@@ -276,6 +294,7 @@ start_local() {
   local vol_args=(
     -v "${HF_CACHE}:${HF_HOME_IN_CONTAINER}"
     -v "${PLE_OVERLAY}:${PLE_IN_CONTAINER}:ro"
+    -v "${MTP_OVERLAY}:${MTP_IN_CONTAINER}:ro"
   )
   local batched_args=()
   if [[ -n "$MAX_NUM_BATCHED_TOKENS" ]]; then
@@ -366,8 +385,9 @@ if [[ "$ORCHESTRATE" == "auto" && "$ROLE" == "head" ]]; then
     printf '%s\n' "$WORKER_HOST" >"${PWD}/.run-state/worker_host"
     scp -q "$0" "${WORKER_HOST}:/tmp/qwen38-run.sh"
     scp -q "$PLE_OVERLAY" "${WORKER_HOST}:/tmp/qwen38-ple_layer.py"
+    scp -q "$MTP_OVERLAY" "${WORKER_HOST}:/tmp/qwen38-modelopt.py"
     ssh "$WORKER_HOST" \
-      "ROLE=worker ORCHESTRATE=0 IMAGE='$IMAGE' CONTAINER_NAME='$CONTAINER_NAME' PORT='$PORT' MASTER_PORT='$MASTER_PORT' HEAD_IP='$HEAD_IP' IFACE='$IFACE' HCA='$HCA' MAX_MODEL_LEN='$MAX_MODEL_LEN' MAX_NUM_SEQS='$MAX_NUM_SEQS' UTIL='$UTIL' KV_CACHE_DTYPE='$KV_CACHE_DTYPE' TP='$TP' NNODES='$NNODES' SERVED_NAME='$SERVED_NAME' SKIP_DOWNLOAD='$SKIP_DOWNLOAD' SPEC='$SPEC' SPEC_CONFIG='$SPEC_CONFIG' NUM_SPECULATIVE_TOKENS='$NUM_SPECULATIVE_TOKENS' ENFORCE_EAGER='$ENFORCE_EAGER' COMPILATION_CONFIG='$COMPILATION_CONFIG' MAX_NUM_BATCHED_TOKENS='$MAX_NUM_BATCHED_TOKENS' FORCE_UNSAFE_CTX='$FORCE_UNSAFE_CTX' FORCE_UNSAFE_MOE='$FORCE_UNSAFE_MOE' VLLM_PLE_FP8_CHECKPOINT='$VLLM_PLE_FP8_CHECKPOINT' VLLM_ALLOW_LONG_MAX_MODEL_LEN='$VLLM_ALLOW_LONG_MAX_MODEL_LEN' TOOL_CALL_PARSER='$TOOL_CALL_PARSER' REASONING_PARSER='$REASONING_PARSER' MOE_BACKEND='$MOE_BACKEND' SNAPSHOT_SHA='$SNAPSHOT_SHA' HF_CACHE='$HF_CACHE' MODEL='$MODEL' PLE_OVERLAY='/tmp/qwen38-ple_layer.py' EXTRA_ARGS='$EXTRA_ARGS' bash /tmp/qwen38-run.sh"
+      "ROLE=worker ORCHESTRATE=0 IMAGE='$IMAGE' CONTAINER_NAME='$CONTAINER_NAME' PORT='$PORT' MASTER_PORT='$MASTER_PORT' HEAD_IP='$HEAD_IP' IFACE='$IFACE' HCA='$HCA' MAX_MODEL_LEN='$MAX_MODEL_LEN' MAX_NUM_SEQS='$MAX_NUM_SEQS' UTIL='$UTIL' KV_CACHE_DTYPE='$KV_CACHE_DTYPE' TP='$TP' NNODES='$NNODES' SERVED_NAME='$SERVED_NAME' SKIP_DOWNLOAD='$SKIP_DOWNLOAD' SPEC='$SPEC' SPEC_CONFIG='$SPEC_CONFIG' NUM_SPECULATIVE_TOKENS='$NUM_SPECULATIVE_TOKENS' ENFORCE_EAGER='$ENFORCE_EAGER' COMPILATION_CONFIG='$COMPILATION_CONFIG' MAX_NUM_BATCHED_TOKENS='$MAX_NUM_BATCHED_TOKENS' FORCE_UNSAFE_CTX='$FORCE_UNSAFE_CTX' FORCE_UNSAFE_MOE='$FORCE_UNSAFE_MOE' VLLM_PLE_FP8_CHECKPOINT='$VLLM_PLE_FP8_CHECKPOINT' VLLM_ALLOW_LONG_MAX_MODEL_LEN='$VLLM_ALLOW_LONG_MAX_MODEL_LEN' TOOL_CALL_PARSER='$TOOL_CALL_PARSER' REASONING_PARSER='$REASONING_PARSER' MOE_BACKEND='$MOE_BACKEND' SNAPSHOT_SHA='$SNAPSHOT_SHA' HF_CACHE='$HF_CACHE' MODEL='$MODEL' PLE_OVERLAY='/tmp/qwen38-ple_layer.py' MTP_OVERLAY='/tmp/qwen38-modelopt.py' EXTRA_ARGS='$EXTRA_ARGS' bash /tmp/qwen38-run.sh"
     log "Worker container started. Waiting 25s for NCCL listen, then starting head"
     sleep 25
   fi

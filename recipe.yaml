@@ -4,22 +4,22 @@
 # `&name` anchors a value; `*name` reuses it, so a pinned value is written once.
 
 model:
-  id: &model RadixArk/Qwen3.8-Flash-Next-NVFP4
-  revision: &revision 7b719225242aacd3dbd3f9407468c2ee9a9d2594
-  served_name: &served_name RadixArk/Qwen3.8-Flash-Next-NVFP4
+  id: &model nvidia/Qwen3.8-Flash-Next-NVFP4
+  revision: &revision fab0aecb760cec45227f6656abcaafa11abca87a
+  served_name: &served_name nvidia/Qwen3.8-Flash-Next-NVFP4
   family: Qwen3.8-Flash-Next
   params: ~180B total MoE, 512 experts top-10, 1 MTP layer, native ViT
-  quant: ModelOpt NVFP4 W4A4 routed experts, FP8 PLE n-gram table, BF16 remainder
+  quant: MIXED_PRECISION NVFP4 routed experts, FP8 PLE, MTP FP8_BLOCK_SCALES
 
 image:
-  base: vllm/vllm-openai:qwen38-flash-next
-  digest: sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e
-  local_tag: &image vllm/vllm-openai:qwen38-flash-next@sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e
-  build: docker/ple_layer.py overlay (VLLM_PLE_FP8_CHECKPOINT=1)
+  base: vllm/vllm-openai:nightly-aarch64
+  digest: sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+  local_tag: &image vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+  build: docker/ple_layer.py overlay (qwen4_exp PLE; nightly already has MIXED_PRECISION FP8)
 
 engine:
   name: vllm
-  version: 0.1.dev20073+g8e685d198
+  version: 0.28.1rc1.dev437+ge962733e0
 
 hardware:
   shape: 2x DGX Spark (GB10)
@@ -72,10 +72,10 @@ readme:
     - "`--max-num-seqs`": "{MAX_NUM_SEQS}"
     - "`--max-num-batched-tokens`": "{MAX_NUM_BATCHED_TOKENS}"
     - "`--kv-cache-dtype`": "`{KV_CACHE_DTYPE}`"
-    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 walks flashinfer then marlin; MTP BF16 needs auto/triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`)"
+    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`)"
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`, draft MoE `triton`; NVFP4 experts stay `{MOE_BACKEND}`)"
-    - PLE overlay: "`docker/ple_layer.py` with `VLLM_PLE_FP8_CHECKPOINT={VLLM_PLE_FP8_CHECKPOINT}`"
+    - PLE overlay: "`docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES"
     - Oversize window: "`VLLM_ALLOW_LONG_MAX_MODEL_LEN={VLLM_ALLOW_LONG_MAX_MODEL_LEN}` (native 262144; this is not YaRN)"
     - Tokenizers / tools / reasoning: "auto / `{TOOL_CALL_PARSER}` / `{REASONING_PARSER}`"
     - Default thinking: "`enable_thinking=false`"
@@ -90,12 +90,12 @@ measured:
     conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 1048576, MTP-3
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
-      - {phase: prose, concurrency: 1, decode: 39.5, aggregate: 39.4, ttft_p50: 0.22, evidence: evidence/iter-h2/bench.txt}
-      - {phase: prose, concurrency: 2, decode: 34.9, aggregate: 64.4, ttft_p50: 0.23, evidence: evidence/iter-h2/bench.txt}
-      - {phase: structured, concurrency: 1, decode: 66.6, aggregate: 66.6, ttft_p50: 0.22, evidence: evidence/iter-h2/bench.txt}
-      - {phase: structured, concurrency: 2, decode: 65.2, aggregate: 130.4, ttft_p50: 0.23, evidence: evidence/iter-h2/bench.txt}
+      - {phase: prose, concurrency: 1, decode: 38.2, aggregate: 38.2, ttft_p50: 0.17, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
+      - {phase: prose, concurrency: 2, decode: 36.0, aggregate: 63.1, ttft_p50: 0.16, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
+      - {phase: structured, concurrency: 1, decode: 67.7, aggregate: 67.7, ttft_p50: 0.15, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
+      - {phase: structured, concurrency: 2, decode: 49.4, aggregate: 37.4, ttft_p50: 0.16, evidence: evidence/opt-c1-nvidia-modelopt-fab0aec/bench.txt}
 
 links:
-  model: https://huggingface.co/RadixArk/Qwen3.8-Flash-Next-NVFP4
+  model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4
   base_image: https://hub.docker.com/r/vllm/vllm-openai
   repo: https://github.com/sfxnz/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark

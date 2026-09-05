@@ -8,10 +8,10 @@ import sys
 from pathlib import Path
 
 IMAGE = (
-    "vllm/vllm-openai:qwen38-flash-next@"
-    "sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e"
+    "vllm/vllm-openai:nightly-aarch64@"
+    "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"
 )
-IN_IMAGE = "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen3_8_flash_next/nvidia/ple_layer.py"
+IN_IMAGE = "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ple_layer.py"
 OLD = '''def _get_ple_embedding_quant_method(
     quant_config: QuantizationConfig | None,
     prefix: str,
@@ -44,6 +44,8 @@ def extract(image: str, dest: Path) -> None:
 
 
 def overlay(text: str) -> str:
+    if "Qwen4ExpPLEFp8EmbeddingMethod" in text and "ModelOptMixedPrecisionConfig" in text:
+        return text
     if "VLLM_PLE_FP8_CHECKPOINT" in text:
         return text
     if OLD not in text:

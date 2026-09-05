@@ -55,11 +55,24 @@ def find_block(lines, begin, end, path):
     return starts[0] + 1, stop
 
 
-def render_run_sh(text, env):
+def hub_dir(model_id):
+    return "models--" + model_id.replace("/", "--")
+
+
+def render_run_sh(text, env, model_id):
     lines = text.split("\n")
     start, stop = find_block(lines, RUN_BEGIN, RUN_END, "run.sh")
     body, seen = [], []
+    hub = hub_dir(model_id)
     for line in lines[start:stop]:
+        if line.startswith("SNAPSHOT="):
+            body.append(f'SNAPSHOT="${{HF_CACHE}}/hub/{hub}/snapshots/${{SNAPSHOT_SHA}}"')
+            continue
+        if line.startswith("SNAPSHOT_IN_CONTAINER="):
+            body.append(
+                f'SNAPSHOT_IN_CONTAINER="${{HF_HOME_IN_CONTAINER}}/hub/{hub}/snapshots/${{SNAPSHOT_SHA}}"'
+            )
+            continue
         m = DEFAULT_LINE.match(line)
         if not m:
             body.append(line)
@@ -122,7 +135,7 @@ def main():
     repo = Path(__file__).resolve().parent.parent
     recipe = yaml.load((repo / "recipe.yaml").read_text(), Loader=yaml.BaseLoader)
     renderers = {
-        "run.sh": lambda text: render_run_sh(text, recipe["serve"]["env"]),
+        "run.sh": lambda text: render_run_sh(text, recipe["serve"]["env"], recipe["model"]["id"]),
         "README.md": lambda text: render_readme(text, recipe),
     }
     stale = False

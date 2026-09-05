@@ -35,7 +35,7 @@ def loops(text: str) -> bool:
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--url", default="http://127.0.0.1:8000/v1/chat/completions")
-    p.add_argument("--model", default="RadixArk/Qwen3.8-Flash-Next-NVFP4")
+    p.add_argument("--model", default="nvidia/Qwen3.8-Flash-Next-NVFP4")
     p.add_argument("--max-tokens", type=int, default=64)
     args = p.parse_args()
     body = json.dumps(

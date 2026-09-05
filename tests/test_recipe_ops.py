@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PINNED_IMAGE = (
-    "vllm/vllm-openai:qwen38-flash-next@"
-    "sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e"
+    "vllm/vllm-openai:nightly-aarch64@"
+    "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b"
 )
 
 
@@ -105,17 +105,30 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertIn("HF_CACHE='$HF_CACHE'", ssh_block)
         self.assertIn("MODEL='$MODEL'", ssh_block)
         self.assertIn("PLE_OVERLAY='/tmp/qwen38-ple_layer.py'", ssh_block)
+        self.assertIn("MTP_OVERLAY='/tmp/qwen38-modelopt.py'", ssh_block)
         self.assertIn("VLLM_PLE_FP8_CHECKPOINT='$VLLM_PLE_FP8_CHECKPOINT'", ssh_block)
         self.assertIn("VLLM_ALLOW_LONG_MAX_MODEL_LEN='$VLLM_ALLOW_LONG_MAX_MODEL_LEN'", ssh_block)
         self.assertIn('--revision "$SNAPSHOT_SHA"', run)
         self.assertIn(".run-state/worker_host", run)
         self.assertNotIn("starting local rank only", run)
         self.assertIn('scp -q "$PLE_OVERLAY"', run)
+        self.assertIn('scp -q "$MTP_OVERLAY"', run)
 
     def test_resolve_model_does_not_fall_back_to_hub_id(self) -> None:
         body = _func_body(_read("run.sh"), "resolve_model")
         self.assertNotIn("$MODEL", body)
         self.assertIn("$SNAPSHOT_IN_CONTAINER", body)
+
+    def test_snapshot_hub_dir_follows_model_id(self) -> None:
+        run = _read("run.sh")
+        m = re.search(r'^MODEL="\$\{MODEL:-([^}]+)\}"$', run, re.M)
+        self.assertIsNotNone(m)
+        hub = "models--" + m.group(1).replace("/", "--")
+        self.assertIn(f'SNAPSHOT="${{HF_CACHE}}/hub/{hub}/snapshots/${{SNAPSHOT_SHA}}"', run)
+        self.assertIn(
+            f'SNAPSHOT_IN_CONTAINER="${{HF_HOME_IN_CONTAINER}}/hub/{hub}/snapshots/${{SNAPSHOT_SHA}}"',
+            run,
+        )
 
     def test_image_is_digest_pinned(self) -> None:
         self.assertIn(PINNED_IMAGE, _read("run.sh"))
@@ -123,12 +136,12 @@ class RecipeOpsTests(unittest.TestCase):
 
     def test_ple_overlay_has_fp8_gate(self) -> None:
         overlay = _read("docker/ple_layer.py")
-        self.assertIn('os.environ.get("VLLM_PLE_FP8_CHECKPOINT") == "1"', overlay)
-        self.assertIn("Qwen3_8FlashNextPLEFp8EmbeddingMethod", overlay)
-        gate = overlay.find("VLLM_PLE_FP8_CHECKPOINT")
-        fp8 = overlay.find("isinstance(quant_config, Fp8Config)")
-        self.assertGreater(gate, 0)
-        self.assertGreater(fp8, gate)
+        env_gate = 'os.environ.get("VLLM_PLE_FP8_CHECKPOINT") == "1"' in overlay
+        mixed = (
+            "Qwen4ExpPLEFp8EmbeddingMethod" in overlay
+            and "ModelOptMixedPrecisionConfig" in overlay
+        )
+        self.assertTrue(env_gate or mixed, "PLE overlay needs an FP8 PLE selector")
 
     def test_head_preflight_before_worker_scp(self) -> None:
         run = _read("run.sh")
@@ -191,6 +204,15 @@ class RecipeOpsTests(unittest.TestCase):
         run = _read("run.sh")
         self.assertIn('"moe_backend":"triton"', run)
         self.assertIn("--moe-backend", run)
+
+    def test_mtp_overlay_dispatches_fp8_block_scales(self) -> None:
+        overlay = _read("docker/modelopt.py")
+        self.assertIn('marker = "mtp.layers."', overlay)
+        self.assertIn('quant_algo == "FP8_BLOCK_SCALES"', overlay)
+        self.assertIn("Fp8MoEMethod", overlay)
+        self.assertIn("weight_block_size", overlay)
+        run = _read("run.sh")
+        self.assertIn("${MTP_OVERLAY}:${MTP_IN_CONTAINER}", run)
 
     def test_parsers_are_from_the_card_shape(self) -> None:
         run = _read("run.sh")
