@@ -37,10 +37,16 @@ jobs:
             echo "run.sh accepted MOE_BACKEND=flashinfer_cutlass without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
-      - name: run.sh refuses seqs above 2
+      - name: run.sh refuses seqs above 8
         run: |
-          if VALIDATE_ONLY=1 MAX_NUM_SEQS=8 ./run.sh; then
-            echo "run.sh accepted MAX_NUM_SEQS=8 without FORCE_UNSAFE_CTX" >&2
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=16 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=16 without FORCE_UNSAFE_CTX" >&2
+            exit 1
+          fi
+      - name: run.sh refuses b12x
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=b12x ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=b12x without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
 

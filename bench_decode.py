@@ -12,9 +12,8 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
-# Two decode regimes: prose is the low-acceptance regime (the drafter guesses
-# free text), structured is the high-acceptance regime (counting is nearly
-# deterministic, so most draft positions verify).
+# Decode score is prose only. Structured counting is an optional diagnostic.
+# Do not keep or revert a pin from a structured or code cell.
 PHASES = {
     "prose": (
         "Write a short paragraph about why sparse attention helps long-context "
@@ -173,13 +172,14 @@ def main() -> int:
     p.add_argument("--max-tokens", type=int, default=200)
     p.add_argument("--runs", type=int, default=3)
     p.add_argument("--concurrency", type=int, nargs="+", default=[1, 2])
-    p.add_argument("--phase", choices=[*PHASES, "both"], default="both")
+    p.add_argument("--phase", choices=[*PHASES, "both"], default="prose")
     args = p.parse_args()
 
     phases = list(PHASES) if args.phase == "both" else [args.phase]
     print(
         f"url={args.url} model={args.model} max_tokens={args.max_tokens} "
-        f"runs={args.runs} concurrency={args.concurrency} phases={phases}",
+        f"runs={args.runs} concurrency={args.concurrency} phases={phases} "
+        f"decode_score=prose",
         flush=True,
     )
     metrics_url = args.url.split("/v1/", 1)[0] + "/metrics"

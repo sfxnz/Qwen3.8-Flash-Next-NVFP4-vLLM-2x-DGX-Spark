@@ -166,6 +166,10 @@ ensure_mtp_overlay() {
     echo "MTP overlay $MTP_OVERLAY is missing FP8_BLOCK_SCALES dispatch." >&2
     exit 1
   fi
+  if ! grep -q '_BLOCK_FP8_MOE_ALGOS' "$MTP_OVERLAY"; then
+    echo "MTP overlay $MTP_OVERLAY is missing vLLM #55513 block-FP8 alias." >&2
+    exit 1
+  fi
 }
 
 ensure_image() {
@@ -325,9 +329,12 @@ start_local() {
     "${batched_args[@]}" \
     "${eager_args[@]}" \
     --moe-backend "$MOE_BACKEND" \
+    --quantization modelopt \
     --speculative-config "$SPEC_CONFIG" \
     --enable-chunked-prefill \
     --enable-prefix-caching \
+    --mamba-cache-mode align \
+    --no-enable-flashinfer-autotune \
     --tool-call-parser "$TOOL_CALL_PARSER" \
     --enable-auto-tool-choice \
     --reasoning-parser "$REASONING_PARSER" \

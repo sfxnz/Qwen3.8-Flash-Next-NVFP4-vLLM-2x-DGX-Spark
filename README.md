@@ -10,18 +10,16 @@ Pinned snapshot: `fab0aecb760cec45227f6656abcaafa11abca87a`. Checkpoint credit i
 
 ## Measured on 2× DGX Spark (L.A.I.L lab)
 
-Decode is streamed greedy, thinking off, 200 completion tokens, 3-run median. The table is `python3 bench_decode.py` at c=1 and c=2 on the seqs=8 pin. Do not copy community tok/s into this table.
+Decode score is streamed greedy prose, thinking off, 200 completion tokens, 3-run median. The table is `python3 bench_decode.py` (prose by default) at c=1 and c=2 on the seqs=8 pin. Structured and code cells are not a decode score. Do not copy community or L.A.I.L `tg 512` tok/s into this table.
 
 <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
 | Phase | Concurrency | Decode tok/s (median per stream) | Aggregate tok/s | TTFT p50 |
 |---|---|---:|---:|---:|
 | prose | 1 | 43.2 | 43.1 | 0.17 s |
 | prose | 2 | 36.2 | 68.2 | 0.16 s |
-| structured | 1 | 55.5 | 55.5 | 0.15 s |
-| structured | 2 | 58.0 | 37.0 | 0.19 s |
 <!-- END generated measured -->
 
-Native `max_position_embeddings` is 262144. This recipe serves that window. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
+Native `max_position_embeddings` is 262144. This recipe serves that window as a config cap. Public GB10 prefills hang near 74–78k ([vLLM #54629](https://github.com/vllm-project/vllm/issues/54629)). Do not treat 262144 as a measured prefill until L.A.I.L `pp` 8k–64k is green. Do not enable YaRN or 1M. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. That pin held eight short streams with no drop. seqs=4 and seqs=2 also passed. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
 
 ## Requirements
 
@@ -91,7 +89,7 @@ python3 smoke_count.py
 python3 bench_decode.py
 ```
 
-`smoke_thinking.py` must not start `content` with chain-of-thought. `smoke_tools.py` must emit `get_weather`. `smoke_vision.py` posts an OpenAI `image_url` and must not return HTTP 400 `is not a multimodal model`. `smoke_count.py` must keep 1 to 200 consecutive with thinking off.
+`smoke_thinking.py` must not start `content` with chain-of-thought. `smoke_tools.py` must emit `get_weather`. `smoke_vision.py` posts an OpenAI `image_url` and must not return HTTP 400 `is not a multimodal model`. `smoke_count.py` must keep 1 to 200 consecutive with thinking off. `python3 bench_decode.py` defaults to prose. Pass `--phase both` only as a diagnostic. Do not score decode from that output.
 
 Stop both ranks from the head:
 
@@ -109,25 +107,32 @@ Stop both ranks from the head:
 | Image | `vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b` |
 | Model | `nvidia/Qwen3.8-Flash-Next-NVFP4` |
 | `--tensor-parallel-size` / `--nnodes` | 2 / 2 |
-| `--max-model-len` | 262144 (native window; 1048576 is a lab ceiling, not a trained window) |
+| `--max-model-len` | 262144 (config cap. Public GB10 prefills hang near 74-78k. 1048576 is a lab ceiling, not YaRN) |
 | `--max-num-seqs` | 8 |
 | `--max-num-batched-tokens` | 8192 |
 | `--kv-cache-dtype` | `auto` |
-| `--moe-backend` | `auto` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`) |
+| `--moe-backend` | `auto` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin`, `flashinfer_cutlass`, and `b12x`) |
 | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
 | Speculative | MTP-3 (`SPEC=mtp`, draft MoE `triton`; NVFP4 experts stay `auto`) |
 | PLE overlay | `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES |
 | Oversize window | `VLLM_ALLOW_LONG_MAX_MODEL_LEN=0` (required only above 262144; this is not YaRN) |
 | Tokenizers / tools / reasoning | auto / `qwen3_xml` / `qwen3` |
 | Default thinking | `enable_thinking=false` |
+| Quantization | `modelopt` (NVIDIA Usage. MIXED_PRECISION remaps to `modelopt_mixed`) |
+| FlashInfer autotune | off (`--no-enable-flashinfer-autotune`) |
+| Mamba cache | `align` (Qwen4Exp prefix caching + MTP) |
+| Vision | on (native ViT. no `--language-model-only`) |
+| Decode score | prose only. Structured and code cells are not a decode score. |
 | API | `http://<head>:8000/v1` |
 | Container | `qwen38-flash-next-nvfp4` |
 | Master port | 29523 |
 <!-- END generated defaults -->
 
-MTP draft experts are FP8_BLOCK_SCALES. A global `--moe-backend marlin` is still refused. This recipe defaults to `--moe-backend auto`. Nightly refined MTP block scales from 128x128 to 64x64 to fit TP-sharded intermediate size 320, then used Triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`.
+MTP draft experts are FP8_BLOCK_SCALES. A global `--moe-backend marlin` is still refused. So is `b12x`. This recipe defaults to `--moe-backend auto`. Nightly refined MTP block scales from 128x128 to 64x64 to fit TP-sharded intermediate size 320, then used Triton. Official NVIDIA MTP on 8 GPUs keeps 128x128 with `--enable-expert-parallel`. That TEP2 flip is unmeasured on this RoCE pin and is not the default.
 
-`--max-model-len` 262144 is the native window. 1048576 is the refuse ceiling, not a needle result. vLLM derives 262144 from `max_position_embeddings` and exits on a longer window unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin` or `flashinfer_cutlass`, a missing PLE or MTP overlay, and a window above 262144 without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. Nightly already selects MIXED_PRECISION FP8 PLE, so `VLLM_PLE_FP8_CHECKPOINT` is not required and is not passed into the container. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
+`run.sh` passes `--quantization modelopt` (NVIDIA Usage), `--no-enable-flashinfer-autotune` (NVIDIA MTP sample and official vLLM Flash-Next cookbook), and `--mamba-cache-mode align` (this nightly already selects align when prefix caching is on). The engine remaps `modelopt` to `modelopt_mixed` for this pack. Do not start this model from L.A.I.L’s generic `qwen38_nvfp4` overlay. That overlay is Unsloth 27B parsers plus `--kv-cache-dtype fp8`, which this nightly rejects on Qwen4Exp.
+
+`--max-model-len` 262144 is the config cap, not a measured 262k prefill. Public GB10 work hangs near 74–78k ([vLLM #54629](https://github.com/vllm-project/vllm/issues/54629)). 1048576 is the refuse ceiling, not a needle. vLLM derives 262144 from `max_position_embeddings` and exits on a longer window unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN. `run.sh` refuses a window above 1048576, `MAX_NUM_SEQS` above 8, `MOE_BACKEND=marlin`, `flashinfer_cutlass`, or `b12x`, a missing PLE or MTP overlay, and a window above 262144 without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. Nightly already selects MIXED_PRECISION FP8 PLE, so `VLLM_PLE_FP8_CHECKPOINT` is not required and is not passed into the container. `FORCE_UNSAFE_CTX=1` / `FORCE_UNSAFE_MOE=1` override the other guards.
 
 There is no extra Jinja file. The checkpoint `chat_template.jinja` honors `enable_thinking`. Tool calls use the card XML `<tool_call><function=...>` shape (`qwen3_xml`). Reasoning uses `qwen3`.
 
