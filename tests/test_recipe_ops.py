@@ -187,6 +187,11 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertNotEqual(proc.returncode, 0)
         self.assertTrue(proc.stderr.strip())
 
+    def test_validate_only_refuses_b12x_moe(self) -> None:
+        proc = _run_sh(MOE_BACKEND="b12x")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("b12x", proc.stderr)
+
     def test_validate_only_refuses_ple_gate_off(self) -> None:
         proc = _run_sh(VLLM_PLE_FP8_CHECKPOINT="0")
         self.assertEqual(proc.returncode, 0, proc.stderr)
@@ -215,11 +220,58 @@ class RecipeOpsTests(unittest.TestCase):
     def test_mtp_overlay_dispatches_fp8_block_scales(self) -> None:
         overlay = _read("docker/modelopt.py")
         self.assertIn('marker = "mtp.layers."', overlay)
-        self.assertIn('quant_algo == "FP8_BLOCK_SCALES"', overlay)
+        self.assertIn("_BLOCK_FP8_MOE_ALGOS", overlay)
+        self.assertIn("FP8_PB_WO", overlay)
+        self.assertIn("FP8_BLOCK_SCALES", overlay)
+        self.assertIn("fp8_block_config", overlay)
         self.assertIn("Fp8MoEMethod", overlay)
         self.assertIn("weight_block_size", overlay)
+        mixed = overlay.split("class ModelOptMixedPrecisionConfig", 1)[1]
+        blocked = mixed.split("def has_blocked_weights", 1)[1]
+        self.assertIn("_BLOCK_FP8_MOE_ALGOS", blocked[:400])
         run = _read("run.sh")
         self.assertIn("${MTP_OVERLAY}:${MTP_IN_CONTAINER}", run)
+
+    def test_mtp_overlay_apply_is_idempotent_on_current_file(self) -> None:
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "apply_mtp_fp8_overlay",
+            ROOT / "docker" / "apply_mtp_fp8_overlay.py",
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        text = _read("docker/modelopt.py")
+        self.assertEqual(mod.overlay(text), text)
+
+    def test_serve_argv_matches_official_flash_next_flags(self) -> None:
+        body = _func_body(_read("run.sh"), "start_local")
+        self.assertIn("--no-enable-flashinfer-autotune", body)
+        self.assertIn("--mamba-cache-mode align", body)
+        self.assertIn("--quantization modelopt", body)
+        self.assertIn("--enable-prefix-caching", body)
+        self.assertIn("--enable-chunked-prefill", body)
+        self.assertNotIn("--enable-expert-parallel", body)
+        self.assertNotIn("--language-model-only", body)
+        self.assertNotIn("qwen3_coder", body)
+        self.assertNotRegex(body, r"--kv-cache-dtype fp8\b")
+
+    def test_measured_decode_rows_are_prose_only(self) -> None:
+        import yaml
+
+        recipe = yaml.load(_read("recipe.yaml"), Loader=yaml.BaseLoader)
+        rows = recipe["measured"]["decode"]["rows"]
+        self.assertTrue(rows)
+        self.assertEqual({row["phase"] for row in rows}, {"prose"})
+        self.assertIn("Structured and code cells are not a decode score", recipe["measured"]["decode"]["conditions"])
+
+    def test_bench_decode_defaults_to_prose_score(self) -> None:
+        bench = _read("bench_decode.py")
+        self.assertIn('default="prose"', bench)
+        self.assertIn("decode_score=prose", bench)
+        self.assertIn("Do not keep or revert a pin from a structured or code cell", bench)
 
     def test_parsers_are_from_the_card_shape(self) -> None:
         run = _read("run.sh")

@@ -68,32 +68,35 @@ readme:
     - Image: "`{IMAGE}`"
     - Model: "`{MODEL}`"
     - "`--tensor-parallel-size` / `--nnodes`": "{TP} / {NNODES}"
-    - "`--max-model-len`": "{MAX_MODEL_LEN} (native window; 1048576 is a lab ceiling, not a trained window)"
+    - "`--max-model-len`": "{MAX_MODEL_LEN} (config cap. Public GB10 prefills hang near 74-78k. 1048576 is a lab ceiling, not YaRN)"
     - "`--max-num-seqs`": "{MAX_NUM_SEQS}"
     - "`--max-num-batched-tokens`": "{MAX_NUM_BATCHED_TOKENS}"
     - "`--kv-cache-dtype`": "`{KV_CACHE_DTYPE}`"
-    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`)"
+    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin`, `flashinfer_cutlass`, and `b12x`)"
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`, draft MoE `triton`; NVFP4 experts stay `{MOE_BACKEND}`)"
     - PLE overlay: "`docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES"
     - Oversize window: "`VLLM_ALLOW_LONG_MAX_MODEL_LEN={VLLM_ALLOW_LONG_MAX_MODEL_LEN}` (required only above 262144; this is not YaRN)"
     - Tokenizers / tools / reasoning: "auto / `{TOOL_CALL_PARSER}` / `{REASONING_PARSER}`"
     - Default thinking: "`enable_thinking=false`"
+    - Quantization: "`modelopt` (NVIDIA Usage. MIXED_PRECISION remaps to `modelopt_mixed`)"
+    - FlashInfer autotune: "off (`--no-enable-flashinfer-autotune`)"
+    - Mamba cache: "`align` (Qwen4Exp prefix caching + MTP)"
+    - Vision: "on (native ViT. no `--language-model-only`)"
+    - Decode score: "prose only. Structured and code cells are not a decode score."
     - API: "`http://<head>:{PORT}/v1`"
     - Container: "`{CONTAINER_NAME}`"
     - Master port: "{MASTER_PORT}"
 
 measured:
-  # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
-  # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
+  # The README decode table. Prose only. Structured and code cells are not a decode score.
+  # One row per concurrency. A row's three numbers come from one bench_decode.py run.
   decode:
-    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3
+    conditions: streamed greedy prose, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3. Structured and code cells are not a decode score.
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
       - {phase: prose, concurrency: 1, decode: 43.2, aggregate: 43.1, ttft_p50: 0.17, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
       - {phase: prose, concurrency: 2, decode: 36.2, aggregate: 68.2, ttft_p50: 0.16, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
-      - {phase: structured, concurrency: 1, decode: 55.5, aggregate: 55.5, ttft_p50: 0.15, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
-      - {phase: structured, concurrency: 2, decode: 58.0, aggregate: 37.0, ttft_p50: 0.19, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4
