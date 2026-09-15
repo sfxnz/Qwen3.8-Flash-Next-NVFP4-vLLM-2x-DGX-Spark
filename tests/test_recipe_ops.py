@@ -259,13 +259,11 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertNotRegex(body, r"--kv-cache-dtype fp8\b")
 
     def test_measured_decode_rows_are_prose_only(self) -> None:
-        import yaml
-
-        recipe = yaml.load(_read("recipe.yaml"), Loader=yaml.BaseLoader)
-        rows = recipe["measured"]["decode"]["rows"]
-        self.assertTrue(rows)
-        self.assertEqual({row["phase"] for row in rows}, {"prose"})
-        self.assertIn("Structured and code cells are not a decode score", recipe["measured"]["decode"]["conditions"])
+        measured = _read("recipe.yaml").split("measured:", 1)[1]
+        self.assertIn("Structured and code cells are not a decode score", measured)
+        self.assertIn("phase: prose", measured)
+        self.assertNotIn("phase: structured", measured)
+        self.assertNotIn("phase: code", measured)
 
     def test_bench_decode_defaults_to_prose_score(self) -> None:
         bench = _read("bench_decode.py")
