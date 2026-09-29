@@ -36,13 +36,25 @@ and `vllm/models/qwen4_exp/nvidia/ops/ple.py` unless `DIAGNOSTIC=1`.
 | IMAGE digest | List |
 |---|---|
 | pinned nightly `sha256:df871f17…` | `OVERLAYS_PIN` |
-| v0.30.0 `sha256:4864d466…` | `OVERLAYS_V030` |
+| v0.30.0 `sha256:4864d466…` (default) | `OVERLAYS_V030` |
 | anything else | none |
 
 `OVERLAYS="a.py b.py"` names the files directly (relative to the recipe root, or absolute).
 `OVERLAYS=none` mounts nothing. The defaults live in `recipe.yaml` `serve.env`.
 
-## Pin overlays
+## v0.30 overlays (default)
+
+| File | Target | Generator | Why |
+|---|---|---|---|
+| `v030/flashinfer_cutlass_moe.py` | `vllm/model_executor/layers/fused_moe/experts/flashinfer_cutlass_moe.py` | `v030/apply_moe_finalize_overlay.py` | `use_fused_finalize=not _MOE_DETERMINISTIC`: FlashInfer's fused finalize sums the top-10 experts with BF16 atomics (run-to-run noise that the model amplifies to nats). `VLLM_QWEN38_MOE_DETERMINISTIC=0` restores stock. |
+| `v030/gdn_attn.py` | `vllm/v1/attention/backends/gdn_attn.py` | `v030/apply_gdn_fresh_prefill_overlay.py` | `treat_short_extends_as_decodes=m.is_prefilling is None`: a fresh 1-token prompt no longer runs the GDN decode kernel on a leftover state slot. |
+| `v030/qsa_indexer.py` | `vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py` | `v030/apply_qsa_topk_order_overlay.py` | Sorted `persistent_topk` rows; prefill ties resolve to the lowest index (F23). |
+| `v030/serving.py` | `vllm/entrypoints/openai/chat_completion/serving.py` | `v030/apply_api_overlays.py` | vLLM #56067: streamed tool-call arguments stop costing O(n²) API-server CPU (G05). |
+
+The first three are the S1.5 determinism fixes (`evidence/s15-determinism/SUMMARY.md`): with them c=1 greedy is bit-exact run to run.
+Other generated files in `docker/v030/` (`hyperconnection.py`, `modelopt.py`, `mtp.py`, `nccl_twin_cuda_communicator.py`) are lever overlays that are off by default; they mount only when named in `OVERLAYS`.
+
+## Pin overlays (rollback)
 
 | File | Target | Generator | Why |
 |---|---|---|---|

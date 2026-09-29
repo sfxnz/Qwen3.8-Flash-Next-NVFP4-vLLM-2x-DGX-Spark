@@ -5,7 +5,7 @@ set -euo pipefail
 # BEGIN generated from recipe.yaml — edit recipe.yaml and run kit/render.py
 MODEL="${MODEL:-nvidia/Qwen3.8-Flash-Next-NVFP4}"
 SERVED_NAME="${SERVED_NAME:-nvidia/Qwen3.8-Flash-Next-NVFP4}"
-IMAGE="${IMAGE:-vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b}"
+IMAGE="${IMAGE:-vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56}"
 CONTAINER_NAME="${CONTAINER_NAME:-qwen38-flash-next-nvfp4}"
 PORT="${PORT:-8000}"
 MASTER_PORT="${MASTER_PORT:-29523}"
@@ -23,6 +23,7 @@ NUM_SPECULATIVE_TOKENS="${NUM_SPECULATIVE_TOKENS:-3}"
 SPEC="${SPEC:-mtp}"
 MOE_BACKEND="${MOE_BACKEND:-auto}"
 MAX_NUM_BATCHED_TOKENS="${MAX_NUM_BATCHED_TOKENS:-8192}"
+LONG_PREFILL_TOKEN_THRESHOLD="${LONG_PREFILL_TOKEN_THRESHOLD:-4800}"
 VLLM_SPARSE_INDEXER_MAX_LOGITS_MB="${VLLM_SPARSE_INDEXER_MAX_LOGITS_MB:-64}"
 OOM_SCORE_ADJ="${OOM_SCORE_ADJ:-1000}"
 MEMGUARD="${MEMGUARD:-1}"
@@ -37,6 +38,13 @@ VLLM_PLE_FP8_CHECKPOINT="${VLLM_PLE_FP8_CHECKPOINT:-0}"
 VLLM_ALLOW_LONG_MAX_MODEL_LEN="${VLLM_ALLOW_LONG_MAX_MODEL_LEN:-0}"
 TOOL_CALL_PARSER="${TOOL_CALL_PARSER:-qwen3_xml}"
 REASONING_PARSER="${REASONING_PARSER:-qwen3}"
+CHAT_TEMPLATE="${CHAT_TEMPLATE:-chat_template_alias.jinja}"
+ASYNC_SCHEDULING="${ASYNC_SCHEDULING:-1}"
+MM_PROCESSOR_CACHE_GB="${MM_PROCESSOR_CACHE_GB:-1}"
+MM_MIN_PIXELS="${MM_MIN_PIXELS:-65536}"
+MM_MAX_PIXELS="${MM_MAX_PIXELS:-4194304}"
+MM_LIMIT_IMAGE="${MM_LIMIT_IMAGE:-8}"
+MM_LIMIT_VIDEO="${MM_LIMIT_VIDEO:-1}"
 HF_CACHE="${HF_CACHE:-$HOME/.cache/huggingface}"
 HF_HOME_IN_CONTAINER="/cache/huggingface"
 SNAPSHOT_SHA="${SNAPSHOT_SHA:-fab0aecb760cec45227f6656abcaafa11abca87a}"
@@ -47,7 +55,7 @@ HF_HUB_DISABLE_XET="${HF_HUB_DISABLE_XET:-0}"
 ORCHESTRATE="${ORCHESTRATE:-auto}"
 OVERLAYS="${OVERLAYS:-auto}"
 OVERLAYS_PIN="${OVERLAYS_PIN:-docker/ple_layer.py docker/modelopt.py docker/ple_ops.py}"
-OVERLAYS_V030="${OVERLAYS_V030:-}"
+OVERLAYS_V030="${OVERLAYS_V030:-docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 EXTRA_ENV="${EXTRA_ENV:-}"
 # END generated
@@ -73,17 +81,20 @@ die() {
 }
 
 # --- integers and flags. Leading zeros are refused: bash reads 010 as octal 8, vLLM as 10.
-for name in MAX_MODEL_LEN MAX_NUM_SEQS NUM_SPECULATIVE_TOKENS PORT MASTER_PORT TP NNODES MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB; do
+for name in MAX_MODEL_LEN MAX_NUM_SEQS NUM_SPECULATIVE_TOKENS PORT MASTER_PORT TP NNODES MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO; do
   [[ "${!name}" =~ ^[1-9][0-9]*$ ]] || die "$name=${!name} is not a positive decimal integer."
 done
 [[ -z "$MAX_NUM_BATCHED_TOKENS" || "$MAX_NUM_BATCHED_TOKENS" =~ ^[1-9][0-9]*$ ]] || die "MAX_NUM_BATCHED_TOKENS=$MAX_NUM_BATCHED_TOKENS is not empty or a positive decimal integer."
+[[ "$LONG_PREFILL_TOKEN_THRESHOLD" == none || "$LONG_PREFILL_TOKEN_THRESHOLD" =~ ^[1-9][0-9]*$ ]] || die "LONG_PREFILL_TOKEN_THRESHOLD=$LONG_PREFILL_TOKEN_THRESHOLD is not none or a positive decimal integer."
 # none = do not pass the env (the image default is 512 MiB).
 [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none || "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" =~ ^[1-9][0-9]*$ ]] || die "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB is not none or a positive decimal integer."
-for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD; do
+for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING; do
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
 [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
+[[ "$MM_PROCESSOR_CACHE_GB" =~ ^(0|[1-9][0-9]*)(\.[0-9]+)?$ ]] || die "MM_PROCESSOR_CACHE_GB=$MM_PROCESSOR_CACHE_GB is not a non-negative decimal."
+(( MM_MIN_PIXELS <= MM_MAX_PIXELS )) || die "MM_MIN_PIXELS=$MM_MIN_PIXELS exceeds MM_MAX_PIXELS=$MM_MAX_PIXELS."
 
 # --- image: digest-pinned only.
 [[ "$IMAGE" == *@sha256:* ]] || die "IMAGE=$IMAGE is not digest-pinned. Use <repo>:<tag>@sha256:<digest>."
@@ -152,8 +163,11 @@ done
 # duplicate would bypass the guard on its variable.
 for w in $EXTRA_ARGS; do
   case "${w%%=*}" in
-    --compilation-config* | -cc* | -O* | --speculative-config* | --moe-backend | --max-num-batched-tokens | --max-num-seqs | --max-model-len | --enforce-eager)
-      die "EXTRA_ARGS sets $w, which run.sh passes and guards itself. Use COMPILATION_CONFIG, SPEC_CONFIG, MOE_BACKEND, MAX_NUM_BATCHED_TOKENS, MAX_NUM_SEQS, MAX_MODEL_LEN or ENFORCE_EAGER instead."
+    --compilation-config* | -cc* | -O* | --speculative-config* | --moe-backend | --max-num-batched-tokens | --max-num-seqs | --max-model-len | --enforce-eager | --long-prefill-token-threshold)
+      die "EXTRA_ARGS sets $w, which run.sh passes and guards itself. Use COMPILATION_CONFIG, SPEC_CONFIG, MOE_BACKEND, MAX_NUM_BATCHED_TOKENS, MAX_NUM_SEQS, MAX_MODEL_LEN, ENFORCE_EAGER or LONG_PREFILL_TOKEN_THRESHOLD instead."
+      ;;
+    --async-scheduling | --no-async-scheduling | --mm-processor-kwargs | --limit-mm-per-prompt | --mm-processor-cache-gb | --chat-template)
+      die "EXTRA_ARGS sets $w, which run.sh passes itself. Use ASYNC_SCHEDULING, MM_MIN_PIXELS / MM_MAX_PIXELS, MM_LIMIT_IMAGE / MM_LIMIT_VIDEO, MM_PROCESSOR_CACHE_GB or CHAT_TEMPLATE instead."
       ;;
   esac
 done
@@ -225,6 +239,24 @@ if [[ "$ON_PIN" == 1 && "$DIAGNOSTIC" != 1 ]]; then
   done
 fi
 
+# --- chat template: a recipe-root (or absolute) file, mounted read-only on the head; none = checkpoint template.
+CHAT_TEMPLATE_FILE=""
+if [[ "$CHAT_TEMPLATE" != none ]]; then
+  CHAT_TEMPLATE_FILE="$CHAT_TEMPLATE"
+  [[ "$CHAT_TEMPLATE_FILE" == /* ]] || CHAT_TEMPLATE_FILE="$SCRIPT_DIR/$CHAT_TEMPLATE_FILE"
+  [[ -f "$CHAT_TEMPLATE_FILE" ]] || die "CHAT_TEMPLATE=$CHAT_TEMPLATE not found. Regenerate it with tools/make_alias_template.py, or set CHAT_TEMPLATE=none."
+fi
+CHAT_TEMPLATE_IN_CONTAINER="/recipe/$(basename "${CHAT_TEMPLATE_FILE:-none}")"
+
+# --- vision: the processor pixel window and per-prompt item limits (plan P2-3).
+MM_PROCESSOR_KWARGS='{"images_kwargs":{"min_pixels":'"$MM_MIN_PIXELS"',"max_pixels":'"$MM_MAX_PIXELS"'},"videos_kwargs":{"cap_pixels_per_frame":true}}'
+LIMIT_MM_PER_PROMPT='{"image":'"$MM_LIMIT_IMAGE"',"video":'"$MM_LIMIT_VIDEO"'}'
+
+# --- v0.30 envs, always on that digest (not via EXTRA_ENV): VLLM_PLE_CPU_OFFLOAD defaults to 1 there and
+# pins 32 GiB of host memory per node for the PLE table (F33); breakable CUDA graphs stay off (D4).
+BASE_ENV=()
+[[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && BASE_ENV=(VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0)
+
 # --- context and occupancy.
 if [[ "$MAX_MODEL_LEN" -gt 1048576 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
   die "--max-model-len $MAX_MODEL_LEN is above 1048576. Native max_position_embeddings is 262144. 1M is a lab ceiling. Community 1M YaRN on GB10 hangs on long prefills (vLLM #54629). FORCE_UNSAFE_CTX=1 overrides."
@@ -236,8 +268,8 @@ if [[ "$MAX_MODEL_LEN" -gt 262144 && "$VLLM_ALLOW_LONG_MAX_MODEL_LEN" != 1 ]]; t
   die "MAX_MODEL_LEN=$MAX_MODEL_LEN exceeds native 262144. vLLM refuses that unless VLLM_ALLOW_LONG_MAX_MODEL_LEN=1. This does not enable YaRN. FORCE_UNSAFE_CTX=1 does not replace that env."
 fi
 if [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none && "$FORCE_UNSAFE_CTX" != 1 ]]; then
-  if [[ "$MAX_NUM_BATCHED_TOKENS" != "$MEASURED_BATCHED_TOKENS" || "$EXTRA_ARGS" == *long-prefill-token-threshold* || "$EXTRA_ARGS $EXTRA_ENV" == *indexer_kv_dtype* ]]; then
-    die "MAX_NUM_BATCHED_TOKENS, --long-prefill-token-threshold or indexer_kv_dtype changed with VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=none. The QSA indexer prefill logits buffer grows with chunk rows; budget 4096 reproduces the GB10 long-prefill hang (vLLM #56457, F05). Set VLLM_SPARSE_INDEXER_MAX_LOGITS_MB (default 64). FORCE_UNSAFE_CTX=1 overrides."
+  if [[ "$MAX_NUM_BATCHED_TOKENS" != "$MEASURED_BATCHED_TOKENS" || "$LONG_PREFILL_TOKEN_THRESHOLD" != none || "$EXTRA_ARGS $EXTRA_ENV" == *indexer_kv_dtype* ]]; then
+    die "MAX_NUM_BATCHED_TOKENS, LONG_PREFILL_TOKEN_THRESHOLD or indexer_kv_dtype changed with VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=none. The QSA indexer prefill logits buffer grows with chunk rows; budget 4096 reproduces the GB10 long-prefill hang (vLLM #56457, F05). Set VLLM_SPARSE_INDEXER_MAX_LOGITS_MB (default 64). FORCE_UNSAFE_CTX=1 overrides."
   fi
 fi
 
@@ -291,6 +323,11 @@ if [[ "${VALIDATE_ONLY:-0}" == "1" ]]; then
     printf '==> overlay %s -> %s/%s\n' "${OVERLAY_FILES[$i]}" "$SITE_PACKAGES" "${OVERLAY_TARGETS[$i]}"
   done
   [[ ${#OVERLAY_FILES[@]} -gt 0 ]] || printf '==> overlay none for %s\n' "$IMAGE_DIGEST"
+  [[ ${#BASE_ENV[@]} -eq 0 ]] || printf '==> base-env %s\n' "${BASE_ENV[*]}"
+  printf '==> chat-template %s\n' "${CHAT_TEMPLATE_FILE:-none}"
+  printf '==> long-prefill-token-threshold=%s\n' "$LONG_PREFILL_TOKEN_THRESHOLD"
+  printf '==> async-scheduling=%s mm-processor-kwargs=%s limit-mm-per-prompt=%s mm-processor-cache-gb=%s\n' \
+    "$ASYNC_SCHEDULING" "$MM_PROCESSOR_KWARGS" "$LIMIT_MM_PER_PROMPT" "$MM_PROCESSOR_CACHE_GB"
   [[ -z "$EXTRA_ENV" ]] || printf '==> extra-env %s\n' "$EXTRA_ENV"
   exit 0
 fi
@@ -502,12 +539,21 @@ start_local() {
     host_ip="${host_ip:-10.100.8.2}"
   fi
   env_args+=(-e "VLLM_HOST_IP=$host_ip")
+  local kv
+  for kv in "${BASE_ENV[@]}"; do
+    env_args+=(-e "$kv")
+  done
   # Later -e wins, so EXTRA_ENV can override the defaults above (e.g. NCCL_DEBUG=INFO).
   env_args+=("${EXTRA_ENV_ARGS[@]}")
 
   local rank_args=()
+  local vol_args=(-v "${HF_CACHE}:${HF_HOME_IN_CONTAINER}")
   if [[ "$rank" == "0" ]]; then
     rank_args+=(--host "$API_HOST" --port "$PORT")
+    if [[ -n "$CHAT_TEMPLATE_FILE" ]]; then
+      vol_args+=(-v "${CHAT_TEMPLATE_FILE}:${CHAT_TEMPLATE_IN_CONTAINER}:ro")
+      rank_args+=(--chat-template "$CHAT_TEMPLATE_IN_CONTAINER")
+    fi
   else
     rank_args+=(--headless)
   fi
@@ -519,7 +565,6 @@ start_local() {
     eager_args+=(--compilation-config "$COMPILATION_CONFIG")
   fi
 
-  local vol_args=(-v "${HF_CACHE}:${HF_HOME_IN_CONTAINER}")
   local i
   for i in "${!OVERLAY_FILES[@]}"; do
     vol_args+=(-v "${OVERLAY_FILES[$i]}:${SITE_PACKAGES}/${OVERLAY_TARGETS[$i]}:ro")
@@ -528,17 +573,26 @@ start_local() {
   if [[ -n "$MAX_NUM_BATCHED_TOKENS" ]]; then
     batched_args+=(--max-num-batched-tokens "$MAX_NUM_BATCHED_TOKENS")
   fi
+  if [[ "$LONG_PREFILL_TOKEN_THRESHOLD" != none ]]; then
+    batched_args+=(--long-prefill-token-threshold "$LONG_PREFILL_TOKEN_THRESHOLD")
+  fi
   local spec_args=()
   if [[ -n "$SPEC_CONFIG" ]]; then
     spec_args+=(--speculative-config "$SPEC_CONFIG")
   fi
+  local async_args=(--async-scheduling)
+  [[ "$ASYNC_SCHEDULING" == 1 ]] || async_args=(--no-async-scheduling)
 
+  # --ulimit core=1: the kernel skips a piped core dump when RLIMIT_CORE is exactly 1. Otherwise Ubuntu
+  # apport buffers the aborting worker's ~11 GiB core in host RAM and swap on both nodes
+  # (evidence/u2-v030-default: a 64k-prefill device assert took spark1 to memguard this way).
   log "Starting $CONTAINER_NAME rank=$rank model=$serve_model ctx=$MAX_MODEL_LEN kv=$KV_CACHE_DTYPE spec=$SPEC moe=$MOE_BACKEND overlays=${#OVERLAY_FILES[@]}"
   # shellcheck disable=SC2086 # EXTRA_ARGS is word-split on purpose
   docker run -d \
     --name "$CONTAINER_NAME" \
     --restart no \
     --oom-score-adj "$OOM_SCORE_ADJ" \
+    --ulimit core=1 \
     --gpus all \
     --network host \
     --ipc host \
@@ -565,6 +619,10 @@ start_local() {
     "${eager_args[@]}" \
     --moe-backend "$MOE_BACKEND" \
     "${spec_args[@]}" \
+    "${async_args[@]}" \
+    --mm-processor-kwargs "$MM_PROCESSOR_KWARGS" \
+    --limit-mm-per-prompt "$LIMIT_MM_PER_PROMPT" \
+    --mm-processor-cache-gb "$MM_PROCESSOR_CACHE_GB" \
     --enable-chunked-prefill \
     --enable-prefix-caching \
     --tool-call-parser "$TOOL_CALL_PARSER" \
@@ -586,12 +644,14 @@ FORWARD_VARS=(
   VLLM_PLE_FP8_CHECKPOINT VLLM_ALLOW_LONG_MAX_MODEL_LEN TOOL_CALL_PARSER REASONING_PARSER
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
   OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
+  LONG_PREFILL_TOKEN_THRESHOLD ASYNC_SCHEDULING MM_PROCESSOR_CACHE_GB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO
 )
 
 worker_env() {
   # $1: space-separated overlay paths on the worker.
   local v out
-  out="ROLE=worker ORCHESTRATE=0 OVERLAYS=$(printf '%q' "${1:-none}")"
+  # The chat template is an API-server (head) setting; the worker copy of run.sh has no template file.
+  out="ROLE=worker ORCHESTRATE=0 CHAT_TEMPLATE=none OVERLAYS=$(printf '%q' "${1:-none}")"
   for v in "${FORWARD_VARS[@]}"; do
     out+=" $v=$(printf '%q' "${!v}")"
   done
