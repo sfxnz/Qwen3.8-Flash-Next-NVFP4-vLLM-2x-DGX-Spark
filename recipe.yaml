@@ -43,7 +43,9 @@ serve:
     NNODES: *nnodes
     MAX_MODEL_LEN: 262144
     MAX_NUM_SEQS: 8
-    UTIL: 0.80
+    # 0.76 leaves ~4.9 GiB/rank more host headroom than 0.80; 0.80 drove spark1 into a global OOM
+    # (evidence/incident-2026-09-29-oom). Plan P2-2.
+    UTIL: 0.76
     KV_CACHE_DTYPE: auto
     NUM_SPECULATIVE_TOKENS: 3
     SPEC: mtp
@@ -51,6 +53,12 @@ serve:
     MAX_NUM_BATCHED_TOKENS: 8192
     # Caps the QSA indexer prefill logits buffer per call (vLLM #56457 GB10 long-prefill hang; F05).
     VLLM_SPARSE_INDEXER_MAX_LOGITS_MB: 64
+    # The serve is the kernel's preferred OOM victim, so host services (sshd, LAIL, Hermes) survive.
+    OOM_SCORE_ADJ: 1000
+    # Per-node watchdog: docker kill the serve before swap runs out and the host thrashes.
+    MEMGUARD: 1
+    MEMGUARD_MIN_AVAIL_MB: 2048
+    MEMGUARD_MIN_SWAP_FREE_MB: 2048
     FORCE_UNSAFE_CTX: 0
     FORCE_UNSAFE_MOE: 0
     ENFORCE_EAGER: 0

@@ -1,0 +1,2 @@
+NRestarts=7
+OOMScoreAdjust=200

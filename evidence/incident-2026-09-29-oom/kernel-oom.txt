@@ -1,0 +1,24 @@
+Sep 29 13:54:31 spark1 kernel: pt_tcpstore_uv invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 13:54:31 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=docker-9be6ce63346ef27b9d8e231f405f7a89357887edc8ba4adf317bf977938b6ecb.scope,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=2552,uid=1000
+Sep 29 13:54:31 spark1 kernel: Out of memory: Killed process 2552 (next-server (v1) total-vm:26190884kB, anon-rss:27980kB, file-rss:3036kB, shmem-rss:0kB, UID:1000 pgtables:6376kB oom_score_adj:200
+Sep 29 13:58:28 spark1 kernel: JITWorker invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 13:58:28 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/hermes-serve.service,task=hermes,pid=2737284,uid=1000
+Sep 29 13:58:28 spark1 kernel: Out of memory: Killed process 2737284 (hermes) total-vm:4697240kB, anon-rss:12420kB, file-rss:3740kB, shmem-rss:0kB, UID:1000 pgtables:1980kB oom_score_adj:200
+Sep 29 13:58:59 spark1 kernel: avahi-daemon invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 13:58:59 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=avahi-daemon.service,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3769159,uid=1000
+Sep 29 13:58:59 spark1 kernel: Out of memory: Killed process 3769159 (next-server (v1) total-vm:26613404kB, anon-rss:495804kB, file-rss:2568kB, shmem-rss:0kB, UID:1000 pgtables:7884kB oom_score_adj:200
+Sep 29 13:59:47 spark1 kernel: MainThread invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 13:59:47 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3770091,uid=1000
+Sep 29 13:59:47 spark1 kernel: Out of memory: Killed process 3770091 (next-server (v1) total-vm:26597052kB, anon-rss:409988kB, file-rss:2712kB, shmem-rss:0kB, UID:1000 pgtables:7532kB oom_score_adj:200
+Sep 29 14:01:00 spark1 kernel: systemd invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 14:01:00 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=init.scope,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3770975,uid=1000
+Sep 29 14:01:00 spark1 kernel: Out of memory: Killed process 3770975 (next-server (v1) total-vm:26596436kB, anon-rss:423000kB, file-rss:2424kB, shmem-rss:0kB, UID:1000 pgtables:7456kB oom_score_adj:200
+Sep 29 14:02:00 spark1 kernel: 2.1.281 invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 14:02:00 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3771673,uid=1000
+Sep 29 14:02:00 spark1 kernel: Out of memory: Killed process 3771673 (next-server (v1) total-vm:26591832kB, anon-rss:420852kB, file-rss:2488kB, shmem-rss:0kB, UID:1000 pgtables:7364kB oom_score_adj:200
+Sep 29 14:02:45 spark1 kernel: snapd invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=-900
+Sep 29 14:02:46 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=snapd.service,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3772318,uid=1000
+Sep 29 14:02:46 spark1 kernel: Out of memory: Killed process 3772318 (next-server (v1) total-vm:26596328kB, anon-rss:393240kB, file-rss:2768kB, shmem-rss:0kB, UID:1000 pgtables:7436kB oom_score_adj:200
+Sep 29 14:05:27 spark1 kernel: herdr invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+Sep 29 14:05:27 spark1 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user.slice,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-lail.slice/lail-web.service,task=next-server (v1,pid=3772923,uid=1000
+Sep 29 14:05:27 spark1 kernel: Out of memory: Killed process 3772923 (next-server (v1) total-vm:26592084kB, anon-rss:406948kB, file-rss:2708kB, shmem-rss:0kB, UID:1000 pgtables:7336kB oom_score_adj:200

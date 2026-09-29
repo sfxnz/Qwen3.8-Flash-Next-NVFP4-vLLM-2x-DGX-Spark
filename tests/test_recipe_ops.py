@@ -228,6 +228,44 @@ class RecipeOpsTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn("validate-only", proc.stdout)
 
+    def test_serve_is_preferred_oom_victim(self) -> None:
+        text = (ROOT / "run.sh").read_text()
+        self.assertIn('--oom-score-adj "$OOM_SCORE_ADJ"', text)
+        self.assertIn('OOM_SCORE_ADJ="${OOM_SCORE_ADJ:-1000}"', text)
+        proc = _run_sh(OOM_SCORE_ADJ="2000")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("OOM_SCORE_ADJ=2000", proc.stderr)
+
+    def test_memguard_starts_with_each_rank_and_is_forwarded(self) -> None:
+        text = (ROOT / "run.sh").read_text()
+        self.assertIn('MEMGUARD="${MEMGUARD:-1}"', text)
+        self.assertIn("    $EXTRA_ARGS\n  start_memguard\n}", text)
+        for name in ("OOM_SCORE_ADJ", "MEMGUARD", "MEMGUARD_MIN_AVAIL_MB", "MEMGUARD_MIN_SWAP_FREE_MB"):
+            self.assertRegex(text, rf"FORWARD_VARS=\([^)]*\b{name}\b")
+        proc = _run_sh(MEMGUARD="2")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("MEMGUARD=2 must be 0 or 1", proc.stderr)
+
+    def test_memguard_loop_kills_when_ram_and_swap_are_low(self) -> None:
+        text = (ROOT / "run.sh").read_text()
+        body = text[text.index("memguard_loop() {"):]
+        body = body[: body.index("\n}\n") + 3]
+        with tempfile.TemporaryDirectory() as tmp:
+            stub = Path(tmp)
+            (stub / "docker").write_text('#!/bin/sh\necho "$@" >> "$STUB_LOG"\necho true\n')
+            (stub / "logger").write_text("#!/bin/sh\nexit 0\n")
+            (stub / "sleep").write_text("#!/bin/sh\nexit 0\n")
+            for f in stub.iterdir():
+                f.chmod(0o755)
+            log = stub / "calls"
+            env = dict(os.environ, PATH=f"{stub}:{os.environ['PATH']}", STUB_LOG=str(log))
+            # Thresholds far above any real host: every sample is "low", so it must kill on sample 3.
+            proc = subprocess.run(["bash", "-c", body + "\nmemguard_loop qwen-test 99999999 99999999"],
+                                  capture_output=True, text=True, env=env, timeout=30, check=False)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertIn("kill qwen-test", log.read_text())
+            self.assertIn("docker kill qwen-test", proc.stdout)
+
     def test_validate_only_accepts_occupancy_pin(self) -> None:
         proc = _run_sh(MAX_NUM_SEQS="8")
         self.assertEqual(proc.returncode, 0, proc.stderr)

@@ -17,13 +17,17 @@ TP="${TP:-2}"
 NNODES="${NNODES:-2}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-262144}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-8}"
-UTIL="${UTIL:-0.80}"
+UTIL="${UTIL:-0.76}"
 KV_CACHE_DTYPE="${KV_CACHE_DTYPE:-auto}"
 NUM_SPECULATIVE_TOKENS="${NUM_SPECULATIVE_TOKENS:-3}"
 SPEC="${SPEC:-mtp}"
 MOE_BACKEND="${MOE_BACKEND:-auto}"
 MAX_NUM_BATCHED_TOKENS="${MAX_NUM_BATCHED_TOKENS:-8192}"
 VLLM_SPARSE_INDEXER_MAX_LOGITS_MB="${VLLM_SPARSE_INDEXER_MAX_LOGITS_MB:-64}"
+OOM_SCORE_ADJ="${OOM_SCORE_ADJ:-1000}"
+MEMGUARD="${MEMGUARD:-1}"
+MEMGUARD_MIN_AVAIL_MB="${MEMGUARD_MIN_AVAIL_MB:-2048}"
+MEMGUARD_MIN_SWAP_FREE_MB="${MEMGUARD_MIN_SWAP_FREE_MB:-2048}"
 FORCE_UNSAFE_CTX="${FORCE_UNSAFE_CTX:-0}"
 FORCE_UNSAFE_MOE="${FORCE_UNSAFE_MOE:-0}"
 ENFORCE_EAGER="${ENFORCE_EAGER:-0}"
@@ -69,15 +73,16 @@ die() {
 }
 
 # --- integers and flags. Leading zeros are refused: bash reads 010 as octal 8, vLLM as 10.
-for name in MAX_MODEL_LEN MAX_NUM_SEQS NUM_SPECULATIVE_TOKENS PORT MASTER_PORT TP NNODES; do
+for name in MAX_MODEL_LEN MAX_NUM_SEQS NUM_SPECULATIVE_TOKENS PORT MASTER_PORT TP NNODES MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB; do
   [[ "${!name}" =~ ^[1-9][0-9]*$ ]] || die "$name=${!name} is not a positive decimal integer."
 done
 [[ -z "$MAX_NUM_BATCHED_TOKENS" || "$MAX_NUM_BATCHED_TOKENS" =~ ^[1-9][0-9]*$ ]] || die "MAX_NUM_BATCHED_TOKENS=$MAX_NUM_BATCHED_TOKENS is not empty or a positive decimal integer."
 # none = do not pass the env (the image default is 512 MiB).
 [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none || "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" =~ ^[1-9][0-9]*$ ]] || die "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB is not none or a positive decimal integer."
-for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET; do
+for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD; do
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
+[[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
 [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
 
 # --- image: digest-pinned only.
@@ -416,6 +421,44 @@ stop_local() {
   fi
 }
 
+# Host memory watchdog. GB10 is unified memory: when the serve plus host load exhausts RAM and swap,
+# the host thrashes for minutes (sshd and LAIL unreachable) before the kernel OOM killer acts, and it
+# then picks small services first. Kill the serve instead once available RAM and free swap are both low
+# for 3 samples in a row (6 s). Exits when the container is gone.
+memguard_loop() {
+  local name="$1" min_avail_kb=$(( $2 * 1024 )) min_swap_kb=$(( $3 * 1024 )) hits=0 n=0 avail swapfree
+  while :; do
+    avail="$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)"
+    swapfree="$(awk '/^SwapFree:/ {print $2}' /proc/meminfo)"
+    if (( avail < min_avail_kb && swapfree < min_swap_kb )); then
+      hits=$(( hits + 1 ))
+    else
+      hits=0
+    fi
+    if (( hits >= 3 )); then
+      logger -t qwen38-memguard "MemAvailable=${avail}kB SwapFree=${swapfree}kB: docker kill $name"
+      echo "$(date -Is) MemAvailable=${avail}kB SwapFree=${swapfree}kB: docker kill $name"
+      docker kill "$name" >/dev/null 2>&1 || true
+      return 0
+    fi
+    n=$(( n + 1 ))
+    if (( n % 8 == 0 )) && [[ "$(docker inspect -f '{{.State.Running}}' "$name" 2>/dev/null)" != true ]]; then
+      return 0
+    fi
+    sleep 2
+  done
+}
+
+start_memguard() {
+  [[ "$MEMGUARD" == 1 ]] || { log "memguard off (MEMGUARD=$MEMGUARD)"; return 0; }
+  local logf="$STATE_DIR/memguard.log"
+  mkdir -p "$STATE_DIR"
+  setsid bash -c "$(declare -f memguard_loop); memguard_loop \"\$@\"" memguard \
+    "$CONTAINER_NAME" "$MEMGUARD_MIN_AVAIL_MB" "$MEMGUARD_MIN_SWAP_FREE_MB" >>"$logf" 2>&1 </dev/null &
+  disown || true
+  log "memguard pid=$! min_avail=${MEMGUARD_MIN_AVAIL_MB}MB min_swap_free=${MEMGUARD_MIN_SWAP_FREE_MB}MB log=$logf"
+}
+
 start_local() {
   local rank="$1"
   mkdir -p "$HF_CACHE"
@@ -495,6 +538,7 @@ start_local() {
   docker run -d \
     --name "$CONTAINER_NAME" \
     --restart no \
+    --oom-score-adj "$OOM_SCORE_ADJ" \
     --gpus all \
     --network host \
     --ipc host \
@@ -530,6 +574,7 @@ start_local() {
     --served-model-name "$SERVED_NAME" \
     --trust-remote-code \
     $EXTRA_ARGS
+  start_memguard
 }
 
 # Variables the worker rank needs, forwarded shell-quoted over ssh.
@@ -540,6 +585,7 @@ FORWARD_VARS=(
   VLLM_SPARSE_INDEXER_MAX_LOGITS_MB FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE DIAGNOSTIC BENCH_ONLY
   VLLM_PLE_FP8_CHECKPOINT VLLM_ALLOW_LONG_MAX_MODEL_LEN TOOL_CALL_PARSER REASONING_PARSER
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
+  OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
 )
 
 worker_env() {
