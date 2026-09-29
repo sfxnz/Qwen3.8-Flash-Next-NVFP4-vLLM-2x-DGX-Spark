@@ -1,0 +1,202 @@
+[
+ {
+  "id": "p00.prose",
+  "domain": "prose",
+  "prompt": "Write a short paragraph about why lighthouses were painted in distinctive patterns."
+ },
+ {
+  "id": "p01.prose",
+  "domain": "prose",
+  "prompt": "Describe a rainy afternoon in a small harbour town in about 150 words."
+ },
+ {
+  "id": "p02.prose",
+  "domain": "prose",
+  "prompt": "Explain to a new employee how to write a clear bug report."
+ },
+ {
+  "id": "p03.prose",
+  "domain": "prose",
+  "prompt": "Write a brief history of the bicycle for a museum placard."
+ },
+ {
+  "id": "p04.prose",
+  "domain": "prose",
+  "prompt": "Summarise the plot of a heist story you invent, in two paragraphs."
+ },
+ {
+  "id": "p05.prose",
+  "domain": "prose",
+  "prompt": "Give three practical tips for keeping houseplants alive in winter, with a sentence of explanation each."
+ },
+ {
+  "id": "p06.prose",
+  "domain": "prose",
+  "prompt": "Write a polite email declining a meeting invitation and proposing another time."
+ },
+ {
+  "id": "p07.prose",
+  "domain": "prose",
+  "prompt": "Explain how a refrigerator keeps food cold, for a curious ten-year-old."
+ },
+ {
+  "id": "p08.prose",
+  "domain": "prose",
+  "prompt": "Write the opening paragraph of a mystery novel set on a night train."
+ },
+ {
+  "id": "p09.prose",
+  "domain": "prose",
+  "prompt": "Compare trains and planes for a 600 km trip in a short balanced paragraph."
+ },
+ {
+  "id": "p10.code",
+  "domain": "code",
+  "prompt": "Write a Python function that returns the n-th Fibonacci number iteratively, with a docstring."
+ },
+ {
+  "id": "p11.code",
+  "domain": "code",
+  "prompt": "Write a Bash script that counts lines in every .py file under the current directory and prints the total."
+ },
+ {
+  "id": "p12.code",
+  "domain": "code",
+  "prompt": "Implement binary search in C over a sorted int array. Return the index or -1."
+ },
+ {
+  "id": "p13.code",
+  "domain": "code",
+  "prompt": "Write a SQL query that returns the top 5 customers by total order value from tables customers(id, name) and orders(id, customer_id, amount)."
+ },
+ {
+  "id": "p14.code",
+  "domain": "code",
+  "prompt": "Write a JavaScript function that debounces another function by a given number of milliseconds."
+ },
+ {
+  "id": "p15.code",
+  "domain": "code",
+  "prompt": "Write a Rust function that reverses the words in a string slice and returns a String."
+ },
+ {
+  "id": "p16.code",
+  "domain": "code",
+  "prompt": "Explain what this Python does and fix the bug: def avg(xs): return sum(xs) / len(xs) if xs else sum(xs) / 0"
+ },
+ {
+  "id": "p17.code",
+  "domain": "code",
+  "prompt": "Write a Go HTTP handler that responds with the JSON {\"status\": \"ok\"}."
+ },
+ {
+  "id": "p18.math",
+  "domain": "math",
+  "prompt": "A train leaves at 09:40 and arrives at 13:15. How long is the journey? Show your working."
+ },
+ {
+  "id": "p19.math",
+  "domain": "math",
+  "prompt": "Solve for x: 3x + 7 = 2x - 5. Show each step."
+ },
+ {
+  "id": "p20.math",
+  "domain": "math",
+  "prompt": "What is the sum of the integers from 1 to 250? Explain the method."
+ },
+ {
+  "id": "p21.math",
+  "domain": "math",
+  "prompt": "A shop discounts a 80 dollar jacket by 25 percent, then adds 15 percent tax. What is the final price?"
+ },
+ {
+  "id": "p22.math",
+  "domain": "math",
+  "prompt": "Is 391 a prime number? Explain."
+ },
+ {
+  "id": "p23.math",
+  "domain": "math",
+  "prompt": "A rectangle has a perimeter of 46 cm and an area of 120 square cm. Find its side lengths."
+ },
+ {
+  "id": "p24.math",
+  "domain": "math",
+  "prompt": "Convert 0.375 to a fraction in lowest terms and explain."
+ },
+ {
+  "id": "p25.math",
+  "domain": "math",
+  "prompt": "If 5 workers build a wall in 12 days, how long do 8 workers take at the same rate?"
+ },
+ {
+  "id": "p26.struct",
+  "domain": "struct",
+  "prompt": "Count from 1 to 60, separated by commas, with no other text."
+ },
+ {
+  "id": "p27.struct",
+  "domain": "struct",
+  "prompt": "Return a JSON object describing a book with fields title, author, year, genres (array) and in_print (boolean)."
+ },
+ {
+  "id": "p28.struct",
+  "domain": "struct",
+  "prompt": "Make a markdown table of the first 12 elements of the periodic table with symbol and atomic number."
+ },
+ {
+  "id": "p29.struct",
+  "domain": "struct",
+  "prompt": "List the months of the year in reverse order, one per line."
+ },
+ {
+  "id": "p30.struct",
+  "domain": "struct",
+  "prompt": "Output a YAML config for a web service with host, port, workers and a list of three allowed origins."
+ },
+ {
+  "id": "p31.struct",
+  "domain": "struct",
+  "prompt": "Write the multiplication table for 7 from 7x1 to 7x12, one line each."
+ },
+ {
+  "id": "p32.zh",
+  "domain": "zh",
+  "prompt": "用三句话介绍一下长城的历史。"
+ },
+ {
+  "id": "p33.zh",
+  "domain": "zh",
+  "prompt": "请写一段关于秋天的短文，大约一百字。"
+ },
+ {
+  "id": "p34.es",
+  "domain": "es",
+  "prompt": "Explica en un párrafo por qué el cielo es azul."
+ },
+ {
+  "id": "p35.es",
+  "domain": "es",
+  "prompt": "Escribe una receta sencilla de tortilla de patatas con los pasos numerados."
+ },
+ {
+  "id": "p36.de",
+  "domain": "de",
+  "prompt": "Erkläre in wenigen Sätzen, wie eine Solaranlage Strom erzeugt."
+ },
+ {
+  "id": "p37.de",
+  "domain": "de",
+  "prompt": "Schreibe eine kurze Geschichte über einen Fuchs, der lesen lernt."
+ },
+ {
+  "id": "p38.ja",
+  "domain": "ja",
+  "prompt": "富士山について三文で説明してください。"
+ },
+ {
+  "id": "p39.ja",
+  "domain": "ja",
+  "prompt": "朝ごはんの大切さについて短い文章を書いてください。"
+ }
+]

@@ -1,0 +1,39 @@
+{
+ "images": {
+  "bars": "d79d280ed4411d4b0ede141b0abe32fa898189adc444143aca4bd4d938f9067d",
+  "circles_3": "2c15c95b53b326f49c1ded557dd27f4a1daa115bc74762f4a42d7f5470818cc9",
+  "circles_5": "917cfe155b50c989f7c2cab4688049b5ba69a86fd8a2aa6ab020e188e9a24b34",
+  "digits_407218": "36614679a43187d56ce02609f1442e7d82f5604e9bceeca059f0e94555035a6c",
+  "digits_9315": "a1fe614d2d784a32d9009a26b6f3fd01f59ce0d8395f5a50d2ca3971977b8ab0",
+  "grid_tall": "82ecb1b954c4086426b087f14449017c99485817b1dfe112bd711fdfedd8d934",
+  "grid_wide": "6c9e7664f0810a23efa659748fbad81452f49e1d953d0a309fc903ae348f4585",
+  "quadrants": "f6e8ae6b5b449f48a5f9d64ec1db7da7d6d2d90604478c5ed42af714a7481554",
+  "solid_blue": "3bd8bdd6dfb1b13a599ff5b9b12ce4209aa7273341900f5b751e5caf875883d7",
+  "solid_green": "36951428714949123efc64de751bb5b399f01dce1a1a8f87861a3964cedee5f3",
+  "solid_red": "8a9381eaca72ad48bbee82a2bd902cb157c0433b1e020bf25cfbe0b9359cf3c2",
+  "solid_yellow": "98f26edacd034622041f1604c5e74791b9697c1c61c4c62eb6c5bcbcf43f73ec",
+  "straddle": "5586910239105b9a34a681d3d652163ebcb3ccd4275b1d0e7fd5f9c0cccd0857"
+ },
+ "probes": {
+  "grid_wide.red_col": "6",
+  "grid_wide.blue_col": "3",
+  "grid_wide.blue_row": "bottom",
+  "grid_tall.green_row": "7",
+  "grid_tall.green_col": "left",
+  "ocr.407218": "407218",
+  "ocr.9315": "9315",
+  "chart.tallest": "green",
+  "chart.shortest": "yellow",
+  "chart.order": "blue",
+  "count.circles3": "3",
+  "count.circles5": "5",
+  "quadrants.bottom_right": "yellow",
+  "multi.blue_second": "second",
+  "multi.blue_first": "first",
+  "straddle.c29": [
+   "5831",
+   "PTW-9522-MZ"
+  ]
+ },
+ "straddle_paras": 64
+}
