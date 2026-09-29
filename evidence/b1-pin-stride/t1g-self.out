@@ -1,0 +1,26 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1g",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1g",
+ "gate": "T1-G",
+ "metrics": {
+  "prompts": 10,
+  "repeats": 5,
+  "distinct_mean": 5.0,
+  "distinct_se": 0.0,
+  "early_div": 0.54,
+  "early_div_se": 0.099107,
+  "prompts_with_divergence": 10
+ },
+ "lkg_self": {
+  "prompts": 10,
+  "repeats": 5,
+  "distinct_mean": 5.0,
+  "distinct_se": 0.0,
+  "early_div": 0.54,
+  "early_div_se": 0.099107,
+  "prompts_with_divergence": 10
+ },
+ "verdict": "REPORT",
+ "pass": null,
+ "note": "no --aa floor: report only (C10/S1.5)"
+}

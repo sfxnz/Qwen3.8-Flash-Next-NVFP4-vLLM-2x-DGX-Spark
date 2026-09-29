@@ -1,0 +1,5024 @@
+{
+ "bench": "fp8",
+ "meta": {
+  "host": "spark1",
+  "time": "2026-09-29T11:59:26Z",
+  "image": "vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.28.1rc1.dev437+ge962733e0",
+  "flashinfer": "0.6.18"
+ },
+ "rows": [
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 1,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 252.032,
+    "p10_us": 250.493,
+    "p90_us": 256.099,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 166.4
+   },
+   "flush": {
+    "median_us": 252.928,
+    "p10_us": 243.933,
+    "p90_us": 281.962,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 165.8
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 251.26
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 39.104,
+    "p10_us": 39.072,
+    "p90_us": 39.136,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 536.3
+   },
+   "flush": {
+    "median_us": 104.256,
+    "p10_us": 101.216,
+    "p90_us": 118.563,
+    "n": 760,
+    "ref_slot_us": 289.984,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 201.2
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 97.03
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 36.672,
+    "p10_us": 35.328,
+    "p90_us": 37.056,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 571.9
+   },
+   "flush": {
+    "median_us": 100.8,
+    "p10_us": 97.936,
+    "p90_us": 116.768,
+    "n": 760,
+    "ref_slot_us": 290.512,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 208.1
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 97.18
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.832,
+    "p10_us": 27.2,
+    "p90_us": 29.664,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 727.4
+   },
+   "flush": {
+    "median_us": 95.264,
+    "p10_us": 92.16,
+    "p90_us": 113.478,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.1
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 90.72
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.832,
+    "p10_us": 28.448,
+    "p90_us": 30.848,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 727.4
+   },
+   "flush": {
+    "median_us": 91.04,
+    "p10_us": 87.072,
+    "p90_us": 109.536,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 230.4
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 88.7
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 2,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 189.632,
+    "p10_us": 187.872,
+    "p90_us": 197.936,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 221.2
+   },
+   "flush": {
+    "median_us": 189.408,
+    "p10_us": 186.368,
+    "p90_us": 208.774,
+    "n": 760,
+    "ref_slot_us": 289.824,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 221.4
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 40.128,
+    "p10_us": 39.104,
+    "p90_us": 41.76,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 522.6
+   },
+   "flush": {
+    "median_us": 101.376,
+    "p10_us": 98.304,
+    "p90_us": 115.808,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.9
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 38.112,
+    "p10_us": 37.149,
+    "p90_us": 39.747,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 550.3
+   },
+   "flush": {
+    "median_us": 99.52,
+    "p10_us": 95.357,
+    "p90_us": 116.707,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.7
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 34.592,
+    "p10_us": 32.928,
+    "p90_us": 36.403,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 606.3
+   },
+   "flush": {
+    "median_us": 98.416,
+    "p10_us": 95.677,
+    "p90_us": 112.467,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 213.1
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 20.672,
+    "p10_us": 20.541,
+    "p90_us": 22.688,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1014.5
+   },
+   "flush": {
+    "median_us": 97.616,
+    "p10_us": 91.392,
+    "p90_us": 118.016,
+    "n": 760,
+    "ref_slot_us": 297.728,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 214.8
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 4,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 183.488,
+    "p10_us": 181.6,
+    "p90_us": 192.675,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 228.6
+   },
+   "flush": {
+    "median_us": 184.16,
+    "p10_us": 179.968,
+    "p90_us": 205.664,
+    "n": 760,
+    "ref_slot_us": 290.976,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 227.8
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 181.6
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 34.48,
+    "p10_us": 33.312,
+    "p90_us": 36.064,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 608.2
+   },
+   "flush": {
+    "median_us": 104.48,
+    "p10_us": 101.408,
+    "p90_us": 122.912,
+    "n": 760,
+    "ref_slot_us": 290.784,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.7
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 96.35
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 33.568,
+    "p10_us": 32.256,
+    "p90_us": 34.976,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 624.7
+   },
+   "flush": {
+    "median_us": 101.92,
+    "p10_us": 98.848,
+    "p90_us": 114.211,
+    "n": 760,
+    "ref_slot_us": 290.272,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.8
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 97.18
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 26.784,
+    "p10_us": 24.8,
+    "p90_us": 26.944,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 783.0
+   },
+   "flush": {
+    "median_us": 96.256,
+    "p10_us": 92.16,
+    "p90_us": 110.592,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 217.9
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 95.49
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.832,
+    "p10_us": 27.069,
+    "p90_us": 28.995,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 727.4
+   },
+   "flush": {
+    "median_us": 92.832,
+    "p10_us": 89.344,
+    "p90_us": 112.259,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.9
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 93.15
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 8,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 186.96,
+    "p10_us": 185.44,
+    "p90_us": 194.867,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.3
+   },
+   "flush": {
+    "median_us": 191.488,
+    "p10_us": 188.416,
+    "p90_us": 211.318,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 219.0
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 30.88,
+    "p10_us": 30.72,
+    "p90_us": 31.264,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 679.1
+   },
+   "flush": {
+    "median_us": 101.376,
+    "p10_us": 98.365,
+    "p90_us": 114.688,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.9
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.864,
+    "p10_us": 28.797,
+    "p90_us": 28.96,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 726.6
+   },
+   "flush": {
+    "median_us": 99.088,
+    "p10_us": 93.776,
+    "p90_us": 117.046,
+    "n": 760,
+    "ref_slot_us": 291.856,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.6
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 24.736,
+    "p10_us": 23.136,
+    "p90_us": 24.928,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 847.8
+   },
+   "flush": {
+    "median_us": 99.104,
+    "p10_us": 96.064,
+    "p90_us": 111.747,
+    "n": 760,
+    "ref_slot_us": 290.016,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.6
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.896,
+    "p10_us": 28.704,
+    "p90_us": 30.912,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 725.8
+   },
+   "flush": {
+    "median_us": 98.24,
+    "p10_us": 95.168,
+    "p90_us": 113.603,
+    "n": 760,
+    "ref_slot_us": 289.856,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 213.5
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 16,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 193.744,
+    "p10_us": 190.704,
+    "p90_us": 213.194,
+    "n": 760,
+    "ref_slot_us": 1.84,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 216.5
+   },
+   "flush": {
+    "median_us": 192.08,
+    "p10_us": 188.368,
+    "p90_us": 213.395,
+    "n": 760,
+    "ref_slot_us": 290.832,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 218.4
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 26.816,
+    "p10_us": 25.917,
+    "p90_us": 28.358,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 782.1
+   },
+   "flush": {
+    "median_us": 105.472,
+    "p10_us": 102.432,
+    "p90_us": 119.875,
+    "n": 760,
+    "ref_slot_us": 290.784,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.8
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 23.808,
+    "p10_us": 22.688,
+    "p90_us": 24.8,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 880.9
+   },
+   "flush": {
+    "median_us": 102.096,
+    "p10_us": 97.984,
+    "p90_us": 122.608,
+    "n": 760,
+    "ref_slot_us": 292.16,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.4
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 26.784,
+    "p10_us": 24.8,
+    "p90_us": 26.912,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 783.0
+   },
+   "flush": {
+    "median_us": 94.976,
+    "p10_us": 90.173,
+    "p90_us": 111.626,
+    "n": 760,
+    "ref_slot_us": 291.072,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.8
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 30.752,
+    "p10_us": 28.864,
+    "p90_us": 31.139,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 682.0
+   },
+   "flush": {
+    "median_us": 98.992,
+    "p10_us": 93.184,
+    "p90_us": 114.688,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.9
+   }
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 32,
+   "arm": "bf16",
+   "weight_bytes": 41943040,
+   "hot": {
+    "median_us": 186.4,
+    "p10_us": 184.128,
+    "p90_us": 196.566,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.0
+   },
+   "flush": {
+    "median_us": 189.28,
+    "p10_us": 184.256,
+    "p90_us": 211.968,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 221.6
+   },
+   "kernels": [
+    {
+     "name": "nvjet_sm121_tst_mma_64x96x64_4_16x96x64_tmaAB_bz_TNNN",
+     "us": 185.99
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 29.888,
+    "p10_us": 28.736,
+    "p90_us": 31.136,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 701.7
+   },
+   "flush": {
+    "median_us": 102.864,
+    "p10_us": 99.888,
+    "p90_us": 116.781,
+    "n": 760,
+    "ref_slot_us": 290.352,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 203.9
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 3.23
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 91.27
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 28.08,
+    "p10_us": 26.752,
+    "p90_us": 29.027,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 746.8
+   },
+   "flush": {
+    "median_us": 98.88,
+    "p10_us": 95.776,
+    "p90_us": 110.525,
+    "n": 760,
+    "ref_slot_us": 290.368,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 212.1
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 91.43
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 42.208,
+    "p10_us": 41.184,
+    "p90_us": 44.045,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 496.9
+   },
+   "flush": {
+    "median_us": 105.488,
+    "p10_us": 101.616,
+    "p90_us": 126.368,
+    "n": 760,
+    "ref_slot_us": 290.8,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, -1, false>(int4 const*, int4 const*, in",
+     "us": 94.85
+    }
+   ]
+  },
+  {
+   "name": "gdn_in_proj_qkvz",
+   "n": 8192,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 20971520,
+   "hot": {
+    "median_us": 41.12,
+    "p10_us": 40.064,
+    "p90_us": 43.168,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 510.0
+   },
+   "flush": {
+    "median_us": 106.688,
+    "p10_us": 103.293,
+    "p90_us": 122.467,
+    "n": 760,
+    "ref_slot_us": 290.624,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.6
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, 8, false>(int4 const*, int4 const*, int",
+     "us": 97.5
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 1,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 16.928,
+    "p10_us": 16.544,
+    "p90_us": 18.624,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 929.1
+   },
+   "flush": {
+    "median_us": 99.2,
+    "p10_us": 95.872,
+    "p90_us": 115.622,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 158.6
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 98.49
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 1,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.592,
+    "p90_us": 18.656,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 422.3
+   },
+   "flush": {
+    "median_us": 45.568,
+    "p10_us": 43.008,
+    "p90_us": 56.33,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 172.6
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 38.59
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 1,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 16.608,
+    "p10_us": 16.512,
+    "p90_us": 16.64,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 473.5
+   },
+   "flush": {
+    "median_us": 42.064,
+    "p10_us": 39.152,
+    "p90_us": 52.339,
+    "n": 760,
+    "ref_slot_us": 290.736,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 187.0
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 39.17
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 1,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.464,
+    "p10_us": 10.429,
+    "p90_us": 10.496,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 751.6
+   },
+   "flush": {
+    "median_us": 40.8,
+    "p10_us": 37.024,
+    "p90_us": 53.702,
+    "n": 760,
+    "ref_slot_us": 292.544,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 192.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 36.77
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 1,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.432,
+    "p10_us": 10.368,
+    "p90_us": 10.496,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 753.9
+   },
+   "flush": {
+    "median_us": 39.792,
+    "p10_us": 34.608,
+    "p90_us": 57.114,
+    "n": 760,
+    "ref_slot_us": 294.032,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 197.6
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 37.95
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 2,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 18.656,
+    "p10_us": 18.528,
+    "p90_us": 18.752,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 843.1
+   },
+   "flush": {
+    "median_us": 71.648,
+    "p10_us": 67.741,
+    "p90_us": 89.763,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 219.5
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 2,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.448,
+    "p90_us": 16.64,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 474.4
+   },
+   "flush": {
+    "median_us": 45.568,
+    "p10_us": 42.541,
+    "p90_us": 56.211,
+    "n": 760,
+    "ref_slot_us": 290.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 172.6
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 2,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 14.56,
+    "p10_us": 14.496,
+    "p90_us": 14.592,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 540.1
+   },
+   "flush": {
+    "median_us": 41.904,
+    "p10_us": 38.813,
+    "p90_us": 59.002,
+    "n": 760,
+    "ref_slot_us": 291.968,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 187.7
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 2,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.464,
+    "p10_us": 10.4,
+    "p90_us": 10.528,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 751.6
+   },
+   "flush": {
+    "median_us": 41.92,
+    "p10_us": 37.498,
+    "p90_us": 55.318,
+    "n": 760,
+    "ref_slot_us": 292.896,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 187.6
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 2,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.496,
+    "p10_us": 10.336,
+    "p90_us": 10.752,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 749.3
+   },
+   "flush": {
+    "median_us": 39.296,
+    "p10_us": 33.984,
+    "p90_us": 55.562,
+    "n": 760,
+    "ref_slot_us": 294.656,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.1
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 4,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 24.352,
+    "p10_us": 22.848,
+    "p90_us": 24.8,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 645.9
+   },
+   "flush": {
+    "median_us": 72.656,
+    "p10_us": 66.544,
+    "p90_us": 92.826,
+    "n": 760,
+    "ref_slot_us": 293.904,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 216.5
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 70.53
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 4,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 16.608,
+    "p10_us": 16.512,
+    "p90_us": 16.672,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 473.5
+   },
+   "flush": {
+    "median_us": 45.056,
+    "p10_us": 41.984,
+    "p90_us": 59.178,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 174.5
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 41.22
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 4,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.512,
+    "p10_us": 12.448,
+    "p90_us": 12.576,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 628.5
+   },
+   "flush": {
+    "median_us": 42.848,
+    "p10_us": 39.04,
+    "p90_us": 53.088,
+    "n": 760,
+    "ref_slot_us": 291.968,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 183.5
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 41.31
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 4,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.448,
+    "p10_us": 10.349,
+    "p90_us": 10.576,
+    "n": 760,
+    "ref_slot_us": 1.84,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 752.7
+   },
+   "flush": {
+    "median_us": 40.96,
+    "p10_us": 36.896,
+    "p90_us": 55.37,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 192.0
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 37.25
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 4,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.464,
+    "p10_us": 10.368,
+    "p90_us": 10.912,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 751.6
+   },
+   "flush": {
+    "median_us": 38.176,
+    "p10_us": 34.944,
+    "p90_us": 53.226,
+    "n": 760,
+    "ref_slot_us": 292.736,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.0
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 38.08
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 8,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.464,
+    "p90_us": 18.752,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 844.5
+   },
+   "flush": {
+    "median_us": 72.672,
+    "p10_us": 69.44,
+    "p90_us": 85.952,
+    "n": 760,
+    "ref_slot_us": 291.008,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 216.4
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 8,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 14.56,
+    "p10_us": 14.496,
+    "p90_us": 14.592,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 540.1
+   },
+   "flush": {
+    "median_us": 46.08,
+    "p10_us": 42.656,
+    "p90_us": 59.206,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 170.7
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 8,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.512,
+    "p10_us": 12.384,
+    "p90_us": 26.262,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 628.5
+   },
+   "flush": {
+    "median_us": 42.208,
+    "p10_us": 39.04,
+    "p90_us": 55.392,
+    "n": 760,
+    "ref_slot_us": 291.712,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 186.3
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 8,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.496,
+    "p10_us": 10.368,
+    "p90_us": 12.064,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 749.3
+   },
+   "flush": {
+    "median_us": 41.024,
+    "p10_us": 37.952,
+    "p90_us": 52.771,
+    "n": 760,
+    "ref_slot_us": 291.776,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 191.7
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 8,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.944,
+    "p10_us": 10.592,
+    "p90_us": 12.48,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 718.6
+   },
+   "flush": {
+    "median_us": 40.064,
+    "p10_us": 36.752,
+    "p90_us": 55.056,
+    "n": 760,
+    "ref_slot_us": 291.056,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.3
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 16,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 20.704,
+    "p10_us": 20.32,
+    "p90_us": 22.534,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 759.7
+   },
+   "flush": {
+    "median_us": 72.672,
+    "p10_us": 69.501,
+    "p90_us": 83.616,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 216.4
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 16,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.48,
+    "p10_us": 12.352,
+    "p90_us": 12.608,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 630.2
+   },
+   "flush": {
+    "median_us": 46.096,
+    "p10_us": 43.072,
+    "p90_us": 55.174,
+    "n": 760,
+    "ref_slot_us": 291.808,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 170.6
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 16,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 8.608,
+    "p10_us": 8.48,
+    "p90_us": 10.176,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 913.6
+   },
+   "flush": {
+    "median_us": 44.096,
+    "p10_us": 40.253,
+    "p90_us": 55.328,
+    "n": 760,
+    "ref_slot_us": 291.776,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 178.3
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 16,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.48,
+    "p10_us": 12.448,
+    "p90_us": 12.512,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 630.2
+   },
+   "flush": {
+    "median_us": 40.064,
+    "p10_us": 35.29,
+    "p90_us": 55.36,
+    "n": 760,
+    "ref_slot_us": 293.824,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.3
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 16,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.48,
+    "p10_us": 12.448,
+    "p90_us": 12.512,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 630.2
+   },
+   "flush": {
+    "median_us": 40.928,
+    "p10_us": 37.213,
+    "p90_us": 50.915,
+    "n": 760,
+    "ref_slot_us": 291.872,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 192.2
+   }
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 32,
+   "arm": "bf16",
+   "weight_bytes": 15728640,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.48,
+    "p90_us": 16.672,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 948.9
+   },
+   "flush": {
+    "median_us": 76.464,
+    "p10_us": 71.68,
+    "p90_us": 88.067,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.7
+   },
+   "kernels": [
+    {
+     "name": "nvjet_sm121_tst_mma_64x32x64_8_16x32x64_tmaAB_bz_TNNN",
+     "us": 76.1
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 32,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 12.512,
+    "p10_us": 12.48,
+    "p90_us": 12.576,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 628.5
+   },
+   "flush": {
+    "median_us": 47.104,
+    "p10_us": 40.31,
+    "p90_us": 64.538,
+    "n": 760,
+    "ref_slot_us": 299.04,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 167.0
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 3.3
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 39.23
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 32,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 10.464,
+    "p10_us": 10.432,
+    "p90_us": 10.528,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 751.6
+   },
+   "flush": {
+    "median_us": 43.632,
+    "p10_us": 39.504,
+    "p90_us": 54.234,
+    "n": 760,
+    "ref_slot_us": 293.296,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 180.2
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 39.52
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 32,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 14.56,
+    "p10_us": 14.432,
+    "p90_us": 15.939,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 540.1
+   },
+   "flush": {
+    "median_us": 41.632,
+    "p10_us": 38.173,
+    "p90_us": 55.296,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 188.9
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 128, 2, 4, 8, false, 4, -1, false>(int4 const*, int4 const*, int",
+     "us": 39.2
+    }
+   ]
+  },
+  {
+   "name": "gdn_out_proj|qsa_o",
+   "n": 2560,
+   "k": 3072,
+   "m": 32,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 7864320,
+   "hot": {
+    "median_us": 16.608,
+    "p10_us": 16.544,
+    "p90_us": 16.672,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 473.5
+   },
+   "flush": {
+    "median_us": 42.48,
+    "p10_us": 38.464,
+    "p90_us": 59.712,
+    "n": 760,
+    "ref_slot_us": 292.32,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 185.1
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 128, 2, 4, 8, false, 4, 8, false>(int4 const*, int4 const*, int4",
+     "us": 39.26
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 1,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 195.776,
+    "p10_us": 192.797,
+    "p90_us": 205.386,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 174.1
+   },
+   "flush": {
+    "median_us": 206.576,
+    "p10_us": 201.472,
+    "p90_us": 227.126,
+    "n": 760,
+    "ref_slot_us": 291.072,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 165.0
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 205.76
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 32.992,
+    "p10_us": 32.96,
+    "p90_us": 33.024,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 516.5
+   },
+   "flush": {
+    "median_us": 86.944,
+    "p10_us": 83.104,
+    "p90_us": 103.584,
+    "n": 760,
+    "ref_slot_us": 291.68,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.0
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 81.54
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 27.2,
+    "p10_us": 26.976,
+    "p90_us": 28.611,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 626.4
+   },
+   "flush": {
+    "median_us": 82.944,
+    "p10_us": 78.848,
+    "p90_us": 100.128,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.4
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 80.26
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.608,
+    "p10_us": 15.008,
+    "p90_us": 16.64,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1026.0
+   },
+   "flush": {
+    "median_us": 83.072,
+    "p10_us": 78.976,
+    "p90_us": 98.374,
+    "n": 760,
+    "ref_slot_us": 291.712,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.1
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 78.62
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.48,
+    "p90_us": 16.608,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1028.0
+   },
+   "flush": {
+    "median_us": 79.344,
+    "p10_us": 75.248,
+    "p90_us": 94.704,
+    "n": 760,
+    "ref_slot_us": 292.368,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 214.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 77.28
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 2,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 138.288,
+    "p10_us": 134.368,
+    "p90_us": 153.44,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 246.4
+   },
+   "flush": {
+    "median_us": 150.528,
+    "p10_us": 146.432,
+    "p90_us": 169.808,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.4
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 27.152,
+    "p10_us": 26.944,
+    "p90_us": 28.864,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 627.6
+   },
+   "flush": {
+    "median_us": 86.176,
+    "p10_us": 82.816,
+    "p90_us": 99.488,
+    "n": 760,
+    "ref_slot_us": 291.68,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 197.7
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 24.896,
+    "p10_us": 24.768,
+    "p90_us": 26.624,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 684.4
+   },
+   "flush": {
+    "median_us": 83.184,
+    "p10_us": 80.752,
+    "p90_us": 94.387,
+    "n": 760,
+    "ref_slot_us": 290.576,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 204.8
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 15.072,
+    "p10_us": 14.685,
+    "p90_us": 16.576,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1130.5
+   },
+   "flush": {
+    "median_us": 80.896,
+    "p10_us": 78.845,
+    "p90_us": 86.189,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.6
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.512,
+    "p90_us": 16.608,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1028.0
+   },
+   "flush": {
+    "median_us": 80.752,
+    "p10_us": 78.557,
+    "p90_us": 86.048,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.0
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 4,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 142.496,
+    "p10_us": 141.312,
+    "p90_us": 148.554,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 239.2
+   },
+   "flush": {
+    "median_us": 154.224,
+    "p10_us": 148.48,
+    "p90_us": 179.2,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 221.0
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8",
+     "us": 151.2
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 26.848,
+    "p10_us": 26.784,
+    "p90_us": 26.944,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 634.7
+   },
+   "flush": {
+    "median_us": 86.928,
+    "p10_us": 79.872,
+    "p90_us": 102.544,
+    "n": 760,
+    "ref_slot_us": 297.984,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.0
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 78.78
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 24.768,
+    "p10_us": 24.576,
+    "p90_us": 24.928,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 688.0
+   },
+   "flush": {
+    "median_us": 82.944,
+    "p10_us": 78.848,
+    "p90_us": 99.328,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.4
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 78.94
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.48,
+    "p90_us": 16.704,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1028.0
+   },
+   "flush": {
+    "median_us": 86.592,
+    "p10_us": 81.661,
+    "p90_us": 105.674,
+    "n": 760,
+    "ref_slot_us": 293.312,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 196.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 81.06
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 20.544,
+    "p10_us": 18.816,
+    "p90_us": 20.736,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 829.4
+   },
+   "flush": {
+    "median_us": 80.08,
+    "p10_us": 76.224,
+    "p90_us": 99.142,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 212.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 80.32
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 8,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 129.28,
+    "p10_us": 127.936,
+    "p90_us": 136.794,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 263.6
+   },
+   "flush": {
+    "median_us": 151.68,
+    "p10_us": 147.44,
+    "p90_us": 174.064,
+    "n": 760,
+    "ref_slot_us": 292.88,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.7
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 26.816,
+    "p10_us": 26.368,
+    "p90_us": 26.848,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 635.4
+   },
+   "flush": {
+    "median_us": 87.648,
+    "p10_us": 83.648,
+    "p90_us": 107.456,
+    "n": 760,
+    "ref_slot_us": 292.928,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 194.4
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 22.72,
+    "p10_us": 22.592,
+    "p90_us": 22.816,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 750.0
+   },
+   "flush": {
+    "median_us": 84.224,
+    "p10_us": 80.061,
+    "p90_us": 100.694,
+    "n": 760,
+    "ref_slot_us": 293.6,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 202.3
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.544,
+    "p10_us": 16.445,
+    "p90_us": 16.64,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1029.9
+   },
+   "flush": {
+    "median_us": 82.432,
+    "p10_us": 78.496,
+    "p90_us": 99.968,
+    "n": 760,
+    "ref_slot_us": 293.248,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.7
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.48,
+    "p90_us": 16.672,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1028.0
+   },
+   "flush": {
+    "median_us": 81.28,
+    "p10_us": 77.149,
+    "p90_us": 102.32,
+    "n": 760,
+    "ref_slot_us": 293.504,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 209.6
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 16,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 141.408,
+    "p10_us": 139.357,
+    "p90_us": 148.576,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 241.0
+   },
+   "flush": {
+    "median_us": 153.952,
+    "p10_us": 149.405,
+    "p90_us": 175.555,
+    "n": 760,
+    "ref_slot_us": 293.184,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 221.4
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 20.64,
+    "p10_us": 20.544,
+    "p90_us": 20.736,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 825.6
+   },
+   "flush": {
+    "median_us": 89.552,
+    "p10_us": 85.053,
+    "p90_us": 106.342,
+    "n": 760,
+    "ref_slot_us": 293.024,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 190.3
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.496,
+    "p90_us": 18.752,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 914.9
+   },
+   "flush": {
+    "median_us": 85.984,
+    "p10_us": 81.792,
+    "p90_us": 105.344,
+    "n": 760,
+    "ref_slot_us": 292.992,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.2
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 18.592,
+    "p10_us": 18.496,
+    "p90_us": 18.752,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 916.5
+   },
+   "flush": {
+    "median_us": 80.544,
+    "p10_us": 77.44,
+    "p90_us": 97.702,
+    "n": 760,
+    "ref_slot_us": 293.216,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.6
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 18.656,
+    "p10_us": 18.493,
+    "p90_us": 20.608,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 913.3
+   },
+   "flush": {
+    "median_us": 85.76,
+    "p10_us": 81.274,
+    "p90_us": 102.605,
+    "n": 760,
+    "ref_slot_us": 293.92,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.7
+   }
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 32,
+   "arm": "bf16",
+   "weight_bytes": 34078720,
+   "hot": {
+    "median_us": 148.8,
+    "p10_us": 146.368,
+    "p90_us": 165.235,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 229.0
+   },
+   "flush": {
+    "median_us": 158.272,
+    "p10_us": 153.632,
+    "p90_us": 176.582,
+    "n": 760,
+    "ref_slot_us": 292.832,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 215.3
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align2>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align2",
+     "us": 156.36
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 22.752,
+    "p10_us": 22.72,
+    "p90_us": 24.576,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 748.9
+   },
+   "flush": {
+    "median_us": 89.12,
+    "p10_us": 82.976,
+    "p90_us": 107.232,
+    "n": 760,
+    "ref_slot_us": 297.952,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 191.2
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 3.14
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 78.21
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 20.704,
+    "p10_us": 20.608,
+    "p90_us": 20.736,
+    "n": 760,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 823.0
+   },
+   "flush": {
+    "median_us": 86.016,
+    "p10_us": 80.864,
+    "p90_us": 105.142,
+    "n": 760,
+    "ref_slot_us": 293.92,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.1
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 82.98
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 22.784,
+    "p10_us": 22.624,
+    "p90_us": 24.416,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 747.9
+   },
+   "flush": {
+    "median_us": 87.36,
+    "p10_us": 81.888,
+    "p90_us": 101.376,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 195.0
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, -1, false>(int4 const*, int4 const*, in",
+     "us": 80.71
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv",
+   "n": 6656,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 17039360,
+   "hot": {
+    "median_us": 23.184,
+    "p10_us": 22.752,
+    "p90_us": 24.832,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 735.0
+   },
+   "flush": {
+    "median_us": 91.136,
+    "p10_us": 86.333,
+    "p90_us": 105.67,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 187.0
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, 8, false>(int4 const*, int4 const*, int",
+     "us": 83.3
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 1,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 216.304,
+    "p10_us": 213.728,
+    "p90_us": 226.758,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 172.7
+   },
+   "flush": {
+    "median_us": 226.128,
+    "p10_us": 219.869,
+    "p90_us": 255.651,
+    "n": 760,
+    "ref_slot_us": 293.216,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 165.2
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 223.11
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 34.976,
+    "p10_us": 34.912,
+    "p90_us": 35.072,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 534.0
+   },
+   "flush": {
+    "median_us": 94.288,
+    "p10_us": 89.04,
+    "p90_us": 107.507,
+    "n": 760,
+    "ref_slot_us": 292.912,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.1
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 91.9
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 32.96,
+    "p10_us": 32.896,
+    "p90_us": 33.056,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 566.7
+   },
+   "flush": {
+    "median_us": 92.16,
+    "p10_us": 86.864,
+    "p90_us": 106.566,
+    "n": 760,
+    "ref_slot_us": 294.944,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 202.7
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 87.42
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 16.8,
+    "p10_us": 16.48,
+    "p90_us": 18.56,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1111.8
+   },
+   "flush": {
+    "median_us": 88.704,
+    "p10_us": 82.56,
+    "p90_us": 106.099,
+    "n": 760,
+    "ref_slot_us": 294.272,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.6
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 86.75
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 20.672,
+    "p10_us": 20.544,
+    "p90_us": 20.768,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 903.5
+   },
+   "flush": {
+    "median_us": 87.008,
+    "p10_us": 81.888,
+    "p90_us": 100.362,
+    "n": 760,
+    "ref_slot_us": 293.92,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 214.7
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 86.4
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 2,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 167.072,
+    "p10_us": 164.317,
+    "p90_us": 176.422,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.6
+   },
+   "flush": {
+    "median_us": 166.8,
+    "p10_us": 161.232,
+    "p90_us": 190.803,
+    "n": 760,
+    "ref_slot_us": 293.552,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.0
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 28.832,
+    "p10_us": 28.736,
+    "p90_us": 28.992,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 647.8
+   },
+   "flush": {
+    "median_us": 94.24,
+    "p10_us": 90.141,
+    "p90_us": 108.579,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 198.2
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 28.864,
+    "p10_us": 28.8,
+    "p90_us": 28.992,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 647.1
+   },
+   "flush": {
+    "median_us": 90.144,
+    "p10_us": 85.76,
+    "p90_us": 105.539,
+    "n": 760,
+    "ref_slot_us": 293.856,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 207.2
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 18.176,
+    "p10_us": 16.672,
+    "p90_us": 18.592,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1027.6
+   },
+   "flush": {
+    "median_us": 88.864,
+    "p10_us": 84.736,
+    "p90_us": 108.099,
+    "n": 760,
+    "ref_slot_us": 294.112,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.2
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 16.576,
+    "p10_us": 16.512,
+    "p90_us": 16.64,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1126.8
+   },
+   "flush": {
+    "median_us": 88.304,
+    "p10_us": 84.397,
+    "p90_us": 102.224,
+    "n": 760,
+    "ref_slot_us": 293.04,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 211.5
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 4,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 163.008,
+    "p10_us": 159.936,
+    "p90_us": 171.91,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 229.2
+   },
+   "flush": {
+    "median_us": 165.872,
+    "p10_us": 159.645,
+    "p90_us": 181.152,
+    "n": 760,
+    "ref_slot_us": 295.744,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.2
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8",
+     "us": 171.1
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 28.864,
+    "p10_us": 28.768,
+    "p90_us": 28.963,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 647.1
+   },
+   "flush": {
+    "median_us": 95.536,
+    "p10_us": 92.112,
+    "p90_us": 105.776,
+    "n": 760,
+    "ref_slot_us": 299.728,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 195.5
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.94
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 87.94
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 26.816,
+    "p10_us": 26.688,
+    "p90_us": 28.771,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 696.5
+   },
+   "flush": {
+    "median_us": 93.024,
+    "p10_us": 86.88,
+    "p90_us": 106.336,
+    "n": 760,
+    "ref_slot_us": 295.072,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.8
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 87.71
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 22.4,
+    "p10_us": 20.96,
+    "p90_us": 22.784,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 833.8
+   },
+   "flush": {
+    "median_us": 90.08,
+    "p10_us": 84.96,
+    "p90_us": 102.31,
+    "n": 760,
+    "ref_slot_us": 292.896,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 207.3
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 86.37
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.528,
+    "p90_us": 18.72,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1002.9
+   },
+   "flush": {
+    "median_us": 87.888,
+    "p10_us": 81.258,
+    "p90_us": 108.342,
+    "n": 760,
+    "ref_slot_us": 294.064,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 212.5
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 84.61
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 8,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 163.008,
+    "p10_us": 160.96,
+    "p90_us": 170.09,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 229.2
+   },
+   "flush": {
+    "median_us": 168.256,
+    "p10_us": 163.104,
+    "p90_us": 185.734,
+    "n": 760,
+    "ref_slot_us": 292.576,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.0
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 27.248,
+    "p10_us": 26.816,
+    "p90_us": 28.832,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 685.5
+   },
+   "flush": {
+    "median_us": 96.096,
+    "p10_us": 90.112,
+    "p90_us": 113.357,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 194.4
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 24.736,
+    "p10_us": 24.509,
+    "p90_us": 25.024,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 755.1
+   },
+   "flush": {
+    "median_us": 92.208,
+    "p10_us": 87.706,
+    "p90_us": 102.464,
+    "n": 760,
+    "ref_slot_us": 292.8,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 202.6
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.432,
+    "p90_us": 20.416,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1002.9
+   },
+   "flush": {
+    "median_us": 90.352,
+    "p10_us": 85.984,
+    "p90_us": 100.483,
+    "n": 760,
+    "ref_slot_us": 293.728,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.7
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 18.624,
+    "p10_us": 18.496,
+    "p90_us": 18.72,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 1002.9
+   },
+   "flush": {
+    "median_us": 87.04,
+    "p10_us": 82.944,
+    "p90_us": 99.328,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 214.6
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 16,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 169.456,
+    "p10_us": 167.005,
+    "p90_us": 176.256,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.4
+   },
+   "flush": {
+    "median_us": 167.536,
+    "p10_us": 164.464,
+    "p90_us": 175.728,
+    "n": 760,
+    "ref_slot_us": 290.192,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.0
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 22.688,
+    "p10_us": 21.664,
+    "p90_us": 22.816,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 823.2
+   },
+   "flush": {
+    "median_us": 96.112,
+    "p10_us": 93.277,
+    "p90_us": 102.438,
+    "n": 760,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 194.3
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 21.536,
+    "p10_us": 20.576,
+    "p90_us": 22.752,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 867.3
+   },
+   "flush": {
+    "median_us": 92.688,
+    "p10_us": 89.181,
+    "p90_us": 108.195,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 201.5
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 20.64,
+    "p10_us": 20.544,
+    "p90_us": 20.832,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 904.9
+   },
+   "flush": {
+    "median_us": 89.088,
+    "p10_us": 84.96,
+    "p90_us": 102.4,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 209.7
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 22.72,
+    "p10_us": 22.592,
+    "p90_us": 22.944,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 822.1
+   },
+   "flush": {
+    "median_us": 90.336,
+    "p10_us": 86.637,
+    "p90_us": 107.069,
+    "n": 760,
+    "ref_slot_us": 293.68,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 206.8
+   }
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 32,
+   "arm": "bf16",
+   "weight_bytes": 37355520,
+   "hot": {
+    "median_us": 168.032,
+    "p10_us": 164.957,
+    "p90_us": 175.782,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.3
+   },
+   "flush": {
+    "median_us": 171.92,
+    "p10_us": 163.248,
+    "p90_us": 195.574,
+    "n": 760,
+    "ref_slot_us": 297.072,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 217.3
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align2>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align2",
+     "us": 169.47
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 24.736,
+    "p10_us": 24.608,
+    "p90_us": 24.8,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 755.1
+   },
+   "flush": {
+    "median_us": 99.248,
+    "p10_us": 93.373,
+    "p90_us": 116.01,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 188.2
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 3.2
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 86.85
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 22.24,
+    "p10_us": 20.64,
+    "p90_us": 22.72,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 839.8
+   },
+   "flush": {
+    "median_us": 93.2,
+    "p10_us": 89.149,
+    "p90_us": 110.445,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.4
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 89.99
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 25.248,
+    "p10_us": 24.8,
+    "p90_us": 26.848,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 739.8
+   },
+   "flush": {
+    "median_us": 93.184,
+    "p10_us": 88.509,
+    "p90_us": 111.626,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.4
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 128, 2, 8, 4, false, 4, -1, false>(int4 const*, int4 const*, int",
+     "us": 88.58
+    }
+   ]
+  },
+  {
+   "name": "qsa_qkv+index",
+   "n": 7296,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 18677760,
+   "hot": {
+    "median_us": 28.864,
+    "p10_us": 28.768,
+    "p90_us": 29.088,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 647.1
+   },
+   "flush": {
+    "median_us": 92.16,
+    "p10_us": 88.128,
+    "p90_us": 110.333,
+    "n": 760,
+    "ref_slot_us": 293.888,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 202.7
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 128, 2, 8, 4, false, 4, 8, false>(int4 const*, int4 const*, int4",
+     "us": 85.92
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 1,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 408.768,
+    "p10_us": 401.6,
+    "p90_us": 418.976,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 160.3
+   },
+   "flush": {
+    "median_us": 406.304,
+    "p10_us": 386.976,
+    "p90_us": 430.042,
+    "n": 760,
+    "ref_slot_us": 298.08,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 161.3
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 391.11
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 144.544,
+    "p10_us": 142.496,
+    "p90_us": 148.64,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.7
+   },
+   "flush": {
+    "median_us": 157.248,
+    "p10_us": 152.576,
+    "p90_us": 172.003,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 208.4
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.91
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 151.46
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 140.752,
+    "p10_us": 138.842,
+    "p90_us": 147.456,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 232.8
+   },
+   "flush": {
+    "median_us": 153.856,
+    "p10_us": 149.018,
+    "p90_us": 177.632,
+    "n": 760,
+    "ref_slot_us": 293.664,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 213.0
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 154.59
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 144.544,
+    "p10_us": 142.432,
+    "p90_us": 150.106,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.7
+   },
+   "flush": {
+    "median_us": 149.376,
+    "p10_us": 143.968,
+    "p90_us": 164.682,
+    "n": 760,
+    "ref_slot_us": 293.28,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 219.4
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 147.26
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 1,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 131.664,
+    "p10_us": 129.248,
+    "p90_us": 137.184,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 248.9
+   },
+   "flush": {
+    "median_us": 144.224,
+    "p10_us": 138.272,
+    "p90_us": 160.339,
+    "n": 760,
+    "ref_slot_us": 293.024,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 227.2
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 140.1
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 2,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 290.224,
+    "p10_us": 286.4,
+    "p90_us": 304.262,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.8
+   },
+   "flush": {
+    "median_us": 289.792,
+    "p10_us": 282.624,
+    "p90_us": 311.296,
+    "n": 760,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.1
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 156.4,
+    "p10_us": 154.496,
+    "p90_us": 160.96,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 209.5
+   },
+   "flush": {
+    "median_us": 159.152,
+    "p10_us": 152.774,
+    "p90_us": 176.64,
+    "n": 760,
+    "ref_slot_us": 294.416,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.9
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 154.272,
+    "p10_us": 151.904,
+    "p90_us": 158.784,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 212.4
+   },
+   "flush": {
+    "median_us": 155.536,
+    "p10_us": 151.808,
+    "p90_us": 169.12,
+    "n": 760,
+    "ref_slot_us": 291.776,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.7
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 129.184,
+    "p10_us": 127.424,
+    "p90_us": 133.248,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 253.7
+   },
+   "flush": {
+    "median_us": 148.512,
+    "p10_us": 142.176,
+    "p90_us": 161.792,
+    "n": 760,
+    "ref_slot_us": 294.912,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.6
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 2,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 135.2,
+    "p10_us": 133.312,
+    "p90_us": 138.499,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 242.4
+   },
+   "flush": {
+    "median_us": 148.768,
+    "p10_us": 143.453,
+    "p90_us": 169.75,
+    "n": 760,
+    "ref_slot_us": 292.896,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.3
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 4,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 281.76,
+    "p10_us": 278.976,
+    "p90_us": 295.075,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 232.6
+   },
+   "flush": {
+    "median_us": 281.84,
+    "p10_us": 277.485,
+    "p90_us": 299.872,
+    "n": 760,
+    "ref_slot_us": 291.728,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 232.5
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 280.64
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 139.648,
+    "p10_us": 138.368,
+    "p90_us": 144.326,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 234.6
+   },
+   "flush": {
+    "median_us": 157.584,
+    "p10_us": 153.568,
+    "p90_us": 173.027,
+    "n": 760,
+    "ref_slot_us": 291.872,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 207.9
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 155.59
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 139.408,
+    "p10_us": 137.405,
+    "p90_us": 141.504,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 235.1
+   },
+   "flush": {
+    "median_us": 154.368,
+    "p10_us": 150.973,
+    "p90_us": 171.258,
+    "n": 760,
+    "ref_slot_us": 291.04,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 212.3
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 150.69
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 128.752,
+    "p10_us": 127.488,
+    "p90_us": 130.304,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 254.5
+   },
+   "flush": {
+    "median_us": 147.424,
+    "p10_us": 145.344,
+    "p90_us": 153.635,
+    "n": 760,
+    "ref_slot_us": 289.824,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.3
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, -1, false>(int4 const*, int4 const*, int4",
+     "us": 142.59
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 4,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 142.496,
+    "p10_us": 141.44,
+    "p90_us": 143.552,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 230.0
+   },
+   "flush": {
+    "median_us": 148.48,
+    "p10_us": 146.845,
+    "p90_us": 152.547,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.7
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 1, 8, 8, true, 4, 8, false>(int4 const*, int4 const*, int4*",
+     "us": 145.28
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 8,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 289.984,
+    "p10_us": 287.936,
+    "p90_us": 296.163,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.0
+   },
+   "flush": {
+    "median_us": 289.616,
+    "p10_us": 286.72,
+    "p90_us": 296.586,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.3
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 139.024,
+    "p10_us": 137.536,
+    "p90_us": 140.448,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 235.7
+   },
+   "flush": {
+    "median_us": 153.472,
+    "p10_us": 151.264,
+    "p90_us": 156.672,
+    "n": 760,
+    "ref_slot_us": 289.824,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 213.5
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 133.2,
+    "p10_us": 131.52,
+    "p90_us": 135.136,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 246.0
+   },
+   "flush": {
+    "median_us": 149.728,
+    "p10_us": 147.456,
+    "p90_us": 153.632,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 218.9
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 134.272,
+    "p10_us": 133.088,
+    "p90_us": 136.256,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 244.0
+   },
+   "flush": {
+    "median_us": 151.216,
+    "p10_us": 148.413,
+    "p90_us": 162.563,
+    "n": 760,
+    "ref_slot_us": 290.048,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 216.7
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 8,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 137.632,
+    "p10_us": 136.416,
+    "p90_us": 141.13,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 238.1
+   },
+   "flush": {
+    "median_us": 148.352,
+    "p10_us": 145.632,
+    "p90_us": 152.544,
+    "n": 760,
+    "ref_slot_us": 289.824,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 220.9
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 16,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 295.04,
+    "p10_us": 292.413,
+    "p90_us": 314.573,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.1
+   },
+   "flush": {
+    "median_us": 294.656,
+    "p10_us": 290.493,
+    "p90_us": 313.059,
+    "n": 760,
+    "ref_slot_us": 291.072,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.4
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 144.544,
+    "p10_us": 143.072,
+    "p90_us": 147.459,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 226.7
+   },
+   "flush": {
+    "median_us": 159.584,
+    "p10_us": 157.629,
+    "p90_us": 163.555,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.3
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 141.408,
+    "p10_us": 140.189,
+    "p90_us": 143.488,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 231.7
+   },
+   "flush": {
+    "median_us": 155.968,
+    "p10_us": 153.728,
+    "p90_us": 166.806,
+    "n": 760,
+    "ref_slot_us": 290.464,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 210.1
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 147.616,
+    "p10_us": 146.528,
+    "p90_us": 150.691,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 222.0
+   },
+   "flush": {
+    "median_us": 149.68,
+    "p10_us": 147.456,
+    "p90_us": 154.474,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 218.9
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 16,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 138.208,
+    "p10_us": 136.733,
+    "p90_us": 140.416,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 237.1
+   },
+   "flush": {
+    "median_us": 146.432,
+    "p10_us": 144.544,
+    "p90_us": 151.091,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.8
+   }
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 32,
+   "arm": "bf16",
+   "weight_bytes": 65536000,
+   "hot": {
+    "median_us": 291.632,
+    "p10_us": 288.861,
+    "p90_us": 312.138,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.7
+   },
+   "flush": {
+    "median_us": 290.608,
+    "p10_us": 287.744,
+    "p90_us": 294.915,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.5
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x1_tn_align8",
+     "us": 285.54
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_cutlass",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 159.904,
+    "p10_us": 158.749,
+    "p90_us": 160.928,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 204.9
+   },
+   "flush": {
+    "median_us": 163.776,
+    "p10_us": 161.376,
+    "p90_us": 167.872,
+    "n": 760,
+    "ref_slot_us": 289.856,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 200.1
+   },
+   "kernels": [
+    {
+     "name": "void vllm::dynamic_per_token_scaled_fp8_quant_kernel_strided<c10::BFloat16, c10::Float8_e4m3fn>(c10::Float8_e4m3fn*, float*, c10::BFloat16 const*, float const*,",
+     "us": 3.46
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 152.93
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a8_gemm_only",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 156.48,
+    "p10_us": 155.005,
+    "p90_us": 158.726,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 209.4
+   },
+   "flush": {
+    "median_us": 159.712,
+    "p10_us": 157.488,
+    "p90_us": 170.4,
+    "n": 760,
+    "ref_slot_us": 289.968,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 205.2
+   },
+   "kernels": [
+    {
+     "name": "_ZN7cutlass13device_kernelI19enable_sm120_familyINS_4gemm6kernel13GemmUniversalIN4cute5tupleIJiiiiEEENS2_10collective13CollectiveMmaINS2_31MainloopSm120TmaWarpS",
+     "us": 156.35
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_ch",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 140.736,
+    "p10_us": 139.424,
+    "p90_us": 144.547,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 232.8
+   },
+   "flush": {
+    "median_us": 157.664,
+    "p10_us": 155.133,
+    "p90_us": 160.768,
+    "n": 760,
+    "ref_slot_us": 289.792,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 207.8
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, -1, false>(int4 const*, int4 const*, in",
+     "us": 145.73
+    }
+   ]
+  },
+  {
+   "name": "ple_kv_proj",
+   "n": 12800,
+   "k": 2560,
+   "m": 32,
+   "arm": "w8a16_marlin_b128",
+   "weight_bytes": 32768000,
+   "hot": {
+    "median_us": 142.464,
+    "p10_us": 141.408,
+    "p90_us": 146.467,
+    "n": 760,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 230.0
+   },
+   "flush": {
+    "median_us": 160.448,
+    "p10_us": 158.112,
+    "p90_us": 172.842,
+    "n": 760,
+    "ref_slot_us": 290.336,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 204.2
+   },
+   "kernels": [
+    {
+     "name": "void marlin::Marlin<1125899906909960l, 2814749767172868l, 1125899906909960l, 1125899906909960l, 256, 2, 16, 4, false, 4, 8, false>(int4 const*, int4 const*, int",
+     "us": 148.58
+    }
+   ]
+  }
+ ]
+}

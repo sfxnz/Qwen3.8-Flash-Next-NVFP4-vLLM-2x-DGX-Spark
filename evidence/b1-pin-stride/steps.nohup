@@ -1,0 +1,21 @@
+2026-09-29T13:41:08.106Z [b1-pin-stride] gate rc=1
+2026-09-29T13:41:08.107Z [b1-pin-stride] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b1-pin-stride/diverse.jsonl --label b1-pin-stride
+2026-09-29T13:49:02.587Z [b1-pin-stride] end diverse rc=0
+2026-09-29T13:49:02.589Z [b1-pin-stride] start sampled: python3 bench_sampled.py --url http://127.0.0.1:8000/v1/chat/completions --profiles A T1 --concurrency 1 8 --prompts 8 --reps 1 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b1-pin-stride/sampled.jsonl --label b1-pin-stride
+2026-09-29T13:51:14.493Z [b1-pin-stride] end sampled rc=0
+2026-09-29T13:51:15.181Z [b1-pin-stride] memcheck ok before qaa: spark1 avail=14247MB swap_used spark1=8153MB spark2=4374MB
+2026-09-29T13:51:15.183Z [b1-pin-stride] start t1-a: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1-a --limit 2
+2026-09-29T13:51:27.496Z [b1-pin-stride] end t1-a rc=0
+2026-09-29T13:51:27.497Z [b1-pin-stride] start t1-b: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1-b --limit 2
+2026-09-29T13:51:38.768Z [b1-pin-stride] end t1-b rc=0
+2026-09-29T13:51:38.770Z [b1-pin-stride] start t1-aa: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1-a /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1-b --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b1-pin-stride/t1-aa.json
+2026-09-29T13:51:38.885Z [b1-pin-stride] end t1-aa rc=1
+2026-09-29T13:51:38.887Z [b1-pin-stride] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1g --limit 10 --repeats 5
+2026-09-29T13:55:58.174Z [b1-pin-stride] end t1g rc=0
+2026-09-29T13:55:58.176Z [b1-pin-stride] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b1-pin-stride/t1g-self.json
+2026-09-29T13:55:58.270Z [b1-pin-stride] end t1g-self rc=0
+2026-09-29T13:55:58.284Z [b1-pin-stride] start t2: python3 quality/t2.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t2 --tasks tools,json,rep4,effort,ifeval,gsm8k --workers 4
+2026-09-29T14:17:56.765Z [b1-pin-stride] end t2 rc=0
+2026-09-29T14:17:57.449Z [b1-pin-stride] memcheck ok before t3: spark1 avail=14062MB swap_used spark1=8101MB spark2=4367MB
+2026-09-29T14:17:57.451Z [b1-pin-stride] start t3: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t3 --lengths 4096,16384,32768
+2026-09-29T14:19:41.747Z [b1-pin-stride] end t3 rc=0

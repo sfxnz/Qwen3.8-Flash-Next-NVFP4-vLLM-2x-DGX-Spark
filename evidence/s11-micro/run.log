@@ -1,0 +1,29 @@
+== S1.1 microbench: OUT=/home/sfxnz/projects/data/qwen38-s11/session1 IMAGES=[pin v030] NCCL_IMAGES=[pin v030] STEPS=[device gemm drafthead hc fp8 moe nccl allreduce] REPS=2
+== pin head: device_facts.py 
+== pin head: gemm_sweep.py gemm --algo-log
+== pin head: gemm_sweep.py gemm
+== pin head: gemm_sweep.py drafthead
+== pin head: hc_bench.py run
+== pin head: fp8_sweep.py run
+== pin head: moe_nvfp4.py run
+== v030 head: device_facts.py 
+== v030 head: gemm_sweep.py gemm --algo-log
+== v030 head: gemm_sweep.py gemm
+== v030 head: gemm_sweep.py drafthead
+== v030 head: hc_bench.py run
+== v030 head: fp8_sweep.py run
+== v030 head: moe_nvfp4.py run
+== pin nccl_decode_sweep.py arm=keep port=29742 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== pin nccl_decode_sweep.py arm=mix0 port=29743 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_GRAPH_MIXING_SUPPORT=0
+== pin nccl_decode_sweep.py arm=keep port=29744 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== pin nccl_decode_sweep.py arm=mix0 port=29745 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_GRAPH_MIXING_SUPPORT=0
+== pin nccl_allreduce_sweep.py arm=single port=29746 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== pin nccl_allreduce_sweep.py arm=dual port=29747 env: NCCL_IB_HCA=rocep1s0f1,roceP2p1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=0 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_IB_MERGE_NICS=0
+== v030 nccl_decode_sweep.py arm=keep port=29748 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== v030 nccl_decode_sweep.py arm=mix0 port=29749 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_GRAPH_MIXING_SUPPORT=0
+== v030 nccl_decode_sweep.py arm=keep port=29750 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== v030 nccl_decode_sweep.py arm=mix0 port=29751 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_GRAPH_MIXING_SUPPORT=0
+== v030 nccl_allreduce_sweep.py arm=single port=29752 env: NCCL_IB_HCA=rocep1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=1 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0
+== v030 nccl_allreduce_sweep.py arm=dual port=29753 env: NCCL_IB_HCA=rocep1s0f1,roceP2p1s0f1 NCCL_NET=IB NCCL_IB_DISABLE=0 NCCL_CROSS_NIC=0 NCCL_NVLS_ENABLE=0 NCCL_CUMEM_ENABLE=0 NCCL_IB_MERGE_NICS=0
+== go/no-go table: /home/sfxnz/projects/data/qwen38-s11/session1/gonogo.md
+== results in /home/sfxnz/projects/data/qwen38-s11/session1

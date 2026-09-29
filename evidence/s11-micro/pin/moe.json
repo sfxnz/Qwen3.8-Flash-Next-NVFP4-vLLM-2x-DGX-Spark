@@ -1,0 +1,3494 @@
+{
+ "bench": "moe_nvfp4",
+ "meta": {
+  "host": "spark1",
+  "time": "2026-09-29T12:19:33Z",
+  "image": "vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.28.1rc1.dev437+ge962733e0",
+  "flashinfer": "0.6.18"
+ },
+ "rows": [
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 101.776,
+    "p10_us": 98.893,
+    "p90_us": 105.872,
+    "n": 330,
+    "ref_slot_us": 290.416,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.664,
+    "p10_us": 61.501,
+    "p90_us": 63.459,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.693,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.08
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.18
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.91
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.77
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.88
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 49.02
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.65
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.93
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 31.65
+    }
+   ],
+   "kernels_us": 106.57,
+   "n_kernels": 10,
+   "fc1_us": 49.02,
+   "fc2_us": 31.65,
+   "fc2_x_floor": 1.58
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 103.952,
+    "p10_us": 101.245,
+    "p90_us": 107.552,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 63.712,
+    "p10_us": 63.232,
+    "p90_us": 63.744,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.73,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.18
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.94
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.63
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.77
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.22
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.97
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 30.24
+    }
+   ],
+   "kernels_us": 104.99,
+   "n_kernels": 9,
+   "fc1_us": 48.22,
+   "fc2_us": 30.24,
+   "fc2_x_floor": 1.51
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 40,
+   "floor_us": 240.42,
+   "fc1_floor_us": 160.28,
+   "fc2_floor_us": 80.14,
+   "flush": {
+    "median_us": 295.968,
+    "p10_us": 292.013,
+    "p90_us": 299.926,
+    "n": 330,
+    "ref_slot_us": 290.704,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 292.736,
+    "p10_us": 290.938,
+    "p90_us": 295.36,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.231,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.78
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.18
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.3
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.06
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 172.19
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.55
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.18
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 100.35
+    }
+   ],
+   "kernels_us": 298.65,
+   "n_kernels": 10,
+   "fc1_us": 172.19,
+   "fc2_us": 100.35,
+   "fc2_x_floor": 1.252
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 40,
+   "floor_us": 240.42,
+   "fc1_floor_us": 160.28,
+   "fc2_floor_us": 80.14,
+   "flush": {
+    "median_us": 294.88,
+    "p10_us": 291.002,
+    "p90_us": 299.798,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 290.512,
+    "p10_us": 288.016,
+    "p90_us": 296.704,
+    "n": 330,
+    "ref_slot_us": 1.872,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.227,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.11
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.02
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.3
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.47
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.1
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 172.71
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.71
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.31
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 98.88
+    }
+   ],
+   "kernels_us": 296.61,
+   "n_kernels": 9,
+   "fc1_us": 172.71,
+   "fc2_us": 98.88,
+   "fc2_x_floor": 1.234
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 72,
+   "floor_us": 432.75,
+   "fc1_floor_us": 288.5,
+   "fc2_floor_us": 144.25,
+   "flush": {
+    "median_us": 500.848,
+    "p10_us": 497.101,
+    "p90_us": 505.491,
+    "n": 330,
+    "ref_slot_us": 290.704,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 499.904,
+    "p10_us": 496.896,
+    "p90_us": 505.024,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.157,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.43
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.24
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.34
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.65
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.74
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 303.83
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.08
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.76
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 176.57
+    }
+   ],
+   "kernels_us": 510.65,
+   "n_kernels": 10,
+   "fc1_us": 303.83,
+   "fc2_us": 176.57,
+   "fc2_x_floor": 1.224
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 72,
+   "floor_us": 432.75,
+   "fc1_floor_us": 288.5,
+   "fc2_floor_us": 144.25,
+   "flush": {
+    "median_us": 499.488,
+    "p10_us": 495.549,
+    "p90_us": 527.235,
+    "n": 330,
+    "ref_slot_us": 291.04,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 495.504,
+    "p10_us": 492.384,
+    "p90_us": 499.872,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.154,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.43
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.08
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.42
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.15
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 303.04
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.08
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.73
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 173.73
+    }
+   ],
+   "kernels_us": 504.67,
+   "n_kernels": 9,
+   "fc1_us": 303.04,
+   "fc2_us": 173.73,
+   "fc2_x_floor": 1.204
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 138,
+   "floor_us": 829.44,
+   "fc1_floor_us": 552.96,
+   "fc2_floor_us": 276.48,
+   "flush": {
+    "median_us": 910.144,
+    "p10_us": 905.312,
+    "p90_us": 923.418,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 907.04,
+    "p10_us": 902.432,
+    "p90_us": 915.92,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.097,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.59
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.52
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 574.48
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.53
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.86
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 323.1
+    }
+   ],
+   "kernels_us": 929.14,
+   "n_kernels": 10,
+   "fc1_us": 574.48,
+   "fc2_us": 323.1,
+   "fc2_x_floor": 1.169
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 138,
+   "floor_us": 829.44,
+   "fc1_floor_us": 552.96,
+   "fc2_floor_us": 276.48,
+   "flush": {
+    "median_us": 908.032,
+    "p10_us": 903.168,
+    "p90_us": 952.525,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 904.352,
+    "p10_us": 900.285,
+    "p90_us": 914.118,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.095,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.66
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.52
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 574.88
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.56
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.86
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 320.61
+    }
+   ],
+   "kernels_us": 924.65,
+   "n_kernels": 9,
+   "fc1_us": 574.88,
+   "fc2_us": 320.61,
+   "fc2_x_floor": 1.16
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 245,
+   "floor_us": 1472.56,
+   "fc1_floor_us": 981.7,
+   "fc2_floor_us": 490.85,
+   "flush": {
+    "median_us": 1584.128,
+    "p10_us": 1578.013,
+    "p90_us": 1594.4,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 1581.264,
+    "p10_us": 1575.072,
+    "p90_us": 1626.922,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.076,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.78
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.65
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 7.07
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 1013.19
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 7.33
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.82
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 560.69
+    }
+   ],
+   "kernels_us": 1608.31,
+   "n_kernels": 10,
+   "fc1_us": 1013.19,
+   "fc2_us": 560.69,
+   "fc2_x_floor": 1.142
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 245,
+   "floor_us": 1472.56,
+   "fc1_floor_us": 981.7,
+   "fc2_floor_us": 490.85,
+   "flush": {
+    "median_us": 1606.624,
+    "p10_us": 1594.336,
+    "p90_us": 1644.563,
+    "n": 330,
+    "ref_slot_us": 292.864,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 1602.576,
+    "p10_us": 1592.544,
+    "p90_us": 1654.198,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.091,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.78
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.34
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.68
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 8.19
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 1022.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 7.33
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.73
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 563.94
+    }
+   ],
+   "kernels_us": 1619.86,
+   "n_kernels": 9,
+   "fc1_us": 1022.86,
+   "fc2_us": 563.94,
+   "fc2_x_floor": 1.149
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 104.928,
+    "p10_us": 102.592,
+    "p90_us": 108.704,
+    "n": 330,
+    "ref_slot_us": 290.624,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 63.712,
+    "p10_us": 63.296,
+    "p90_us": 63.712,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.746,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.59
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.18
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.94
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.77
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.93
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 4.03
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 29.79
+    }
+   ],
+   "kernels_us": 105.25,
+   "n_kernels": 10,
+   "fc1_us": 48.93,
+   "fc2_us": 29.79,
+   "fc2_x_floor": 1.487
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 104.432,
+    "p10_us": 101.456,
+    "p90_us": 108.352,
+    "n": 330,
+    "ref_slot_us": 290.832,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 63.488,
+    "p10_us": 61.92,
+    "p90_us": 63.68,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.738,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.14
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.91
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.6
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 5.25
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 47.62
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.9
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 29.92
+    }
+   ],
+   "kernels_us": 104.38,
+   "n_kernels": 9,
+   "fc1_us": 47.62,
+   "fc2_us": 29.92,
+   "fc2_x_floor": 1.494
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 107.36,
+    "p10_us": 104.445,
+    "p90_us": 110.563,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.856,
+    "p10_us": 61.536,
+    "p90_us": 65.635,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.786,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.85
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.21
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.11
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.54
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.8
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.93
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.54
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 32.73
+    }
+   ],
+   "kernels_us": 108.67,
+   "n_kernels": 10,
+   "fc1_us": 48.8,
+   "fc2_us": 32.73,
+   "fc2_x_floor": 1.634
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 105.632,
+    "p10_us": 102.432,
+    "p90_us": 118.918,
+    "n": 330,
+    "ref_slot_us": 291.808,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 65.728,
+    "p10_us": 65.504,
+    "p90_us": 67.747,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.758,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.27
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.14
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.3
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 8.48
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 5.41
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 60.51
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 4.03
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.15
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 32.9
+    }
+   ],
+   "kernels_us": 124.19,
+   "n_kernels": 9,
+   "fc1_us": 60.51,
+   "fc2_us": 32.9,
+   "fc2_x_floor": 1.643
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 107.6,
+    "p10_us": 105.44,
+    "p90_us": 111.36,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.632,
+    "p10_us": 61.28,
+    "p90_us": 63.68,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.79,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.21
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.02
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.88
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.67
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 47.42
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.52
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 30.01
+    }
+   ],
+   "kernels_us": 103.2,
+   "n_kernels": 10,
+   "fc1_us": 47.42,
+   "fc2_us": 30.01,
+   "fc2_x_floor": 1.498
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 106.464,
+    "p10_us": 103.632,
+    "p90_us": 109.568,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.568,
+    "p10_us": 59.677,
+    "p90_us": 62.086,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.771,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.34
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.85
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 47.77
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.74
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 30.78
+    }
+   ],
+   "kernels_us": 103.0,
+   "n_kernels": 9,
+   "fc1_us": 47.77,
+   "fc2_us": 30.78,
+   "fc2_x_floor": 1.537
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 113.264,
+    "p10_us": 110.848,
+    "p90_us": 116.077,
+    "n": 330,
+    "ref_slot_us": 290.56,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 63.68,
+    "p10_us": 63.392,
+    "p90_us": 63.914,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.885,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.53
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.14
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.08
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.04
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.38
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.85
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.0
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.68
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 30.43
+    }
+   ],
+   "kernels_us": 105.15,
+   "n_kernels": 10,
+   "fc1_us": 48.0,
+   "fc2_us": 30.43,
+   "fc2_x_floor": 1.519
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 113.664,
+    "p10_us": 110.838,
+    "p90_us": 120.65,
+    "n": 330,
+    "ref_slot_us": 290.912,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.808,
+    "p10_us": 61.488,
+    "p90_us": 63.664,
+    "n": 330,
+    "ref_slot_us": 1.872,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.891,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.89
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.8
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.38
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.97
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 31.42
+    }
+   ],
+   "kernels_us": 106.98,
+   "n_kernels": 9,
+   "fc1_us": 48.38,
+   "fc2_us": 31.42,
+   "fc2_x_floor": 1.569
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 120.928,
+    "p10_us": 118.781,
+    "p90_us": 124.928,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 67.744,
+    "p10_us": 65.53,
+    "p90_us": 69.792,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 2.012,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.75
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.56
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.1
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 7.14
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.88
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 48.7
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.94
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 31.9
+    }
+   ],
+   "kernels_us": 110.01,
+   "n_kernels": 10,
+   "fc1_us": 48.7,
+   "fc2_us": 31.9,
+   "fc2_x_floor": 1.593
+  },
+  {
+   "config": "tp2",
+   "e_local": 512,
+   "n": 320,
+   "ep_size": 1,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 921600,
+    "fc2": 460800,
+    "total": 1382400
+   },
+   "autotuned": true,
+   "distinct_local_experts": 10,
+   "floor_us": 60.1,
+   "fc1_floor_us": 40.07,
+   "fc2_floor_us": 20.03,
+   "flush": {
+    "median_us": 129.056,
+    "p10_us": 126.458,
+    "p90_us": 132.17,
+    "n": 330,
+    "ref_slot_us": 290.784,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 82.112,
+    "p10_us": 80.096,
+    "p90_us": 84.192,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 2.147,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<512>(int const*, int*, int*, long, long, int)",
+     "us": 6.5
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<512>(int const*, int*, long*, long, long)",
+     "us": 2.34
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 3.14
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 8.32
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.91
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 55.39
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 4.22
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 31.81
+    }
+   ],
+   "kernels_us": 115.65,
+   "n_kernels": 9,
+   "fc1_us": 55.39,
+   "fc2_us": 31.81,
+   "fc2_x_floor": 1.588
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 116.304,
+    "p10_us": 113.632,
+    "p90_us": 119.914,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 73.408,
+    "p10_us": 71.872,
+    "p90_us": 73.92,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.612,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.43
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.79
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.67
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.64
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 58.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.46
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 32.61
+    }
+   ],
+   "kernels_us": 114.5,
+   "n_kernels": 10,
+   "fc1_us": 58.98,
+   "fc2_us": 32.61,
+   "fc2_x_floor": 1.356
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 114.688,
+    "p10_us": 112.64,
+    "p90_us": 117.856,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 67.808,
+    "p10_us": 67.648,
+    "p90_us": 69.731,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.59,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.66
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.79
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.73
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 5.38
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 60.6
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.78
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 33.12
+    }
+   ],
+   "kernels_us": 116.0,
+   "n_kernels": 9,
+   "fc1_us": 60.6,
+   "fc2_us": 33.12,
+   "fc2_x_floor": 1.378
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 23,
+   "floor_us": 276.48,
+   "fc1_floor_us": 184.32,
+   "fc2_floor_us": 92.16,
+   "flush": {
+    "median_us": 313.344,
+    "p10_us": 310.237,
+    "p90_us": 318.435,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 311.488,
+    "p10_us": 308.829,
+    "p90_us": 316.634,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.133,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.4
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.69
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.51
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 194.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.36
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 96.22
+    }
+   ],
+   "kernels_us": 311.71,
+   "n_kernels": 10,
+   "fc1_us": 194.72,
+   "fc2_us": 96.22,
+   "fc2_x_floor": 1.044
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 23,
+   "floor_us": 276.48,
+   "fc1_floor_us": 184.32,
+   "fc2_floor_us": 92.16,
+   "flush": {
+    "median_us": 309.728,
+    "p10_us": 307.328,
+    "p90_us": 313.504,
+    "n": 330,
+    "ref_slot_us": 290.656,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 311.104,
+    "p10_us": 307.706,
+    "p90_us": 320.819,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.12,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.89
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.34
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.29
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 192.99
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.62
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.5
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 96.83
+    }
+   ],
+   "kernels_us": 311.13,
+   "n_kernels": 9,
+   "fc1_us": 192.99,
+   "fc2_us": 96.83,
+   "fc2_x_floor": 1.051
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 35,
+   "floor_us": 420.73,
+   "fc1_floor_us": 280.49,
+   "fc2_floor_us": 140.24,
+   "flush": {
+    "median_us": 455.648,
+    "p10_us": 451.936,
+    "p90_us": 459.776,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 453.824,
+    "p10_us": 451.712,
+    "p90_us": 463.946,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.083,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.4
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.78
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 2.11
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.82
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.1
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 290.58
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 5.6
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.79
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 140.57
+    }
+   ],
+   "kernels_us": 454.76,
+   "n_kernels": 10,
+   "fc1_us": 290.58,
+   "fc2_us": 140.57,
+   "fc2_x_floor": 1.002
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 35,
+   "floor_us": 420.73,
+   "fc1_floor_us": 280.49,
+   "fc2_floor_us": 140.24,
+   "flush": {
+    "median_us": 456.72,
+    "p10_us": 453.632,
+    "p90_us": 461.92,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 458.336,
+    "p10_us": 455.037,
+    "p90_us": 496.035,
+    "n": 330,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.086,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.07
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.98
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.82
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.31
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.26
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 293.03
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 5.7
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.7
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 142.82
+    }
+   ],
+   "kernels_us": 459.69,
+   "n_kernels": 9,
+   "fc1_us": 293.03,
+   "fc2_us": 142.82,
+   "fc2_x_floor": 1.018
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 66,
+   "floor_us": 793.38,
+   "fc1_floor_us": 528.92,
+   "fc2_floor_us": 264.46,
+   "flush": {
+    "median_us": 828.512,
+    "p10_us": 823.958,
+    "p90_us": 837.699,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 826.16,
+    "p10_us": 822.845,
+    "p90_us": 831.866,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.044,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.85
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.01
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.19
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 541.66
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.02
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.89
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 264.03
+    }
+   ],
+   "kernels_us": 830.47,
+   "n_kernels": 10,
+   "fc1_us": 541.66,
+   "fc2_us": 264.03,
+   "fc2_x_floor": 0.998
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 66,
+   "floor_us": 793.38,
+   "fc1_floor_us": 528.92,
+   "fc2_floor_us": 264.46,
+   "flush": {
+    "median_us": 833.36,
+    "p10_us": 828.448,
+    "p90_us": 855.2,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 830.688,
+    "p10_us": 827.584,
+    "p90_us": 837.91,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.05,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.96
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 538.21
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.21
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 264.83
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::finalizeMoeRoutingKernel<__nv_bfloat16, __nv_bfloat16, __nv_bfloat16, (tensorrt_llm::kernels::cutlass_kernels::Scal",
+     "us": 10.53
+    }
+   ],
+   "kernels_us": 834.51,
+   "n_kernels": 9,
+   "fc1_us": 538.21,
+   "fc2_us": 264.83,
+   "fc2_x_floor": 1.001
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "uniform",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 117,
+   "floor_us": 1406.44,
+   "fc1_floor_us": 937.63,
+   "fc2_floor_us": 468.81,
+   "flush": {
+    "median_us": 1432.384,
+    "p10_us": 1426.24,
+    "p90_us": 1443.648,
+    "n": 330,
+    "ref_slot_us": 291.008,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 1426.96,
+    "p10_us": 1421.504,
+    "p90_us": 1477.923,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.018,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.75
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.1
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.05
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.15
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.98
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 988.39
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.91
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.76
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 479.84
+    }
+   ],
+   "kernels_us": 1494.85,
+   "n_kernels": 10,
+   "fc1_us": 988.39,
+   "fc2_us": 479.84,
+   "fc2_x_floor": 1.024
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "uniform",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 117,
+   "floor_us": 1406.44,
+   "fc1_floor_us": 937.63,
+   "fc2_floor_us": 468.81,
+   "flush": {
+    "median_us": 1433.008,
+    "p10_us": 1427.184,
+    "p90_us": 1450.867,
+    "n": 330,
+    "ref_slot_us": 291.12,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 1429.696,
+    "p10_us": 1425.35,
+    "p90_us": 1439.942,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.019,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.1
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 2.05
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.92
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.01
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 951.47
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 6.91
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.86
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 462.42
+    }
+   ],
+   "kernels_us": 1438.69,
+   "n_kernels": 9,
+   "fc1_us": 951.47,
+   "fc2_us": 462.42,
+   "fc2_x_floor": 0.986
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 115.872,
+    "p10_us": 112.768,
+    "p90_us": 145.152,
+    "n": 330,
+    "ref_slot_us": 291.68,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 71.936,
+    "p10_us": 71.776,
+    "p90_us": 73.984,
+    "n": 330,
+    "ref_slot_us": 1.792,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.606,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.43
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.76
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.61
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.42
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 60.8
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.49
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 33.31
+    }
+   ],
+   "kernels_us": 116.48,
+   "n_kernels": 10,
+   "fc1_us": 60.8,
+   "fc2_us": 33.31,
+   "fc2_x_floor": 1.386
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 1,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 113.664,
+    "p10_us": 110.941,
+    "p90_us": 117.76,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 68.224,
+    "p10_us": 67.776,
+    "p90_us": 69.824,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.576,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.69
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.79
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.66
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.35
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 61.25
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.74
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 32.74
+    }
+   ],
+   "kernels_us": 115.16,
+   "n_kernels": 9,
+   "fc1_us": 61.25,
+   "fc2_us": 32.74,
+   "fc2_x_floor": 1.362
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 7,
+   "floor_us": 84.15,
+   "fc1_floor_us": 56.1,
+   "fc2_floor_us": 28.05,
+   "flush": {
+    "median_us": 122.912,
+    "p10_us": 120.832,
+    "p90_us": 126.886,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 67.744,
+    "p10_us": 65.76,
+    "p90_us": 67.91,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.461,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.46
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.69
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 2.21
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.03
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.91
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 64.87
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.33
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.09
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 36.03
+    }
+   ],
+   "kernels_us": 121.48,
+   "n_kernels": 10,
+   "fc1_us": 64.87,
+   "fc2_us": 36.03,
+   "fc2_x_floor": 1.284
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 4,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 7,
+   "floor_us": 84.15,
+   "fc1_floor_us": 56.1,
+   "fc2_floor_us": 28.05,
+   "flush": {
+    "median_us": 121.856,
+    "p10_us": 119.158,
+    "p90_us": 125.894,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 61.664,
+    "p10_us": 61.504,
+    "p90_us": 63.712,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.448,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.66
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.95
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.92
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.41
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.96
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 64.0
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.65
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 35.9
+    }
+   ],
+   "kernels_us": 121.47,
+   "n_kernels": 9,
+   "fc1_us": 64.0,
+   "fc2_us": 35.9,
+   "fc2_x_floor": 1.28
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 111.824,
+    "p10_us": 108.486,
+    "p90_us": 126.202,
+    "n": 330,
+    "ref_slot_us": 291.632,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 57.472,
+    "p10_us": 55.837,
+    "p90_us": 57.6,
+    "n": 330,
+    "ref_slot_us": 1.792,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.55,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.59
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.23
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 2.14
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.6
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.54
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 3.26
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 58.85
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.87
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.18
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 41.12
+    }
+   ],
+   "kernels_us": 122.38,
+   "n_kernels": 10,
+   "fc1_us": 58.85,
+   "fc2_us": 41.12,
+   "fc2_x_floor": 1.71
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 8,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 6,
+   "floor_us": 72.13,
+   "fc1_floor_us": 48.08,
+   "fc2_floor_us": 24.04,
+   "flush": {
+    "median_us": 108.528,
+    "p10_us": 105.533,
+    "p90_us": 112.154,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 55.552,
+    "p10_us": 55.392,
+    "p90_us": 55.648,
+    "n": 330,
+    "ref_slot_us": 1.792,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.505,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.57
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.34
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.35
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 56.0
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.61
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 29.47
+    }
+   ],
+   "kernels_us": 106.23,
+   "n_kernels": 9,
+   "fc1_us": 56.0,
+   "fc2_us": 29.47,
+   "fc2_x_floor": 1.226
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 3,
+   "floor_us": 36.06,
+   "fc1_floor_us": 24.04,
+   "fc2_floor_us": 12.02,
+   "flush": {
+    "median_us": 76.656,
+    "p10_us": 73.933,
+    "p90_us": 80.163,
+    "n": 330,
+    "ref_slot_us": 290.832,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 44.832,
+    "p10_us": 43.296,
+    "p90_us": 45.248,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 2.126,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.56
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.47
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.42
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 5.41
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 32.19
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.39
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 1.02
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 20.03
+    }
+   ],
+   "kernels_us": 75.13,
+   "n_kernels": 10,
+   "fc1_us": 32.19,
+   "fc2_us": 20.03,
+   "fc2_x_floor": 1.666
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 16,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 3,
+   "floor_us": 36.06,
+   "fc1_floor_us": 24.04,
+   "fc2_floor_us": 12.02,
+   "flush": {
+    "median_us": 77.584,
+    "p10_us": 74.8,
+    "p90_us": 80.944,
+    "n": 330,
+    "ref_slot_us": 290.768,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 43.232,
+    "p10_us": 43.104,
+    "p90_us": 43.232,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 2.152,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 3.01
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 2.05
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.47
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 2.85
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 31.68
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.71
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 18.72
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::finalizeMoeRoutingKernel<__nv_bfloat16, __nv_bfloat16, __nv_bfloat16, (tensorrt_llm::kernels::cutlass_kernels::Scal",
+     "us": 4.9
+    }
+   ],
+   "kernels_us": 73.25,
+   "n_kernels": 9,
+   "fc1_us": 31.68,
+   "fc2_us": 18.72,
+   "fc2_x_floor": 1.557
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "shared",
+   "input": "fp4_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 4,
+   "floor_us": 48.08,
+   "fc1_floor_us": 32.06,
+   "fc2_floor_us": 16.03,
+   "flush": {
+    "median_us": 95.12,
+    "p10_us": 92.464,
+    "p90_us": 98.909,
+    "n": 330,
+    "ref_slot_us": 290.832,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 49.376,
+    "p10_us": 48.928,
+    "p90_us": 51.664,
+    "n": 330,
+    "ref_slot_us": 1.824,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.978,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::quantize_with_block_size<(tensorrt_llm::BlockScaleQuantizationType)0, __nv_bfloat16, 16, false, false, false, false, std::integral_c",
+     "us": 2.69
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.78
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.57
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 4.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.22
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 40.86
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.65
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 25.73
+    }
+   ],
+   "kernels_us": 89.27,
+   "n_kernels": 10,
+   "fc1_us": 40.86,
+   "fc2_us": 25.73,
+   "fc2_x_floor": 1.605
+  },
+  {
+   "config": "ep",
+   "e_local": 256,
+   "n": 640,
+   "ep_size": 2,
+   "k": 2560,
+   "topk": 10,
+   "m": 32,
+   "routing": "shared",
+   "input": "bf16_in",
+   "expert_bytes": {
+    "fc1": 1843200,
+    "fc2": 921600,
+    "total": 2764800
+   },
+   "autotuned": true,
+   "distinct_local_experts": 4,
+   "floor_us": 48.08,
+   "fc1_floor_us": 32.06,
+   "fc2_floor_us": 16.03,
+   "flush": {
+    "median_us": 92.16,
+    "p10_us": 89.914,
+    "p90_us": 95.267,
+    "n": 330,
+    "ref_slot_us": 290.816,
+    "mode": "flush",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "hot": {
+    "median_us": 51.392,
+    "p10_us": 49.725,
+    "p90_us": 53.408,
+    "n": 330,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 12,
+    "distinct_fns": 1
+   },
+   "x_floor": 1.917,
+   "kernels": [
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::blockExpertPrefixSumKernel<256>(int const*, int*, int*, long, long, int)",
+     "us": 2.88
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::globalExpertPrefixSumKernel<256>(int const*, int*, long*, long, long)",
+     "us": 1.92
+    },
+    {
+     "name": "tensorrt_llm::kernels::cutlass_kernels::mergeExpertPrefixSumKernel(int const*, int const*, int const*, int*, int*, int*, int)",
+     "us": 1.63
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::expandInputRowsKernel<__nv_bfloat16, __nv_fp4_e2m1, (tensorrt_llm::kernels::cutlass_kernels::TmaWarpSpecializedGrou",
+     "us": 5.98
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::computeStridesTmaWarpSpecializedKernel<__nv_fp4_e2m1, __nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16>(long const*, ten",
+     "us": 4.45
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 40.93
+    },
+    {
+     "name": "void tensorrt_llm::kernels::cutlass_kernels::doActivationKernel<__nv_fp4_e2m1, __nv_bfloat16, __nv_bfloat16, tensorrt_llm::kernels::cutlass_kernels::GLUAdaptor<",
+     "us": 3.62
+    },
+    {
+     "name": "Memset (Device)",
+     "us": 0.99
+    },
+    {
+     "name": "_ZN7cutlass13device_kernelINS_4gemm6kernel13GemmUniversalINS1_17GroupProblemShapeIN4cute5tupleIJlllEEEEENS1_10collective13CollectiveMmaINS1_47MainloopSm120Array",
+     "us": 24.93
+    }
+   ],
+   "kernels_us": 87.33,
+   "n_kernels": 9,
+   "fc1_us": 40.93,
+   "fc2_us": 24.93,
+   "fc2_x_floor": 1.555
+  }
+ ]
+}

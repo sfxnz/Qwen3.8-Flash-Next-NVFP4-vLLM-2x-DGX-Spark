@@ -1,0 +1,350 @@
+{
+ "bench": "hc",
+ "meta": {
+  "host": "spark1",
+  "time": "2026-09-29T12:03:12Z",
+  "image": "vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.30.0",
+  "flashinfer": "0.6.18.post1"
+ },
+ "module_bytes": 13434880,
+ "rows": [
+  {
+   "m": 1,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "hot": {
+    "median_us": 30.88,
+    "p10_us": 30.848,
+    "p90_us": 31.008,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 435.1,
+    "x_floor": 0.529
+   },
+   "stream": {
+    "median_us": 71.712,
+    "p10_us": 69.6,
+    "p90_us": 73.008,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 8,
+    "gbps": 187.3,
+    "x_floor": 1.228
+   },
+   "flush": {
+    "median_us": 69.728,
+    "p10_us": 67.68,
+    "p90_us": 73.344,
+    "n": 920,
+    "ref_slot_us": 286.624,
+    "mode": "flush",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 192.7,
+    "x_floor": 1.194
+   },
+   "kernels": [
+    {
+     "name": "_hc_combine_norm_kernel",
+     "us": 2.94
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8",
+     "us": 32.7
+    },
+    {
+     "name": "void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat16, __nv_bfloat16, float, __nv_bfloat16, false, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, true, fa",
+     "us": 1.66
+    },
+    {
+     "name": "_hc_silu_kernel",
+     "us": 1.5
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_128x2_tn_align8",
+     "us": 29.02
+    },
+    {
+     "name": "_hc_gate_mix_kernel",
+     "us": 1.22
+    }
+   ]
+  },
+  {
+   "m": 4,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "hot": {
+    "median_us": 24.736,
+    "p10_us": 24.544,
+    "p90_us": 24.8,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 543.1,
+    "x_floor": 0.423
+   },
+   "stream": {
+    "median_us": 70.784,
+    "p10_us": 69.085,
+    "p90_us": 71.84,
+    "n": 920,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 8,
+    "gbps": 189.8,
+    "x_floor": 1.212
+   },
+   "flush": {
+    "median_us": 74.48,
+    "p10_us": 68.48,
+    "p90_us": 84.778,
+    "n": 920,
+    "ref_slot_us": 289.92,
+    "mode": "flush",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 180.4,
+    "x_floor": 1.275
+   },
+   "kernels": [
+    {
+     "name": "_hc_combine_norm_kernel",
+     "us": 2.85
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 31.71
+    },
+    {
+     "name": "void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat16, __nv_bfloat16, float, __nv_bfloat16, false, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, true, fa",
+     "us": 1.7
+    },
+    {
+     "name": "_hc_silu_kernel",
+     "us": 1.54
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8",
+     "us": 31.14
+    },
+    {
+     "name": "_hc_gate_mix_kernel",
+     "us": 1.18
+    }
+   ]
+  },
+  {
+   "m": 8,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "hot": {
+    "median_us": 26.784,
+    "p10_us": 26.656,
+    "p90_us": 26.88,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 501.6,
+    "x_floor": 0.459
+   },
+   "stream": {
+    "median_us": 70.816,
+    "p10_us": 68.829,
+    "p90_us": 72.864,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 8,
+    "gbps": 189.7,
+    "x_floor": 1.212
+   },
+   "flush": {
+    "median_us": 73.568,
+    "p10_us": 70.592,
+    "p90_us": 79.082,
+    "n": 920,
+    "ref_slot_us": 286.784,
+    "mode": "flush",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 182.6,
+    "x_floor": 1.259
+   },
+   "kernels": [
+    {
+     "name": "_hc_combine_norm_kernel",
+     "us": 3.23
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 32.35
+    },
+    {
+     "name": "void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat16, __nv_bfloat16, float, __nv_bfloat16, false, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, true, fa",
+     "us": 1.7
+    },
+    {
+     "name": "_hc_silu_kernel",
+     "us": 1.57
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 28.19
+    },
+    {
+     "name": "_hc_gate_mix_kernel",
+     "us": 1.28
+    }
+   ]
+  },
+  {
+   "m": 16,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "hot": {
+    "median_us": 28.832,
+    "p10_us": 28.768,
+    "p90_us": 28.896,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 466.0,
+    "x_floor": 0.494
+   },
+   "stream": {
+    "median_us": 71.808,
+    "p10_us": 70.528,
+    "p90_us": 72.867,
+    "n": 920,
+    "ref_slot_us": 1.92,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 8,
+    "gbps": 187.1,
+    "x_floor": 1.229
+   },
+   "flush": {
+    "median_us": 80.56,
+    "p10_us": 77.725,
+    "p90_us": 88.298,
+    "n": 920,
+    "ref_slot_us": 286.816,
+    "mode": "flush",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 166.8,
+    "x_floor": 1.379
+   },
+   "kernels": [
+    {
+     "name": "_hc_combine_norm_kernel",
+     "us": 3.9
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 33.47
+    },
+    {
+     "name": "void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat16, __nv_bfloat16, float, __nv_bfloat16, false, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, true, fa",
+     "us": 1.73
+    },
+    {
+     "name": "_hc_silu_kernel",
+     "us": 1.6
+    },
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 29.82
+    },
+    {
+     "name": "_hc_gate_mix_kernel",
+     "us": 1.41
+    }
+   ]
+  },
+  {
+   "m": 32,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "hot": {
+    "median_us": 34.976,
+    "p10_us": 34.912,
+    "p90_us": 36.64,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 384.1,
+    "x_floor": 0.599
+   },
+   "stream": {
+    "median_us": 73.888,
+    "p10_us": 71.84,
+    "p90_us": 75.936,
+    "n": 920,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 24,
+    "distinct_fns": 8,
+    "gbps": 181.8,
+    "x_floor": 1.265
+   },
+   "flush": {
+    "median_us": 89.088,
+    "p10_us": 86.173,
+    "p90_us": 95.059,
+    "n": 920,
+    "ref_slot_us": 286.72,
+    "mode": "flush",
+    "calls_per_graph": 24,
+    "distinct_fns": 1,
+    "gbps": 150.8,
+    "x_floor": 1.525
+   },
+   "kernels": [
+    {
+     "name": "_hc_combine_norm_kernel",
+     "us": 5.95
+    },
+    {
+     "name": "nvjet_sm121_tst_mma_64x32x64_8_32x16x64_tmaAB_splitK_TNNN",
+     "us": 33.57
+    },
+    {
+     "name": "void cublasLt::splitKreduce_kernel<32, 16, int, float, __nv_bfloat16, float, __nv_bfloat16, false, float, __nv_bfloat16, __nv_bfloat16, true, false, false, fals",
+     "us": 2.08
+    },
+    {
+     "name": "_hc_silu_kernel",
+     "us": 1.95
+    },
+    {
+     "name": "nvjet_sm121_tst_mma_128x32x32_9_64x32x32_tmaAB_bz_TNNN",
+     "us": 32.93
+    },
+    {
+     "name": "_hc_gate_mix_kernel",
+     "us": 2.4
+    }
+   ]
+  }
+ ]
+}

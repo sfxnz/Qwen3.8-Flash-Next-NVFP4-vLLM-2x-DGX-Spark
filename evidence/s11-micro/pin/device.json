@@ -1,0 +1,55 @@
+{
+ "bench": "device",
+ "meta": {
+  "host": "spark1",
+  "time": "2026-09-29T11:53:53Z",
+  "image": "vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.28.1rc1.dev437+ge962733e0",
+  "flashinfer": "0.6.18"
+ },
+ "driver": {
+  "sm_count": 48,
+  "clock_khz": 2418000,
+  "mem_clock_khz": 8533000,
+  "mem_bus_width_bits": 256,
+  "l2_bytes": 25165824,
+  "max_threads_per_sm": 1536,
+  "cc_major": 12,
+  "cc_minor": 1,
+  "smem_per_block": 49152,
+  "smem_per_sm": 102400,
+  "smem_per_block_optin": 101376,
+  "max_persisting_l2_bytes": 18874368,
+  "regs_per_sm": 65536,
+  "name": "NVIDIA GB10"
+ },
+ "check": {
+  "sm_count": [
+   48,
+   48,
+   true
+  ],
+  "l2_bytes": [
+   25165824,
+   25165824,
+   true
+  ],
+  "smem_per_block_optin": [
+   101376,
+   101376,
+   true
+  ]
+ },
+ "torch": {
+  "name": "NVIDIA GB10",
+  "multi_processor_count": 48,
+  "L2_cache_size": 25165824,
+  "total_memory": 130663170048,
+  "major": 12,
+  "minor": 1,
+  "shared_memory_per_block_optin": 101376
+ },
+ "nccl": "2.29.7"
+}

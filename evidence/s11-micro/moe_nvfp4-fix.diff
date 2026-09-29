@@ -1,0 +1,14 @@
+diff --git a/tools/micro/moe_nvfp4.py b/tools/micro/moe_nvfp4.py
+index cc2b418..b1b92d9 100755
+--- a/tools/micro/moe_nvfp4.py
++++ b/tools/micro/moe_nvfp4.py
+@@ -78,7 +78,8 @@ def build(cfg: dict, m: int, routing: str, in_mode: str):
+     a2_gs = torch.ones(1, dtype=torch.float32, device=dev)
+     g1 = torch.full((e,), 1e-3, dtype=torch.float32, device=dev)
+     g2 = torch.full((e,), 1e-3, dtype=torch.float32, device=dev)
+-    quant_scales = [a1_gs, w1_sf.view(torch.int32), g1, a2_gs, w2_sf.view(torch.int32), g2]
++    # fused_moe_120 wants the activation global scales 0-d (or per local expert), not shape (1,)
++    quant_scales = [a1_gs.reshape(()), w1_sf.view(torch.int32), g1, a2_gs.reshape(()), w2_sf.view(torch.int32), g2]
+     ids_list = route(m, routing, seed=1000 + m)
+     ids = torch.tensor(ids_list, dtype=torch.int32, device=dev)
+     weights = torch.full((m, TOPK), 1.0 / TOPK, dtype=torch.float32, device=dev)

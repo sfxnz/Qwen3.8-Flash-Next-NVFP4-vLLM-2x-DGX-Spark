@@ -1,0 +1,15 @@
+2026-09-29T12:41:12.102Z [b0-pin] gate rc=1
+2026-09-29T12:41:12.103Z [b0-pin] start ruler: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b0-pin/ruler.json
+2026-09-29T12:45:33.426Z [b0-pin] end ruler rc=2
+2026-09-29T12:45:33.429Z [b0-pin] start t1-a: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1-a --limit 2
+2026-09-29T12:45:48.372Z [b0-pin] end t1-a rc=0
+2026-09-29T12:45:48.374Z [b0-pin] start t1-b: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1-b --limit 2
+2026-09-29T12:45:58.322Z [b0-pin] end t1-b rc=0
+2026-09-29T12:45:58.325Z [b0-pin] start t1-aa: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1-a /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1-b --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b0-pin/t1-aa.json
+2026-09-29T12:45:58.431Z [b0-pin] end t1-aa rc=1
+2026-09-29T12:45:58.433Z [b0-pin] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1g --limit 10 --repeats 5
+2026-09-29T12:50:08.303Z [b0-pin] end t1g rc=0
+2026-09-29T12:50:08.306Z [b0-pin] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/b0-pin/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b0-pin/t1g-self.json
+2026-09-29T12:50:08.413Z [b0-pin] end t1g-self rc=0
+2026-09-29T12:50:08.429Z [b0-pin] start profile: tools/micro/profile_window.sh
+2026-09-29T13:01:03.286Z [b0-pin] end profile rc=1
