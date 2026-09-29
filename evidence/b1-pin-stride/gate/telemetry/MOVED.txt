@@ -1,0 +1,3 @@
+Moved to ~/projects/data/qwen38-evals/runs/session1/b1-pin-stride/telemetry/
+ee2ad5af7a8c365ed8f4c615d6291e752cfc23040bf03354f0a64b8502ee8a5e  spark1.csv
+91f55e0de6d0dc322337ede1d81748d87a7fc34e21d7b5eca8aa3e26e64af78e  spark2.csv
