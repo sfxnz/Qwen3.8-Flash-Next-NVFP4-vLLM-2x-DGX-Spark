@@ -1,0 +1,10 @@
+finished_at=2026-09-29T20:03:33.667Z
+self_test=0
+smoke-thinking=0
+smoke-tools=0
+smoke-vision=0
+smoke-count=0
+probe=0
+ruler=0
+bench-frozen=0
+GATE=PASS

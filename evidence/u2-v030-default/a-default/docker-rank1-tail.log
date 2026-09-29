@@ -1,0 +1,300 @@
+(Worker_TP1 pid=380) INFO 09-29 17:34:58 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 46.82 GiB.
+(Worker_TP1 pid=380) INFO 09-29 17:34:58 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (46.82 GiB).
+(Worker_TP1 pid=380) INFO 09-29 17:41:07 [default_loader.py:430] Loading weights took 368.17 seconds
+(Worker_TP1 pid=380) INFO 09-29 17:41:08 [nvfp4.py:613] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=380) INFO 09-29 17:41:10 [vllm.py:1252] Resolved Engram configuration: EngramConfig(cpu_offload=False, embedding_across_dp=False, dp_shared_memory=False)
+(Worker_TP1 pid=380) WARNING 09-29 17:41:10 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(Worker_TP1 pid=380) INFO 09-29 17:41:10 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP1 pid=380) INFO 09-29 17:41:15 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP1 pid=380) INFO 09-29 17:41:15 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+(Worker_TP1 pid=380) INFO 09-29 17:41:15 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+(Worker_TP1 pid=380) INFO 09-29 17:41:15 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 42.58 GiB.
+(Worker_TP1 pid=380) INFO 09-29 17:41:15 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (42.58 GiB).
+(Worker_TP1 pid=380) INFO 09-29 17:42:02 [default_loader.py:430] Loading weights took 46.28 seconds
+(Worker_TP1 pid=380) INFO 09-29 17:42:02 [fp8.py:740] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=380) WARNING 09-29 17:42:02 [speculator.py:235] Draft model Qwen4ExpMTP does not support external multimodal embeddings. Embeddings from the target model will not be passed to the drafter; using text-only draft inputs instead.
+(Worker_TP1 pid=380) INFO 09-29 17:42:10 [model_runner.py:428] Model loading took 63.61 GiB memory and 434.717546 seconds
+(Worker_TP1 pid=380) INFO 09-29 17:42:10 [interface.py:933] Setting attention block size to 1600 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP1 pid=380) INFO 09-29 17:42:10 [interface.py:957] Padding mamba page size by 0.25% to ensure that mamba page size and attention page size are exactly equal.
+INFO 09-29 17:42:38 [torch_utils.py:287] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(Worker_TP1 pid=380) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(Worker_TP1 pid=380) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(Worker_TP1 pid=380) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker_TP1 pid=380) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(Worker_TP1 pid=380) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(Worker_TP1 pid=380) INFO 09-29 17:42:44 [encoder_runner.py:131] Encoder cache will be initialized with a budget of 12288 tokens, and profiled with 1 video items of the maximum feature size.
+(Worker_TP1 pid=380) INFO 09-29 17:43:04 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP1 pid=380) INFO 09-29 17:43:04 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP1 pid=380) INFO 09-29 17:43:04 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP1 pid=380) WARNING 09-29 17:43:04 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+(Worker_TP1 pid=380) WARNING 09-29 17:43:06 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+(Worker_TP1 pid=380) INFO 09-29 17:43:06 [speculator.py:120] Fused multi-step draft decode is not supported by attention backend(s) QWEN4_EXP_EXP_QSA_STATE; falling back to rebuilding attention metadata between draft steps.
+(Worker_TP1 pid=380) INFO 09-29 17:43:09 [speculator.py:151] Capturing model for speculator...
+(Worker_TP1 pid=380) INFO 09-29 17:43:10 [model_runner.py:1066] Graph capturing finished in 4 secs, took 0.20 GiB
+(Worker_TP1 pid=380) INFO 09-29 17:43:11 [gpu_worker.py:640] Available KV cache memory: 24.56 GiB
+(Worker_TP1 pid=380) INFO 09-29 17:43:11 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7583 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7617. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP1 pid=380) INFO 09-29 17:43:18 [kernel_warmup.py:172] JIT kernel warmup starting.
+(Worker_TP1 pid=380) INFO 09-29 17:43:18 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(Worker_TP1 pid=380) INFO 09-29 17:43:19 [qwen_vl_triton_warmup.py:57] Warmed position embedding and vision rotary kernels on grids=[(1, 16, 16), (1, 16, 2), (1, 2, 16), (1, 2, 2)].
+(Worker_TP1 pid=380) INFO 09-29 17:43:19 [qwen_vl_triton_warmup.py:98] Warmed M-RoPE Triton kernels.
+(Worker_TP1 pid=380) INFO 09-29 17:43:19 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP1 pid=380) INFO 09-29 17:43:20 [qwen4_exp_qsa_warmup.py:72] Warmed up Qwen4Exp QSA decode kernels: ((1, 1), (2, 1), (3, 1), (4, 1)).
+(Worker_TP1 pid=380) INFO 09-29 17:43:23 [qwen4_exp_qsa_warmup.py:86] Warmed up Qwen4Exp QSA sparse attention kernels: ((32, 1, 1), (32, 4, 1), (32, 8, 1), (32, 16, 1), (32, 64, 4), (64, 1, 2), (64, 4, 2)).
+(Worker_TP1 pid=380) 2026-09-29 17:43:28,371 - INFO - autotuner.py:972 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP1 pid=380) INFO 09-29 17:43:28 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 17:43:28,898 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   5%|▍         | 1/21 [00:00<00:08,  2.32profile/s]2026-09-29 17:43:28,983 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) 2026-09-29 17:43:29,089 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  14%|█▍        | 3/21 [00:00<00:03,  5.49profile/s]2026-09-29 17:43:29,220 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  19%|█▉        | 4/21 [00:00<00:02,  6.08profile/s]2026-09-29 17:43:29,416 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  24%|██▍       | 5/21 [00:00<00:02,  5.72profile/s]2026-09-29 17:43:29,725 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  29%|██▊       | 6/21 [00:01<00:03,  4.59profile/s]2026-09-29 17:43:30,159 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  33%|███▎      | 7/21 [00:01<00:04,  3.50profile/s]2026-09-29 17:43:30,705 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  38%|███▊      | 8/21 [00:02<00:04,  2.73profile/s]2026-09-29 17:43:31,292 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  43%|████▎     | 9/21 [00:02<00:05,  2.30profile/s]2026-09-29 17:43:31,883 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  48%|████▊     | 10/21 [00:03<00:05,  2.07profile/s]2026-09-29 17:43:32,489 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  52%|█████▏    | 11/21 [00:04<00:05,  1.92profile/s]2026-09-29 17:43:33,113 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  57%|█████▋    | 12/21 [00:04<00:04,  1.81profile/s]2026-09-29 17:43:33,751 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  62%|██████▏   | 13/21 [00:05<00:04,  1.73profile/s]2026-09-29 17:43:34,400 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  67%|██████▋   | 14/21 [00:05<00:04,  1.67profile/s]2026-09-29 17:43:35,060 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  71%|███████▏  | 15/21 [00:06<00:03,  1.62profile/s]2026-09-29 17:43:35,719 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  76%|███████▌  | 16/21 [00:07<00:03,  1.59profile/s]2026-09-29 17:43:36,388 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  81%|████████  | 17/21 [00:07<00:02,  1.56profile/s]2026-09-29 17:43:37,087 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  86%|████████▌ | 18/21 [00:08<00:01,  1.52profile/s]2026-09-29 17:43:37,850 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  90%|█████████ | 19/21 [00:09<00:01,  1.45profile/s]2026-09-29 17:43:38,624 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  95%|█████████▌| 20/21 [00:10<00:00,  1.40profile/s]2026-09-29 17:43:39,596 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:11<00:00,  1.26profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:11<00:00,  1.89profile/s]
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 17:43:39,688 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) 2026-09-29 17:43:39,780 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  10%|▉         | 2/21 [00:00<00:01, 10.99profile/s]2026-09-29 17:43:39,874 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) 2026-09-29 17:43:40,000 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  19%|█▉        | 4/21 [00:00<00:01,  9.77profile/s]2026-09-29 17:43:40,188 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  24%|██▍       | 5/21 [00:00<00:02,  7.85profile/s]2026-09-29 17:43:40,447 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  29%|██▊       | 6/21 [00:00<00:02,  6.00profile/s]2026-09-29 17:43:40,804 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  33%|███▎      | 7/21 [00:01<00:03,  4.48profile/s]2026-09-29 17:43:41,225 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  38%|███▊      | 8/21 [00:01<00:03,  3.54profile/s]2026-09-29 17:43:41,659 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  43%|████▎     | 9/21 [00:02<00:03,  3.05profile/s]2026-09-29 17:43:42,106 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  48%|████▊     | 10/21 [00:02<00:03,  2.75profile/s]2026-09-29 17:43:42,572 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  52%|█████▏    | 11/21 [00:02<00:03,  2.54profile/s]2026-09-29 17:43:43,058 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  57%|█████▋    | 12/21 [00:03<00:03,  2.37profile/s]2026-09-29 17:43:43,569 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  62%|██████▏   | 13/21 [00:03<00:03,  2.23profile/s]2026-09-29 17:43:44,110 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  67%|██████▋   | 14/21 [00:04<00:03,  2.10profile/s]2026-09-29 17:43:44,691 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  71%|███████▏  | 15/21 [00:05<00:03,  1.97profile/s]2026-09-29 17:43:45,273 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  76%|███████▌  | 16/21 [00:05<00:02,  1.89profile/s]2026-09-29 17:43:45,915 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  81%|████████  | 17/21 [00:06<00:02,  1.77profile/s]2026-09-29 17:43:46,605 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  86%|████████▌ | 18/21 [00:07<00:01,  1.66profile/s]2026-09-29 17:43:47,365 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  90%|█████████ | 19/21 [00:07<00:01,  1.54profile/s]2026-09-29 17:43:48,165 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  95%|█████████▌| 20/21 [00:08<00:00,  1.44profile/s]2026-09-29 17:43:49,522 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=380) [AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:09<00:00,  1.12profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:09<00:00,  2.12profile/s]
+(Worker_TP1 pid=380) 2026-09-29 17:43:52,309 - INFO - autotuner.py:995 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP1 pid=380) INFO 09-29 17:44:16 [speculator.py:151] Capturing model for speculator...
+(Worker_TP1 pid=380) INFO 09-29 17:44:16 [model_runner.py:1066] Graph capturing finished in 10 secs, took 0.05 GiB
+(Worker_TP1 pid=380) INFO 09-29 17:44:16 [gpu_worker.py:825] CUDA graph pool memory: 0.05 GiB (actual), 0.21 GiB (estimated), difference: 0.16 GiB (326.1%).
+(Worker_TP1 pid=380) INFO 09-29 17:44:16 [gpu_worker.py:888] Free memory on device (111.48/121.69 GiB) on startup. Desired GPU memory utilization is (0.76, 92.48 GiB). Actual usage is 66.9 GiB for consumed memory (weights + non-torch), 1.03 GiB for peak activation, and 0.05 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=26164011500` (24.37 GiB) to fit into requested memory, or `--kv-cache-memory=46565175296` (43.37 GiB) to fully utilize gpu memory. Current kv cache memory in use is 24.56 GiB.
+(Worker_TP1 pid=380) INFO 09-29 17:44:18 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1 pid=380) INFO 09-29 17:44:18 [torch_utils.py:287] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:09 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:09 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _compute_local_logits_stats_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:09 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _rejection_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:09 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _resample_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:13 [jit_monitor.py:141] Triton kernel JIT compilation during inference: layer_norm_fwd_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _ple_conv_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 17:45:17 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _ple_conv_writeback_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 18:08:50 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _topk_topp_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 18:08:50 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _topp_sb_stats_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 18:08:50 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _topp_sb_step_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 18:08:51 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _topp_sb_mask_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=380) WARNING 09-29 18:08:51 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _gumbel_sample_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [1382,0,0], thread: [66,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [1382,0,0], thread: [67,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [1382,0,0], thread: [68,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [1382,0,0], thread: [69,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [1382,0,0], thread: [70,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+/__w/pytorch/pytorch/aten/src/ATen/native/cuda/ScatterGatherKernel.cu:203: operator(): block: [7947,0,0], thread: [45,0,0] Assertion `idx_dim >= 0 && idx_dim < index_size && "scatter gather kernel index out of bounds"` failed.
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] WorkerProc hit an exception.
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] Traceback (most recent call last):
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 1047, in _execute_worker_rpc
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/worker_base.py", line 375, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self.worker.execute_model(scheduler_output)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 1210, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = self.model_runner.execute_model(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 1948, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     model_output = self.model(**model_inputs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 1031, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states = self.language_model.model(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 531, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_output, injection = layer(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                              ^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 326, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_input, injection = mlp_hc.combine_and_mix(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                             ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/hyperconnection.py", line 178, in combine_and_mix
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     down_and_injection = self.input_mix_weight_down_block_inject(xn)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 606, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output_parallel = self.quant_method.apply(self, input_, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 238, in apply
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._gemm_impl(layer, x, layer.weight, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/utils.py", line 90, in default_unquantized_gemm
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return torch.nn.functional.linear(x, weight, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/parameter.py", line 126, in __torch_function__
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return super().__torch_function__(func, types, args, kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmEx( handle, opa, opb, m, n, k, &falpha, a, CUDA_R_16BF, lda, b, CUDA_R_16BF, ldb, &fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, ldc, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] Traceback (most recent call last):
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 1047, in _execute_worker_rpc
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/worker_base.py", line 375, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self.worker.execute_model(scheduler_output)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 1210, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = self.model_runner.execute_model(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 1948, in execute_model
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     model_output = self.model(**model_inputs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 1031, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states = self.language_model.model(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 531, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_output, injection = layer(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                              ^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 326, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_input, injection = mlp_hc.combine_and_mix(
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                             ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/hyperconnection.py", line 178, in combine_and_mix
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     down_and_injection = self.input_mix_weight_down_block_inject(xn)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 606, in forward
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output_parallel = self.quant_method.apply(self, input_, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 238, in apply
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._gemm_impl(layer, x, layer.weight, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/utils.py", line 90, in default_unquantized_gemm
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return torch.nn.functional.linear(x, weight, bias)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/parameter.py", line 126, in __torch_function__
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return super().__torch_function__(func, types, args, kwargs)
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmEx( handle, opa, opb, m, n, k, &falpha, a, CUDA_R_16BF, lda, b, CUDA_R_16BF, ldb, &fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, ldc, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] 
+[rank1]:[W929 18:40:04.294621901 CachingHostAllocator.cpp:26] Warning: Exception in pinned allocator free(), rethrowing (function free)
+terminate called after throwing an instance of 'c10::AcceleratorError'
+  what():  CUDA error: device-side assert triggered
+Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+
+Exception raised from currentStreamCaptureStatusMayInitCtx at /__w/pytorch/pytorch/c10/cuda/CUDAGraphsC10Utils.h:73 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xc8 (0xfc3d5acee158 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+frame #1: c10::cuda::c10_cuda_check_implementation(int, char const*, char const*, unsigned int, bool) + 0x834 (0xfc3d5ae29b54 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0xeba748 (0xfc3d5b96a748 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xf4dcf0 (0xfc3d5b9fdcf0 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xf4e45c (0xfc3d5b9fe45c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0x489870 (0xfc3d5acc9870 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+frame #6: c10::TensorImpl::~TensorImpl() + 0x14 (0xfc3d5ac86164 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+frame #7: <unknown function> + 0x5e47e8 (0xfc3d7ce247e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #8: <unknown function> + 0xb43c7c (0xfc3d7d383c7c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #9: VLLM::Worker_TP1() [0x5242d4]
+frame #10: VLLM::Worker_TP1() [0x4f5b88]
+frame #11: VLLM::Worker_TP1() [0x4f5900]
+frame #12: VLLM::Worker_TP1() [0x4f5c70]
+frame #13: VLLM::Worker_TP1() [0x4f5900]
+frame #14: VLLM::Worker_TP1() [0x4f9e34]
+frame #15: VLLM::Worker_TP1() [0x524150]
+frame #16: VLLM::Worker_TP1() [0x4f5b88]
+frame #17: VLLM::Worker_TP1() [0x4f5900]
+frame #18: VLLM::Worker_TP1() [0x4d56a4]
+frame #19: VLLM::Worker_TP1() [0x5a5bbc]
+frame #20: VLLM::Worker_TP1() [0x5a5bc4]
+frame #21: VLLM::Worker_TP1() [0x5a5bc4]
+frame #22: VLLM::Worker_TP1() [0x5a5bc4]
+frame #23: VLLM::Worker_TP1() [0x5a5bc4]
+frame #24: VLLM::Worker_TP1() [0x5a5bc4]
+frame #25: VLLM::Worker_TP1() [0x4ce678]
+frame #26: _PyEval_EvalFrameDefault + 0x7750 (0x56b204 in VLLM::Worker_TP1)
+frame #27: PyEval_EvalCode + 0x130 (0x5626a4 in VLLM::Worker_TP1)
+frame #28: PyRun_StringFlags + 0xe0 (0x59b6f0 in VLLM::Worker_TP1)
+frame #29: PyRun_SimpleStringFlags + 0x44 (0x67e514 in VLLM::Worker_TP1)
+frame #30: Py_RunMain + 0x390 (0x68acd0 in VLLM::Worker_TP1)
+frame #31: Py_BytesMain + 0x28 (0x68a7d8 in VLLM::Worker_TP1)
+frame #32: <unknown function> + 0x284c4 (0xfc3e0d1484c4 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #33: __libc_start_main + 0x98 (0xfc3e0d148598 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #34: _start + 0x30 (0x5f6270 in VLLM::Worker_TP1)
+
+ERROR 09-29 18:42:52 [multiproc_executor.py:314] Worker proc VllmWorker-1 died unexpectedly (exit code: None), shutting down executor.
+INFO 09-29 18:42:52 [multiproc_executor.py:472] [shutdown] Executor: waiting for worker exit count=1
+INFO 09-29 18:42:54 [multiproc_executor.py:479] [shutdown] Executor: all workers exited gracefully
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

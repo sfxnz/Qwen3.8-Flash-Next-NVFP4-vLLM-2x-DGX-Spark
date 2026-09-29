@@ -1,0 +1,38 @@
+2026-09-29T17:45:08.731Z [a-default] start alias: python3 -
+2026-09-29T17:45:13.425Z [a-default] end alias rc=0
+2026-09-29T17:45:13.427Z [a-default] start toolstream: python3 probe_toolstream.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/toolstream.jsonl --label a-default
+2026-09-29T17:51:15.342Z [a-default] end toolstream rc=0
+2026-09-29T17:57:58.492Z [a-default] gate rc=0
+2026-09-29T17:58:40.471Z [a-default] start ruler-anchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 61.4 63.4 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/ruler-anchor.json
+2026-09-29T18:01:02.603Z [a-default] end ruler-anchor rc=0
+2026-09-29T18:01:02.606Z [a-default] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/diverse.jsonl --label a-default
+2026-09-29T18:08:48.927Z [a-default] end diverse rc=0
+2026-09-29T18:08:48.929Z [a-default] start sampled: python3 bench_sampled.py --url http://127.0.0.1:8000/v1/chat/completions --profiles A T1 --concurrency 1 8 --prompts 8 --reps 1 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/sampled.jsonl --label a-default
+2026-09-29T18:11:01.813Z [a-default] end sampled rc=0
+2026-09-29T18:11:01.815Z [a-default] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t1g --limit 10 --repeats 5
+2026-09-29T18:15:04.297Z [a-default] end t1g rc=0
+2026-09-29T18:15:04.299Z [a-default] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/t1g-self.json
+2026-09-29T18:15:04.466Z [a-default] end t1g-self rc=0
+2026-09-29T18:15:04.468Z [a-default] start t2: python3 quality/t2.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t2 --tasks tools,json,rep4,effort,ifeval,gsm8k --workers 4
+2026-09-29T18:37:16.146Z [a-default] end t2 rc=0
+2026-09-29T18:37:16.155Z [a-default] start vision: python3 quality/vision_probes/run.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/vision
+2026-09-29T18:37:30.822Z [a-default] end vision rc=0
+2026-09-29T18:37:31.511Z [a-default] memcheck ok before vbench: spark1 avail=13904MB swap_used spark1=7043MB spark2=4238MB
+2026-09-29T18:37:31.512Z [a-default] start vbench: python3 bench_vision.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/vbench.jsonl --label a-default
+2026-09-29T18:38:27.263Z [a-default] end vbench rc=0
+2026-09-29T18:38:27.265Z [a-default] start prefix: python3 probe_prefix.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a-default/prefix.jsonl --label a-default
+2026-09-29T18:38:45.753Z [a-default] end prefix rc=0
+2026-09-29T18:38:46.420Z [a-default] memcheck ok before t3-4096: spark1 avail=12223MB swap_used spark1=6856MB spark2=4238MB
+2026-09-29T18:38:46.421Z [a-default] start t3-4096: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t3-4096 --lengths 4096
+2026-09-29T18:38:54.228Z [a-default] end t3-4096 rc=0
+2026-09-29T18:38:55.246Z [a-default] memcheck ok before t3-16384: spark1 avail=12209MB swap_used spark1=6856MB spark2=4237MB
+2026-09-29T18:38:55.248Z [a-default] start t3-16384: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t3-16384 --lengths 16384
+2026-09-29T18:39:14.360Z [a-default] end t3-16384 rc=0
+2026-09-29T18:39:15.396Z [a-default] memcheck ok before t3-32768: spark1 avail=12183MB swap_used spark1=6856MB spark2=4237MB
+2026-09-29T18:39:15.398Z [a-default] start t3-32768: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t3-32768 --lengths 32768
+2026-09-29T18:39:51.456Z [a-default] end t3-32768 rc=0
+2026-09-29T18:39:52.475Z [a-default] memcheck ok before t3-65536: spark1 avail=12250MB swap_used spark1=6855MB spark2=4237MB
+2026-09-29T18:39:52.477Z [a-default] start t3-65536: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a-default/t3-65536 --lengths 65536
+2026-09-29T18:42:52.760Z [a-default] end t3-65536 rc=1
+2026-09-29T18:42:53.110Z [a-default] SERVE DOWN after t3-65536 (memguard log: 2026-09-29T19:42:52+01:00 MemAvailable=1042020kB SwapFree=73444kB: docker kill qwen38-flash-next-nvfp4)
+2026-09-29T18:42:53.759Z [a-default] SKIP mixed: memcheck spark1 avail=809MB swap_used spark1=8129MB spark2=2854MB
