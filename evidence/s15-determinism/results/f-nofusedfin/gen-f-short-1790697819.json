@@ -1,0 +1,287 @@
+{
+ "mode": "gen",
+ "argv": [
+  "gen",
+  "--lens",
+  "1,2,3,4,5,6,8",
+  "--n",
+  "5",
+  "--max-tokens",
+  "16",
+  "--tag",
+  "f-short",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/s15/f-nofusedfin"
+ ],
+ "tag": "f-short",
+ "t": "2026-09-29T16:03:16Z",
+ "model": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+ "results": {
+  "1": {
+   "distinct": 5,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": 0,
+     "first_tok_dlp": 0.323407,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": 0,
+     "first_tok_dlp": 3.151303,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": 0,
+     "first_tok_dlp": 0.471169,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": 0,
+     "first_tok_dlp": 0.761618,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": 0,
+   "first_tok_dlp_max": 3.151303,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "2": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "3": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "4": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "5": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "6": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "8": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

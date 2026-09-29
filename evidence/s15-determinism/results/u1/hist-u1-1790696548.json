@@ -1,0 +1,123 @@
+{
+ "mode": "hist",
+ "argv": [
+  "hist",
+  "--len",
+  "64",
+  "--tag",
+  "u1",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/s15/u1"
+ ],
+ "tag": "u1",
+ "t": "2026-09-29T15:42:27Z",
+ "model": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+ "results": {
+  "hist": {
+   "names": [
+    "A",
+    "A",
+    "A",
+    "A|F1",
+    "A|F2",
+    "A|F3",
+    "A|F1"
+   ],
+   "fingerprints": [
+    "61217a6e25a3",
+    "21532aea2b9f",
+    "c7948df2d9a5",
+    "b45bdcc046a1",
+    "42ed578addaa",
+    "1b251192af63",
+    "f9d7df9b35fd"
+   ],
+   "distinct_fingerprints": 7,
+   "pairs": [
+    {
+     "vs": 1,
+     "max_abs": 1.005892,
+     "mean_abs": 0.085615,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9524,
+     "n_pos_gt1e-3": 47,
+     "bucket_max": {
+      "0": 1.0059
+     }
+    },
+    {
+     "vs": 2,
+     "max_abs": 1.075477,
+     "mean_abs": 0.103239,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9841,
+     "n_pos_gt1e-3": 53,
+     "bucket_max": {
+      "0": 1.0755
+     }
+    },
+    {
+     "vs": 3,
+     "max_abs": 1.104154,
+     "mean_abs": 0.11248,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9683,
+     "n_pos_gt1e-3": 49,
+     "bucket_max": {
+      "0": 1.1042
+     }
+    },
+    {
+     "vs": 4,
+     "max_abs": 1.366431,
+     "mean_abs": 0.105692,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9841,
+     "n_pos_gt1e-3": 53,
+     "bucket_max": {
+      "0": 1.3664
+     }
+    },
+    {
+     "vs": 5,
+     "max_abs": 1.501998,
+     "mean_abs": 0.126297,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9365,
+     "n_pos_gt1e-3": 52,
+     "bucket_max": {
+      "0": 1.502
+     }
+    },
+    {
+     "vs": 6,
+     "max_abs": 1.719891,
+     "mean_abs": 0.126448,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9683,
+     "n_pos_gt1e-3": 50,
+     "bucket_max": {
+      "0": 1.7199
+     }
+    }
+   ],
+   "max_abs": 1.719891,
+   "first_pos_gt1e-3": 1,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}
