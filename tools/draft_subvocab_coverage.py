@@ -17,6 +17,13 @@ Subcommands (host Python: stdlib + numpy; no torch, no GPU):
   analyze  rank ids, score coverage per domain with 2-fold cross-validation
            over prompts, choose the smallest V' in --sizes with >= --target
            coverage in every domain, write draft_vocab_<V>.json + report
+  bigcorpus  (v2) tokenize ~176M tokens of public chat/wiki/code/math/tool
+           data under ~/projects/data/qwen38-vocab-corpus into per-source id
+           counts (needs `tokenizers` + `pyarrow`, e.g. a venv)
+  analyze2 (v2) rank ids from bigcorpus counts only (bpe / corpus_sum /
+           corpus_max / blend), score every ranking on ALL completion tokens
+           (fully held out), write coverage_report_v2.{txt,json} and
+           draft_vocab_<V>.json for --write sizes (best ranking per size)
 
 Special tokens (tokenizer added_tokens) and the 256 byte-level alphabet ids
 are always in V'. Raw intermediates default to ~/projects/data/qwen38-draft-vocab
@@ -541,6 +548,262 @@ def cmd_analyze(a: argparse.Namespace) -> int:
     return 0
 
 
+# ------------------------------------------------ v2: large-corpus ranking
+# `bigcorpus` tokenizes public datasets under CORPUS2 (see --help) with the
+# model tokenizer; `analyze2` ranks ids from those counts (no completions
+# involved, so every completion token is held out) and compares rankings.
+CORPUS2 = Path.home() / "projects" / "data" / "qwen38-vocab-corpus"
+
+
+def _chat_turns(msgs: list, role_key: str, text_key: str, roles: set[str]) -> list[str]:
+    return [m[text_key] for m in msgs if m.get(role_key) in roles and m.get(text_key)]
+
+
+def _glaive_text(d: dict) -> list[str]:
+    """ASSISTANT turns (tool-call JSON included) + FUNCTION RESPONSE JSON."""
+    out = []
+    for part in d.get("chat", "").split("\n\n\n"):
+        for tag in ("ASSISTANT: ", "FUNCTION RESPONSE: "):
+            if part.startswith(tag):
+                t = part[len(tag):].replace("<|endoftext|>", "").replace("<functioncall>", "")
+                out.append(t.strip())
+    return out
+
+
+def corpus2_sources(root: Path) -> dict[str, list[tuple[str, callable]]]:
+    """domain -> [(source, fn() -> iterable[str])]; assistant side only for chat sets."""
+    import gzip
+
+    def pq(glob_: str, col: str):
+        def it():
+            import pyarrow.parquet as pq_
+
+            for f in sorted(root.glob(glob_)):
+                for batch in pq_.ParquetFile(f).iter_batches(columns=[col], batch_size=2048):
+                    yield from (x for x in batch.column(0).to_pylist() if x)
+        return it
+
+    def ultrachat():
+        import pyarrow.parquet as pq_
+
+        for f in sorted(root.glob("ultrachat/data/*.parquet")):
+            for batch in pq_.ParquetFile(f).iter_batches(columns=["messages"], batch_size=512):
+                for msgs in batch.column(0).to_pylist():
+                    yield from _chat_turns(msgs, "role", "content", {"assistant"})
+
+    def jsonl(rel: str, fn):
+        def it():
+            p = root / rel
+            if not p.exists():
+                return
+            with p.open() as f:
+                for line in f:
+                    if line.strip():
+                        yield from fn(json.loads(line))
+        return it
+
+    def jsonarr(rel: str, fn):
+        def it():
+            p = root / rel
+            if p.exists():
+                for d in json.loads(p.read_text()):
+                    yield from fn(d)
+        return it
+
+    def oasst(lang: str):
+        def it():
+            p = root / "oasst2/2023-11-05_oasst2_ready.messages.jsonl.gz"
+            if p.exists():
+                with gzip.open(p, "rt") as f:
+                    for line in f:
+                        d = json.loads(line)
+                        if d.get("lang") == lang and d.get("role") == "assistant":
+                            yield d["text"]
+        return it
+
+    sharegpt = lambda d: _chat_turns(d["conversations"], "from", "value", {"gpt"})  # noqa: E731
+    return {
+        "prose": [("wiki_en", pq("wiki/20231101.en/*.parquet", "text")), ("ultrachat", ultrachat), ("oasst_en", oasst("en"))],
+        "code": [("codefeedback", jsonl("codefeedback/CodeFeedback-Filtered-Instruction.jsonl", lambda d: [d["answer"]]))],
+        "math": [("metamath", jsonarr("metamath/MetaMathQA-395K.json", lambda d: [d["response"]])),
+                 ("gsm8k", pq("gsm8k/main/*.parquet", "answer"))],
+        "tools": [("glaive", jsonarr("glaive/glaive-function-calling-v2.json", _glaive_text))],
+        "zh": [("wiki_zh", pq("wiki/20231101.zh/*.parquet", "text")),
+               ("alpaca_zh", jsonl("alpaca_zh/Alpaca_data_gpt4_zh.jsonl", lambda d: [d["output_zh"]])),
+               ("oasst_zh", oasst("zh"))],
+        "ja": [("wiki_ja", pq("wiki/20231101.ja/*.parquet", "text")),
+               ("oasst_ja", jsonl("oasst_ja/oasst2-33k-ja.jsonl", lambda d: _chat_turns(d["conversations"], "role", "content", {"assistant"})))],
+        "de": [("wiki_de", pq("wiki/20231101.de/*.parquet", "text")),
+               ("alpaca_de", jsonarr("alpaca_de/alpaca-gpt4-deutsch.json", sharegpt)), ("oasst_de", oasst("de"))],
+        "es": [("wiki_es", pq("wiki/20231101.es/*.parquet", "text")),
+               ("alpaca_es", jsonarr("alpaca_es/alpaca-gpt4-spanish.json", sharegpt)), ("oasst_es", oasst("es"))],
+    }
+
+
+def cmd_bigcorpus(a: argparse.Namespace) -> int:
+    from tokenizers import Tokenizer as T  # needs `tokenizers` (venv/container)
+
+    tok = T.from_file(str(a.tokenizer_json))
+    arrays, meta = {}, {"root": str(a.root), "chars_per_source": a.chars_per_source, "sources": {}}
+    for dom, srcs in corpus2_sources(a.root).items():
+        for name, fn in srcs:
+            counts = np.zeros(VOCAB, dtype=np.int64)
+            chars = docs = 0
+            batch: list[str] = []
+
+            def flush():
+                for enc in tok.encode_batch(batch, add_special_tokens=False):
+                    counts[:] += np.bincount(np.asarray(enc.ids, dtype=np.int64), minlength=VOCAB)[:VOCAB]
+                batch.clear()
+
+            t0 = time.time()
+            for text in fn():
+                text = text[: a.chars_per_source - chars]
+                batch.append(text)
+                chars += len(text)
+                docs += 1
+                if len(batch) >= 256:
+                    flush()
+                if chars >= a.chars_per_source:
+                    break
+            flush()
+            arrays[f"{dom}/{name}"] = counts
+            meta["sources"][f"{dom}/{name}"] = {"docs": docs, "chars": chars, "tokens": int(counts.sum()), "distinct": int((counts > 0).sum())}
+            print(f"bigcorpus: {dom:6} {name:13} docs={docs:7d} chars={chars:10d} tokens={int(counts.sum()):9d} "
+                  f"distinct={int((counts > 0).sum()):6d} {time.time() - t0:5.1f}s", flush=True)
+    a.out.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(a.out, **{k.replace("/", "__"): v for k, v in arrays.items()})
+    a.out.with_suffix(".json").write_text(json.dumps(meta, indent=1) + "\n")
+    print(f"bigcorpus: wrote {a.out}")
+    return 0
+
+
+def domain_freqs(counts: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
+    """Per-domain relative frequency; each source inside a domain weighs the same."""
+    by: dict[str, list[np.ndarray]] = {}
+    for key, c in counts.items():
+        if c.sum():
+            by.setdefault(key.split("/", 1)[0], []).append(c / c.sum())
+    return {d: np.mean(v, axis=0) for d, v in by.items()}
+
+
+def ranking_scores(freqs: dict[str, np.ndarray], vocab: int = VOCAB) -> dict[str, np.ndarray]:
+    """Candidate scores (higher = kept first; ties go to the lower id)."""
+    stack = np.stack(list(freqs.values()))
+    bpe = -np.arange(vocab, dtype=np.float64)  # lowest id = earliest merge
+    s = {
+        "bpe": bpe,
+        "corpus_sum": stack.sum(axis=0),
+        "corpus_max": stack.max(axis=0),
+    }
+    # blend: mean of the corpus_sum rank and the BPE rank (rank fusion).
+    rank_sum = np.empty(vocab)
+    rank_sum[np.lexsort((np.arange(vocab), -s["corpus_sum"]))] = np.arange(vocab)
+    s["blend"] = -(rank_sum + np.arange(vocab)) / 2
+    return s
+
+
+def cmd_analyze2(a: argparse.Namespace) -> int:
+    rows = _jsonl(a.completions)
+    if not rows:
+        raise SystemExit(f"analyze2: no completions in {a.completions}")
+    z = np.load(a.counts)
+    counts = {k.replace("__", "/"): z[k].astype(np.float64) for k in z.files}
+    meta = json.loads(a.counts.with_suffix(".json").read_text())
+    must, tinfo = must_include(a.tokenizer_json)
+    sizes = sorted(int(x) for x in a.sizes.split(","))
+    doms = sorted({r["domain"] for r in rows})
+    held = {dm: np.concatenate([np.asarray(r["ids"], dtype=np.int64) for r in rows if r["domain"] == dm]) for dm in doms}
+    freqs = domain_freqs(counts)
+    scores = ranking_scores(freqs)
+    ranked = {name: rank_ids(sc, must) for name, sc in scores.items()}
+    alpha = alpha_for(a.tau, a.k)
+    loss = lambda c: 100 * (1 - accept_len(alpha, a.k, c) / accept_len(alpha, a.k))  # noqa: E731
+
+    table: dict = {}
+    for name, rk in ranked.items():
+        for n in sizes:
+            keep = keep_set(rk, n)
+            per = {dm: coverage(held[dm], keep) for dm in doms}
+            tok = sum(held[dm].size for dm in doms)
+            table.setdefault(name, {})[str(n)] = {
+                "domains": per,
+                "min": min(per.values()),
+                "mean_tok": sum(per[dm] * held[dm].size for dm in doms) / tok,
+                "mean_tau_loss_pct": sum(loss(per[dm]) for dm in doms) / len(doms),
+            }
+    # per size, the ranking with the highest minimum-domain coverage
+    best = {n: max(table, key=lambda nm: (table[nm][str(n)]["min"], table[nm][str(n)]["mean_tok"])) for n in sizes}
+    alpha_s = f"alpha={alpha:.4f}"
+    tot_tokens = sum(v["tokens"] for v in meta["sources"].values())
+    lines = [
+        f"draft-vocab coverage v2  target>={a.target:.3f} in every domain  (tau={a.tau}, k={a.k}, {alpha_s})",
+        f"ranking corpus: {len(counts)} sources, {tot_tokens / 1e6:.1f}M tokens, domains={sorted(freqs)} ({a.counts})",
+        f"held-out eval: {sum(v.size for v in held.values())} greedy completion tokens ({a.completions.name}); "
+        "no completion token feeds any ranking",
+        f"must-include ids={must.size} (special + byte alphabet) always kept",
+        "rankings: bpe = lowest ids first (merge order); corpus_sum = sum of per-domain rel. freq;",
+        "          corpus_max = max of per-domain rel. freq; blend = mean(rank corpus_sum, rank bpe)",
+        "",
+        "corpus sources:",
+    ]
+    for k, v in meta["sources"].items():
+        lines.append(f"  {k:20} docs={v['docs']:7d} tokens={v['tokens']:10d} distinct={v['distinct']:6d}")
+    lines += ["", "min-domain coverage by ranking (tau_loss% = mean over domains):",
+              f"{'ranking':11} " + " ".join(f"{n:>15d}" for n in sizes)]
+    for nm in ranked:
+        lines.append(f"{nm:11} " + " ".join(
+            f"{table[nm][str(n)]['min']:7.4f} ({table[nm][str(n)]['mean_tau_loss_pct']:4.2f}%)" for n in sizes))
+    lines += ["", "per-domain coverage with the best ranking per size (MiB/rank = BF16 rows; FP8 is half):",
+              f"{'V':>6} {'ranking':11} " + " ".join(f"{dm:>7}" for dm in doms)
+              + f" {'min':>7} {'tau_loss%':>9} {'MiB/rank':>8}"]
+    chosen = None
+    for n in sizes:
+        e = table[best[n]][str(n)]
+        ok = e["min"] >= a.target
+        if ok and chosen is None:
+            chosen = n
+        mib = -(-n // 2) * 2560 * 2 / 2**20
+        lines.append(f"{n:6d} {best[n]:11} " + " ".join(f"{e['domains'][dm]:7.4f}" for dm in doms)
+                     + f" {e['min']:7.4f} {e['mean_tau_loss_pct']:9.2f} {mib:8.1f}")
+        if n in a.write:
+            doc = {
+                "model": a.model, "vocab_size": VOCAB, "size": n,
+                "tokenizer_json_sha256": tinfo["tokenizer_json_sha256"],
+                "must_include": int(must.size), "ranking": best[n], "passes_target": ok,
+                "min_domain_coverage_heldout": e["min"],
+                "generator": "tools/draft_subvocab_coverage.py analyze2",
+                "ids": keep_set(ranked[best[n]], n).tolist(),
+            }
+            a.out_dir.mkdir(parents=True, exist_ok=True)
+            (a.out_dir / f"draft_vocab_{n}.json").write_text(json.dumps(doc, separators=(",", ":")) + "\n")
+    lines.append(f"smallest V' with min-domain >= {a.target}: {chosen}")
+    # Speed model (plan 1.1 bases): k head passes per step, each streaming this
+    # rank's rows at --gbs, savings realised at --realise; acceptance scaled
+    # by the worst-domain coverage (each miss ends the accepted chain).
+    base = a.tau / a.step_ms * 1e3
+    full = -(-VOCAB // 2) * 2560 * 2
+    lines += ["", f"tradeoff model: base {a.step_ms} ms/step, {base:.1f} tok/s; head read at {a.gbs:.0f} GB/s x{a.realise}, k={a.k}",
+              f"{'V':>6} {'dtype':5} {'MiB/rank':>8} {'save ms':>7} {'prose tok/s':>13} {'worst tok/s':>13}"]
+    for n in sizes + [VOCAB]:
+        e = table[best[n]][str(n)] if n in best else {"domains": {"prose": 1.0}, "min": 1.0}
+        for dt, nb in (("bf16", 2), ("fp8", 1)):
+            b = -(-n // 2) * 2560 * nb
+            save = a.k * (full - b) / (a.gbs * 1e9) * 1e3 * a.realise
+            tp = accept_len(alpha, a.k, e["domains"].get("prose", 1.0)) / (a.step_ms - save) * 1e3
+            tm = accept_len(alpha, a.k, e["min"]) / (a.step_ms - save) * 1e3
+            lines.append(f"{n:6d} {dt:5} {b / 2**20:8.0f} {save:7.2f} {tp:6.1f} ({100 * (tp / base - 1):+4.1f}%) "
+                         f"{tm:6.1f} ({100 * (tm / base - 1):+4.1f}%)")
+    rep = {"model": a.model, **tinfo, "must_include": int(must.size), "tau": a.tau, "k": a.k, "alpha": alpha,
+           "target": a.target, "corpus": meta, "held_out_tokens": {dm: int(held[dm].size) for dm in doms},
+           "best_ranking": {str(n): best[n] for n in sizes}, "chosen": chosen, "table": table}
+    a.out_dir.mkdir(parents=True, exist_ok=True)
+    (a.out_dir / "coverage_report_v2.json").write_text(json.dumps(rep, indent=1) + "\n")
+    (a.out_dir / "coverage_report_v2.txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--base-url", default=os.environ.get("BASE_URL", "http://127.0.0.1:8000"))
@@ -576,9 +839,29 @@ def main(argv: list[str] | None = None) -> int:
     z.add_argument("--k", type=int, default=3)
     z.add_argument("--out-dir", type=Path, default=ROOT / "tools" / "vocab")
 
+    b = sub.add_parser("bigcorpus", help="tokenize the v2 public corpus (needs tokenizers, pyarrow)")
+    b.add_argument("--root", type=Path, default=CORPUS2)
+    b.add_argument("--out", type=Path, default=DATA / "counts_v2.npz")
+    b.add_argument("--chars-per-source", type=int, default=40_000_000)
+
+    y = sub.add_parser("analyze2", help="rank from bigcorpus counts, score on held-out completions")
+    y.add_argument("--completions", type=Path, default=DATA / "completions.jsonl")
+    y.add_argument("--counts", type=Path, default=DATA / "counts_v2.npz")
+    y.add_argument("--sizes", default="32768,47104,65536,98304,131072,163840")
+    y.add_argument("--write", type=lambda s: {int(x) for x in s.split(",") if x}, default=set(),
+                   help="V' sizes to write draft_vocab_<V>.json for (best ranking)")
+    y.add_argument("--target", type=float, default=0.99)
+    y.add_argument("--tau", type=float, default=2.455)
+    y.add_argument("--k", type=int, default=3)
+    y.add_argument("--out-dir", type=Path, default=ROOT / "tools" / "vocab")
+    y.add_argument("--step-ms", type=float, default=56.9, help="prose c=1 k=3 step (plan 1.1)")
+    y.add_argument("--gbs", type=float, default=230.0, help="draft-head GEMV GB/s (S1.1 drafthead, M=2-8)")
+    y.add_argument("--realise", type=float, default=0.85)
+
     a = ap.parse_args(argv)
     a.base_url = a.base_url.rstrip("/")
-    return {"collect": cmd_collect, "corpus": cmd_corpus, "analyze": cmd_analyze}[a.cmd](a)
+    return {"collect": cmd_collect, "corpus": cmd_corpus, "analyze": cmd_analyze,
+            "bigcorpus": cmd_bigcorpus, "analyze2": cmd_analyze2}[a.cmd](a)
 
 
 if __name__ == "__main__":
