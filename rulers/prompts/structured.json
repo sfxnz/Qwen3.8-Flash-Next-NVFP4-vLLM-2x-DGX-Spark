@@ -1,0 +1,122 @@
+{
+ "version": 1,
+ "note": "bench_structured schemas and prompts. Change => bump RULER_SET.",
+ "catalog_schema": {
+  "type": "object",
+  "properties": {
+   "title": {
+    "type": "string"
+   },
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "integer"
+      },
+      "name": {
+       "type": "string"
+      },
+      "category": {
+       "type": "string",
+       "enum": [
+        "tool",
+        "food",
+        "book",
+        "device",
+        "plant",
+        "vehicle"
+       ]
+      },
+      "price": {
+       "type": "number"
+      },
+      "in_stock": {
+       "type": "boolean"
+      },
+      "tags": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "maxItems": 4
+      },
+      "description": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "id",
+      "name",
+      "category",
+      "price",
+      "in_stock",
+      "tags",
+      "description"
+     ],
+     "additionalProperties": false
+    },
+    "minItems": 150
+   }
+  },
+  "required": [
+   "title",
+   "items"
+  ],
+  "additionalProperties": false
+ },
+ "large_maxlength_schema": {
+  "type": "object",
+  "properties": {
+   "title": {
+    "type": "string",
+    "maxLength": 200
+   },
+   "body": {
+    "type": "string",
+    "maxLength": 100000
+   }
+  },
+  "required": [
+   "title",
+   "body"
+  ],
+  "additionalProperties": false
+ },
+ "catalog_prompts": [
+  {
+   "id": "j1",
+   "prompt": "Think briefly, then produce a product catalogue for a hardware store with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j2",
+   "prompt": "Think briefly, then produce a product catalogue for a bookshop with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j3",
+   "prompt": "Think briefly, then produce a product catalogue for a garden centre with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j4",
+   "prompt": "Think briefly, then produce a product catalogue for an electronics outlet with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j5",
+   "prompt": "Think briefly, then produce a product catalogue for a bakery with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j6",
+   "prompt": "Think briefly, then produce a product catalogue for a bicycle shop with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j7",
+   "prompt": "Think briefly, then produce a product catalogue for a camping supplier with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  },
+  {
+   "id": "j8",
+   "prompt": "Think briefly, then produce a product catalogue for a stationery shop with at least 150 items. Give every item a two-sentence description. Follow the JSON schema exactly."
+  }
+ ],
+ "large_maxlength_prompt": "Write a titled essay of about 300 words on the history of paper, as JSON with title and body."
+}
