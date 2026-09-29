@@ -12,24 +12,27 @@ Humans read [README.md](README.md).
 - Exclusive GPUs. Do not start this while another `--gpus all` serve is up.
 - Pin `NCCL_IB_HCA`. GB10 exposes four HCAs and two are DOWN. Unpinned NCCL picks a dead one and fails with `unhandled system error`. Defaults in `run.sh` are `enp1s0f1np1` / `rocep1s0f1`.
 - Default thinking is off. `chat_template_kwargs`: `enable_thinking=false`. The card template seeds an empty `<think></think>` when thinking is off.
-- Keep `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8 PLE) and `docker/modelopt.py` (MTP FP8_BLOCK_SCALES). Nightly already selects FP8 PLE via `Qwen4ExpPLEFp8EmbeddingMethod`. Do not require `VLLM_PLE_FP8_CHECKPOINT`. Day-0 `qwen38-flash-next@3b0e188` and stock nightly both raise `AttributeError: mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv'`. Regenerate with `python3 docker/apply_ple_overlay.py` and `python3 docker/apply_mtp_fp8_overlay.py`.
-- Do not set global `--moe-backend marlin`. Default is `auto`. MTP experts are FP8_BLOCK_SCALES and use triton after a 64x64 refine.
+- On the pin keep `docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8 PLE), `docker/modelopt.py` (MTP FP8_BLOCK_SCALES) and `docker/ple_ops.py` (vLLM #55375 PLE short-conv state-index stride, F01). Nightly already selects FP8 PLE via `Qwen4ExpPLEFp8EmbeddingMethod`. Do not require `VLLM_PLE_FP8_CHECKPOINT`. Day-0 `qwen38-flash-next@3b0e188` and stock nightly both raise `AttributeError: mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv'`. Regenerate with `python3 docker/apply_ple_overlay.py`, `python3 docker/apply_mtp_fp8_overlay.py` and `python3 docker/apply_ple_stride_overlay.py`. Never hand-edit an overlay.
+- Overlays are data: every overlay starts with an R11 header (`base_image_digest`, `upstream_file`, `upstream_file_sha256`, `upstream_PR`). `run.sh` mounts the `OVERLAYS` list (`auto` picks `OVERLAYS_PIN` / `OVERLAYS_V030` by IMAGE digest) at each `upstream_file`, and refuses a digest mismatch and the pin overlays on any other image. See `docker/OVERLAYS.md`.
+- On the pin, `--moe-backend` stays `auto`. The V2 runner ignores `SPEC_CONFIG` `moe_backend`, the drafter inherits `--moe-backend`, and its 64x64-refined FP8 blocks run only on Triton.
 - Native `max_position_embeddings` and tokenizer `model_max_length` are 262144. This recipe serves that window. 1048576 is a lab ceiling, not a trained window. Do not treat 1M as a quality pin. vLLM refuses a longer window unless `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`. That env is not YaRN.
 
 `ORCHESTRATE=auto` (default): if SSH to `WORKER_HOST` fails, `run.sh` exits 1. Do not start a TP=2 head rank alone.
 
 ## Refuse-guards (`run.sh`)
 
-Exits unless `FORCE_UNSAFE_CTX=1` or `FORCE_UNSAFE_MOE=1`:
+All run before `VALIDATE_ONLY=1` exits. Overrides in brackets; no bracket means no override.
 
-- `--max-model-len` above 1048576
-- `MAX_NUM_SEQS` above 8
-- `MOE_BACKEND=marlin`
-- `MOE_BACKEND=flashinfer_cutlass` or `b12x`
+- non-decimal or zero-padded integers, non-JSON `SPEC_CONFIG` / `COMPILATION_CONFIG`, an `IMAGE` without a digest, `EXTRA_ARGS` re-setting a flag `run.sh` owns (compilation, speculative, MoE backend, batched tokens, seqs, window, eager)
+- an overlay that is missing, has no R11 header, names another `base_image_digest`, or is a pin overlay (by content sha) on a non-pin image
+- on the pin, no `modelopt.py` or `ops/ple.py` overlay [`DIAGNOSTIC=1`]
+- `--max-model-len` above 1048576, `MAX_NUM_SEQS` above 8, compile `mode` other than 0 on the pin, and a changed `MAX_NUM_BATCHED_TOKENS` / `--long-prefill-token-threshold` / `indexer_kv_dtype` with `VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=none` [`FORCE_UNSAFE_CTX=1`]
 - `--max-model-len` above 262144 when `VLLM_ALLOW_LONG_MAX_MODEL_LEN` is not `1`
-- missing PLE overlay or MTP overlay
+- `MOE_BACKEND` other than `auto` on the pin; `b12x` / `flashinfer_b12x` anywhere [`FORCE_UNSAFE_MOE=1`]
+- `SPEC=none`, `use_local_argmax_reduction` without a `get_top_tokens` overlay or with probabilistic drafts, `enable_adaptive_verification`, `--enable-batch-sharded-sampling` without a `compute_logits_local` overlay, `VLLM_BATCH_INVARIANT=1` in `EXTRA_ENV` [`DIAGNOSTIC=1`; such boots are never pinned]
+- `rejection_sample_method=synthetic` unless `BENCH_ONLY=1`, which binds the API to 127.0.0.1
 
-Default occupancy is eight sequences. That pin held eight short streams with no drop. Do not raise `MAX_NUM_SEQS` above 8 without a new occupancy row.
+Default occupancy is eight sequences. Do not raise `MAX_NUM_SEQS` above 8 without a new occupancy row. Env diagnostics go through `EXTRA_ENV` (both ranks), never a `run.sh` edit.
 
 ## Verify
 

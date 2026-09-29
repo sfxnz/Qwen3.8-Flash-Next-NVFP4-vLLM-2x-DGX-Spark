@@ -1,3 +1,9 @@
+# R11-OVERLAY
+# base_image_digest: sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+# upstream_file: vllm/model_executor/layers/quantization/modelopt.py
+# upstream_file_sha256: 27a9e0f9d8352afdc421c3ff735da2b87f9ca365271ce7ade380c173c2d3fe01
+# upstream_PR: none (lab overlay; v0.30 routes MTP FP8_BLOCK_SCALES natively)
+# generator: docker/apply_mtp_fp8_overlay.py (do not hand-edit)
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
 

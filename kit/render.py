@@ -13,6 +13,9 @@
 #              <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
 #              <!-- END generated measured -->
 #
+# The measured block is a `Conditions:` line, the decode table, and a numbered note for each row
+# that carries an optional `note`.
+#
 # Inside the run.sh block every NAME="${NAME:-value}" line takes its value from serve.env; comment and
 # derived lines are kept verbatim. serve.env must list exactly those names, in run.sh order. README
 # defaults rows may use {NAME} placeholders for serve.env values. Needs python3 and PyYAML.
@@ -107,11 +110,16 @@ def render_readme(text, recipe):
     rows = [f"| {fill(k, env)} | {fill(v, env)} |" for row in recipe["readme"]["defaults"] for k, v in row.items()]
     lines[start:stop] = DEFAULTS_HEADER + rows
     start, stop = find_block(lines, *md_markers("measured"), "README.md")
-    rows = [
-        f"| {r['phase']} | {r['concurrency']} | {r['decode']} | {r['aggregate']} | {r['ttft_p50']} s |"
-        for r in recipe["measured"]["decode"]["rows"]
-    ]
-    lines[start:stop] = MEASURED_HEADER + rows
+    decode = recipe["measured"]["decode"]
+    rows, notes = [], []
+    for r in decode["rows"]:
+        phase = r["phase"]
+        if r.get("note"):  # optional per-row caveat, rendered as a numbered note under the table
+            notes.append(r["note"])
+            phase = f"{phase} (note {len(notes)})"
+        rows.append(f"| {phase} | {r['concurrency']} | {r['decode']} | {r['aggregate']} | {r['ttft_p50']} s |")
+    notes = [""] + [f"{i}. {n}" for i, n in enumerate(notes, 1)] if notes else []
+    lines[start:stop] = [f"Conditions: {decode['conditions']}.", ""] + MEASURED_HEADER + rows + notes
     return "\n".join(lines)
 
 

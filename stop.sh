@@ -3,9 +3,10 @@ set -euo pipefail
 
 CONTAINER_NAME="${CONTAINER_NAME:-qwen38-flash-next-nvfp4}"
 ORCHESTRATE="${ORCHESTRATE:-auto}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ -z "${WORKER_HOST:-}" && -f "${PWD}/.run-state/worker_host" ]]; then
-  WORKER_HOST="$(tr -d '[:space:]' <"${PWD}/.run-state/worker_host")"
+if [[ -z "${WORKER_HOST:-}" && -f "$SCRIPT_DIR/.run-state/worker_host" ]]; then
+  WORKER_HOST="$(tr -d '[:space:]' <"$SCRIPT_DIR/.run-state/worker_host")"
 fi
 WORKER_HOST="${WORKER_HOST:-spark2}"
 

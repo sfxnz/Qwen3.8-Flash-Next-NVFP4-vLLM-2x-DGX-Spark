@@ -15,7 +15,7 @@ image:
   base: vllm/vllm-openai:nightly-aarch64
   digest: sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
   local_tag: &image vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
-  build: docker/ple_layer.py overlay (qwen4_exp PLE; nightly already has MIXED_PRECISION FP8)
+  build: R11 overlays docker/ple_layer.py, docker/modelopt.py (MTP FP8_BLOCK_SCALES), docker/ple_ops.py (vLLM #55375 PLE stride fix)
 
 engine:
   name: vllm
@@ -49,9 +49,15 @@ serve:
     SPEC: mtp
     MOE_BACKEND: auto
     MAX_NUM_BATCHED_TOKENS: 8192
+    # Caps the QSA indexer prefill logits buffer per call (vLLM #56457 GB10 long-prefill hang; F05).
+    VLLM_SPARSE_INDEXER_MAX_LOGITS_MB: 64
     FORCE_UNSAFE_CTX: 0
     FORCE_UNSAFE_MOE: 0
     ENFORCE_EAGER: 0
+    # DIAGNOSTIC=1 unlocks boots that are never pinned (SPEC=none, known-failing spec configs, missing pin overlays).
+    DIAGNOSTIC: 0
+    # BENCH_ONLY=1 allows rejection_sample_method=synthetic and binds the API to 127.0.0.1.
+    BENCH_ONLY: 0
     VLLM_PLE_FP8_CHECKPOINT: 0
     VLLM_ALLOW_LONG_MAX_MODEL_LEN: 0
     TOOL_CALL_PARSER: qwen3_xml
@@ -59,8 +65,15 @@ serve:
     HF_CACHE: $HOME/.cache/huggingface
     SNAPSHOT_SHA: *revision
     SKIP_DOWNLOAD: 0
+    HF_HUB_DISABLE_XET: 0
     ORCHESTRATE: auto
+    # R11 overlays (docker/OVERLAYS.md). auto picks the list for the IMAGE digest; none mounts nothing.
+    OVERLAYS: auto
+    OVERLAYS_PIN: docker/ple_layer.py docker/modelopt.py docker/ple_ops.py
+    OVERLAYS_V030: ""
     EXTRA_ARGS: ""
+    # Space-separated KEY=VALUE pairs passed as `-e` to both ranks.
+    EXTRA_ENV: ""
 
 readme:
   # Rows of the README "Defaults" table. {NAME} is replaced by serve.env.NAME.
@@ -72,10 +85,11 @@ readme:
     - "`--max-num-seqs`": "{MAX_NUM_SEQS}"
     - "`--max-num-batched-tokens`": "{MAX_NUM_BATCHED_TOKENS}"
     - "`--kv-cache-dtype`": "`{KV_CACHE_DTYPE}`"
-    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 walks flashinfer then marlin; MTP FP8_BLOCK_SCALES uses triton. `run.sh` refuses `marlin` and `flashinfer_cutlass`)"
+    - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 target resolves to FlashInfer CUTLASS on GB10; the MTP drafter inherits `auto`, which picks Triton for its 64x64-refined FP8 blocks. On the pin `run.sh` refuses anything but `auto`, and `b12x`/`flashinfer_b12x` everywhere)"
     - Checkpoint: "`{SNAPSHOT_SHA}`"
-    - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`, draft MoE `triton`; NVFP4 experts stay `{MOE_BACKEND}`)"
-    - PLE overlay: "`docker/ple_layer.py` (qwen4_exp MIXED_PRECISION FP8) plus `docker/modelopt.py` MTP FP8_BLOCK_SCALES"
+    - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`; SPEC_CONFIG `moe_backend` is a no-op on the pin's V2 runner)"
+    - Overlays: "`OVERLAYS={OVERLAYS}` → pin: `{OVERLAYS_PIN}` (R11 headers, see `docker/OVERLAYS.md`)"
+    - Indexer logits cap: "`VLLM_SPARSE_INDEXER_MAX_LOGITS_MB={VLLM_SPARSE_INDEXER_MAX_LOGITS_MB}` (vLLM #56457 GB10 long-prefill growth)"
     - Oversize window: "`VLLM_ALLOW_LONG_MAX_MODEL_LEN={VLLM_ALLOW_LONG_MAX_MODEL_LEN}` (required only above 262144; this is not YaRN)"
     - Tokenizers / tools / reasoning: "auto / `{TOOL_CALL_PARSER}` / `{REASONING_PARSER}`"
     - Default thinking: "`enable_thinking=false`"
@@ -87,13 +101,14 @@ measured:
   # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
   # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
   decode:
-    conditions: streamed greedy, thinking off, 200 completion tokens, 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3
+    conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; measured before the F01 PLE stride fix (docker/ple_ops.py)
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
       - {phase: prose, concurrency: 1, decode: 43.2, aggregate: 43.1, ttft_p50: 0.17, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
       - {phase: prose, concurrency: 2, decode: 36.2, aggregate: 68.2, ttft_p50: 0.16, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
-      - {phase: structured, concurrency: 1, decode: 55.5, aggregate: 55.5, ttft_p50: 0.15, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
-      - {phase: structured, concurrency: 2, decode: 58.0, aggregate: 37.0, ttft_p50: 0.19, evidence: evidence/opt-c4-native-ctx-262144/bench.txt}
+      - {phase: structured, concurrency: 1, decode: 55.5, aggregate: 55.5, ttft_p50: 0.15, evidence: evidence/opt-c4-native-ctx-262144/bench.txt,
+         note: "Excursion artefact. Median of 67.16 / 52.62 / 55.47, all at acceptance_len 4.0, so two runs are 72-76 ms steps against 59.6 ms, not F01. Comparable boots measure about 67."}
+      # structured c=2 (58.0 / 37.0) is withdrawn: F01 zero-acceptance waves (two of six streams near 18 tok/s, acceptance_len 2.003).
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4

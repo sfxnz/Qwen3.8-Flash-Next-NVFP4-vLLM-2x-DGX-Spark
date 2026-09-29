@@ -25,22 +25,46 @@ jobs:
             echo "run.sh accepted MAX_MODEL_LEN=2097152 without FORCE_UNSAFE_CTX" >&2
             exit 1
           fi
-      - name: run.sh refuses marlin with in-band MTP
+      - name: run.sh refuses marlin on the pin
         run: |
           if VALIDATE_ONLY=1 MOE_BACKEND=marlin ./run.sh; then
             echo "run.sh accepted MOE_BACKEND=marlin without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
-      - name: run.sh refuses flashinfer_cutlass
+      - name: run.sh refuses flashinfer_cutlass on the pin
         run: |
           if VALIDATE_ONLY=1 MOE_BACKEND=flashinfer_cutlass ./run.sh; then
             echo "run.sh accepted MOE_BACKEND=flashinfer_cutlass without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
-      - name: run.sh refuses seqs above 2
+      - name: run.sh refuses seqs above 8
         run: |
-          if VALIDATE_ONLY=1 MAX_NUM_SEQS=8 ./run.sh; then
-            echo "run.sh accepted MAX_NUM_SEQS=8 without FORCE_UNSAFE_CTX" >&2
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=16 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=16 without FORCE_UNSAFE_CTX" >&2
+            exit 1
+          fi
+      - name: run.sh refuses b12x
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=b12x ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=b12x without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses flashinfer_b12x
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=flashinfer_b12x ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=flashinfer_b12x without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses zero-padded integers
+        run: |
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=010 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=010 (octal 8 to bash, 10 to vLLM)" >&2
+            exit 1
+          fi
+      - name: run.sh refuses a missing pin overlay
+        run: |
+          if VALIDATE_ONLY=1 OVERLAYS="docker/ple_layer.py docker/modelopt.py" ./run.sh; then
+            echo "run.sh accepted the pin without docker/ple_ops.py" >&2
             exit 1
           fi
 
