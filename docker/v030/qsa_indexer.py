@@ -520,18 +520,25 @@ def _deterministic_topk_ties(
     block_indices: torch.Tensor,
     block_topk: int,
 ) -> None:
-    """S1.5: exact top-k set with ties broken by lowest index, ascending (full rows)."""
+    """S1.5: exact top-k set with ties broken by lowest index, ascending (full rows).
+
+    The threshold is the exact k-th largest visible logit (torch.topk values are
+    deterministic), not the minimum of persistent_topk's picks: a -1 pad or a non-top pick
+    there lets more than block_topk entries beat the threshold, and the scatter below then
+    runs past its block_topk + 1 columns (device assert at 64k context, session 3).
+    """
     rows, width = logits.shape
     if width <= block_topk or rows == 0:
         return
     cols = torch.arange(width, device=logits.device, dtype=torch.int32)
     valid = cols.unsqueeze(0) < visible_blocks.unsqueeze(1)
-    thr = logits.gather(1, block_indices.long().clamp(0, width - 1)).amin(1, keepdim=True)
-    gt = (logits > thr) & valid
-    eq = (logits == thr) & valid
+    masked = logits.nan_to_num(nan=float("-inf")).masked_fill(~valid, float("-inf"))
+    thr = masked.topk(block_topk, dim=1, sorted=False).values.amin(1, keepdim=True)
+    gt = masked > thr
+    eq = (masked == thr) & valid
     need = block_topk - gt.sum(1, keepdim=True, dtype=torch.int32)
     keep = gt | (eq & (eq.cumsum(1, dtype=torch.int32) <= need))
-    slot = torch.where(keep, keep.cumsum(1, dtype=torch.int32) - 1, block_topk)
+    slot = torch.where(keep, keep.cumsum(1, dtype=torch.int32) - 1, block_topk).clamp_(max=block_topk)
     out = torch.full((rows, block_topk + 1), -1, dtype=block_indices.dtype, device=logits.device)
     out.scatter_(1, slot.long(), cols.to(block_indices.dtype).expand(rows, -1))
     full = (visible_blocks > block_topk).unsqueeze(1)
