@@ -1,0 +1,5 @@
+2026-09-30T13:16:10.245Z [p25-lpt3200] gate rc=0 preemptions_delta=0
+2026-09-30T13:16:10.917Z [p25-lpt3200] memcheck ok before mixed: spark1 avail=14920MB swap_used spark1=8411MB spark2=4259MB
+2026-09-30T13:16:10.920Z [p25-lpt3200] start mixed: python3 bench_mixed.py --url http://127.0.0.1:8000/v1/chat/completions --cells base A B --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/extras/p25-lpt3200/mixed.jsonl --label p25-lpt3200
+2026-09-30T13:19:55.046Z [p25-lpt3200] end mixed rc=0
+2026-09-30T13:19:55.054Z [p25-lpt3200] mixed spark1 min_avail_mb=14699 max_swap_used_mb=8411 | spark2 min_avail_mb=17865 max_swap_used_mb=4259

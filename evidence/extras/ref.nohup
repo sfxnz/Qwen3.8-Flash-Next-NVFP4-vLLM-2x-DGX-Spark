@@ -1,0 +1,9 @@
+2026-09-30T11:12:27.240Z [ref] gate rc=0 preemptions_delta=0
+2026-09-30T11:12:27.919Z [ref] memcheck ok before diverse16: spark1 avail=14971MB swap_used spark1=8567MB spark2=4262MB
+2026-09-30T11:12:27.932Z [ref] start diverse16: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 16 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/extras/ref/diverse16.jsonl --label ref
+2026-09-30T11:20:51.531Z [ref] end diverse16 rc=0
+2026-09-30T11:20:51.553Z [ref] diverse16 preemptions_delta=0 spark1 min_avail_mb=14214 max_swap_used_mb=8567 | spark2 min_avail_mb=17972 max_swap_used_mb=4261
+2026-09-30T11:20:52.257Z [ref] memcheck ok before mixed: spark1 avail=15388MB swap_used spark1=8441MB spark2=4257MB
+2026-09-30T11:20:52.269Z [ref] start mixed: python3 bench_mixed.py --url http://127.0.0.1:8000/v1/chat/completions --cells base A B --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/extras/ref/mixed.jsonl --label ref
+2026-09-30T11:24:36.466Z [ref] end mixed rc=0
+2026-09-30T11:24:36.472Z [ref] mixed spark1 min_avail_mb=14492 max_swap_used_mb=8441 | spark2 min_avail_mb=17912 max_swap_used_mb=4257

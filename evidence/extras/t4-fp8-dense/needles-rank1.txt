@@ -1,0 +1,15 @@
+1:WARNING 09-30 13:20:38 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_FP8_DENSE
+2:WARNING 09-30 13:20:38 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_DRAFT_HEAD_FP8
+24:INFO 09-30 13:20:53 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+46:(Worker_TP1 pid=379) INFO 09-30 13:21:57 [__init__.py:246] Applied linear backend override for 'fp8_block_w8a8': 'marlin'
+50:(Worker_TP1 pid=379) INFO 09-30 13:21:57 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+52:(Worker_TP1 pid=379) INFO 09-30 13:21:57 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+53:(Worker_TP1 pid=379) INFO 09-30 13:21:58 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+64:(Worker_TP1 pid=379) INFO 09-30 13:27:47 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+65:(Worker_TP1 pid=379) INFO 09-30 13:27:47 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+68:(Worker_TP1 pid=379) INFO 09-30 13:29:59 [mtp.py:782] Draft head (L1b'): 124160 rows on this rank (ids 124160..248319), FP8 marlin, 303.6 MiB; the target keeps its BF16 lm_head for verify.
+83:(Worker_TP1 pid=379) WARNING 09-30 13:30:37 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+86:(Worker_TP1 pid=379) INFO 09-30 13:30:42 [model_runner.py:1066] Graph capturing finished in 5 secs, took 0.16 GiB
+87:(Worker_TP1 pid=379) INFO 09-30 13:30:42 [gpu_worker.py:640] Available KV cache memory: 25.33 GiB
+88:(Worker_TP1 pid=379) INFO 09-30 13:30:42 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7586 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7614. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+144:(Worker_TP1 pid=379) INFO 09-30 13:31:39 [model_runner.py:1066] Graph capturing finished in 2 secs, took 0.32 GiB

@@ -1,0 +1,105 @@
+WARN ruler_set drift: ['bench_mixed.py']
+built long prompt 32768: 32756 tokens
+built long prompt 131072: 131078 tokens
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.008, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "s13", "window_chunks": 606, "itl_p50_ms": 98.695, "itl_p99_ms": 116.083, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.021, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "p23", "window_chunks": 606, "itl_p50_ms": 98.833, "itl_p99_ms": 115.705, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.025, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "p27", "window_chunks": 606, "itl_p50_ms": 98.666, "itl_p99_ms": 116.089, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.028, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "s05", "window_chunks": 605, "itl_p50_ms": 98.638, "itl_p99_ms": 116.369, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.032, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "s04", "window_chunks": 604, "itl_p50_ms": 98.814, "itl_p99_ms": 116.095, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774237.035, "label": "p25-lpt3200", "cell": "base", "role": "decoder", "prompt_id": "s22", "window_chunks": 603, "itl_p50_ms": 98.747, "itl_p99_ms": 116.287, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "cell", "ts": 1790774237.04, "label": "p25-lpt3200", "cell": "base", "decoders": 6, "window_s": 60.0, "foreign_requests": 0.0, "decoder_itl_p50_ms": 98.752, "decoder_itl_p99_ms": 116.155, "decoder_itl_max_ms": 208.079, "errors": 0}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.791, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "s13", "window_chunks": 572, "itl_p50_ms": 101.324, "itl_p99_ms": 172.219, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.795, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "p23", "window_chunks": 574, "itl_p50_ms": 101.254, "itl_p99_ms": 168.978, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.799, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "p27", "window_chunks": 573, "itl_p50_ms": 101.249, "itl_p99_ms": 171.023, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.803, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "s05", "window_chunks": 572, "itl_p50_ms": 101.365, "itl_p99_ms": 171.537, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.807, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "s04", "window_chunks": 571, "itl_p50_ms": 101.375, "itl_p99_ms": 173.387, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.811, "label": "p25-lpt3200", "cell": "A", "role": "decoder", "prompt_id": "s22", "window_chunks": 570, "itl_p50_ms": 101.481, "itl_p99_ms": 176.765, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.815, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 6.095, "ttft_s": 0.337, "chunks": 14, "completion_tokens": 32, "prompt_tokens": 48, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.5615, "ms_per_step": 120.112, "tokens_per_step": 2.385, "decode_tok_s": 19.853, "itl_p50_ms": 118.081, "itl_p99_ms": 161.596, "itl_max_ms": 165.696}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.819, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 6.844, "ttft_s": 0.32, "chunks": 14, "completion_tokens": 32, "prompt_tokens": 51, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.5601, "ms_per_step": 120.008, "tokens_per_step": 2.385, "decode_tok_s": 19.871, "itl_p50_ms": 118.674, "itl_p99_ms": 164.055, "itl_max_ms": 168.631}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.823, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 8.259, "ttft_s": 0.347, "chunks": 13, "completion_tokens": 32, "prompt_tokens": 52, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.437, "ms_per_step": 119.746, "tokens_per_step": 2.583, "decode_tok_s": 21.573, "itl_p50_ms": 115.624, "itl_p99_ms": 162.848, "itl_max_ms": 166.412}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.827, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 8.894, "ttft_s": 0.33, "chunks": 15, "completion_tokens": 32, "prompt_tokens": 51, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.6658, "ms_per_step": 118.985, "tokens_per_step": 2.214, "decode_tok_s": 18.61, "itl_p50_ms": 116.688, "itl_p99_ms": 160.929, "itl_max_ms": 164.911}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.831, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 10.119, "ttft_s": 0.308, "chunks": 13, "completion_tokens": 32, "prompt_tokens": 50, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.4287, "ms_per_step": 119.059, "tokens_per_step": 2.583, "decode_tok_s": 21.698, "itl_p50_ms": 118.145, "itl_p99_ms": 162.828, "itl_max_ms": 167.968}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.835, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 11.282, "ttft_s": 0.345, "chunks": 13, "completion_tokens": 32, "prompt_tokens": 53, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.348, "ms_per_step": 112.333, "tokens_per_step": 2.583, "decode_tok_s": 22.997, "itl_p50_ms": 114.805, "itl_p99_ms": 120.98, "itl_max_ms": 121.052}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.839, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 26.224, "ttft_s": 0.316, "chunks": 17, "completion_tokens": 32, "prompt_tokens": 53, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.7358, "ms_per_step": 108.488, "tokens_per_step": 1.938, "decode_tok_s": 17.859, "itl_p50_ms": 107.7, "itl_p99_ms": 119.847, "itl_max_ms": 119.917}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.843, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 41.004, "ttft_s": 0.35, "chunks": 16, "completion_tokens": 32, "prompt_tokens": 55, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.644, "ms_per_step": 109.602, "tokens_per_step": 2.067, "decode_tok_s": 18.856, "itl_p50_ms": 108.759, "itl_p99_ms": 126.177, "itl_max_ms": 127.154}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.847, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 45.035, "ttft_s": 0.342, "chunks": 17, "completion_tokens": 32, "prompt_tokens": 54, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.7341, "ms_per_step": 108.38, "tokens_per_step": 1.938, "decode_tok_s": 17.877, "itl_p50_ms": 108.395, "itl_p99_ms": 122.5, "itl_max_ms": 123.099}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.85, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 47.865, "ttft_s": 0.299, "chunks": 15, "completion_tokens": 32, "prompt_tokens": 53, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.6528, "ms_per_step": 118.059, "tokens_per_step": 2.214, "decode_tok_s": 18.756, "itl_p50_ms": 115.424, "itl_p99_ms": 169.5, "itl_max_ms": 176.142}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.856, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 48.626, "ttft_s": 0.374, "chunks": 17, "completion_tokens": 32, "prompt_tokens": 50, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.8816, "ms_per_step": 117.597, "tokens_per_step": 1.938, "decode_tok_s": 16.476, "itl_p50_ms": 115.245, "itl_p99_ms": 162.188, "itl_max_ms": 167.123}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.86, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 50.114, "ttft_s": 0.416, "chunks": 16, "completion_tokens": 32, "prompt_tokens": 54, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.6557, "ms_per_step": 110.379, "tokens_per_step": 2.067, "decode_tok_s": 18.723, "itl_p50_ms": 109.523, "itl_p99_ms": 131.812, "itl_max_ms": 132.685}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.864, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 58.969, "ttft_s": 0.313, "chunks": 16, "completion_tokens": 32, "prompt_tokens": 49, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.7917, "ms_per_step": 119.449, "tokens_per_step": 2.067, "decode_tok_s": 17.302, "itl_p50_ms": 116.439, "itl_p99_ms": 161.897, "itl_max_ms": 166.542}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.867, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 59.041, "ttft_s": 0.408, "chunks": 15, "completion_tokens": 32, "prompt_tokens": 52, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.6251, "ms_per_step": 116.077, "tokens_per_step": 2.214, "decode_tok_s": 19.076, "itl_p50_ms": 115.93, "itl_p99_ms": 133.567, "itl_max_ms": 134.469}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.871, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 63.042, "ttft_s": 0.395, "chunks": 19, "completion_tokens": 32, "prompt_tokens": 50, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 2.1095, "ms_per_step": 117.193, "tokens_per_step": 1.722, "decode_tok_s": 14.696, "itl_p50_ms": 114.426, "itl_p99_ms": 177.776, "itl_max_ms": 187.651}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774302.875, "label": "p25-lpt3200", "cell": "A", "role": "short", "t_send": 63.732, "ttft_s": 0.421, "chunks": 14, "completion_tokens": 32, "prompt_tokens": 53, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 1.4983, "ms_per_step": 115.258, "tokens_per_step": 2.385, "decode_tok_s": 20.689, "itl_p50_ms": 114.849, "itl_p99_ms": 128.469, "itl_max_ms": 128.823}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "cell", "ts": 1790774302.88, "label": "p25-lpt3200", "cell": "A", "decoders": 6, "window_s": 60.64, "foreign_requests": 6.0, "decoder_itl_p50_ms": 101.379, "decoder_itl_p99_ms": 172.229, "decoder_itl_max_ms": 265.358, "errors": 0, "short_n": 16, "short_ttft_p50_s": 0.344, "short_ttft_p99_s": 0.42, "rate_per_s": 0.3}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.975, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "s13", "window_chunks": 152, "itl_p50_ms": 112.592, "itl_p99_ms": 2030.016, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.98, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "p23", "window_chunks": 153, "itl_p50_ms": 112.312, "itl_p99_ms": 2030.349, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.984, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "p27", "window_chunks": 153, "itl_p50_ms": 112.544, "itl_p99_ms": 2029.652, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.987, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "s05", "window_chunks": 151, "itl_p50_ms": 113.109, "itl_p99_ms": 2135.271, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.991, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "s04", "window_chunks": 151, "itl_p50_ms": 112.651, "itl_p99_ms": 2531.98, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.995, "label": "p25-lpt3200", "cell": "B", "role": "decoder", "prompt_id": "s22", "window_chunks": 151, "itl_p50_ms": 112.506, "itl_p99_ms": 2135.398, "error": null}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774394.999, "label": "p25-lpt3200", "cell": "B", "role": "long32k", "t_send": 8.012, "ttft_s": 12.603, "chunks": 4, "completion_tokens": 8, "prompt_tokens": 32756, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 0.2961, "ms_per_step": 98.694, "tokens_per_step": 2.333, "decode_tok_s": 23.642, "itl_p50_ms": 102.837, "itl_p99_ms": 121.643, "itl_max_ms": 122.027}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774395.002, "label": "p25-lpt3200", "cell": "B", "role": "probe", "t_send": 10.012, "ttft_s": 2.822, "chunks": 2, "completion_tokens": 3, "prompt_tokens": 493, "cached_tokens": null, "finish_reason": "stop", "error": null, "decode_s": 1.148, "ms_per_step": 1147.987, "tokens_per_step": 2.0, "decode_tok_s": 1.742, "itl_p50_ms": 1147.987, "itl_p99_ms": 1147.987, "itl_max_ms": 1147.987}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774395.006, "label": "p25-lpt3200", "cell": "B", "role": "long128k", "t_send": 23.915, "ttft_s": 64.882, "chunks": 4, "completion_tokens": 8, "prompt_tokens": 131078, "cached_tokens": null, "finish_reason": "length", "error": null, "decode_s": 0.2714, "ms_per_step": 90.453, "tokens_per_step": 2.333, "decode_tok_s": 25.796, "itl_p50_ms": 110.247, "itl_p99_ms": 123.001, "itl_max_ms": 123.261}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "request", "ts": 1790774395.009, "label": "p25-lpt3200", "cell": "B", "role": "probe", "t_send": 25.913, "ttft_s": 2.981, "chunks": 2, "completion_tokens": 3, "prompt_tokens": 491, "cached_tokens": null, "finish_reason": "stop", "error": null, "decode_s": 1.1587, "ms_per_step": 1158.69, "tokens_per_step": 2.0, "decode_tok_s": 1.726, "itl_p50_ms": 1158.69, "itl_p99_ms": 1158.69, "itl_max_ms": 1158.69}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "cell", "ts": 1790774395.013, "label": "p25-lpt3200", "cell": "B", "decoders": 6, "window_s": 87.058, "foreign_requests": 6.0, "decoder_itl_p50_ms": 112.544, "decoder_itl_p99_ms": 2205.951, "decoder_itl_max_ms": 3462.306, "errors": 0, "long32k_n": 1, "long32k_ttft_p50_s": 12.603, "long32k_ttft_p99_s": 12.603, "probe_n": 2, "probe_ttft_p50_s": 2.901, "probe_ttft_p99_s": 2.979, "long128k_n": 1, "long128k_ttft_p50_s": 64.882, "long128k_ttft_p99_s": 64.882, "decoder_itl_during_long32k_p50_ms": 1048.804, "decoder_itl_during_long32k_p99_ms": 1294.378, "decoder_itl_during_long32k_max_ms": 1294.615, "decoder_itl_during_long128k_p50_ms": 1451.577, "decoder_itl_during_long128k_p99_ms": 2590.183, "decoder_itl_during_long128k_max_ms": 3462.306}
+cell=base decoders=6 window_s=60.0 foreign_requests=0.0 decoder_itl_p50_ms=98.752 decoder_itl_p99_ms=116.155 decoder_itl_max_ms=208.079 errors=0
+cell=A decoders=6 window_s=60.64 foreign_requests=6.0 decoder_itl_p50_ms=101.379 decoder_itl_p99_ms=172.229 decoder_itl_max_ms=265.358 errors=0 short_n=16 short_ttft_p50_s=0.344 short_ttft_p99_s=0.42 rate_per_s=0.3
+cell=B decoders=6 window_s=87.058 foreign_requests=6.0 decoder_itl_p50_ms=112.544 decoder_itl_p99_ms=2205.951 decoder_itl_max_ms=3462.306 errors=0 long32k_n=1 long32k_ttft_p50_s=12.603 long32k_ttft_p99_s=12.603 probe_n=2 probe_ttft_p50_s=2.901 probe_ttft_p99_s=2.979 long128k_n=1 long128k_ttft_p50_s=64.882 long128k_ttft_p99_s=64.882 decoder_itl_during_long32k_p50_ms=1048.804 decoder_itl_during_long32k_p99_ms=1294.378 decoder_itl_during_long32k_max_ms=1294.615 decoder_itl_during_long128k_p50_ms=1451.577 decoder_itl_during_long128k_p99_ms=2590.183 decoder_itl_during_long128k_max_ms=3462.306
+SUMMARY {
+  "ruler": "bench_mixed",
+  "ruler_set": "1-dirty",
+  "ruler_sha": "a5404332d459",
+  "label": "p25-lpt3200",
+  "summary": [
+    {
+      "cell": "base",
+      "decoders": 6,
+      "window_s": 60.0,
+      "foreign_requests": 0.0,
+      "decoder_itl_p50_ms": 98.752,
+      "decoder_itl_p99_ms": 116.155,
+      "decoder_itl_max_ms": 208.079,
+      "errors": 0
+    },
+    {
+      "cell": "A",
+      "decoders": 6,
+      "window_s": 60.64,
+      "foreign_requests": 6.0,
+      "decoder_itl_p50_ms": 101.379,
+      "decoder_itl_p99_ms": 172.229,
+      "decoder_itl_max_ms": 265.358,
+      "errors": 0,
+      "short_n": 16,
+      "short_ttft_p50_s": 0.344,
+      "short_ttft_p99_s": 0.42,
+      "rate_per_s": 0.3
+    },
+    {
+      "cell": "B",
+      "decoders": 6,
+      "window_s": 87.058,
+      "foreign_requests": 6.0,
+      "decoder_itl_p50_ms": 112.544,
+      "decoder_itl_p99_ms": 2205.951,
+      "decoder_itl_max_ms": 3462.306,
+      "errors": 0,
+      "long32k_n": 1,
+      "long32k_ttft_p50_s": 12.603,
+      "long32k_ttft_p99_s": 12.603,
+      "probe_n": 2,
+      "probe_ttft_p50_s": 2.901,
+      "probe_ttft_p99_s": 2.979,
+      "long128k_n": 1,
+      "long128k_ttft_p50_s": 64.882,
+      "long128k_ttft_p99_s": 64.882,
+      "decoder_itl_during_long32k_p50_ms": 1048.804,
+      "decoder_itl_during_long32k_p99_ms": 1294.378,
+      "decoder_itl_during_long32k_max_ms": 1294.615,
+      "decoder_itl_during_long128k_p50_ms": 1451.577,
+      "decoder_itl_during_long128k_p99_ms": 2590.183,
+      "decoder_itl_during_long128k_max_ms": 3462.306
+    }
+  ]
+}
+ROW {"ruler": "bench_mixed", "ruler_set": "1-dirty", "ruler_sha": "a5404332d459", "kind": "summary", "ts": 1790774395.018, "label": "p25-lpt3200", "summary": [{"cell": "base", "decoders": 6, "window_s": 60.0, "foreign_requests": 0.0, "decoder_itl_p50_ms": 98.752, "decoder_itl_p99_ms": 116.155, "decoder_itl_max_ms": 208.079, "errors": 0}, {"cell": "A", "decoders": 6, "window_s": 60.64, "foreign_requests": 6.0, "decoder_itl_p50_ms": 101.379, "decoder_itl_p99_ms": 172.229, "decoder_itl_max_ms": 265.358, "errors": 0, "short_n": 16, "short_ttft_p50_s": 0.344, "short_ttft_p99_s": 0.42, "rate_per_s": 0.3}, {"cell": "B", "decoders": 6, "window_s": 87.058, "foreign_requests": 6.0, "decoder_itl_p50_ms": 112.544, "decoder_itl_p99_ms": 2205.951, "decoder_itl_max_ms": 3462.306, "errors": 0, "long32k_n": 1, "long32k_ttft_p50_s": 12.603, "long32k_ttft_p99_s": 12.603, "probe_n": 2, "probe_ttft_p50_s": 2.901, "probe_ttft_p99_s": 2.979, "long128k_n": 1, "long128k_ttft_p50_s": 64.882, "long128k_ttft_p99_s": 64.882, "decoder_itl_during_long32k_p50_ms": 1048.804, "decoder_itl_during_long32k_p99_ms": 1294.378, "decoder_itl_during_long32k_max_ms": 1294.615, "decoder_itl_during_long128k_p50_ms": 1451.577, "decoder_itl_during_long128k_p99_ms": 2590.183, "decoder_itl_during_long128k_max_ms": 3462.306}]}

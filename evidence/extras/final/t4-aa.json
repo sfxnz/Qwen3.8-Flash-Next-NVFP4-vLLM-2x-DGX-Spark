@@ -1,0 +1,22 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session6/ref/t4",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session6/final/t4",
+ "gate": "T4",
+ "verdict": "PASS",
+ "pass": true,
+ "checks": {
+  "gsm8k_full": true
+ },
+ "tasks": {
+  "gsm8k_full": {
+   "n": 1319,
+   "ref_acc": 0.978014,
+   "cand_acc": 0.976497,
+   "drop_pp": 0.152,
+   "lost": 5,
+   "gained": 3,
+   "p": 0.726562,
+   "rule": "McNemar p >= 0.05 and drop <= 1.5 pp"
+  }
+ }
+}
