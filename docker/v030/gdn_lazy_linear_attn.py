@@ -4,7 +4,7 @@
 # upstream_file_sha256: b80f8e6f3fff442fb880aebb3209c52f814f66490009f4ac4003de603576d10a
 # upstream_PR: none (local K3; deferred-commit pattern of in-tree KDA RecoverSSM)
 # generator: docker/v030/apply_gdn_lazy_overlay.py (do not hand-edit)
-# embedded: docker/v030/gdn_lazy.py sha256 83b5c9e1d2e5b9fc56c0fc61904c9df4bdcd64d87851db424b55a25d016b7ce5
+# embedded: docker/v030/gdn_lazy.py sha256 1c23c006b19b892325cc8df9052fe2e14bb91842855736ce48e0448218e67ec5
 # features: K3 lazy GDN state commit for MTP verify, opt-in via VLLM_QWEN38_GDN_LAZY=1,
 #   default off, self-tested (bitwise vs stock) at layer init; pair with
 #   docker/v030/gdn_lazy_attn.py
@@ -2140,13 +2140,13 @@ except Exception:  # noqa: BLE001 - no triton means stock path
 
 GDL_ENV = "VLLM_QWEN38_GDN_LAZY"
 GDL_DIM = 128  # K = V = 128 (stock kernel requirement)
-GDL_BV = 32  # V rows per chunk (stock kChunkV)
+GDL_BV = 64  # V rows per chunk (stock kChunkV is 32; 64 x 8 warps measured best on GB10, evidence/k3)
 GDL_TMAX = 8  # stock kMaxMtpTokens
 # Ring at the tail of each head's 64 KiB region of the column-1 slot, in bf16
 # elements: TMAX records of [k(128) | v(128)], then TMAX a, then TMAX b.
 GDL_HEAD_BF16 = GDL_DIM * GDL_DIM * 2
 GDL_RING_BF16 = GDL_TMAX * 2 * GDL_DIM + 2 * GDL_TMAX
-GDL_RING_OFF = GDL_HEAD_BF16 - GDL_RING_BF16  # 30704 -> fp32 row 119.9 (chunk 3)
+GDL_RING_OFF = GDL_HEAD_BF16 - GDL_RING_BF16  # 30704 -> fp32 row 119.9 (last chunk)
 GDL_LOG2E = 1.4426950216293334961  # float32(log2 e), the stock __expf constant
 GDL_MODE_AUTO = 0
 GDL_MODE_EAGER = 1
@@ -2428,7 +2428,11 @@ if _GDL_HAS_TRITON:
         h3 = _gdl_mul(h3, decay, INTERP)
         hk = _gdl_dot4(k0, k1, k2, k3, h0, h1, h2, h3, INTERP, RED)
         delta = _gdl_mul(beta, _gdl_sub(v, hk, INTERP), INTERP)
-        d = tl.reshape(delta, [delta.shape[0], 1])
+        # expand_dims keeps delta's slice layout's parent (the tile's blocked
+        # layout); tl.reshape produced a #linear layout that dragged the updated
+        # tile - and the output dot's tl.reduce - into a register-sequential
+        # (non-butterfly) reduction on sm_121: 1-ulp output misses vs stock.
+        d = tl.expand_dims(delta, 1)
         h0 = _gdl_fma(k0, d, h0, INTERP)
         h1 = _gdl_fma(k1, d, h1, INTERP)
         h2 = _gdl_fma(k2, d, h2, INTERP)
@@ -2571,6 +2575,11 @@ if _GDL_HAS_TRITON:
             else:
                 gate = _gdl_mul(gi, sig, INTERP)
             y = _gdl_mul(gate, y, INTERP)
+            if not INTERP:
+                # every warp has loaded raw o of token t before any warp
+                # overwrites it with y (the [128] reduce can be warp-local and
+                # replicated across warps: a WAR race, seen at 8 warps)
+                tl.debug_barrier()
             tl.store(out_row + t * HV * 128 + cols, _gdl_bf16(y, INTERP))
         if lazy:
             # append this step's exact inputs; replayed next step
@@ -2654,6 +2663,10 @@ if _GDL_HAS_TRITON:
                     s2 = h2
                     s3 = h3
                 else:
+                    if not INTERP:
+                        # t = 0 stores to col0, the tile this chunk loaded: all
+                        # warps' loads are consumed before any warp stores
+                        tl.debug_barrier()
                     dst = tl.load(irow + t)
                     if dst > 0:
                         tl.store(state_ptr + dst.to(tl.int64) * stride_slot + head_off
@@ -2720,7 +2733,7 @@ def gdl_decode_launch(mixed_qkv, a, b, A_log, dt_bias, state_indices, cu_seqlens
         num_k_heads, HV, W, int(block_size), float(scale), float(eps),
         G=G, SIGMOID=bool(sigmoid), MODE=int(mode), INTERP=interp,
         TMAX=GDL_TMAX, BV=GDL_BV, RING_OFF=GDL_RING_OFF, RED=_gdl_red(),
-        num_warps=4,
+        num_warps=8,
     )
     _gdl_header_kernel[(n,)](
         state_indices, state_indices.stride(0), cu_seqlens, num_accepted, seq_lens,
