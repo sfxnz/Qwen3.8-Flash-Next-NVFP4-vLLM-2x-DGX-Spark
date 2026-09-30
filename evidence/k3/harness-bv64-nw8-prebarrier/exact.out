@@ -1,0 +1,26 @@
+{
+ "c1": {
+  "steps": 256,
+  "out": {
+   "max_ulp": 0,
+   "n_diff": 0
+  },
+  "committed_state": {
+   "max_ulp": 0,
+   "n_diff": 0
+  },
+  "A0": true
+ },
+ "c8": {
+  "steps": 256,
+  "out": {
+   "max_ulp": 0,
+   "n_diff": 0
+  },
+  "committed_state": {
+   "max_ulp": 0,
+   "n_diff": 0
+  },
+  "A0": true
+ }
+}

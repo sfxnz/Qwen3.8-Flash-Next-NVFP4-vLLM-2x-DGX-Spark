@@ -1,0 +1,9 @@
+"c1" "A0":true "c2" "A0":true "c5" "A0":true "c8" "A0":true  exact seed 1
+}
+ sim64 rc=0 seed 1
+"c1" "A0":true "c2" "A0":true "c5" "A0":true "c8" "A0":true  exact seed 2
+}
+ sim64 rc=0 seed 2
+"c1" "A0":true "c2" "A0":true "c5" "A0":true "c8" "A0":true  exact seed 3
+}
+ sim64 rc=0 seed 3

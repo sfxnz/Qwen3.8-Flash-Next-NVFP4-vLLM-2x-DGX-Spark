@@ -1,0 +1,21 @@
+2026-09-30T16:29:13Z memcheck avail=119121MB swap_used=4642MB
+2026-09-30T16:29:13Z start selftest: selftest
+2026-09-30T16:29:24Z end selftest rc=0
+2026-09-30T16:29:24Z memcheck avail=119100MB swap_used=4642MB
+2026-09-30T16:29:24Z start exact: exact --conc 1 8 --steps 256
+2026-09-30T16:29:36Z end exact rc=0
+2026-09-30T16:29:36Z memcheck avail=119098MB swap_used=4642MB
+2026-09-30T16:29:36Z start exact-red: exact --conc 1 --steps 32
+2026-09-30T16:29:47Z end exact-red rc=0
+2026-09-30T16:29:47Z memcheck avail=118961MB swap_used=4642MB
+2026-09-30T16:29:47Z start sim64: sim --block 64 --nreq 8 --steps 400
+2026-09-30T16:30:00Z end sim64 rc=0
+2026-09-30T16:30:00Z memcheck avail=119064MB swap_used=4642MB
+2026-09-30T16:30:00Z start sim1600: sim --block 1600 --nreq 8 --steps 1500
+2026-09-30T16:30:18Z end sim1600 rc=0
+2026-09-30T16:30:18Z memcheck avail=119130MB swap_used=4642MB
+2026-09-30T16:30:18Z start bench: bench --conc 1 8 --abab 4 --reps 50
+2026-09-30T16:31:16Z end bench rc=0
+2026-09-30T16:31:16Z memcheck avail=117998MB swap_used=4642MB
+2026-09-30T16:31:16Z start ncu
+2026-09-30T16:31:29Z end ncu rc=0
