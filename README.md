@@ -126,6 +126,7 @@ Stop both ranks from the head:
 | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
 | Speculative | MTP-3 (`SPEC=mtp`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it) |
 | Draft head | `DRAFT_LOCAL_ARGMAX=1` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8=1` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB=none` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG=1` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2) |
+| lab-fp8-dense (opt-in) | `FP8_DENSE=none`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision). Not the default. |
 | Overlays | `OVERLAYS=auto` → v0.30: `docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py`; pin rollback: `docker/ple_layer.py docker/modelopt.py docker/ple_ops.py` (R11 headers, see `docker/OVERLAYS.md`) |
 | v0.30 envs | `VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0` on both ranks when IMAGE is the v0.30 digest (F33: offload pins 32 GiB of host memory per node) |
 | Scheduling | `--async-scheduling` (`ASYNC_SCHEDULING=1`); `--per-request-spec-decode-metrics` is not passed (costs ~1 ms/step) |

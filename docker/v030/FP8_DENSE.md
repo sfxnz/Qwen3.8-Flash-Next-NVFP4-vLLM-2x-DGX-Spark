@@ -120,3 +120,27 @@ Things to confirm on the first boot:
   `in_proj_qkv` and `in_proj_z`.
 - Online loading inside the MTP drafter's load pass.
 - `CUTLASS_BLOCK_FP8_SUPPORTED` on sm_121.
+
+## Measured (session 5, `evidence/k-sweep-precision/`)
+
+**Boot:** first-boot items confirmed on both ranks.
+- Log lines: `qwen38-fp8-dense: mode=per_block`, `Applied linear backend override for 'fp8_block_w8a8': 'marlin'`, `Selected MarlinFP8ScaledMMLinearKernel for Fp8PerBlockOnlineLinearMethod`.
+- Online loading works for the 4-shard `in_proj_qkvz` and for the MTP drafter.
+- `ptpc` selects `CutlassFP8ScaledMMLinearKernel`, so CUTLASS W8A8 runs on sm_121.
+
+**Speed:** per_block, compared with the lossless default.
+
+| Metric | Default | per_block |
+|---|---|---|
+| structured c1 ms/step | 54.62 | 47.50 (−13.0%) |
+| structured c8 ms/step | 75.26 | 69.74 (−7.3%) |
+| frozen prose c1 tok/s | 44.0 | 57.1 |
+| frozen structured c1 tok/s | 72.2 | 84.2 |
+| weights per rank | 63.94 GiB | 62.66 GiB (−1.28) |
+
+**Quality gates:**
+- **T1-B: fails** (top-1 0.943, KL 0.032; de, es, ja, multi and tools are above 2× the mean).
+- **Passes:** T1-D (median divergence 17.0 against a floor of 14.25, KL 0.004), paired T2 (GSM8K −1.2 pp at p 0.25, IFEval +1.7 pp, tools 60/60, JSON 30/30), T3 to 64k and V.
+- **The T1-B gate is saturated on this model:** FP8 on a single 65 MB layer already scores 94.6% top-1.
+
+**How it ships:** as the opt-in `lab-fp8-dense` profile. Set `FP8_DENSE=per_block ./run.sh`; `run.sh` then mounts this overlay and passes the env and the Marlin `--kernel-config`. It is not the default. Promotion needs owner sign-off plus T4.
