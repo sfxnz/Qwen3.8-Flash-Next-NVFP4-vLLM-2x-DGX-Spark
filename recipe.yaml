@@ -15,7 +15,7 @@ image:
   base: vllm/vllm-openai:v0.30.0-aarch64
   digest: sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
   local_tag: &image vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
-  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU), mtp.py (L1a local-argmax drafts, L1b' FP8 draft head)
+  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU), mtp.py (L1a local-argmax drafts, L1b' FP8 draft head); GDN_LAZY adds the K3 pair, FP8_DENSE adds modelopt.py
   # Rollback: IMAGE=<rollback.local_tag> ./run.sh mounts OVERLAYS_PIN (ple_layer.py, modelopt.py, ple_ops.py).
   rollback:
     local_tag: vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
@@ -115,11 +115,12 @@ serve:
     # L1b: reduced draft vocabulary, a file name under $HF_CACHE/qwen38-draft-vocab/ on BOTH nodes
     # (tools/vocab/draft_vocab_<V>.json); none = full vocab. Needs L1a.
     DRAFT_VOCAB: none
-    # lab-fp8-dense profile (plan P4-1/R8), opt-in: per_block = online FP8 (Marlin W8A16) on the 99 dense
-    # GDN/QSA/PLE-kv/MTP-attention linears. c1 -13% ms/step, -1.28 GiB/rank; fails the T1-B top-1 gate
-    # (94.3%) while passing T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision) and T4 (evidence/extras).
-    # Not the default without owner sign-off.
-    FP8_DENSE: none
+    # FP8 dense (plan P4-1), the default since session 8 (owner sign-off, evidence/fp8-default): per_block = online
+    # FP8 (Marlin W8A16) on the 99 dense GDN/QSA/PLE-kv/MTP-attention linears, mounts docker/v030/modelopt.py (v0.30
+    # digest only; the pin and OVERLAYS=none ignore it). c1 -11% ms/step, -1.28 GiB/rank. T1-B top-1 is retired for
+    # precision levers on this model (saturated, evidence/k-sweep-precision); gated on T1-D, paired T2, T3, V, T4
+    # and the multilingual paired judge. none = BF16 dense linears (rollback).
+    FP8_DENSE: per_block
     EXTRA_ARGS: ""
     # Space-separated KEY=VALUE pairs passed as `-e` to both ranks.
     EXTRA_ENV: ""
@@ -139,7 +140,7 @@ readme:
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it)"
     - Draft head: "`DRAFT_LOCAL_ARGMAX={DRAFT_LOCAL_ARGMAX}` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8={DRAFT_HEAD_FP8}` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB={DRAFT_VOCAB}` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG={DRAFT_MOE_CONFIG}` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2)"
-    - lab-fp8-dense (opt-in): "`FP8_DENSE={FP8_DENSE}`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision), and T4 full GSM8K thinking on: 97.65% vs 97.80%, McNemar p 0.75 (evidence/extras). Not the default."
+    - FP8 dense: "`FP8_DENSE={FP8_DENSE}` (v0.30 digest). `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense GDN/QSA/PLE-kv/MTP-attention linears in online FP8 (Marlin W8A16): c1 −11% ms/step, structured c8 −8%, −1.28 GiB/rank. Not bit-exact vs BF16 (a precision lever). Short c=1 greedy outputs repeat exactly; long ones (~2.4k+ generated tokens) can fork at near-ties run to run (5 distinct in 9 × 4096-token runs vs 2 in 13 on BF16). Gates: T1-D, paired T2, T3 to 64k, V, T4 full GSM8K (97.65% vs 97.80%, p 0.75) and a 240-prompt 6-language paired judge (39 W / 36 L); T1-B top-1 is retired for precision levers on this model (evidence/fp8-default). `FP8_DENSE=none` = BF16 rollback."
     - throughput (opt-in): "`THROUGHPUT_PROFILE={THROUGHPUT_PROFILE}`. `1` serves `--max-num-seqs 16` (X10): diverse aggregate at 16 clients 235 tok/s prose / 255 structured against 160 / 190 at c=8 on the default (+47% / +34%), 0 preemptions, T0 incl. N=16 bursts clean, c1/c8 ruler within 1.3%, spark1 ≥ 15 GiB available under load (evidence/extras). Not the default."
     - GDN decode (K3): "`GDN_LAZY={GDN_LAZY}`. `1` (v0.30 digest) serves the MTP verify step's GDN state with a lazy commit: one fp32 state write per head instead of one per verify token (L2 writes 6.3 → 1.7 MB per layer per request). Bit-exact vs the stock CUDA kernel (load-time self-test on both ranks, fail closed; greedy output, T1 NLL and 4096-token generations across 1600-token blocks identical). Ruler c8 −7%, c1 flat (evidence/k3). `0` = stock kernel."
     - Overlays: "`OVERLAYS={OVERLAYS}` → v0.30: `{OVERLAYS_V030}`; pin rollback: `{OVERLAYS_PIN}` (R11 headers, see `docker/OVERLAYS.md`)"
@@ -159,14 +160,14 @@ measured:
   # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
   # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
   decode:
-    conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays (greedy output and prose acceptance are pinned run to run), recipe defaults at session 4 (+ L1a local-argmax drafts, L1b' FP8 draft head, L6a drafter MoE config)
+    conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays, L1a/L1b'/L6a draft levers, K3 lazy GDN commit, FP8 dense per_block (session 8)
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
-      - {phase: prose, concurrency: 1, decode: 44.0, aggregate: 44.0, ttft_p50: 0.15, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
-      - {phase: prose, concurrency: 2, decode: 34.8, aggregate: 69.0, ttft_p50: 0.16, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out,
-         note: "Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in every session-3 and session-4 frozen run: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base."}
-      - {phase: structured, concurrency: 1, decode: 73.3, aggregate: 73.3, ttft_p50: 0.14, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
-      - {phase: structured, concurrency: 2, decode: 67.4, aggregate: 134.8, ttft_p50: 0.16, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
+      - {phase: prose, concurrency: 1, decode: 56.9, aggregate: 56.9, ttft_p50: 0.13, evidence: evidence/fp8-default/fp8/gate/bench-frozen.out}
+      - {phase: prose, concurrency: 2, decode: 42.3, aggregate: 76.9, ttft_p50: 0.15, evidence: evidence/fp8-default/fp8/gate/bench-frozen.out,
+         note: "Prose acceptance is 2.69 at c=1 and 2.26 at c=2: a batch of two computes a different greedy text than c=1. Compare prose cells only against the same base."}
+      - {phase: structured, concurrency: 1, decode: 84.3, aggregate: 84.2, ttft_p50: 0.15, evidence: evidence/fp8-default/fp8/gate/bench-frozen.out}
+      - {phase: structured, concurrency: 2, decode: 78.1, aggregate: 156.2, ttft_p50: 0.15, evidence: evidence/fp8-default/fp8/gate/bench-frozen.out}
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4

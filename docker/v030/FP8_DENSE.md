@@ -169,3 +169,7 @@ With owner sign-off to retire T1-B top-1 for precision levers, `per_block` was r
 | BF16 + K3 default | 13 | 2 |
 
 T1-G's 256-token outputs stay pinned. The default was not flipped; the drafted flip is `evidence/fp8-default/flip-draft-not-applied.patch`.
+
+## Default since 2026-10-01
+
+`FP8_DENSE: per_block` is the recipe default (owner decision after session 8, `evidence/fp8-default/SUMMARY.md`). `FP8_DENSE=none` restores BF16 dense linears. Known cost: long c=1 greedy generations can fork run to run at near-ties more often than on BF16. Short outputs repeat exactly.
