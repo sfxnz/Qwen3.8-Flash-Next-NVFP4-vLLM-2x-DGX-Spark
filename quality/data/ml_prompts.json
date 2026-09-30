@@ -1,0 +1,1648 @@
+[
+ {
+  "id": "en.explain.0",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "Why is the sky blue? Explain it for a curious teenager."
+ },
+ {
+  "id": "en.explain.1",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "How does a vaccine train the immune system?"
+ },
+ {
+  "id": "en.explain.2",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "What is inflation, and why do central banks raise interest rates to fight it?"
+ },
+ {
+  "id": "en.explain.3",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "Explain in simple terms how public-key cryptography works."
+ },
+ {
+  "id": "en.explain.4",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "Why does the Earth have seasons?"
+ },
+ {
+  "id": "en.explain.5",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "What is the difference between weather and climate?"
+ },
+ {
+  "id": "en.explain.6",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "How does a refrigerator keep food cold?"
+ },
+ {
+  "id": "en.explain.7",
+  "lang": "en",
+  "task": "explain",
+  "prompt": "What is photosynthesis, and why is it important for life on Earth?"
+ },
+ {
+  "id": "en.summarise.0",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nIn 2019 the public library of a small town began lending tools as well as books. Residents can now borrow drills, ladders, sewing machines and garden equipment for up to a week with their library card. In the first year more than 3,000 tools were lent, and the most popular item was a pressure washer. The library says the scheme cost less than expected because local shops donated most of the equipment, and it plans to add bicycles next spring."
+ },
+ {
+  "id": "en.summarise.1",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nResearchers followed 200 university students for one semester to study the link between sleep and exam results. Students who slept at least seven hours on the nights before exams scored on average eight percent higher than those who slept less than six hours. The effect was strongest in subjects that require memorising facts, such as biology and history. The authors caution that stress may cause both poor sleep and poor results, so the study does not prove cause and effect."
+ },
+ {
+  "id": "en.summarise.2",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nThe first bicycles, built in the early nineteenth century, had no pedals: riders pushed themselves along with their feet. Pedals attached to the front wheel appeared in the 1860s, which led to the high-wheeled penny-farthing, fast but dangerous. The safety bicycle of the 1880s, with two equal wheels and a chain drive, finally made cycling practical for ordinary people. Together with pneumatic tyres, it triggered a cycling boom that changed how people travelled and even contributed to women's independence."
+ },
+ {
+  "id": "en.summarise.3",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nA software company with 150 employees tested a four-day work week for six months without reducing salaries. Productivity, measured by completed projects, stayed the same, while sick days fell by a third. Most employees said they felt less stressed, but some team leaders reported that scheduling meetings became harder. The company has decided to keep the four-day week but will review it again after one year."
+ },
+ {
+  "id": "en.summarise.4",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nOn the rooftops of several city office buildings, beekeepers now keep hives that produce hundreds of kilograms of honey each year. Supporters say urban bees benefit from the variety of flowers in parks and gardens and are exposed to fewer pesticides than bees in the countryside. However, some scientists warn that too many honeybee hives can compete with wild bees for limited food. They recommend planting more flowers rather than simply adding more hives."
+ },
+ {
+  "id": "en.summarise.5",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nCoral reefs cover less than one percent of the ocean floor but are home to about a quarter of all marine species. When water temperatures stay high for several weeks, corals expel the algae that live in their tissues and give them their colour and much of their food. This process, called bleaching, leaves the coral white and weak. If temperatures return to normal quickly, corals can recover, but repeated heatwaves make recovery increasingly unlikely."
+ },
+ {
+  "id": "en.summarise.6",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nPaper was invented in China around the second century and is traditionally credited to an official named Cai Lun, who made it from tree bark, hemp and old rags. For centuries the technique remained a Chinese secret. It spread to the Islamic world in the eighth century, where cities such as Baghdad built paper mills. From there it reached Europe several hundred years later, where it eventually replaced parchment and made the printing revolution possible."
+ },
+ {
+  "id": "en.summarise.7",
+  "lang": "en",
+  "task": "summarise",
+  "prompt": "Summarise the following paragraph in two sentences.\n\nA year after its launch, the city's bike-sharing scheme has recorded 1.2 million rides. Most trips were shorter than fifteen minutes and took place during the morning and evening rush hours. The city estimates that about a fifth of the rides replaced car journeys. The main complaints were about empty stations in the city centre in the morning, and the operator plans to use trucks to redistribute bikes more often."
+ },
+ {
+  "id": "en.email.0",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to your landlord reporting that the heating in your flat is broken and asking for it to be repaired this week."
+ },
+ {
+  "id": "en.email.1",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to a colleague declining Thursday's meeting and proposing another time."
+ },
+ {
+  "id": "en.email.2",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to a customer apologising for a delayed shipment and offering a 10% discount on their next order."
+ },
+ {
+  "id": "en.email.3",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to your professor asking for a one-week extension on an assignment because you were ill."
+ },
+ {
+  "id": "en.email.4",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email inviting your neighbours to a street party on Saturday afternoon."
+ },
+ {
+  "id": "en.email.5",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to the HR department asking about the company's parental leave policy."
+ },
+ {
+  "id": "en.email.6",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to a hotel asking whether a late checkout at 2 p.m. is possible."
+ },
+ {
+  "id": "en.email.7",
+  "lang": "en",
+  "task": "email",
+  "prompt": "Write an email to your team announcing the kickoff meeting for a new project, with a short agenda."
+ },
+ {
+  "id": "en.translate.0",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the French sentence « Elle est tombée dans les pommes pendant le concert. » into English and explain the idiom it contains."
+ },
+ {
+  "id": "en.translate.1",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the German sentence „Du hast wohl Tomaten auf den Augen!“ into English and explain what the idiom means."
+ },
+ {
+  "id": "en.translate.2",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the Spanish sentence «Siempre está en las nubes en clase.» into English and explain the idiom."
+ },
+ {
+  "id": "en.translate.3",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the Japanese sentence「年末は猫の手も借りたいほど忙しい。」into English and explain the expression 猫の手も借りたい."
+ },
+ {
+  "id": "en.translate.4",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the Chinese sentence「他的解释完全是画蛇添足。」into English and explain the idiom 画蛇添足 and its origin."
+ },
+ {
+  "id": "en.translate.5",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the French sentence « J'ai le cafard depuis que tu es parti. » into English and explain the idiom."
+ },
+ {
+  "id": "en.translate.6",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the German sentence „Ich verstehe nur Bahnhof.“ into English and explain what it means."
+ },
+ {
+  "id": "en.translate.7",
+  "lang": "en",
+  "task": "translate",
+  "prompt": "Translate the Spanish sentence «Este examen es pan comido.» into English and explain the idiom."
+ },
+ {
+  "id": "en.reason.0",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "A train leaves at 14:35 and the journey takes 2 hours and 50 minutes. At what time does it arrive? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "en.reason.1",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "Three pencils cost 1.20 euros. How much do seven pencils cost? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "2,80",
+   "2.80",
+   "2.8"
+  ]
+ },
+ {
+  "id": "en.reason.2",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "Anna is older than Ben, and Ben is older than Clara. Who is the youngest? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "en.reason.3",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "A rectangle has a perimeter of 30 cm and a width of 5 cm. What is its area? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "en.reason.4",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "What is 15% of 240? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "en.reason.5",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "I have 5 apples. I eat 2, then buy twice as many as I have left. How many apples do I have now? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "en.reason.6",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "If today is Wednesday, what day of the week will it be in 10 days? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "saturday"
+  ]
+ },
+ {
+  "id": "en.reason.7",
+  "lang": "en",
+  "task": "reason",
+  "prompt": "A coat costs 80 euros. It is reduced by 25%, and then there is a further 10% off the reduced price. What is the final price? Keep it brief and give the final answer on the last line.",
+  "answer": [
+   "54"
+  ]
+ },
+ {
+  "id": "de.explain.0",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Warum ist der Himmel blau? Erkläre es für einen neugierigen Teenager."
+ },
+ {
+  "id": "de.explain.1",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Wie trainiert ein Impfstoff das Immunsystem?"
+ },
+ {
+  "id": "de.explain.2",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Was ist Inflation, und warum erhöhen Zentralbanken die Zinsen, um sie zu bekämpfen?"
+ },
+ {
+  "id": "de.explain.3",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Erkläre in einfachen Worten, wie Public-Key-Kryptographie funktioniert."
+ },
+ {
+  "id": "de.explain.4",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Warum gibt es auf der Erde Jahreszeiten?"
+ },
+ {
+  "id": "de.explain.5",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Was ist der Unterschied zwischen Wetter und Klima?"
+ },
+ {
+  "id": "de.explain.6",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Wie hält ein Kühlschrank Lebensmittel kalt?"
+ },
+ {
+  "id": "de.explain.7",
+  "lang": "de",
+  "task": "explain",
+  "prompt": "Was ist Photosynthese, und warum ist sie für das Leben auf der Erde wichtig?"
+ },
+ {
+  "id": "de.summarise.0",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nIm Jahr 2019 begann die öffentliche Bibliothek einer Kleinstadt, neben Büchern auch Werkzeuge zu verleihen. Die Einwohner können nun mit ihrem Bibliotheksausweis Bohrmaschinen, Leitern, Nähmaschinen und Gartengeräte für bis zu eine Woche ausleihen. Im ersten Jahr wurden mehr als 3.000 Werkzeuge verliehen, und der beliebteste Gegenstand war ein Hochdruckreiniger. Laut der Bibliothek hat das Projekt weniger gekostet als erwartet, weil örtliche Geschäfte den Großteil der Geräte gespendet haben, und im nächsten Frühjahr sollen Fahrräder hinzukommen."
+ },
+ {
+  "id": "de.summarise.1",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nForscher begleiteten 200 Studierende ein Semester lang, um den Zusammenhang zwischen Schlaf und Prüfungsergebnissen zu untersuchen. Wer in den Nächten vor den Prüfungen mindestens sieben Stunden schlief, erzielte im Durchschnitt acht Prozent bessere Ergebnisse als diejenigen, die weniger als sechs Stunden schliefen. Am stärksten war der Effekt in Fächern, in denen man viele Fakten auswendig lernen muss, etwa Biologie und Geschichte. Die Autoren weisen darauf hin, dass Stress sowohl schlechten Schlaf als auch schlechte Ergebnisse verursachen kann, sodass die Studie keinen Kausalzusammenhang beweist."
+ },
+ {
+  "id": "de.summarise.2",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nDie ersten Fahrräder aus dem frühen neunzehnten Jahrhundert hatten keine Pedale: Die Fahrer stießen sich mit den Füßen vom Boden ab. In den 1860er-Jahren kamen Pedale am Vorderrad auf, was zum Hochrad führte, das schnell, aber gefährlich war. Das Sicherheitsfahrrad der 1880er-Jahre mit zwei gleich großen Rädern und Kettenantrieb machte das Radfahren schließlich für normale Menschen praktikabel. Zusammen mit dem Luftreifen löste es einen Fahrradboom aus, der das Reisen veränderte und sogar zur Unabhängigkeit der Frauen beitrug."
+ },
+ {
+  "id": "de.summarise.3",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nEin Softwareunternehmen mit 150 Beschäftigten testete sechs Monate lang eine Vier-Tage-Woche ohne Gehaltskürzung. Die Produktivität, gemessen an abgeschlossenen Projekten, blieb gleich, während die Krankheitstage um ein Drittel zurückgingen. Die meisten Beschäftigten gaben an, sich weniger gestresst zu fühlen, doch einige Teamleiter berichteten, dass die Planung von Besprechungen schwieriger wurde. Das Unternehmen hat beschlossen, die Vier-Tage-Woche beizubehalten, will sie aber nach einem Jahr erneut überprüfen."
+ },
+ {
+  "id": "de.summarise.4",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nAuf den Dächern mehrerer Bürogebäude in der Stadt halten Imker inzwischen Bienenvölker, die jedes Jahr Hunderte Kilogramm Honig produzieren. Befürworter sagen, dass Stadtbienen von der Vielfalt der Blumen in Parks und Gärten profitieren und weniger Pestiziden ausgesetzt sind als Bienen auf dem Land. Einige Wissenschaftler warnen jedoch, dass zu viele Honigbienenvölker mit Wildbienen um das begrenzte Nahrungsangebot konkurrieren können. Sie empfehlen, mehr Blumen zu pflanzen, statt einfach mehr Bienenstöcke aufzustellen."
+ },
+ {
+  "id": "de.summarise.5",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nKorallenriffe bedecken weniger als ein Prozent des Meeresbodens, beherbergen aber etwa ein Viertel aller Meeresarten. Wenn die Wassertemperatur mehrere Wochen lang hoch bleibt, stoßen die Korallen die Algen ab, die in ihrem Gewebe leben und ihnen ihre Farbe und einen Großteil ihrer Nahrung geben. Dieser Vorgang, die sogenannte Korallenbleiche, lässt die Koralle weiß und geschwächt zurück. Kehren die Temperaturen schnell zur Normalität zurück, können sich die Korallen erholen, doch wiederholte Hitzewellen machen eine Erholung immer unwahrscheinlicher."
+ },
+ {
+  "id": "de.summarise.6",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nPapier wurde um das zweite Jahrhundert in China erfunden und wird traditionell einem Beamten namens Cai Lun zugeschrieben, der es aus Baumrinde, Hanf und alten Lumpen herstellte. Jahrhundertelang blieb das Verfahren ein chinesisches Geheimnis. Im achten Jahrhundert verbreitete es sich in der islamischen Welt, wo Städte wie Bagdad Papiermühlen errichteten. Von dort erreichte es einige Hundert Jahre später Europa, wo es schließlich das Pergament ersetzte und die Revolution des Buchdrucks ermöglichte."
+ },
+ {
+  "id": "de.summarise.7",
+  "lang": "de",
+  "task": "summarise",
+  "prompt": "Fasse den folgenden Absatz in zwei Sätzen zusammen.\n\nEin Jahr nach seinem Start hat das Leihfahrradsystem der Stadt 1,2 Millionen Fahrten verzeichnet. Die meisten Fahrten dauerten weniger als fünfzehn Minuten und fanden während der morgendlichen und abendlichen Hauptverkehrszeit statt. Die Stadt schätzt, dass etwa ein Fünftel der Fahrten Autofahrten ersetzt hat. Die häufigsten Beschwerden betrafen leere Stationen in der Innenstadt am Morgen, und der Betreiber will die Räder künftig öfter mit Lastwagen umverteilen."
+ },
+ {
+  "id": "de.email.0",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe eine E-Mail an deinen Vermieter, in der du meldest, dass die Heizung in deiner Wohnung kaputt ist, und bitte darum, sie noch diese Woche reparieren zu lassen."
+ },
+ {
+  "id": "de.email.1",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe einer Kollegin eine E-Mail, in der du die Besprechung am Donnerstag absagst und einen anderen Termin vorschlägst."
+ },
+ {
+  "id": "de.email.2",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe einem Kunden eine E-Mail, in der du dich für eine verspätete Lieferung entschuldigst und ihm 10 % Rabatt auf die nächste Bestellung anbietest."
+ },
+ {
+  "id": "de.email.3",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe deinem Professor eine E-Mail und bitte wegen einer Krankheit um eine Woche Aufschub für eine Hausarbeit."
+ },
+ {
+  "id": "de.email.4",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe eine E-Mail, in der du deine Nachbarn zu einem Straßenfest am Samstagnachmittag einlädst."
+ },
+ {
+  "id": "de.email.5",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe eine E-Mail an die Personalabteilung und frage nach den Regelungen des Unternehmens zur Elternzeit."
+ },
+ {
+  "id": "de.email.6",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe eine E-Mail an ein Hotel und frage, ob ein später Check-out um 14 Uhr möglich ist."
+ },
+ {
+  "id": "de.email.7",
+  "lang": "de",
+  "task": "email",
+  "prompt": "Schreibe eine E-Mail an dein Team, in der du das Kick-off-Meeting für ein neues Projekt ankündigst, mit einer kurzen Tagesordnung."
+ },
+ {
+  "id": "de.translate.0",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"It's raining cats and dogs.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.1",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"Break a leg!\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.2",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"We'll just have to bite the bullet.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.3",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"The ball is in your court now.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.4",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"I only see him once in a blue moon.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.5",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"Who let the cat out of the bag?\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.6",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"You hit the nail on the head.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.translate.7",
+  "lang": "de",
+  "task": "translate",
+  "prompt": "Übersetze den englischen Satz \"I'm feeling a bit under the weather today.\" ins Deutsche und erkläre die Bedeutung der Redewendung sowie eine passende deutsche Entsprechung."
+ },
+ {
+  "id": "de.reason.0",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Ein Zug fährt um 14:35 Uhr ab, und die Fahrt dauert 2 Stunden und 50 Minuten. Um wie viel Uhr kommt er an? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "de.reason.1",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Drei Bleistifte kosten 1,20 Euro. Wie viel kosten sieben Bleistifte? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "2,80",
+   "2.80",
+   "2.8"
+  ]
+ },
+ {
+  "id": "de.reason.2",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Anna ist älter als Ben, und Ben ist älter als Clara. Wer ist am jüngsten? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "de.reason.3",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Ein Rechteck hat einen Umfang von 30 cm und eine Breite von 5 cm. Wie groß ist sein Flächeninhalt? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "de.reason.4",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Wie viel sind 15 % von 240? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "de.reason.5",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Ich habe 5 Äpfel. Ich esse 2 und kaufe dann doppelt so viele dazu, wie ich noch übrig habe. Wie viele Äpfel habe ich jetzt? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "de.reason.6",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Wenn heute Mittwoch ist, welcher Wochentag ist dann in 10 Tagen? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "samstag",
+   "sonnabend"
+  ]
+ },
+ {
+  "id": "de.reason.7",
+  "lang": "de",
+  "task": "reason",
+  "prompt": "Ein Mantel kostet 80 Euro. Er wird um 25 % reduziert, und auf den reduzierten Preis gibt es noch einmal 10 % Rabatt. Wie hoch ist der Endpreis? Antworte kurz und nenne das Endergebnis in der letzten Zeile.",
+  "answer": [
+   "54"
+  ]
+ },
+ {
+  "id": "es.explain.0",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Por qué el cielo es azul? Explícalo para un adolescente curioso."
+ },
+ {
+  "id": "es.explain.1",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Cómo entrena una vacuna al sistema inmunitario?"
+ },
+ {
+  "id": "es.explain.2",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Qué es la inflación y por qué los bancos centrales suben los tipos de interés para combatirla?"
+ },
+ {
+  "id": "es.explain.3",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "Explica en términos sencillos cómo funciona la criptografía de clave pública."
+ },
+ {
+  "id": "es.explain.4",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Por qué hay estaciones del año en la Tierra?"
+ },
+ {
+  "id": "es.explain.5",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Cuál es la diferencia entre el tiempo meteorológico y el clima?"
+ },
+ {
+  "id": "es.explain.6",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Cómo mantiene un frigorífico la comida fría?"
+ },
+ {
+  "id": "es.explain.7",
+  "lang": "es",
+  "task": "explain",
+  "prompt": "¿Qué es la fotosíntesis y por qué es importante para la vida en la Tierra?"
+ },
+ {
+  "id": "es.summarise.0",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nEn 2019, la biblioteca pública de un pequeño pueblo empezó a prestar herramientas además de libros. Ahora los vecinos pueden llevarse taladros, escaleras, máquinas de coser y material de jardinería durante un máximo de una semana con su carné de la biblioteca. En el primer año se prestaron más de 3.000 herramientas, y el artículo más popular fue una hidrolimpiadora. La biblioteca afirma que el proyecto costó menos de lo previsto porque los comercios locales donaron la mayor parte del equipo, y planea añadir bicicletas la próxima primavera."
+ },
+ {
+  "id": "es.summarise.1",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nUnos investigadores siguieron a 200 estudiantes universitarios durante un semestre para estudiar la relación entre el sueño y los resultados de los exámenes. Los estudiantes que durmieron al menos siete horas las noches previas a los exámenes obtuvieron de media un ocho por ciento más de nota que quienes durmieron menos de seis horas. El efecto fue mayor en asignaturas que exigen memorizar datos, como biología e historia. Los autores advierten que el estrés puede causar tanto un mal descanso como malos resultados, por lo que el estudio no demuestra una relación de causa y efecto."
+ },
+ {
+  "id": "es.summarise.2",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nLas primeras bicicletas, construidas a principios del siglo XIX, no tenían pedales: los ciclistas se impulsaban con los pies. Los pedales unidos a la rueda delantera aparecieron en la década de 1860 y dieron lugar al biciclo de rueda alta, rápido pero peligroso. La bicicleta de seguridad de la década de 1880, con dos ruedas iguales y transmisión por cadena, hizo por fin que montar en bicicleta fuera práctico para la gente corriente. Junto con los neumáticos, provocó un auge del ciclismo que cambió la forma de viajar e incluso contribuyó a la independencia de las mujeres."
+ },
+ {
+  "id": "es.summarise.3",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nUna empresa de software con 150 empleados probó durante seis meses la semana laboral de cuatro días sin reducir los sueldos. La productividad, medida por los proyectos terminados, se mantuvo igual, mientras que las bajas por enfermedad se redujeron en un tercio. La mayoría de los empleados dijo sentirse menos estresada, pero algunos jefes de equipo señalaron que organizar reuniones se volvió más difícil. La empresa ha decidido mantener la semana de cuatro días, aunque volverá a revisarla dentro de un año."
+ },
+ {
+  "id": "es.summarise.4",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nEn las azoteas de varios edificios de oficinas de la ciudad, los apicultores tienen ahora colmenas que producen cientos de kilos de miel al año. Sus defensores dicen que las abejas urbanas se benefician de la variedad de flores de parques y jardines y están expuestas a menos pesticidas que las del campo. Sin embargo, algunos científicos advierten que demasiadas colmenas de abejas melíferas pueden competir con las abejas silvestres por un alimento limitado. Recomiendan plantar más flores en lugar de simplemente instalar más colmenas."
+ },
+ {
+  "id": "es.summarise.5",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nLos arrecifes de coral cubren menos del uno por ciento del fondo marino, pero albergan aproximadamente una cuarta parte de todas las especies marinas. Cuando la temperatura del agua se mantiene alta durante varias semanas, los corales expulsan las algas que viven en sus tejidos y que les dan su color y gran parte de su alimento. Este proceso, llamado blanqueamiento, deja al coral blanco y debilitado. Si las temperaturas vuelven pronto a la normalidad, los corales pueden recuperarse, pero las olas de calor repetidas hacen que la recuperación sea cada vez menos probable."
+ },
+ {
+  "id": "es.summarise.6",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nEl papel se inventó en China hacia el siglo II y tradicionalmente se atribuye a un funcionario llamado Cai Lun, que lo fabricó con corteza de árbol, cáñamo y trapos viejos. Durante siglos, la técnica fue un secreto chino. En el siglo VIII se extendió al mundo islámico, donde ciudades como Bagdad construyeron molinos de papel. Desde allí llegó a Europa varios siglos después, donde acabó sustituyendo al pergamino e hizo posible la revolución de la imprenta."
+ },
+ {
+  "id": "es.summarise.7",
+  "lang": "es",
+  "task": "summarise",
+  "prompt": "Resume el siguiente párrafo en dos frases.\n\nUn año después de su puesta en marcha, el sistema de bicicletas compartidas de la ciudad ha registrado 1,2 millones de viajes. La mayoría de los trayectos duraron menos de quince minutos y se hicieron en las horas punta de la mañana y de la tarde. El ayuntamiento calcula que alrededor de una quinta parte de los viajes sustituyó a trayectos en coche. Las principales quejas se referían a estaciones vacías en el centro por la mañana, y el operador prevé usar camiones para redistribuir las bicicletas con más frecuencia."
+ },
+ {
+  "id": "es.email.0",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a tu casero para informarle de que la calefacción de tu piso está averiada y pedirle que la reparen esta semana."
+ },
+ {
+  "id": "es.email.1",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a una compañera para rechazar la reunión del jueves y proponer otro momento."
+ },
+ {
+  "id": "es.email.2",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a un cliente para disculparte por un envío retrasado y ofrecerle un 10 % de descuento en su próximo pedido."
+ },
+ {
+  "id": "es.email.3",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a tu profesor para pedirle una semana más de plazo para un trabajo porque has estado enfermo."
+ },
+ {
+  "id": "es.email.4",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo para invitar a tus vecinos a una fiesta en la calle el sábado por la tarde."
+ },
+ {
+  "id": "es.email.5",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo al departamento de recursos humanos para preguntar por la política de permisos de maternidad y paternidad de la empresa."
+ },
+ {
+  "id": "es.email.6",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a un hotel para preguntar si es posible dejar la habitación más tarde, a las 14:00."
+ },
+ {
+  "id": "es.email.7",
+  "lang": "es",
+  "task": "email",
+  "prompt": "Escribe un correo a tu equipo para anunciar la reunión de lanzamiento de un nuevo proyecto, con un breve orden del día."
+ },
+ {
+  "id": "es.translate.0",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"It's raining cats and dogs.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.1",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"Break a leg!\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.2",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"We'll just have to bite the bullet.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.3",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"The ball is in your court now.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.4",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"I only see him once in a blue moon.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.5",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"Who let the cat out of the bag?\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.6",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"You hit the nail on the head.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.translate.7",
+  "lang": "es",
+  "task": "translate",
+  "prompt": "Traduce al español la frase inglesa \"I'm feeling a bit under the weather today.\" y explica el significado de la expresión y un equivalente natural en español."
+ },
+ {
+  "id": "es.reason.0",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Un tren sale a las 14:35 y el viaje dura 2 horas y 50 minutos. ¿A qué hora llega? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "es.reason.1",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Tres lápices cuestan 1,20 euros. ¿Cuánto cuestan siete lápices? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "2,80",
+   "2.80",
+   "2.8"
+  ]
+ },
+ {
+  "id": "es.reason.2",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Ana es mayor que Ben, y Ben es mayor que Clara. ¿Quién es la más joven? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "es.reason.3",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Un rectángulo tiene un perímetro de 30 cm y un ancho de 5 cm. ¿Cuál es su área? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "es.reason.4",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "¿Cuánto es el 15 % de 240? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "es.reason.5",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Tengo 5 manzanas. Me como 2 y luego compro el doble de las que me quedan. ¿Cuántas manzanas tengo ahora? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "es.reason.6",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Si hoy es miércoles, ¿qué día de la semana será dentro de 10 días? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "sábado"
+  ]
+ },
+ {
+  "id": "es.reason.7",
+  "lang": "es",
+  "task": "reason",
+  "prompt": "Un abrigo cuesta 80 euros. Se rebaja un 25 % y después hay un 10 % adicional de descuento sobre el precio rebajado. ¿Cuál es el precio final? Responde brevemente y da la respuesta final en la última línea.",
+  "answer": [
+   "54"
+  ]
+ },
+ {
+  "id": "fr.explain.0",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Pourquoi le ciel est-il bleu ? Explique-le à un adolescent curieux."
+ },
+ {
+  "id": "fr.explain.1",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Comment un vaccin entraîne-t-il le système immunitaire ?"
+ },
+ {
+  "id": "fr.explain.2",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Qu'est-ce que l'inflation, et pourquoi les banques centrales augmentent-elles les taux d'intérêt pour la combattre ?"
+ },
+ {
+  "id": "fr.explain.3",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Explique en termes simples comment fonctionne la cryptographie à clé publique."
+ },
+ {
+  "id": "fr.explain.4",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Pourquoi y a-t-il des saisons sur la Terre ?"
+ },
+ {
+  "id": "fr.explain.5",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Quelle est la différence entre la météo et le climat ?"
+ },
+ {
+  "id": "fr.explain.6",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Comment un réfrigérateur garde-t-il les aliments au froid ?"
+ },
+ {
+  "id": "fr.explain.7",
+  "lang": "fr",
+  "task": "explain",
+  "prompt": "Qu'est-ce que la photosynthèse, et pourquoi est-elle importante pour la vie sur Terre ?"
+ },
+ {
+  "id": "fr.summarise.0",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nEn 2019, la bibliothèque municipale d'une petite ville a commencé à prêter des outils en plus des livres. Les habitants peuvent désormais emprunter des perceuses, des échelles, des machines à coudre et du matériel de jardinage pendant une semaine au maximum avec leur carte de bibliothèque. La première année, plus de 3 000 outils ont été prêtés, et l'objet le plus demandé était un nettoyeur haute pression. La bibliothèque indique que le projet a coûté moins cher que prévu, car les commerces locaux ont donné la plupart du matériel, et elle prévoit d'ajouter des vélos au printemps prochain."
+ },
+ {
+  "id": "fr.summarise.1",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nDes chercheurs ont suivi 200 étudiants pendant un semestre afin d'étudier le lien entre le sommeil et les résultats aux examens. Les étudiants qui avaient dormi au moins sept heures les nuits précédant les examens ont obtenu en moyenne des notes supérieures de huit pour cent à celles de ceux qui avaient dormi moins de six heures. L'effet était le plus marqué dans les matières qui demandent de mémoriser des faits, comme la biologie et l'histoire. Les auteurs rappellent que le stress peut provoquer à la fois un mauvais sommeil et de mauvais résultats, de sorte que l'étude ne prouve pas de lien de cause à effet."
+ },
+ {
+  "id": "fr.summarise.2",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nLes premières bicyclettes, construites au début du XIXe siècle, n'avaient pas de pédales : les cyclistes avançaient en poussant avec leurs pieds. Les pédales fixées à la roue avant sont apparues dans les années 1860, ce qui a donné naissance au grand-bi, rapide mais dangereux. La bicyclette de sécurité des années 1880, avec deux roues identiques et une transmission par chaîne, a enfin rendu le vélo pratique pour les gens ordinaires. Associée aux pneus gonflables, elle a déclenché un engouement pour le vélo qui a changé la façon de voyager et a même contribué à l'indépendance des femmes."
+ },
+ {
+  "id": "fr.summarise.3",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nUne entreprise de logiciels de 150 salariés a testé la semaine de quatre jours pendant six mois, sans baisse de salaire. La productivité, mesurée par le nombre de projets terminés, est restée la même, tandis que les arrêts maladie ont diminué d'un tiers. La plupart des salariés disent se sentir moins stressés, mais certains chefs d'équipe ont signalé qu'il était devenu plus difficile d'organiser des réunions. L'entreprise a décidé de conserver la semaine de quatre jours, mais la réévaluera dans un an."
+ },
+ {
+  "id": "fr.summarise.4",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nSur les toits de plusieurs immeubles de bureaux de la ville, des apiculteurs installent désormais des ruches qui produisent chaque année des centaines de kilos de miel. Leurs partisans affirment que les abeilles urbaines profitent de la diversité des fleurs des parcs et des jardins et sont moins exposées aux pesticides que celles des campagnes. Certains scientifiques avertissent toutefois que trop de ruches d'abeilles domestiques peuvent entrer en concurrence avec les abeilles sauvages pour une nourriture limitée. Ils recommandent de planter davantage de fleurs plutôt que d'ajouter simplement des ruches."
+ },
+ {
+  "id": "fr.summarise.5",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nLes récifs coralliens couvrent moins d'un pour cent des fonds marins, mais abritent environ un quart de toutes les espèces marines. Lorsque la température de l'eau reste élevée pendant plusieurs semaines, les coraux expulsent les algues qui vivent dans leurs tissus et qui leur donnent leur couleur et une grande partie de leur nourriture. Ce phénomène, appelé blanchissement, laisse le corail blanc et affaibli. Si les températures redeviennent rapidement normales, les coraux peuvent se rétablir, mais des vagues de chaleur répétées rendent ce rétablissement de moins en moins probable."
+ },
+ {
+  "id": "fr.summarise.6",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nLe papier a été inventé en Chine vers le IIe siècle et il est traditionnellement attribué à un fonctionnaire nommé Cai Lun, qui le fabriquait à partir d'écorce d'arbre, de chanvre et de vieux chiffons. Pendant des siècles, la technique est restée un secret chinois. Elle s'est répandue dans le monde islamique au VIIIe siècle, où des villes comme Bagdad ont construit des moulins à papier. De là, elle a atteint l'Europe plusieurs siècles plus tard, où le papier a fini par remplacer le parchemin et a rendu possible la révolution de l'imprimerie."
+ },
+ {
+  "id": "fr.summarise.7",
+  "lang": "fr",
+  "task": "summarise",
+  "prompt": "Résume le paragraphe suivant en deux phrases.\n\nUn an après son lancement, le service de vélos en libre-service de la ville a enregistré 1,2 million de trajets. La plupart des trajets duraient moins de quinze minutes et avaient lieu aux heures de pointe du matin et du soir. La ville estime qu'environ un cinquième des trajets a remplacé un déplacement en voiture. Les principales plaintes concernaient les stations vides du centre-ville le matin, et l'opérateur prévoit d'utiliser des camions pour redistribuer les vélos plus souvent."
+ },
+ {
+  "id": "fr.email.0",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à ton propriétaire pour signaler que le chauffage de ton appartement est en panne et lui demander de le faire réparer cette semaine."
+ },
+ {
+  "id": "fr.email.1",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à une collègue pour décliner la réunion de jeudi et proposer un autre créneau."
+ },
+ {
+  "id": "fr.email.2",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à un client pour t'excuser d'une livraison en retard et lui offrir une remise de 10 % sur sa prochaine commande."
+ },
+ {
+  "id": "fr.email.3",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à ton professeur pour lui demander un délai d'une semaine pour un devoir parce que tu as été malade."
+ },
+ {
+  "id": "fr.email.4",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail pour inviter tes voisins à une fête de quartier samedi après-midi."
+ },
+ {
+  "id": "fr.email.5",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail au service des ressources humaines pour te renseigner sur la politique de congé parental de l'entreprise."
+ },
+ {
+  "id": "fr.email.6",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à un hôtel pour demander s'il est possible de libérer la chambre plus tard, à 14 h."
+ },
+ {
+  "id": "fr.email.7",
+  "lang": "fr",
+  "task": "email",
+  "prompt": "Écris un e-mail à ton équipe pour annoncer la réunion de lancement d'un nouveau projet, avec un bref ordre du jour."
+ },
+ {
+  "id": "fr.translate.0",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « It's raining cats and dogs. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.1",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « Break a leg! » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.2",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « We'll just have to bite the bullet. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.3",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « The ball is in your court now. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.4",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « I only see him once in a blue moon. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.5",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « Who let the cat out of the bag? » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.6",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « You hit the nail on the head. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.translate.7",
+  "lang": "fr",
+  "task": "translate",
+  "prompt": "Traduis en français la phrase anglaise « I'm feeling a bit under the weather today. » et explique le sens de l'expression ainsi qu'un équivalent naturel en français."
+ },
+ {
+  "id": "fr.reason.0",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Un train part à 14 h 35 et le trajet dure 2 heures et 50 minutes. À quelle heure arrive-t-il ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "fr.reason.1",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Trois crayons coûtent 1,20 euro. Combien coûtent sept crayons ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "2,80",
+   "2.80",
+   "2.8"
+  ]
+ },
+ {
+  "id": "fr.reason.2",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Anna est plus âgée que Ben, et Ben est plus âgé que Clara. Qui est la plus jeune ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "fr.reason.3",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Un rectangle a un périmètre de 30 cm et une largeur de 5 cm. Quelle est son aire ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "fr.reason.4",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Combien font 15 % de 240 ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "fr.reason.5",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "J'ai 5 pommes. J'en mange 2, puis j'en achète deux fois plus que ce qu'il me reste. Combien de pommes ai-je maintenant ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "fr.reason.6",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Si aujourd'hui est mercredi, quel jour de la semaine serons-nous dans 10 jours ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "samedi"
+  ]
+ },
+ {
+  "id": "fr.reason.7",
+  "lang": "fr",
+  "task": "reason",
+  "prompt": "Un manteau coûte 80 euros. Il est réduit de 25 %, puis une remise supplémentaire de 10 % s'applique au prix réduit. Quel est le prix final ? Réponds brièvement et donne la réponse finale sur la dernière ligne.",
+  "answer": [
+   "54"
+  ]
+ },
+ {
+  "id": "ja.explain.0",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "空はなぜ青いのですか？好奇心旺盛な中学生にもわかるように説明してください。"
+ },
+ {
+  "id": "ja.explain.1",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "ワクチンはどのようにして免疫システムを訓練するのですか？"
+ },
+ {
+  "id": "ja.explain.2",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "インフレとは何ですか？また、中央銀行はなぜインフレ対策として金利を引き上げるのですか？"
+ },
+ {
+  "id": "ja.explain.3",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "公開鍵暗号の仕組みを簡単な言葉で説明してください。"
+ },
+ {
+  "id": "ja.explain.4",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "地球に季節があるのはなぜですか？"
+ },
+ {
+  "id": "ja.explain.5",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "天気と気候の違いは何ですか？"
+ },
+ {
+  "id": "ja.explain.6",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "冷蔵庫はどのようにして食べ物を冷たく保つのですか？"
+ },
+ {
+  "id": "ja.explain.7",
+  "lang": "ja",
+  "task": "explain",
+  "prompt": "光合成とは何ですか？また、なぜ地球上の生命にとって重要なのですか？"
+ },
+ {
+  "id": "ja.summarise.0",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n2019年、ある小さな町の公立図書館は、本に加えて工具の貸し出しを始めた。住民は図書館カードを使って、電動ドリル、はしご、ミシン、園芸用品を最長1週間借りることができる。初年度には3000点以上の工具が貸し出され、最も人気があったのは高圧洗浄機だった。図書館によると、地元の商店が機材の大部分を寄付したため費用は予想より少なく済み、来年の春には自転車も加える予定だという。"
+ },
+ {
+  "id": "ja.summarise.1",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n研究者たちは、睡眠と試験の成績の関係を調べるため、200人の大学生を1学期にわたって追跡した。試験前の夜に少なくとも7時間眠った学生は、6時間未満しか眠らなかった学生に比べて、平均で8パーセント高い点数を取った。この効果は、生物や歴史のように事実の暗記が必要な科目で最も大きかった。著者らは、ストレスが睡眠不足と成績不振の両方を引き起こす可能性があるため、この研究は因果関係を証明するものではないと注意を促している。"
+ },
+ {
+  "id": "ja.summarise.2",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n19世紀初めに作られた最初の自転車にはペダルがなく、乗る人は足で地面を蹴って進んだ。1860年代には前輪にペダルが付けられ、速いが危険な、前輪の大きいオーディナリー型自転車が生まれた。1880年代に登場した、同じ大きさの二つの車輪とチェーン駆動を備えた「安全型自転車」によって、ようやく一般の人々にも自転車が実用的なものになった。空気入りタイヤと合わせて、それは人々の移動の仕方を変え、女性の自立にも貢献した自転車ブームを引き起こした。"
+ },
+ {
+  "id": "ja.summarise.3",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n従業員150人のソフトウェア会社が、給与を減らさずに週4日勤務を6か月間試験的に導入した。完了したプロジェクト数で測った生産性は変わらず、病欠日数は3分の1減った。多くの従業員はストレスが減ったと答えたが、一部のチームリーダーは会議の日程調整が難しくなったと報告した。会社は週4日勤務を続けることを決めたが、1年後に改めて見直す予定だ。"
+ },
+ {
+  "id": "ja.summarise.4",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n市内のいくつかのオフィスビルの屋上では、養蜂家が巣箱を置き、毎年数百キログラムの蜂蜜を生産している。支持者によれば、都市のミツバチは公園や庭のさまざまな花の恩恵を受け、田舎のミツバチより農薬にさらされることが少ない。しかし一部の科学者は、ミツバチの巣箱が多すぎると、限られた餌をめぐって野生のハチと競合する恐れがあると警告している。彼らは、単に巣箱を増やすのではなく、もっと花を植えることを勧めている。"
+ },
+ {
+  "id": "ja.summarise.5",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\nサンゴ礁は海底の1パーセント未満しか占めていないが、全海洋生物種の約4分の1がそこで暮らしている。水温の高い状態が数週間続くと、サンゴは組織内に住み、色と栄養の多くを与えてくれる藻類を放出してしまう。白化と呼ばれるこの現象により、サンゴは白く弱った状態になる。水温がすぐに元に戻ればサンゴは回復できるが、熱波が繰り返されると回復はますます難しくなる。"
+ },
+ {
+  "id": "ja.summarise.6",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n紙は2世紀ごろに中国で発明され、伝統的には蔡倫という役人が樹皮、麻、古布から作ったとされている。何世紀にもわたり、その製法は中国の秘密とされていた。8世紀にはイスラム世界に伝わり、バグダッドなどの都市に製紙工場が建てられた。そこから数百年後にヨーロッパへ伝わり、やがて羊皮紙に取って代わって、印刷革命を可能にした。"
+ },
+ {
+  "id": "ja.summarise.7",
+  "lang": "ja",
+  "task": "summarise",
+  "prompt": "次の段落を二文で要約してください。\n\n市のシェアサイクル事業は、開始から1年で120万回の利用を記録した。利用の大半は15分未満で、朝と夕方の通勤ラッシュの時間帯に集中していた。市の推計では、利用のおよそ5分の1が自動車での移動の代わりになった。主な苦情は朝の都心部のステーションに自転車がないことで、運営会社はトラックによる自転車の再配置をもっと頻繁に行う予定だ。"
+ },
+ {
+  "id": "ja.email.0",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "アパートの暖房が故障したことを大家さんに伝え、今週中に修理してもらうようお願いするメールを書いてください。"
+ },
+ {
+  "id": "ja.email.1",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "木曜日の会議に出席できないことを同僚に伝え、別の日時を提案するメールを書いてください。"
+ },
+ {
+  "id": "ja.email.2",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "発送の遅れをお客様にお詫びし、次回の注文で使える10%割引を提案するメールを書いてください。"
+ },
+ {
+  "id": "ja.email.3",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "病気のため課題の提出期限を1週間延ばしてほしいと教授にお願いするメールを書いてください。"
+ },
+ {
+  "id": "ja.email.4",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "土曜日の午後に開く町内のストリートパーティーに近所の人たちを招待するメールを書いてください。"
+ },
+ {
+  "id": "ja.email.5",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "会社の育児休業制度について人事部に問い合わせるメールを書いてください。"
+ },
+ {
+  "id": "ja.email.6",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "午後2時のレイトチェックアウトが可能かどうかをホテルに問い合わせるメールを書いてください。"
+ },
+ {
+  "id": "ja.email.7",
+  "lang": "ja",
+  "task": "email",
+  "prompt": "新しいプロジェクトのキックオフ会議をチームに知らせるメールを、簡単な議題を付けて書いてください。"
+ },
+ {
+  "id": "ja.translate.0",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"It's raining cats and dogs.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.1",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"Break a leg!\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.2",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"We'll just have to bite the bullet.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.3",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"The ball is in your court now.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.4",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"I only see him once in a blue moon.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.5",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"Who let the cat out of the bag?\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.6",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"You hit the nail on the head.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.translate.7",
+  "lang": "ja",
+  "task": "translate",
+  "prompt": "英語の文 \"I'm feeling a bit under the weather today.\" を日本語に訳し、その慣用句の意味と、自然な日本語での言い換えを説明してください。"
+ },
+ {
+  "id": "ja.reason.0",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "列車が14時35分に出発し、所要時間は2時間50分です。到着するのは何時ですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "ja.reason.1",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "鉛筆3本で120円です。鉛筆7本ではいくらになりますか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "280"
+  ]
+ },
+ {
+  "id": "ja.reason.2",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "アンナはベンより年上で、ベンはクララより年上です。一番年下なのは誰ですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "ja.reason.3",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "周囲の長さが30cm、幅が5cmの長方形があります。面積はいくつですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "ja.reason.4",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "240の15%はいくつですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "ja.reason.5",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "りんごが5個あります。2個食べてから、残った数の2倍のりんごを買いました。今りんごは何個ありますか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "ja.reason.6",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "今日が水曜日なら、10日後は何曜日ですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "土曜"
+  ]
+ },
+ {
+  "id": "ja.reason.7",
+  "lang": "ja",
+  "task": "reason",
+  "prompt": "8000円のコートが25%引きになり、さらにその値引き後の価格から10%引きになりました。最終的な価格はいくらですか？ 簡潔に答え、最後の行に最終的な答えを書いてください。",
+  "answer": [
+   "5400",
+   "5,400"
+  ]
+ },
+ {
+  "id": "zh.explain.0",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "天空为什么是蓝色的？请给一个好奇的青少年解释。"
+ },
+ {
+  "id": "zh.explain.1",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "疫苗是如何训练免疫系统的？"
+ },
+ {
+  "id": "zh.explain.2",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "什么是通货膨胀？中央银行为什么要通过加息来对抗通胀？"
+ },
+ {
+  "id": "zh.explain.3",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "请用简单的语言解释公钥加密是如何工作的。"
+ },
+ {
+  "id": "zh.explain.4",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "地球为什么会有四季？"
+ },
+ {
+  "id": "zh.explain.5",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "天气和气候有什么区别？"
+ },
+ {
+  "id": "zh.explain.6",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "冰箱是如何让食物保持低温的？"
+ },
+ {
+  "id": "zh.explain.7",
+  "lang": "zh",
+  "task": "explain",
+  "prompt": "什么是光合作用？它为什么对地球上的生命如此重要？"
+ },
+ {
+  "id": "zh.summarise.0",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n2019年，一个小镇的公共图书馆开始在借书之外出借工具。居民现在可以凭借书证借用电钻、梯子、缝纫机和园艺工具，最长一周。第一年共借出了3000多件工具，最受欢迎的是一台高压清洗机。图书馆表示，由于当地商店捐赠了大部分设备，这个项目的花费比预期要少，明年春天还计划增加自行车。"
+ },
+ {
+  "id": "zh.summarise.1",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n研究人员对200名大学生进行了一个学期的跟踪，研究睡眠与考试成绩之间的关系。考试前几晚至少睡了七个小时的学生，平均成绩比睡眠不足六小时的学生高出百分之八。这种影响在生物和历史等需要记忆大量事实的科目中最为明显。作者提醒说，压力可能同时导致睡眠不好和成绩不好，因此这项研究并不能证明因果关系。"
+ },
+ {
+  "id": "zh.summarise.2",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n十九世纪初制造的第一批自行车没有脚踏板，骑车人要用脚蹬地前进。十九世纪六十年代出现了装在前轮上的脚踏板，由此诞生了速度快但很危险的大前轮自行车。十九世纪八十年代的安全自行车有两个大小相同的车轮和链条传动，终于让普通人也能方便地骑车。加上充气轮胎，它引发了一股自行车热潮，改变了人们的出行方式，甚至促进了女性的独立。"
+ },
+ {
+  "id": "zh.summarise.3",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n一家拥有150名员工的软件公司在不降低工资的情况下试行了六个月的四天工作制。以完成项目数量衡量的生产率保持不变，而病假天数减少了三分之一。大多数员工表示压力减轻了，但一些团队负责人反映安排会议变得更加困难。公司决定保留四天工作制，但将在一年后重新评估。"
+ },
+ {
+  "id": "zh.summarise.4",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n在城市里几栋办公楼的屋顶上，养蜂人如今放置了蜂箱，每年生产数百公斤蜂蜜。支持者认为，城市里的蜜蜂可以受益于公园和花园中种类繁多的花卉，而且接触到的农药比乡村的蜜蜂更少。然而，一些科学家警告说，过多的蜜蜂蜂箱可能会与野生蜂争夺有限的食物。他们建议多种花，而不是简单地增加蜂箱。"
+ },
+ {
+  "id": "zh.summarise.5",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n珊瑚礁覆盖的海底面积不到百分之一，却是大约四分之一海洋物种的家园。当水温连续数周偏高时，珊瑚会排出生活在其组织中的藻类，而这些藻类为珊瑚提供颜色和大部分养分。这一过程被称为白化，会使珊瑚变白并变得虚弱。如果水温很快恢复正常，珊瑚可以复原，但反复出现的热浪会让复原变得越来越不可能。"
+ },
+ {
+  "id": "zh.summarise.6",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n纸大约在公元二世纪发明于中国，传统上认为是一位名叫蔡伦的官员用树皮、麻和破布造出来的。几个世纪以来，造纸术一直是中国的秘密。八世纪时，它传入伊斯兰世界，巴格达等城市建起了造纸作坊。几百年后，它又从那里传到欧洲，最终取代了羊皮纸，使印刷革命成为可能。"
+ },
+ {
+  "id": "zh.summarise.7",
+  "lang": "zh",
+  "task": "summarise",
+  "prompt": "请用两句话概括下面这段文字。\n\n城市的共享单车项目推出一年后，共记录了120万次骑行。大多数行程不到十五分钟，集中在早晚高峰时段。市政府估计，大约五分之一的骑行取代了汽车出行。主要的投诉是早上市中心的站点没有车，运营方计划更频繁地用卡车重新调配单车。"
+ },
+ {
+  "id": "zh.email.0",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给房东写一封邮件，告诉他你公寓的暖气坏了，并请他这周内安排维修。"
+ },
+ {
+  "id": "zh.email.1",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给同事写一封邮件，说明你无法参加周四的会议，并提议另一个时间。"
+ },
+ {
+  "id": "zh.email.2",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给一位客户写一封邮件，为发货延迟道歉，并在他下次订单时提供九折优惠。"
+ },
+ {
+  "id": "zh.email.3",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给你的教授写一封邮件，因为生病请求把一份作业的截止日期延后一周。"
+ },
+ {
+  "id": "zh.email.4",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "写一封邮件，邀请邻居们参加周六下午的街坊聚会。"
+ },
+ {
+  "id": "zh.email.5",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给人力资源部写一封邮件，询问公司的育儿假政策。"
+ },
+ {
+  "id": "zh.email.6",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给一家酒店写一封邮件，询问是否可以延迟到下午两点退房。"
+ },
+ {
+  "id": "zh.email.7",
+  "lang": "zh",
+  "task": "email",
+  "prompt": "给你的团队写一封邮件，宣布一个新项目的启动会议，并附上简短的议程。"
+ },
+ {
+  "id": "zh.translate.0",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"It's raining cats and dogs.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.1",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"Break a leg!\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.2",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"We'll just have to bite the bullet.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.3",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"The ball is in your court now.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.4",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"I only see him once in a blue moon.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.5",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"Who let the cat out of the bag?\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.6",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"You hit the nail on the head.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.translate.7",
+  "lang": "zh",
+  "task": "translate",
+  "prompt": "请把英语句子 \"I'm feeling a bit under the weather today.\" 翻译成中文，并解释这个习语的含义以及中文里自然的对应说法。"
+ },
+ {
+  "id": "zh.reason.0",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "一列火车14:35出发，行程需要2小时50分钟。它几点到达？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "17:25",
+   "17h25",
+   "17時25分",
+   "17点25",
+   "5:25 pm",
+   "5:25pm",
+   "5.25 pm"
+  ]
+ },
+ {
+  "id": "zh.reason.1",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "三支铅笔1.20元。七支铅笔多少钱？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "2,80",
+   "2.80",
+   "2.8"
+  ]
+ },
+ {
+  "id": "zh.reason.2",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "安娜比本年龄大，本比克拉拉年龄大。谁最年轻？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "clara",
+   "クララ",
+   "克拉拉"
+  ]
+ },
+ {
+  "id": "zh.reason.3",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "一个长方形的周长是30厘米，宽是5厘米。它的面积是多少？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "50"
+  ]
+ },
+ {
+  "id": "zh.reason.4",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "240的15%是多少？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "36"
+  ]
+ },
+ {
+  "id": "zh.reason.5",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "我有5个苹果。我吃了2个，然后又买了剩下数量两倍的苹果。我现在有多少个苹果？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "9"
+  ]
+ },
+ {
+  "id": "zh.reason.6",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "如果今天是星期三，10天后是星期几？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "星期六",
+   "周六",
+   "礼拜六"
+  ]
+ },
+ {
+  "id": "zh.reason.7",
+  "lang": "zh",
+  "task": "reason",
+  "prompt": "一件外套80元。先打七五折（减价25%），然后在折后价的基础上再减10%。最终价格是多少？ 请简要回答，并在最后一行给出最终答案。",
+  "answer": [
+   "54"
+  ]
+ }
+]
