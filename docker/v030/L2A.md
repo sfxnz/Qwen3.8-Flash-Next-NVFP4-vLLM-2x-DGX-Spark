@@ -142,3 +142,20 @@ before the soak if the audit leaves any doubt.
   select `mixing` (`strongstream.cc`). That is why the overlay only arms on 2.30.7.
 - Sibling result: not promoted. It measured −1.3 to −1.8 ms/step, but acceptance moved and tok/s did not
   clear noise. Its projection was −2.4 to −7.1 ms. Book 0.89 ms and treat the ABAB as the verdict.
+
+## Measured (session 4, `evidence/l1-l6-k5-l2/e0-l2a-audit`, `e1-l2a`)
+
+On the L1a + L1b′ + L6a stack (arm B), one audit boot and one timing boot:
+- **Engagement:** both ranks armed on NCCL 2.30.7, `engaged` once, `guard on ep:0`, NCCL's env line
+  present, 25 graph lines (7 target graphs × 97 captured collectives, 18 drafter graphs × 6), identical
+  per-graph counts on both ranks, 1000+ eager calls on the twin. The strict audit fails only on
+  `nccl-lines`: NCCL printed 763 capture lines for 787 captured calls, on both ranks alike (the
+  positions of NCCL's lines in the log are buffered, so the missing 24 cannot be tied to a graph).
+  Every captured call goes to the one graph communicator, so a mode mismatch would drop all its lines,
+  not 24; the gap is unexplained and left open.
+- **Timing vs arm B (ms/step):** prose c1 53.09 → 52.65, structured c1 54.78 → 54.73 (sentinel 54.74 →
+  54.61), c2 −0.5/−0.9, structured c8 75.62 → 73.91; diverse c1 −0.1, prose c8 +0.6; frozen tok/s
+  +0.3/+0.2. Below the 0.89 ms booking and inside boot-to-boot drift (~1 ms).
+- **Soak:** 20 min, 93 rounds of c=8 bursts + c=1 + c=2 and two ~32k prefills (the second hit the
+  prefix cache): 0 failures, 0 hangs, 0 `NCCL WARN` on either rank. Greedy c=1 output identical to U2.
+- **Verdict: not kept** (does not beat noise at c=1). The overlay stays opt-in.
