@@ -1,0 +1,2 @@
+  t1 8/8 items, 122247 tokens, 53 s
+{"items": 8, "items_with_other_traffic": 0, "tokens": 122247, "topk": 5, "s": 52.9, "by_domain": {"long_whole": {"items": 8, "tokens": 122247, "mean_nll": 0.45898}}}

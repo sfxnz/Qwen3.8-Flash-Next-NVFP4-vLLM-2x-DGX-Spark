@@ -1,0 +1,17 @@
+  t1 25/386 items, 21590 tokens, 11 s
+  t1 50/386 items, 43206 tokens, 22 s
+  t1 75/386 items, 67498 tokens, 34 s
+  t1 100/386 items, 85992 tokens, 44 s
+  t1 125/386 items, 103882 tokens, 54 s
+  t1 150/386 items, 122143 tokens, 65 s
+  t1 175/386 items, 143363 tokens, 75 s
+  t1 200/386 items, 166546 tokens, 86 s
+  t1 225/386 items, 189321 tokens, 97 s
+  t1 250/386 items, 213246 tokens, 109 s
+  t1 275/386 items, 237067 tokens, 120 s
+  t1 300/386 items, 260800 tokens, 132 s
+  t1 325/386 items, 284798 tokens, 144 s
+  t1 350/386 items, 306723 tokens, 154 s
+  t1 375/386 items, 312070 tokens, 163 s
+  t1 386/386 items, 312326 tokens, 167 s
+{"items": 386, "items_with_other_traffic": 0, "tokens": 312326, "topk": 5, "s": 167.4, "by_domain": {"code": {"items": 55, "tokens": 39906, "mean_nll": 0.33634}, "de": {"items": 6, "tokens": 5622, "mean_nll": 1.1721}, "es": {"items": 6, "tokens": 5667, "mean_nll": 1.42799}, "image": {"items": 16, "tokens": 351, "mean_nll": 1.36812}, "ja": {"items": 2, "tokens": 1658, "mean_nll": 1.61209}, "json": {"items": 16, "tokens": 12407, "mean_nll": 0.69929}, "long": {"items": 128, "tokens": 122247, "mean_nll": 0.64924}, "math": {"items": 34, "tokens": 26276, "mean_nll": 0.63767}, "multi": {"items": 18, "tokens": 16875, "mean_nll": 1.87215}, "prose": {"items": 79, "tokens": 70470, "mean_nll": 0.8005}, "tools": {"items": 16, "tokens": 2286, "mean_nll": 0.82127}, "zh": {"items": 10, "tokens": 8561, "mean_nll": 1.8608}}}

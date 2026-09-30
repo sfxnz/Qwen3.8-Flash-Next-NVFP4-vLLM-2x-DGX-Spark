@@ -1,0 +1,13 @@
+2026-09-30T04:09:40.503Z [k4] gate rc=0
+2026-09-30T04:09:40.505Z [k4] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --k 4 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/k4/ruler-noanchor.json
+2026-09-30T04:11:05.416Z [k4] end ruler-noanchor rc=0
+2026-09-30T04:11:05.419Z [k4] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/k4/diverse.jsonl --label k4
+2026-09-30T04:18:11.182Z [k4] end diverse rc=0
+2026-09-30T04:18:11.184Z [k4] start sampled: python3 bench_sampled.py --url http://127.0.0.1:8000/v1/chat/completions --profiles A T1 --concurrency 1 8 --prompts 8 --reps 1 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/k4/sampled.jsonl --label k4
+2026-09-30T04:20:14.682Z [k4] end sampled rc=0
+2026-09-30T04:20:14.684Z [k4] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/k4/t1g --limit 10 --repeats 5
+2026-09-30T04:23:55.208Z [k4] end t1g rc=0
+2026-09-30T04:23:55.211Z [k4] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/k4/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/k4/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/k4/t1g-self.json
+2026-09-30T04:23:55.364Z [k4] end t1g-self rc=0
+2026-09-30T04:23:55.366Z [k4] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/k4/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/k4/identity.json
+2026-09-30T04:23:55.392Z [k4] end identity rc=0

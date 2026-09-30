@@ -1,0 +1,53 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1-long",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1-long",
+ "gate": "T1-B",
+ "verdict": "FAIL",
+ "pass": false,
+ "checks": {
+  "top1": false,
+  "kl": true,
+  "domains": true
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.02817868,
+  "domain_disagree": 0.043944,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 122247,
+  "top1_agree": 0.978028,
+  "kl": 0.01408934,
+  "kl_p99": 0.272186,
+  "nll_ref": 0.457783,
+  "nll_delta": 0.000273,
+  "flips": {
+   "lost": 856,
+   "gained": 860,
+   "flip_rate": 0.014037,
+   "p": 0.94227
+  }
+ },
+ "by_domain": {
+  "long_whole": {
+   "tokens": 122247,
+   "top1_agree": 0.978028,
+   "kl": 0.01408934,
+   "kl_p99": 0.272186,
+   "nll_ref": 0.457783,
+   "nll_delta": 0.000273,
+   "flips": {
+    "lost": 856,
+    "gained": 860,
+    "flip_rate": 0.014037,
+    "p": 0.94227
+   }
+  }
+ },
+ "bad_domains": [],
+ "missing_items": [],
+ "mismatched_items": []
+}

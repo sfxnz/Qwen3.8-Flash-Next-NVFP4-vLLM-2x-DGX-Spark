@@ -1,0 +1,69 @@
+{
+ "items": 386,
+ "items_with_other_traffic": 0,
+ "tokens": 312326,
+ "topk": 5,
+ "s": 176.4,
+ "by_domain": {
+  "code": {
+   "items": 55,
+   "tokens": 39906,
+   "mean_nll": 0.33726
+  },
+  "de": {
+   "items": 6,
+   "tokens": 5622,
+   "mean_nll": 1.18379
+  },
+  "es": {
+   "items": 6,
+   "tokens": 5667,
+   "mean_nll": 1.43621
+  },
+  "image": {
+   "items": 16,
+   "tokens": 351,
+   "mean_nll": 1.30264
+  },
+  "ja": {
+   "items": 2,
+   "tokens": 1658,
+   "mean_nll": 1.6379
+  },
+  "json": {
+   "items": 16,
+   "tokens": 12407,
+   "mean_nll": 0.69787
+  },
+  "long": {
+   "items": 128,
+   "tokens": 122247,
+   "mean_nll": 0.6581
+  },
+  "math": {
+   "items": 34,
+   "tokens": 26276,
+   "mean_nll": 0.62941
+  },
+  "multi": {
+   "items": 18,
+   "tokens": 16875,
+   "mean_nll": 1.87866
+  },
+  "prose": {
+   "items": 79,
+   "tokens": 70470,
+   "mean_nll": 0.80907
+  },
+  "tools": {
+   "items": 16,
+   "tokens": 2286,
+   "mean_nll": 0.82986
+  },
+  "zh": {
+   "items": 10,
+   "tokens": 8561,
+   "mean_nll": 1.86211
+  }
+ }
+}

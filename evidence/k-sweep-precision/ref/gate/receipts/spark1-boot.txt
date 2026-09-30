@@ -1,0 +1,263 @@
+
+=== date ===
+2026-09-30T01:49:57.429Z
+
+=== hostname ===
+spark1
+
+=== uname ===
+Linux spark1 6.17.0-1032-nvidia #32-Ubuntu SMP PREEMPT_DYNAMIC Wed Aug 19 17:40:46 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+
+=== nvidia-driver ===
+NVRM version: NVIDIA UNIX Open Kernel Module for aarch64  580.173.02  Release Build  (dvs-builder@U22-A24-5-4)  Tue Jun 23 08:34:19 UTC 2026
+GCC version:  gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+
+=== nvidia-smi-q ===
+
+==============NVSMI LOG==============
+
+Timestamp                                              : Wed Sep 30 02:49:57 2026
+Driver Version                                         : 580.173.02
+CUDA Version                                           : 13.0
+
+Attached GPUs                                          : 1
+GPU 0000000F:01:00.0
+    Performance State                                  : P0
+    Clocks Event Reasons
+        Idle                                           : Not Active
+        Applications Clocks Setting                    : Not Active
+        SW Power Cap                                   : Not Active
+        HW Slowdown                                    : Not Active
+            HW Thermal Slowdown                        : Not Active
+            HW Power Brake Slowdown                    : Not Active
+        Sync Boost                                     : Not Active
+        SW Thermal Slowdown                            : Not Active
+        Display Clock Setting                          : Not Active
+    Clocks Event Reasons Counters
+        SW Power Capping                               : 67129642154 us
+        Sync Boost                                     : 0 us
+        SW Thermal Slowdown                            : 0 us
+        HW Thermal Slowdown                            : 0 us
+        HW Power Braking                               : 0 us
+    Sparse Operation Mode                              : N/A
+    Temperature
+        GPU Current Temp                               : 45 C
+        GPU T.Limit Temp                               : 50 C
+        GPU Shutdown T.Limit Temp                      : N/A
+        GPU Slowdown T.Limit Temp                      : N/A
+        GPU Max Operating T.Limit Temp                 : 0 C
+        GPU Target Temperature                         : N/A
+        Memory Current Temp                            : N/A
+        Memory Max Operating T.Limit Temp              : N/A
+    GPU Power Readings
+        Average Power Draw                             : 9.22 W
+        Instantaneous Power Draw                       : 9.68 W
+        Current Power Limit                            : N/A
+        Requested Power Limit                          : N/A
+        Default Power Limit                            : N/A
+        Min Power Limit                                : N/A
+        Max Power Limit                                : N/A
+    Power Samples
+        Duration                                       : Not Found
+        Number of Samples                              : Not Found
+        Max                                            : Not Found
+        Min                                            : Not Found
+        Avg                                            : Not Found
+    GPU Memory Power Readings 
+        Average Power Draw                             : N/A
+        Instantaneous Power Draw                       : N/A
+    Module Power Readings
+        Average Power Draw                             : N/A
+        Instantaneous Power Draw                       : N/A
+        Current Power Limit                            : N/A
+        Requested Power Limit                          : N/A
+        Default Power Limit                            : N/A
+        Min Power Limit                                : N/A
+        Max Power Limit                                : N/A
+    Clocks
+        Graphics                                       : 2190 MHz
+        SM                                             : 2190 MHz
+        Memory                                         : N/A
+        Video                                          : 1846 MHz
+    Applications Clocks
+        Graphics                                       : 2418 MHz
+        Memory                                         : N/A
+    Default Applications Clocks
+        Graphics                                       : 2418 MHz
+        Memory                                         : N/A
+    Deferred Clocks
+        Memory                                         : N/A
+    Max Clocks
+        Graphics                                       : 3003 MHz
+        SM                                             : 3003 MHz
+        Memory                                         : N/A
+        Video                                          : 3003 MHz
+    Max Customer Boost Clocks
+        Graphics                                       : N/A
+    SM Clock Samples
+        Duration                                       : N/A
+        Number of Samples                              : N/A
+        Max                                            : N/A
+        Min                                            : N/A
+        Avg                                            : N/A
+    Memory Clock Samples
+        Duration                                       : N/A
+        Number of Samples                              : N/A
+        Max                                            : N/A
+        Min                                            : N/A
+        Avg                                            : N/A
+    Clock Policy
+        Auto Boost                                     : N/A
+        Auto Boost Default                             : N/A
+
+
+=== bios ===
+bios_vendor=American Megatrends International, LLC.
+bios_version=5.36_0ACUM018
+bios_date=08/06/2025
+product_name=NVIDIA_DGX_Spark
+board_name=P4242
+
+=== fwupdmgr ===
+│     Device ID:          6924110cde4fa051bfdc600a60620dc7aa9d3c6a
+│     Current version:    2025
+│     GUIDs:              69b0cdfe-5a6d-5dcd-bba9-49491bd13979 ← UEFI\VENDOR_NVIDIA-Corporation&NAME_DGX-Spark-Platform-Key
+│     Device Flags:       • Internal device
+│     Device ID:          8c948e1db381648c8893897e4d09b7b153309991
+│     Current version:    0x03000508
+│     GUID:               3d13c989-e6a8-4ead-95ee-921f09868f65
+│     Device Flags:       • Internal device
+│                         • Device is usable for the duration of the update
+│     Device Requests:    • Message
+│ │   Device ID:          8c753bbc96f0af800ebd70ad67c2d28203d8d681
+│ │   Device Flags:       • Can tag for emulation
+│       Device ID:        8c3e0599a5afadd7419d6fbe2a28ddb64cbcf49a
+│       Current version:  28.45.4028
+│       GUIDs:            04089056-a45b-544f-98d9-1085877daba5 ← PCI\VEN_15B3&DEV_1021&COMPONENT_fw
+│       Device Flags:     • Updatable
+│                         • Device stages updates
+│                         • Device is usable for the duration of the update
+│     Device ID:          7de5ffdca08fa52d95fd4bb42aa5d07a4b35d2dd
+│     Current version:    NXHB202Q
+│     GUIDs:              35abf34a-7ed8-51b2-ba1b-edef527d47e6 ← NVME\VEN_144D&DEV_A810
+│     Device Flags:       • Internal device
+│                         • Device is usable for the duration of the update
+│     Device ID:          6469856584e2f5873b2f148302e46c9313c7d054
+│     Current version:    1.5.4
+│     GUID:               9947c120-b97b-52d6-9d83-738a1c342e23 ← UEFI\OS_ubuntu&VAR_SbatLevelRT
+│     Device Flags:       • Updatable
+├─UEFI Device Firmware:
+│     Device ID:          0681fd3882fb4fdca996e412ec249365f6e85838
+│     Current version:    0x02009b0b
+│     GUID:               b488217b-3895-4fc0-b1bf-ab7005a2d45a
+│     Device Flags:       • Internal device
+│                         • Device is usable for the duration of the update
+│     Device Requests:    • Message
+├─UEFI Device Firmware:
+│     Device ID:          a6c6b7f79c96a1cc84d9612d804675e0c3d879c4
+│     Current version:    0x00000516
+│     GUID:               dd1a238a-5f8e-46bd-9401-a88da99c5a96
+│     Device Flags:       • Internal device
+│                         • Device is usable for the duration of the update
+│     Device Requests:    • Message
+│ │   Device ID:          2a4c23bfb79b5dabe474cb7b1b3e604645d6f9c6
+│ │   Device Flags:       • Internal device
+│       Device ID:        b7a1d3d90faa1f6275d9a98da4fb3be7118e61c7
+│       Current version:  2023
+│       GUIDs:            814e950f-1449-566a-a190-42c9d3a3a2df ← UEFI\VENDOR_Microsoft&NAME_Microsoft-KEK-CA
+│       Device Flags:     • Internal device
+│                         • Device is usable for the duration of the update
+│ │   Device ID:          0352a8acc949c7df21fec16e566ba9a74e797a97
+│ │   Device Flags:       • Internal device
+│ │     Device ID:        5bc922b7bd1adb5b6f99592611404036bd9f42d0
+│ │     Current version:  2023
+│ │     GUIDs:            26f42cba-9bf6-5365-802b-e250eb757e96 ← UEFI\VENDOR_Microsoft&NAME_Microsoft-UEFI-CA
+│ │     Device Flags:     • Internal device
+│       Device ID:        d31da5f926c6d962ed810b284fab5a2ef623007b
+│       Current version:  2023
+│       GUIDs:            914015a8-9d92-5462-9a9b-f2b361e4faae ← UEFI\VENDOR_Microsoft&NAME_Windows-UEFI-CA
+│       Device Flags:     • Internal device
+      Device ID:          362301da643102b9f38477387e2193e57abaa590
+      Current version:    20230501
+      GUIDs:              10ec82f4-ff64-5362-9e5d-688febf5dbb0 ← UEFI\CRT_3CD3F0309EDAE228767A976DD40D9F4AFFC4FBD5218F2E8CC3C9DD97E8AC6F9D&ARCH_AA64
+      Device Flags:       • Internal device
+                          • Device is usable for the duration of the update
+
+=== governors ===
+     20 performance
+
+=== cpufreq-driver ===
+cppc_cpufreq
+
+=== free ===
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       106Gi       1.3Gi       2.6Gi        17Gi        14Gi
+Swap:           15Gi       7.1Gi       8.9Gi
+
+=== swap ===
+NAME      TYPE SIZE USED PRIO
+/swap.img file  16G 7.1G   -2
+
+=== docker-ps ===
+qwen38-flash-next-nvfp4 vllm/vllm-openai:v0.30.0-aarch64 Up 52 minutes
+conduit matrixconduit/matrix-conduit:latest Up 10 days
+
+=== docker-image ===
+vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56 sha256:91d9b077589e7ebb9399ea8db07787bd40cc04ba96a767f021ffdf3e321ea9a0 2026-09-30T00:57:45.064297882Z
+
+=== docker-mounts ===
+["/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/moe_configs:/opt/qwen38-moe-configs:ro","/home/sfxnz/.cache/huggingface:/cache/huggingface","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/chat_template_alias.jinja:/recipe/chat_template_alias.jinja:ro","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/flashinfer_cutlass_moe.py:/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/experts/flashinfer_cutlass_moe.py:ro","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/gdn_attn.py:/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/gdn_attn.py:ro","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/qsa_indexer.py:/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py:ro","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/serving.py:/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/chat_completion/serving.py:ro","/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/mtp.py:/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/mtp.py:ro"]
+
+=== docker-env-redacted ===
+NCCL_CUMEM_ENABLE=0
+NCCL_DEBUG=WARN
+HF_HOME=/cache/huggingface
+HF_HUB_OFFLINE=1
+FLASHINFER_DISABLE_VERSION_CHECK=1
+VLLM_ENGINE_READY_TIMEOUT_S=3600
+GLOO_SOCKET_IFNAME=enp1s0f1np1
+NCCL_CROSS_NIC=1
+VLLM_HOST_IP=10.100.8.1
+VLLM_QWEN38_DRAFT_HEAD_FP8=1
+VLLM_ALLOW_LONG_MAX_MODEL_LEN=0
+NCCL_SOCKET_IFNAME=enp1s0f1np1
+TP_SOCKET_IFNAME=enp1s0f1np1
+NCCL_IB_HCA=rocep1s0f1
+NCCL_NVLS_ENABLE=0
+VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=64
+VLLM_TUNED_CONFIG_FOLDER=/opt/qwen38-moe-configs
+TORCH_CUDA_ARCH_LIST=12.1a
+FLASHINFER_CUDA_ARCH_LIST=12.1a
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+NCCL_NET=IB
+VLLM_PLE_CPU_OFFLOAD=0
+VLLM_USE_BREAKABLE_CUDAGRAPH=0
+NCCL_IB_DISABLE=0
+PATH=/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NVARCH=sbsa
+NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576
+NV_CUDA_CUDART_VERSION=13.0.96-1
+CUDA_VERSION=13.0.2
+LD_LIBRARY_PATH=/usr/local/nvidia/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64
+NVIDIA_VISIBLE_DEVICES=all
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+DEBIAN_FRONTEND=noninteractive
+CUDA_HOME=/usr/local/cuda
+UV_HTTP_TIMEOUT=500
+UV_INDEX_STRATEGY=unsafe-best-match
+UV_LINK_MODE=copy
+UV_PYTHON_INSTALL_DIR=/opt/uv/python
+UV_CACHE_DIR=/opt/uv/cache
+UV_OVERRIDE=/etc/uv-overrides.txt
+VLLM_ENABLE_CUDA_COMPATIBILITY=0
+VLLM_USAGE_SOURCE=production-docker-image
+VLLM_BUILD_COMMIT=ced6857afa0ea7b2e3f0846a62e1394e90f15607
+VLLM_BUILD_PIPELINE=019d130e-464e-4ff7-b84b-492992c0c06b
+VLLM_BUILD_URL=https://buildkite.com/vllm/release-v2/builds/7022
+VLLM_IMAGE_TAG=vllm/vllm-openai:v0.30.0
+
+
+=== caches ===
+VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR=unset
+TRITON_CACHE_DIR=unset
+VLLM_CACHE_ROOT=unset

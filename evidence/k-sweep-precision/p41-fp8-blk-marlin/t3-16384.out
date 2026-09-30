@@ -1,0 +1,7 @@
+    16384 @0.1 needle0: found (16222 tok, 5.77 s)
+    16384 @0.1 needle1: found (16221 tok, 0.92 s)
+    16384 @0.5 needle0: found (16239 tok, 5.726 s)
+    16384 @0.5 needle1: found (16239 tok, 0.923 s)
+    16384 @0.9 needle0: found (16201 tok, 5.272 s)
+    16384 @0.9 needle1: found (16202 tok, 0.904 s)
+T3 PASS 6/6 per_length={'16384': '6/6'}

@@ -1,0 +1,125 @@
+{
+ "ruler_steps_version": "1",
+ "argv": [
+  "--url",
+  "http://127.0.0.1:8000/v1/chat/completions",
+  "--model",
+  "nvidia/Qwen3.8-Flash-Next-NVFP4",
+  "--json",
+  "/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p41c-fp8-blk-noqkvz/gate/ruler.json",
+  "--anchor-ms",
+  "0",
+  "0",
+  "--k",
+  "3"
+ ],
+ "started_at": "2026-09-30T08:31:03.245+00:00",
+ "cells": [],
+ "warmup": {
+  "t_start": 1790757063.2627153,
+  "single": {
+   "ttft_s": 0.09349091199692339,
+   "total_s": 0.7444099390413612,
+   "prompt_tokens": 36,
+   "completion_tokens": 32,
+   "decode_tok_s": 47.62497132824426,
+   "chunks": 14
+  },
+  "staggered_pair": [
+   {
+    "ttft_s": 0.1380923290271312,
+    "total_s": 1.0059169110609218,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 35.721504831483266,
+    "chunks": 15
+   },
+   {
+    "ttft_s": 0.24170469294767827,
+    "total_s": 1.0562464740360156,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 38.05820735012492,
+    "chunks": 15
+   }
+  ],
+  "simultaneous_pair": [
+   {
+    "ttft_s": 0.14642918400932103,
+    "total_s": 0.7836402569664642,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 48.64949985275125,
+    "chunks": 12
+   },
+   {
+    "ttft_s": 0.14665824105031788,
+    "total_s": 0.9892930760979652,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 36.789364396793644,
+    "chunks": 16
+   }
+  ],
+  "long": {
+   "ttft_s": 3.3289044679841027,
+   "total_s": 3.4076399960322306,
+   "prompt_tokens": 9997,
+   "completion_tokens": 2,
+   "decode_tok_s": 12.700746725020245,
+   "chunks": 1
+  },
+  "t_end": 1790757069.513446
+ },
+ "t0_flagged_waves": [],
+ "cell_stats": [],
+ "sentinel": {
+  "runs": 9,
+  "excursions": 6,
+  "excursion_rate": 0.6666666666666666,
+  "excursion_rate_over_1_in_20": true,
+  "boot_min_ms": 51.06459779897705,
+  "clean_median_ms": 51.08092758106068,
+  "anchor_ms": [
+   0.0,
+   0.0
+  ],
+  "void": true,
+  "blocks": [
+   {
+    "where": "start",
+    "attempt": 1,
+    "ok": false,
+    "ms_per_step": [
+     51.06459779897705,
+     53.028706142213196,
+     57.994387878570706
+    ]
+   },
+   {
+    "where": "start",
+    "attempt": 2,
+    "ok": false,
+    "ms_per_step": [
+     59.191379060503095,
+     59.794114120304585,
+     56.53713847976178
+    ]
+   },
+   {
+    "where": "start",
+    "attempt": 3,
+    "ok": false,
+    "ms_per_step": [
+     51.08092758106068,
+     51.10231534112245,
+     55.39886930026114
+    ]
+   }
+  ]
+ },
+ "finished_at": "2026-09-30T08:32:45.643+00:00",
+ "summary_refused": [
+  "boot void (sentinel failed)"
+ ]
+}

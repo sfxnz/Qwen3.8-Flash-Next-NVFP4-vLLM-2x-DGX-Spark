@@ -1,0 +1,7 @@
+  gsm8k: {"n": 250, "correct": 239, "acc": 0.956, "errors": 0} (1355 s)
+  ifeval: {"n": 120, "correct": 102, "acc": 0.85, "errors": 0} (2336 s)
+  tools: {"n": 60, "correct": 60, "acc": 1.0, "errors": 0} (2403 s)
+  json: {"n": 30, "correct": 30, "acc": 1.0, "errors": 0} (2431 s)
+  rep4: {"n": 64, "correct": 64, "acc": 1.0, "errors": 0, "mean_repeat_4gram": 0.000607} (3181 s)
+  effort: {"n": 5, "correct": 5, "acc": 1.0, "errors": 0} (3183 s)
+T2 captured -> /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t2/t2.jsonl

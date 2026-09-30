@@ -1,0 +1,44 @@
+2026-09-30T04:42:23.866Z [p40-ssm-bf16] gate rc=0
+2026-09-30T04:42:23.868Z [p40-ssm-bf16] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --k 3 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/ruler-noanchor.json
+2026-09-30T04:43:51.308Z [p40-ssm-bf16] end ruler-noanchor rc=0
+2026-09-30T04:43:51.310Z [p40-ssm-bf16] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/diverse.jsonl --label p40-ssm-bf16
+2026-09-30T04:50:41.977Z [p40-ssm-bf16] end diverse rc=0
+2026-09-30T04:50:41.979Z [p40-ssm-bf16] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1g --limit 10 --repeats 5
+2026-09-30T04:54:12.640Z [p40-ssm-bf16] end t1g rc=0
+2026-09-30T04:54:12.643Z [p40-ssm-bf16] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/t1g-self.json
+2026-09-30T04:54:12.856Z [p40-ssm-bf16] end t1g-self rc=0
+2026-09-30T04:54:12.858Z [p40-ssm-bf16] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/identity.json
+2026-09-30T04:54:12.884Z [p40-ssm-bf16] end identity rc=1
+2026-09-30T04:54:13.551Z [p40-ssm-bf16] memcheck ok before t1full: spark1 avail=15073MB swap_used spark1=8060MB spark2=4252MB
+2026-09-30T04:54:13.552Z [p40-ssm-bf16] start t1full: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1
+2026-09-30T04:57:05.977Z [p40-ssm-bf16] end t1full rc=0
+2026-09-30T04:57:05.980Z [p40-ssm-bf16] start t1full-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1 /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1 --class B --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/t1-vs-ref.json
+2026-09-30T04:57:06.296Z [p40-ssm-bf16] end t1full-score rc=0
+2026-09-30T04:57:06.304Z [p40-ssm-bf16] start t1d: python3 quality/collect_t1d.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1d
+2026-09-30T05:00:23.843Z [p40-ssm-bf16] end t1d rc=0
+2026-09-30T05:00:23.845Z [p40-ssm-bf16] start t1d-score: python3 quality/score.py t1d /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1d /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1d --class B --floor /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/ref/t1d-floor.json --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/t1d-vs-ref.json
+2026-09-30T05:00:23.950Z [p40-ssm-bf16] end t1d-score rc=0
+2026-09-30T05:00:23.952Z [p40-ssm-bf16] start t2full: python3 quality/t2.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t2 --tasks gsm8k,ifeval,tools,json,rep4,effort --workers 1
+2026-09-30T05:53:27.416Z [p40-ssm-bf16] end t2full rc=0
+2026-09-30T05:53:27.432Z [p40-ssm-bf16] start t2full-score: python3 quality/score.py t2 /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t2 /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t2 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p40-ssm-bf16/t2-vs-ref.json
+2026-09-30T05:53:27.523Z [p40-ssm-bf16] end t2full-score rc=0
+2026-09-30T05:53:28.194Z [p40-ssm-bf16] memcheck ok before t3-4096: spark1 avail=14421MB swap_used spark1=6910MB spark2=4235MB
+2026-09-30T05:53:28.195Z [p40-ssm-bf16] start t3-4096: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t3-4096 --lengths 4096
+2026-09-30T05:53:35.046Z [p40-ssm-bf16] end t3-4096 rc=0
+2026-09-30T05:53:36.081Z [p40-ssm-bf16] memcheck ok before t3-16384: spark1 avail=14438MB swap_used spark1=6910MB spark2=4235MB
+2026-09-30T05:53:36.083Z [p40-ssm-bf16] start t3-16384: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t3-16384 --lengths 16384
+2026-09-30T05:53:54.953Z [p40-ssm-bf16] end t3-16384 rc=0
+2026-09-30T05:53:56.010Z [p40-ssm-bf16] memcheck ok before t3-32768: spark1 avail=14407MB swap_used spark1=6910MB spark2=4235MB
+2026-09-30T05:53:56.012Z [p40-ssm-bf16] start t3-32768: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t3-32768 --lengths 32768
+2026-09-30T05:54:33.108Z [p40-ssm-bf16] end t3-32768 rc=0
+2026-09-30T05:54:34.126Z [p40-ssm-bf16] memcheck ok before t3-65536: spark1 avail=14431MB swap_used spark1=6909MB spark2=4234MB
+2026-09-30T05:54:34.128Z [p40-ssm-bf16] start t3-65536: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t3-65536 --lengths 65536
+2026-09-30T05:55:49.776Z [p40-ssm-bf16] end t3-65536 rc=0
+2026-09-30T05:55:50.153Z [p40-ssm-bf16] start vision: python3 quality/vision_probes/run.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/vision
+2026-09-30T05:56:03.657Z [p40-ssm-bf16] end vision rc=0
+2026-09-30T05:56:39.662Z [p40-ssm-bf16] memcheck ok before t1long: spark1 avail=14164MB swap_used spark1=6855MB spark2=4233MB
+2026-09-30T05:56:39.664Z [p40-ssm-bf16] start t1long: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1-long --domains long --long-whole
+2026-09-30T05:56:39.772Z [p40-ssm-bf16] end t1long rc=0
+2026-09-30T05:56:50.971Z [p40-ssm-bf16] memcheck ok before t1long: spark1 avail=14103MB swap_used spark1=6855MB spark2=4233MB
+2026-09-30T05:56:50.973Z [p40-ssm-bf16] start t1long: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1-long --domains long_whole --long-whole
+2026-09-30T05:57:43.823Z [p40-ssm-bf16] end t1long rc=0
