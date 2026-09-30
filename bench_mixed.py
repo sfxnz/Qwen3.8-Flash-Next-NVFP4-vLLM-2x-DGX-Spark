@@ -123,6 +123,7 @@ def run_cell(cell: str, args, em, prompts: dict) -> dict:
         for r in decs:
             g += C.gaps_in_window(abs_times(r), a, b)
         out[f"decoder_itl_during_{role}_p50_ms"] = C.rnd(C.pct(g, 50))
+        out[f"decoder_itl_during_{role}_p99_ms"] = C.rnd(C.pct(g, 99))
         out[f"decoder_itl_during_{role}_max_ms"] = C.rnd(max(g) if g else None)
     if cell == "A":
         out["rate_per_s"] = args.rate
