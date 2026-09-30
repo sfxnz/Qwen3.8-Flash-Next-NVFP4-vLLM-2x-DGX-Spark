@@ -1,0 +1,5 @@
+(Worker_TP0 pid=473) INFO 09-30 10:39:17 [modelopt.py:1548] qwen38-fp8-dense: mode=per_block allow=('(?:^|\\.)linear_attn\\.in_proj_qkvz$', '(?:^|\\.)linear_attn\\.out_proj$', '(?:^|\\.)self_attn\\.qkv_proj$', '(?:^|\\.)self_attn\\.o_proj$', '(?:^|\\.)ple\\.kv_proj$')
+(Worker_TP0 pid=473) INFO 09-30 10:39:17 [__init__.py:246] Applied linear backend override for 'fp8_block_w8a8': 'marlin'
+(Worker_TP0 pid=473) INFO 09-30 10:39:17 [__init__.py:726] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerBlockOnlineLinearMethod
+(Worker_TP1 pid=379) INFO 09-30 10:39:17 [modelopt.py:1548] qwen38-fp8-dense: mode=per_block allow=('(?:^|\\.)linear_attn\\.in_proj_qkvz$', '(?:^|\\.)linear_attn\\.out_proj$', '(?:^|\\.)self_attn\\.qkv_proj$', '(?:^|\\.)self_attn\\.o_proj$', '(?:^|\\.)ple\\.kv_proj$')
+(Worker_TP1 pid=379) INFO 09-30 10:39:17 [__init__.py:246] Applied linear backend override for 'fp8_block_w8a8': 'marlin'
