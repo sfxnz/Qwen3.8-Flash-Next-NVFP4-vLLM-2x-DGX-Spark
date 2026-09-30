@@ -1,0 +1,4 @@
+{"id": "prose", "identical": false, "n_base": 4096, "n_arm": 4096, "first_diff": 23}
+{"id": "code", "identical": false, "n_base": 4096, "n_arm": 4096, "first_diff": 56}
+{"id": "near1600", "identical": false, "n_base": 4096, "n_arm": 4096, "first_diff": 17}
+IDENTITY FAIL 0/3

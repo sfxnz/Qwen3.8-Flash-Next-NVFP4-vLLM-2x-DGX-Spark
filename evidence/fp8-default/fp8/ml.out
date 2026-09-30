@@ -1,0 +1,7 @@
+  ml 40/240, 1186 s
+  ml 80/240, 1186 s
+  ml 120/240, 1186 s
+  ml 160/240, 1186 s
+  ml 200/240, 1186 s
+  ml 240/240, 1186 s
+ML captured 240 -> /home/sfxnz/projects/data/qwen38-evals/runs/session8/fp8/ml/ml.jsonl

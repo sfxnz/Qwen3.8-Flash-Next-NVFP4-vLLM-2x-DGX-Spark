@@ -1,0 +1,205 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 480959d..508a546 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -18,6 +18,7 @@ Humans read [README.md](README.md).
+     - `docker/v030/gdn_attn.py` (`apply_gdn_fresh_prefill_overlay.py`): a fresh 1-token prompt no longer runs the GDN decode kernel on a leftover state slot.
+     - `docker/v030/qsa_indexer.py` (`apply_qsa_topk_order_overlay.py`): QSA `persistent_topk` output is sorted, and prefill ties resolve to the lowest index (F23).
+     - `docker/v030/serving.py` (`apply_api_overlays.py`): vLLM #56067, the streamed tool-call parser's O(n²) API-server CPU (G05).
++    - `docker/v030/modelopt.py` (`apply_fp8_dense_overlay.py`): FP8 dense (P4-1), added to the list by `FP8_DENSE=per_block` (the default; see Measurement notes).
+     - `docker/v030/mtp.py` (`apply_mtp_overlay.py`): the draft-head levers (session 4, `evidence/l1-l6-k5-l2/`). `run.sh` applies `DRAFT_LOCAL_ARGMAX=1` (L1a, `use_local_argmax_reduction`), `DRAFT_HEAD_FP8=1` (L1b′ FP8 draft head) and `DRAFT_VOCAB` (L1b, default none: −5% CJK acceptance) only with this overlay on the v0.30 digest. `DRAFT_MOE_CONFIG=1` mounts `docker/v030/moe_configs` (L6a). Greedy output stays bit-identical to U2 at c=1; c=1 step −7 ms.
+     With these, c=1 greedy is bit-exact run to run (T1 A/A 100%, T1-G 1.0 distinct) for about +1.4 ms/step at c1 (`evidence/s15-determinism/SUMMARY.md`). Do not drop one to win back speed without a new T1-G row.
+   - **Pin (rollback), `OVERLAYS_PIN`.** `docker/ple_layer.py` (FP8 PLE), `docker/modelopt.py` (MTP FP8_BLOCK_SCALES; day-0 and stock nightly raise `AttributeError: mtp.layers.48.mlp.experts has no parameter 'w2_weight_scale_inv'`) and `docker/ple_ops.py` (vLLM #55375 short-conv stride, F01). Generators: `docker/apply_ple_overlay.py`, `docker/apply_mtp_fp8_overlay.py`, `docker/apply_ple_stride_overlay.py`. The pin keeps greedy c=1 non-determinism (no determinism overlays exist for it). Do not require `VLLM_PLE_FP8_CHECKPOINT`.
+@@ -46,7 +47,8 @@ spark1 went into a global host OOM with swap thrash during an in-serve torch-pro
+ - T1 gates on the determinism base: the same-build floor is exact. Kernel-reorder levers move logits and the model amplifies ulp noise into nats, so class-A gates use NLL delta and paired task accuracy (T2), not a top-1 threshold.
+ - On builds without the determinism overlays (the pin, stock v0.30) greedy c=1 repeats diverge and T2 tools lands at 57-58/60 on different items per run. That is non-determinism, not a regression.
+ 
+-- `FP8_DENSE=per_block` is the opt-in `lab-fp8-dense` profile (P4-1): about 13% faster at c=1, but it fails the T1-B top-1 gate while passing T1-D, T2, T3 and V (`evidence/k-sweep-precision/SUMMARY.md`). T4 (full GSM8K, thinking on) passes: 97.65% against 97.80%, 6 lost / 4 gained, McNemar p 0.75 (`evidence/extras/SUMMARY.md`). Never make it the default without owner sign-off.
++- **FP8 dense is the default** (`FP8_DENSE=per_block`, P4-1, owner sign-off in session 8, `evidence/fp8-default/SUMMARY.md`): `docker/v030/modelopt.py` (generator `docker/v030/apply_fp8_dense_overlay.py`, `docker/v030/FP8_DENSE.md`) serves the 99 dense GDN/QSA/PLE-kv/MTP-attention linears in online FP8 through Marlin W8A16. Structured c1 −11% ms/step, structured c8 −8%, −1.28 GiB/rank. It is a precision lever: output differs from BF16 but stays bit-exact run to run at c=1 (T1-G 1.0), and K3 composes with it exactly. v0.30 digest only; the pin and `OVERLAYS=none` ignore it with a note. **Rollback: `FP8_DENSE=none`** (BF16 dense linears; the session-7 output, bit-identical to sessions 5-7).
++- **Gate policy for precision levers (class B) on this model: T1-B top-1 is retired.** It is saturated: FP8 on a single 65 MB layer already scores 94.6% top-1 against 94.3% for all 99 layers, and stock v0.30's order-dependent BF16 noise scored 93%. NVFP4 activation re-quantisation plus top-10 routing turn any ulp-level change into ~0.03 KL of token churn, so the 98.5% gate only passes bit-exact levers (`evidence/k-sweep-precision/SUMMARY.md`). A precision lever is gated instead on T1-D (median first divergence ≥ 0.5 × the c=8 floor, matched-prefix KL ≤ 0.02), paired T2 at c=1 (drop ≤ 2 pp, McNemar n.s.), T3 needles to 64k, V, T4 (full GSM8K thinking on) and the multilingual paired judge (`quality/ml_judge.py`: no language with a significant sign-test loss, overall wins ≥ losses − 10% of decided, language-ID failures not above the reference). T1-B is still collected and reported per domain, and remains the gate for class-A (bit-exact) claims. Bit-exact levers (class A) keep the exact T1-G / identity gates.
+ 
+ ## Refuse-guards (`run.sh`)
+ 
+diff --git a/README.md b/README.md
+index 03b541d..99217da 100644
+--- a/README.md
++++ b/README.md
+@@ -4,7 +4,7 @@ Serve [nvidia/Qwen3.8-Flash-Next-NVFP4](https://huggingface.co/nvidia/Qwen3.8-Fl
+ 
+ Routed experts are ModelOpt NVFP4 W4A4. The PLE n-gram table is per-tensor FP8. MTP experts are FP8_BLOCK_SCALES with group size 128. Architecture class is `Qwen4ExpForConditionalGeneration`. Native context is 262,144. This recipe boots `--max-model-len` 262144 with in-band MTP-3. 1M is a lab ceiling, not a trained window. Community 1M YaRN on GB10 hangs on long prefills ([vLLM #54629](https://github.com/vllm-project/vllm/issues/54629)).
+ 
+-Stock `vllm/vllm-openai:v0.27.1` does not register `qwen4_exp`. The default image is official `vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56` (`0.30.0`). v0.30 loads the MTP FP8_BLOCK_SCALES experts, selects FP8 PLE and fixes F01 natively. Three small overlays make c=1 greedy output bit-exact run to run (deterministic FlashInfer CUTLASS MoE finalize, a GDN fresh-prefill split fix and a stable QSA top-k order; `evidence/s15-determinism/SUMMARY.md`), and `serving.py` backports vLLM [#56067](https://github.com/vllm-project/vllm/pull/56067), which removes the O(n²) API-server CPU of streamed tool-call arguments. On v0.30 `run.sh` also passes `VLLM_PLE_CPU_OFFLOAD=0` and `VLLM_USE_BREAKABLE_CUDAGRAPH=0` to both ranks.
++Stock `vllm/vllm-openai:v0.27.1` does not register `qwen4_exp`. The default image is official `vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56` (`0.30.0`). v0.30 loads the MTP FP8_BLOCK_SCALES experts, selects FP8 PLE and fixes F01 natively. Three small overlays make c=1 greedy output bit-exact run to run (deterministic FlashInfer CUTLASS MoE finalize, a GDN fresh-prefill split fix and a stable QSA top-k order; `evidence/s15-determinism/SUMMARY.md`), and `serving.py` backports vLLM [#56067](https://github.com/vllm-project/vllm/pull/56067), which removes the O(n²) API-server CPU of streamed tool-call arguments. On v0.30 `run.sh` also passes `VLLM_PLE_CPU_OFFLOAD=0` and `VLLM_USE_BREAKABLE_CUDAGRAPH=0` to both ranks. The default also serves the 99 dense GDN/QSA/PLE-kv/MTP-attention linears in online FP8 (`FP8_DENSE=per_block`, Marlin W8A16, `docker/v030/FP8_DENSE.md`). That is a precision lever: output differs from BF16 but stays bit-exact run to run, and it is gated on task quality rather than top-1 agreement (`evidence/fp8-default/SUMMARY.md`). `FP8_DENSE=none` is the BF16 rollback.
+ 
+ The rollback is the previous pin, `IMAGE=vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b ./run.sh` (`0.28.1rc1.dev437+ge962733e0`), which mounts the pin overlay set. That nightly already selects MIXED_PRECISION FP8 PLE. Day-0 `qwen38-flash-next@3b0e188` and this nightly both fail MTP load until `docker/modelopt.py` remaps `mtp.layers.48` onto `mtp.layers.0` and dispatches `FP8_BLOCK_SCALES` to `Fp8MoEMethod`. The pinned fused PLE short-conv kernels also ignore the stride of their state indices, so requests prefilled together in one prefill-only step can decode garbage with zero MTP acceptance (F01). `docker/ple_ops.py` carries only the vLLM [#55375](https://github.com/vllm-project/vllm/pull/55375) stride hunks. `run.sh` bind-mounts the overlays named by `OVERLAYS` (see [docker/OVERLAYS.md](docker/OVERLAYS.md)).
+ 
+@@ -126,7 +126,7 @@ Stop both ranks from the head:
+ | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
+ | Speculative | MTP-3 (`SPEC=mtp`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it) |
+ | Draft head | `DRAFT_LOCAL_ARGMAX=1` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8=1` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB=none` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG=1` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2) |
+-| lab-fp8-dense (opt-in) | `FP8_DENSE=none`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision), and T4 full GSM8K thinking on: 97.65% vs 97.80%, McNemar p 0.75 (evidence/extras). Not the default. |
++| FP8 dense | `FP8_DENSE=per_block` (v0.30 digest). `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense GDN/QSA/PLE-kv/MTP-attention linears in online FP8 (Marlin W8A16): c1 −11% ms/step, structured c8 −8%, −1.28 GiB/rank. Not bit-exact vs BF16 (a precision lever; still bit-exact run to run at c=1). Gates: T1-D, paired T2, T3 to 64k, V, T4 full GSM8K (97.65% vs 97.80%, p 0.75) and a 240-prompt 6-language paired judge (39 W / 36 L); T1-B top-1 is retired for precision levers on this model (evidence/fp8-default). `FP8_DENSE=none` = BF16 rollback. |
+ | throughput (opt-in) | `THROUGHPUT_PROFILE=0`. `1` serves `--max-num-seqs 16` (X10): diverse aggregate at 16 clients 235 tok/s prose / 255 structured against 160 / 190 at c=8 on the default (+47% / +34%), 0 preemptions, T0 incl. N=16 bursts clean, c1/c8 ruler within 1.3%, spark1 ≥ 15 GiB available under load (evidence/extras). Not the default. |
+ | GDN decode (K3) | `GDN_LAZY=1`. `1` (v0.30 digest) serves the MTP verify step's GDN state with a lazy commit: one fp32 state write per head instead of one per verify token (L2 writes 6.3 → 1.7 MB per layer per request). Bit-exact vs the stock CUDA kernel (load-time self-test on both ranks, fail closed; greedy output, T1 NLL and 4096-token generations across 1600-token blocks identical). Ruler c8 −7%, c1 flat (evidence/k3). `0` = stock kernel. |
+ | Overlays | `OVERLAYS=auto` → v0.30: `docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py`; pin rollback: `docker/ple_layer.py docker/modelopt.py docker/ple_ops.py` (R11 headers, see `docker/OVERLAYS.md`) |
+diff --git a/docker/v030/FP8_DENSE.md b/docker/v030/FP8_DENSE.md
+index 924ac44..6a84970 100644
+--- a/docker/v030/FP8_DENSE.md
++++ b/docker/v030/FP8_DENSE.md
+@@ -4,8 +4,10 @@
+ (sha256 `41e00493…1e22`, image `sha256:4864d466…4dfb56`) plus three hunks, rendered by
+ `docker/v030/apply_fp8_dense_overlay.py`. Do not hand-edit it. The R11 header is at the top of the file.
+ 
+-It is **off by default**. With `VLLM_QWEN38_FP8_DENSE` unset, empty, `0` or `off`, the helper returns
+-`None` and both call sites return stock `UnquantizedLinearMethod()`. Logic is then identical to stock.
++The overlay itself is inert without the env: with `VLLM_QWEN38_FP8_DENSE` unset, empty, `0` or `off`, the helper
++returns `None` and both call sites return stock `UnquantizedLinearMethod()`, so logic is identical to stock. The
++recipe turns it on by default since session 8 (`FP8_DENSE=per_block`, see "How it ships"); `FP8_DENSE=none` does
++not mount it.
+ 
+ ## What it does
+ 
+@@ -143,4 +145,14 @@ Things to confirm on the first boot:
+ - **Passes:** T1-D (median divergence 17.0 against a floor of 14.25, KL 0.004), paired T2 (GSM8K −1.2 pp at p 0.25, IFEval +1.7 pp, tools 60/60, JSON 30/30), T3 to 64k and V.
+ - **The T1-B gate is saturated on this model:** FP8 on a single 65 MB layer already scores 94.6% top-1.
+ 
+-**How it ships:** as the opt-in `lab-fp8-dense` profile. Set `FP8_DENSE=per_block ./run.sh`; `run.sh` then mounts this overlay and passes the env and the Marlin `--kernel-config`. It is not the default. Promotion needs owner sign-off plus T4.
++**How it shipped in session 5:** as the opt-in `lab-fp8-dense` profile, pending owner sign-off plus T4. T4 passed in session 6 (97.65% vs 97.80%, McNemar p 0.75, `evidence/extras/`).
++
++## The default (session 8, `evidence/fp8-default/`)
++
++The owner accepted retiring the saturated T1-B top-1 gate for precision levers on this model, in favour of T1-D, paired T2, T3, V, T4 and a multilingual paired judge. Session 8 re-ran the pack on top of K3 (`GDN_LAZY=1`) and flipped the default:
++
++- `recipe.yaml` `FP8_DENSE: per_block`. On the v0.30 digest `run.sh` mounts this overlay on both ranks and passes `VLLM_QWEN38_FP8_DENSE=per_block` and the Marlin `--kernel-config`. The pin rollback and `OVERLAYS=none` ignore it with a note.
++- **Rollback:** `FP8_DENSE=none ./run.sh` (BF16 dense linears; bit-identical to the session-5 to 7 default).
++- K3 composes exactly: FP8 + K3 greedy output (T1-G, T1-D) is bit-identical to session 5's FP8 arm without K3, and both ranks log `K3 gdn_lazy self-test passed` and `dispatch: ACTIVE`.
++- Rank 1 logs no `Selected … Kernel` lines (rank 0 only); it does log the `Applied linear backend override … 'marlin'` line and Marlin's weight-only FP8 warning.
++- Gate results, ruler and multilingual tables: `evidence/fp8-default/SUMMARY.md`.
+diff --git a/recipe.yaml b/recipe.yaml
+index 61bf6c7..2cf48e8 100644
+--- a/recipe.yaml
++++ b/recipe.yaml
+@@ -15,7 +15,7 @@ image:
+   base: vllm/vllm-openai:v0.30.0-aarch64
+   digest: sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
+   local_tag: &image vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
+-  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU), mtp.py (L1a local-argmax drafts, L1b' FP8 draft head)
++  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU), mtp.py (L1a local-argmax drafts, L1b' FP8 draft head); GDN_LAZY adds the K3 pair, FP8_DENSE adds modelopt.py
+   # Rollback: IMAGE=<rollback.local_tag> ./run.sh mounts OVERLAYS_PIN (ple_layer.py, modelopt.py, ple_ops.py).
+   rollback:
+     local_tag: vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+@@ -115,11 +115,12 @@ serve:
+     # L1b: reduced draft vocabulary, a file name under $HF_CACHE/qwen38-draft-vocab/ on BOTH nodes
+     # (tools/vocab/draft_vocab_<V>.json); none = full vocab. Needs L1a.
+     DRAFT_VOCAB: none
+-    # lab-fp8-dense profile (plan P4-1/R8), opt-in: per_block = online FP8 (Marlin W8A16) on the 99 dense
+-    # GDN/QSA/PLE-kv/MTP-attention linears. c1 -13% ms/step, -1.28 GiB/rank; fails the T1-B top-1 gate
+-    # (94.3%) while passing T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision) and T4 (evidence/extras).
+-    # Not the default without owner sign-off.
+-    FP8_DENSE: none
++    # FP8 dense (plan P4-1), the default since session 8 (owner sign-off, evidence/fp8-default): per_block = online
++    # FP8 (Marlin W8A16) on the 99 dense GDN/QSA/PLE-kv/MTP-attention linears, mounts docker/v030/modelopt.py (v0.30
++    # digest only; the pin and OVERLAYS=none ignore it). c1 -11% ms/step, -1.28 GiB/rank. T1-B top-1 is retired for
++    # precision levers on this model (saturated, evidence/k-sweep-precision); gated on T1-D, paired T2, T3, V, T4
++    # and the multilingual paired judge. none = BF16 dense linears (rollback).
++    FP8_DENSE: per_block
+     EXTRA_ARGS: ""
+     # Space-separated KEY=VALUE pairs passed as `-e` to both ranks.
+     EXTRA_ENV: ""
+@@ -139,7 +140,7 @@ readme:
+     - Checkpoint: "`{SNAPSHOT_SHA}`"
+     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it)"
+     - Draft head: "`DRAFT_LOCAL_ARGMAX={DRAFT_LOCAL_ARGMAX}` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8={DRAFT_HEAD_FP8}` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB={DRAFT_VOCAB}` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG={DRAFT_MOE_CONFIG}` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2)"
+-    - lab-fp8-dense (opt-in): "`FP8_DENSE={FP8_DENSE}`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision), and T4 full GSM8K thinking on: 97.65% vs 97.80%, McNemar p 0.75 (evidence/extras). Not the default."
++    - FP8 dense: "`FP8_DENSE={FP8_DENSE}` (v0.30 digest). `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense GDN/QSA/PLE-kv/MTP-attention linears in online FP8 (Marlin W8A16): c1 −11% ms/step, structured c8 −8%, −1.28 GiB/rank. Not bit-exact vs BF16 (a precision lever; still bit-exact run to run at c=1). Gates: T1-D, paired T2, T3 to 64k, V, T4 full GSM8K (97.65% vs 97.80%, p 0.75) and a 240-prompt 6-language paired judge (39 W / 36 L); T1-B top-1 is retired for precision levers on this model (evidence/fp8-default). `FP8_DENSE=none` = BF16 rollback."
+     - throughput (opt-in): "`THROUGHPUT_PROFILE={THROUGHPUT_PROFILE}`. `1` serves `--max-num-seqs 16` (X10): diverse aggregate at 16 clients 235 tok/s prose / 255 structured against 160 / 190 at c=8 on the default (+47% / +34%), 0 preemptions, T0 incl. N=16 bursts clean, c1/c8 ruler within 1.3%, spark1 ≥ 15 GiB available under load (evidence/extras). Not the default."
+     - GDN decode (K3): "`GDN_LAZY={GDN_LAZY}`. `1` (v0.30 digest) serves the MTP verify step's GDN state with a lazy commit: one fp32 state write per head instead of one per verify token (L2 writes 6.3 → 1.7 MB per layer per request). Bit-exact vs the stock CUDA kernel (load-time self-test on both ranks, fail closed; greedy output, T1 NLL and 4096-token generations across 1600-token blocks identical). Ruler c8 −7%, c1 flat (evidence/k3). `0` = stock kernel."
+     - Overlays: "`OVERLAYS={OVERLAYS}` → v0.30: `{OVERLAYS_V030}`; pin rollback: `{OVERLAYS_PIN}` (R11 headers, see `docker/OVERLAYS.md`)"
+diff --git a/run.sh b/run.sh
+index 91305a0..e37df78 100755
+--- a/run.sh
++++ b/run.sh
+@@ -62,7 +62,7 @@ DRAFT_MOE_CONFIG="${DRAFT_MOE_CONFIG:-1}"
+ DRAFT_LOCAL_ARGMAX="${DRAFT_LOCAL_ARGMAX:-1}"
+ DRAFT_HEAD_FP8="${DRAFT_HEAD_FP8:-1}"
+ DRAFT_VOCAB="${DRAFT_VOCAB:-none}"
+-FP8_DENSE="${FP8_DENSE:-none}"
++FP8_DENSE="${FP8_DENSE:-per_block}"
+ EXTRA_ARGS="${EXTRA_ARGS:-}"
+ EXTRA_ENV="${EXTRA_ENV:-}"
+ # END generated
+@@ -99,7 +99,7 @@ for name in THROUGHPUT_PROFILE FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER D
+   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
+ done
+ [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
+-[[ "$FP8_DENSE" == none || "$FP8_DENSE" == per_block ]] || die "FP8_DENSE=$FP8_DENSE must be none or per_block (lab-fp8-dense profile, docker/v030/FP8_DENSE.md)."
++[[ "$FP8_DENSE" == none || "$FP8_DENSE" == per_block ]] || die "FP8_DENSE=$FP8_DENSE must be per_block (the default) or none (BF16 rollback; docker/v030/FP8_DENSE.md)."
+ [[ "$DRAFT_VOCAB" == none || "$DRAFT_VOCAB" =~ ^[A-Za-z0-9_.-]+\.json$ ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB must be none or a .json file name under \$HF_CACHE/qwen38-draft-vocab/."
+ [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
+ [[ "$MM_PROCESSOR_CACHE_GB" =~ ^(0|[1-9][0-9]*)(\.[0-9]+)?$ ]] || die "MM_PROCESSOR_CACHE_GB=$MM_PROCESSOR_CACHE_GB is not a non-negative decimal."
+@@ -211,10 +211,15 @@ case "$OVERLAYS" in
+   none) OVERLAYS="" ;;
+ esac
+ 
+-# --- lab-fp8-dense profile (plan P4-1, R8; opt-in, not the default: fails T1-B top-1, passes T1-D/T2/T3/V).
++# --- FP8 dense (plan P4-1; the default since session 8, evidence/fp8-default): online FP8 (Marlin W8A16) on the
++# 99 dense GDN/QSA/PLE-kv/MTP-attention linears. v0.30 digest only (the overlay is generated against it); the pin
++# rollback and OVERLAYS=none ignore it with a note, like GDN_LAZY. FP8_DENSE=none is the BF16 rollback.
+ FP8_DENSE_OVERLAY=docker/v030/modelopt.py
++if [[ "$FP8_DENSE" != none && ( "$IMAGE_DIGEST" != "$V030_DIGEST" || -z "$OVERLAYS" ) ]]; then
++  echo "note: FP8_DENSE=$FP8_DENSE ignored (needs the v0.30 digest and an overlay list; $FP8_DENSE_OVERLAY is generated against v0.30)." >&2
++  FP8_DENSE=none
++fi
+ if [[ "$FP8_DENSE" != none ]]; then
+-  [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] || die "FP8_DENSE=$FP8_DENSE needs the v0.30 digest ($FP8_DENSE_OVERLAY is generated against it)."
+   # The head adds the overlay; the worker receives the head's resolved list.
+   if [[ "${ROLE:-}" != worker && " $OVERLAYS " != *" $FP8_DENSE_OVERLAY "* ]]; then
+     OVERLAYS="$OVERLAYS $FP8_DENSE_OVERLAY"
+diff --git a/tests/test_recipe_ops.py b/tests/test_recipe_ops.py
+index e2f3e1d..48090d2 100644
+--- a/tests/test_recipe_ops.py
++++ b/tests/test_recipe_ops.py
+@@ -532,24 +532,33 @@ class OverlayTests(unittest.TestCase):
+         self.assertNotIn("draft-moe-config", proc.stdout)
+         self.assertNotEqual(_run_sh(DRAFT_MOE_CONFIG="2").returncode, 0)
+ 
+-    def test_fp8_dense_profile_is_opt_in(self) -> None:
+-        self.assertIn('FP8_DENSE="${FP8_DENSE:-none}"', _read("run.sh"))
+-        proc = _run_sh(IMAGE=V030_IMAGE)
++    def test_fp8_dense_is_default(self) -> None:
++        # Default since session 8 (evidence/fp8-default); FP8_DENSE=none is the BF16 rollback.
++        self.assertIn('FP8_DENSE="${FP8_DENSE:-per_block}"', _read("run.sh"))
++        self.assertIn("FP8_DENSE: per_block", _read("recipe.yaml"))
++        for extra in ({}, {"FP8_DENSE": "per_block"}):
++            proc = _run_sh(IMAGE=V030_IMAGE, **extra)
++            self.assertEqual(proc.returncode, 0, proc.stderr)
++            self.assertIn("docker/v030/modelopt.py -> ", proc.stdout)
++            self.assertIn("VLLM_QWEN38_FP8_DENSE=per_block", proc.stdout)
++            self.assertIn('--kernel-config {"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}', proc.stdout)
++        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="none")
+         self.assertEqual(proc.returncode, 0, proc.stderr)
+         self.assertNotIn("quantization/modelopt.py", proc.stdout)
+         self.assertNotIn("VLLM_QWEN38_FP8_DENSE", proc.stdout)
+-        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block")
+-        self.assertEqual(proc.returncode, 0, proc.stderr)
+-        self.assertIn("docker/v030/modelopt.py -> ", proc.stdout)
+-        self.assertIn('--kernel-config {"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}', proc.stdout)
++        self.assertNotIn("--kernel-config", proc.stdout)
+         # The worker gets the head's resolved overlay list and must not add the overlay a second time.
+         proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block", ROLE="worker",
+                        OVERLAYS="docker/v030/modelopt.py")
+         self.assertEqual(proc.returncode, 0, proc.stderr)
+         self.assertNotIn("Two overlays target", proc.stderr)
+-        proc = _run_sh(IMAGE=PINNED_IMAGE, FP8_DENSE="per_block")
+-        self.assertNotEqual(proc.returncode, 0)
+-        self.assertIn("needs the v0.30 digest", proc.stderr)
++        # The pin rollback and OVERLAYS=none ignore it (the overlay is generated against v0.30).
++        for extra in ({"IMAGE": PINNED_IMAGE}, {"IMAGE": V030_IMAGE, "OVERLAYS": "none"}):
++            proc = _run_sh(**extra)
++            self.assertEqual(proc.returncode, 0, proc.stderr)
++            self.assertIn("FP8_DENSE=per_block ignored", proc.stderr)
++            self.assertNotIn("VLLM_QWEN38_FP8_DENSE", proc.stdout)
++            self.assertNotIn("v030/modelopt.py", proc.stdout)
+         self.assertNotEqual(_run_sh(IMAGE=V030_IMAGE, FP8_DENSE="ptpc").returncode, 0)
+         self.assertRegex(_read("run.sh"), r"FORWARD_VARS=\([^)]*\bFP8_DENSE\b")
+ 

@@ -1,0 +1,4 @@
+near1600: prompt 1578 tokens, greedy, ignore_eos, 4096 tokens, c=1 on an idle serve (1 running request)
+BF16+K3 (default): runs=13 distinct=2 modal_share=12/13 hashes={'38de1e8da134': 12, 'bf7c571a9540': 1} first_div_vs_modal=[501]
+FP8+K3: runs=9 distinct=5 modal_share=3/9 hashes={'ab83e0eb1996': 3, '09f50efc674c': 3, '001f12ab960e': 1, 'bb806a529978': 1, '5924c58d31b8': 1} first_div_vs_modal=[2432, 3293, 3293, 3293, 3293, 3293]
+FP8, K3 off: runs=5 distinct=3 modal_share=3/5 hashes={'ab83e0eb1996': 3, '001f12ab960e': 1, '5924c58d31b8': 1} first_div_vs_modal=[3293, 3293]

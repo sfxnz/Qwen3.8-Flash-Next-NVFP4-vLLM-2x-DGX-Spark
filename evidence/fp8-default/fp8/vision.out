@@ -1,0 +1,18 @@
+  ok   grid_wide.red_col        '6'
+  ok   grid_wide.blue_col       '3'
+  ok   grid_wide.blue_row       'bottom'
+  ok   grid_tall.green_row      '7'
+  ok   grid_tall.green_col      'left'
+  ok   ocr.407218               '407218'
+  ok   ocr.9315                 '9315'
+  ok   chart.tallest            'green'
+  ok   chart.shortest           'yellow'
+  ok   chart.order              'blue'
+  ok   count.circles3           '3'
+  ok   count.circles5           '5'
+  ok   quadrants.bottom_right   'Yellow'
+  ok   multi.blue_second        'second'
+  ok   multi.blue_first         'first'
+  ok   straddle.c29             '5831; PTW-9522-MZ'
+  ok   pair.c2 ['6', '407218']
+V PASS 16/16 probes, pair=True

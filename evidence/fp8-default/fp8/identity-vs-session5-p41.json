@@ -1,0 +1,129 @@
+{
+ "base": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p41-fp8-blk-marlin/t1g",
+ "arm": "/home/sfxnz/projects/data/qwen38-evals/runs/session8/fp8/t1g",
+ "prompts": [
+  {
+   "id": "p00.prose",
+   "base_sha": [
+    "552a9c5068407289"
+   ],
+   "arm_sha": [
+    "552a9c5068407289"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p01.prose",
+   "base_sha": [
+    "737c31fc7727df3c"
+   ],
+   "arm_sha": [
+    "737c31fc7727df3c"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p02.prose",
+   "base_sha": [
+    "24e684553eef08e0"
+   ],
+   "arm_sha": [
+    "24e684553eef08e0"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p03.prose",
+   "base_sha": [
+    "710341972585ce48"
+   ],
+   "arm_sha": [
+    "710341972585ce48"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p04.prose",
+   "base_sha": [
+    "9787f579cb5822db"
+   ],
+   "arm_sha": [
+    "9787f579cb5822db"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p05.prose",
+   "base_sha": [
+    "8f92902f713327d5"
+   ],
+   "arm_sha": [
+    "8f92902f713327d5"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p06.prose",
+   "base_sha": [
+    "a0366f1b1fc2eea4"
+   ],
+   "arm_sha": [
+    "a0366f1b1fc2eea4"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p07.prose",
+   "base_sha": [
+    "5f9aac1991ddc8a1"
+   ],
+   "arm_sha": [
+    "5f9aac1991ddc8a1"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p08.prose",
+   "base_sha": [
+    "c48b1952c1f03daf"
+   ],
+   "arm_sha": [
+    "c48b1952c1f03daf"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  },
+  {
+   "id": "p09.prose",
+   "base_sha": [
+    "12f63e88495d9df4"
+   ],
+   "arm_sha": [
+    "12f63e88495d9df4"
+   ],
+   "base_distinct": 1,
+   "arm_distinct": 1,
+   "identical": true
+  }
+ ],
+ "mismatches": 0,
+ "n": 10,
+ "verdict": "IDENTICAL"
+}
