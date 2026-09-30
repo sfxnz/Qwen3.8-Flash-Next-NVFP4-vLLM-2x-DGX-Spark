@@ -8,7 +8,7 @@ metadata hunks; both carry valid R11 headers, compile, and are default-off.
 
 Torch (skips without torch/triton; run inside the v0.30 image, no GPU): the
 kernels run under TRITON_INTERPRET=1 with reduced shapes (1-2 key heads, G=2-3)
-but the real K = V = 128, W = k+1 = 4, BV = 32 tiling and ring geometry.
+but the real K = V = 128, W = k+1 = 4, BV = 64 tiling and ring geometry.
 Checked: eager rows match an fp32 torch model of the stock kernel; lazy rows are
 bitwise equal to eager rows over many steps (outputs every step, committed
 state after a materialize) through the load-time self-test code; materialize
@@ -420,6 +420,65 @@ class Dispatch(unittest.TestCase):
         md.spec_state_indices_tensor = torch.arange(1, 9, dtype=torch.int32, device=self.dev).view(2, 4)
         self.assertTrue(gdl.gdl_decode(layer, mixed, a, b, gate, out, md))  # used -> eager rows
         self.assertEqual(int(hdr.abs().sum()), 0)
+
+
+class RecipeWiring(unittest.TestCase):
+    """GDN_LAZY (recipe.yaml -> run.sh): 1 swaps gdn_attn.py for gdn_lazy_attn.py, adds
+    gdn_lazy_linear_attn.py and VLLM_QWEN38_GDN_LAZY=1 on the v0.30 digest; 0 is the stock list."""
+
+    V030_IMAGE = "vllm/vllm-openai:v0.30.0-aarch64@" + V030_DIGEST
+    PIN_IMAGE = ("vllm/vllm-openai:nightly-aarch64@"
+                 "sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b")
+
+    def run_sh(self, **extra):
+        import subprocess
+        env = {k: v for k, v in os.environ.items()
+               if k not in ("OVERLAYS", "IMAGE", "EXTRA_ENV", "EXTRA_ARGS", "DIAGNOSTIC", "GDN_LAZY", "ROLE")}
+        env.update(extra, VALIDATE_ONLY="1")
+        return subprocess.run([str(ROOT / "run.sh")], capture_output=True, text=True, cwd=str(ROOT), env=env)
+
+    def overlays(self, out):
+        return [l.split()[2] for l in out.splitlines() if l.startswith("==> overlay /")]
+
+    def test_default_is_k3(self):
+        self.assertIn('GDN_LAZY="${GDN_LAZY:-1}"', (ROOT / "run.sh").read_text())
+        self.assertIn("GDN_LAZY: 1", (ROOT / "recipe.yaml").read_text())
+        p = self.run_sh(IMAGE=self.V030_IMAGE)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        ov = self.overlays(p.stdout)
+        self.assertIn(str(ATT), ov)
+        self.assertIn(str(LIN), ov)
+        self.assertNotIn(str(S15), ov)
+        self.assertIn("VLLM_QWEN38_GDN_LAZY=1", p.stdout)
+
+    def test_off_is_stock_list(self):
+        p = self.run_sh(IMAGE=self.V030_IMAGE, GDN_LAZY="0")
+        self.assertEqual(p.returncode, 0, p.stderr)
+        ov = self.overlays(p.stdout)
+        self.assertIn(str(S15), ov)
+        self.assertNotIn(str(ATT), ov)
+        self.assertNotIn(str(LIN), ov)
+        self.assertNotIn("VLLM_QWEN38_GDN_LAZY", p.stdout)
+
+    def test_guards(self):
+        self.assertNotEqual(self.run_sh(GDN_LAZY="2").returncode, 0)
+        # the pin rollback ignores it (overlays are generated against v0.30)
+        p = self.run_sh(IMAGE=self.PIN_IMAGE)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertIn("GDN_LAZY=1 ignored", p.stderr)
+        self.assertNotIn("VLLM_QWEN38_GDN_LAZY", p.stdout)
+        # no overlays / a custom list without the GDN overlay: nothing mounted, env not set
+        for extra in ({"OVERLAYS": "none"}, {"OVERLAYS": "docker/v030/serving.py"}):
+            p = self.run_sh(IMAGE=self.V030_IMAGE, **extra)
+            self.assertEqual(p.returncode, 0, p.stderr)
+            self.assertNotIn("VLLM_QWEN38_GDN_LAZY", p.stdout)
+        # the worker gets the head's resolved list and must not rewrite it
+        p = self.run_sh(IMAGE=self.V030_IMAGE, ROLE="worker",
+                        OVERLAYS="docker/v030/gdn_lazy_attn.py docker/v030/gdn_lazy_linear_attn.py")
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertEqual(self.overlays(p.stdout), [str(ATT), str(LIN)])
+        self.assertIn("VLLM_QWEN38_GDN_LAZY=1", p.stdout)
+        self.assertRegex((ROOT / "run.sh").read_text(), r"FORWARD_VARS=\([^)]*\bGDN_LAZY\b")
 
 
 if __name__ == "__main__":

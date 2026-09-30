@@ -57,6 +57,7 @@ ORCHESTRATE="${ORCHESTRATE:-auto}"
 OVERLAYS="${OVERLAYS:-auto}"
 OVERLAYS_PIN="${OVERLAYS_PIN:-docker/ple_layer.py docker/modelopt.py docker/ple_ops.py}"
 OVERLAYS_V030="${OVERLAYS_V030:-docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py}"
+GDN_LAZY="${GDN_LAZY:-1}"
 DRAFT_MOE_CONFIG="${DRAFT_MOE_CONFIG:-1}"
 DRAFT_LOCAL_ARGMAX="${DRAFT_LOCAL_ARGMAX:-1}"
 DRAFT_HEAD_FP8="${DRAFT_HEAD_FP8:-1}"
@@ -94,7 +95,7 @@ done
 [[ "$LONG_PREFILL_TOKEN_THRESHOLD" == none || "$LONG_PREFILL_TOKEN_THRESHOLD" =~ ^[1-9][0-9]*$ ]] || die "LONG_PREFILL_TOKEN_THRESHOLD=$LONG_PREFILL_TOKEN_THRESHOLD is not none or a positive decimal integer."
 # none = do not pass the env (the image default is 512 MiB).
 [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none || "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" =~ ^[1-9][0-9]*$ ]] || die "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB is not none or a positive decimal integer."
-for name in THROUGHPUT_PROFILE FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8; do
+for name in THROUGHPUT_PROFILE FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 GDN_LAZY; do
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
@@ -220,6 +221,25 @@ if [[ "$FP8_DENSE" != none ]]; then
   fi
 fi
 
+# --- K3 GDN MTP decode with lazy state commit (docker/v030/K3.md, evidence/k3). v0.30 digest only: the head swaps
+# docker/v030/gdn_attn.py for docker/v030/gdn_lazy_attn.py (the same S1.5 hunk plus K3 metadata) and adds
+# docker/v030/gdn_lazy_linear_attn.py; the worker receives the head's resolved list. Both ranks then get
+# VLLM_QWEN38_GDN_LAZY=1 (BASE_ENV below). Bit-exact vs the stock kernel (load-time self-test, fail closed).
+GDN_LAZY_ATTN=docker/v030/gdn_lazy_attn.py
+GDN_LAZY_LINEAR=docker/v030/gdn_lazy_linear_attn.py
+if [[ "$GDN_LAZY" == 1 && "$IMAGE_DIGEST" == "$V030_DIGEST" && -n "$OVERLAYS" && "${ROLE:-}" != worker ]]; then
+  OVERLAYS=" $OVERLAYS "
+  OVERLAYS="${OVERLAYS// docker\/v030\/gdn_attn.py / $GDN_LAZY_ATTN }"
+  if [[ "$OVERLAYS" == *" $GDN_LAZY_ATTN "* ]]; then
+    [[ "$OVERLAYS" == *" $GDN_LAZY_LINEAR "* ]] || OVERLAYS="$OVERLAYS$GDN_LAZY_LINEAR"
+  else
+    echo "note: GDN_LAZY=1 ignored (the overlay list has neither docker/v030/gdn_attn.py nor $GDN_LAZY_ATTN)." >&2
+  fi
+  OVERLAYS="$(echo $OVERLAYS)"
+elif [[ "$GDN_LAZY" == 1 && "$IMAGE_DIGEST" != "$V030_DIGEST" ]]; then
+  echo "note: GDN_LAZY=1 ignored (K3 overlays are generated against the v0.30 digest)." >&2
+fi
+
 OVERLAY_FILES=()
 OVERLAY_TARGETS=()
 for f in $OVERLAYS; do
@@ -276,6 +296,10 @@ LIMIT_MM_PER_PROMPT='{"image":'"$MM_LIMIT_IMAGE"',"video":'"$MM_LIMIT_VIDEO"'}'
 # pins 32 GiB of host memory per node for the PLE table (F33); breakable CUDA graphs stay off (D4).
 BASE_ENV=()
 [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && BASE_ENV=(VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0)
+# K3: the env is inert without the overlay; set it only where the K3 dispatch is mounted.
+if [[ "$GDN_LAZY" == 1 && "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && overlays_define gdl_decode; then
+  BASE_ENV+=(VLLM_QWEN38_GDN_LAZY=1)
+fi
 FP8_DENSE_ARGS=()
 if [[ "$FP8_DENSE" == per_block ]]; then
   BASE_ENV+=(VLLM_QWEN38_FP8_DENSE=per_block)
@@ -717,7 +741,7 @@ FORWARD_VARS=(
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
   OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
   LONG_PREFILL_TOKEN_THRESHOLD ASYNC_SCHEDULING MM_PROCESSOR_CACHE_GB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO
-  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB FP8_DENSE THROUGHPUT_PROFILE
+  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB FP8_DENSE THROUGHPUT_PROFILE GDN_LAZY
 )
 
 worker_env() {
