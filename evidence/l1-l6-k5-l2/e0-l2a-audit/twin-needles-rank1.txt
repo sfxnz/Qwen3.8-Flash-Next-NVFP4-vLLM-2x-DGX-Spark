@@ -1,0 +1,5 @@
+INFO 09-29 23:52:28 [nccl_twin.py>:451] qwen38: nccl twin armed: NCCL_GRAPH_MIXING_SUPPORT=0 written before the first communicator
+INFO 09-29 23:52:39 [nccl_twin.py>:451] qwen38: nccl twin armed: NCCL_GRAPH_MIXING_SUPPORT=0 written before the first communicator
+(Worker pid=379) INFO 09-29 23:53:27 [nccl_twin.py>:380] qwen38: nccl twin engaged on tp:0 rank=1/2 nccl=2.30.7 NCCL_GRAPH_MIXING_SUPPORT=0: captured collectives -> stock comm, eager -> twin; twin self-test ok
+(Worker pid=379) INFO 09-29 23:53:28 [nccl_twin.py>:367] qwen38: nccl twin guard on ep:0 rank=1/2: eager-only, a captured call raises
+spark2:379:379 [0] NCCL INFO NCCL_GRAPH_MIXING_SUPPORT set by environment to 0.

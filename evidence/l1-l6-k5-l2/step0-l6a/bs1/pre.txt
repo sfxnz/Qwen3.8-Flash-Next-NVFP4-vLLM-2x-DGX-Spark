@@ -1,0 +1,4 @@
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       4.2Gi       103Gi       208Ki        14Gi       117Gi
+Swap:           15Gi       1.8Gi        14Gi
+[vllm/vllm-openai@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56]

@@ -1,0 +1,26 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session4/a-l6a-l1a/t1g",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session4/a-l6a-l1a/t1g",
+ "gate": "T1-G",
+ "metrics": {
+  "prompts": 10,
+  "repeats": 5,
+  "distinct_mean": 1.0,
+  "distinct_se": 0.0,
+  "early_div": 0.0,
+  "early_div_se": 0.0,
+  "prompts_with_divergence": 0
+ },
+ "lkg_self": {
+  "prompts": 10,
+  "repeats": 5,
+  "distinct_mean": 1.0,
+  "distinct_se": 0.0,
+  "early_div": 0.0,
+  "early_div_se": 0.0,
+  "prompts_with_divergence": 0
+ },
+ "verdict": "REPORT",
+ "pass": null,
+ "note": "no --aa floor: report only (C10/S1.5)"
+}

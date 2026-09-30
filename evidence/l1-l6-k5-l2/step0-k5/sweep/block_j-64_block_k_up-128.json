@@ -1,0 +1,228 @@
+{
+ "bench": "hc_k5",
+ "variant": "main",
+ "cfg": {
+  "split_k": 8,
+  "block_n": 16,
+  "block_k": 128,
+  "block_j": 64,
+  "block_k_up": 128
+ },
+ "meta": {
+  "host": "264a34666060",
+  "time": "2026-09-29T21:02:16Z",
+  "image": "",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.30.0",
+  "flashinfer": "0.6.18.post1"
+ },
+ "module_bytes": 13434880,
+ "gate_ratio": 0.95,
+ "gate_stream": {
+  "4": false,
+  "32": false
+ },
+ "rows": [
+  {
+   "m": 4,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "check": {
+    "self_test": {
+     "ok": true,
+     "detail": "pooled err/stock block_input=0.98, injection=0.91"
+    },
+    "residual_bitwise": true,
+    "block_input_err": {
+     "stock": 0.0028682236135713014,
+     "fused": 0.002733209543733883
+    },
+    "block_input_gross": 0,
+    "injection_err": {
+     "stock": 0.003850350132529697,
+     "fused": 0.00297048969250248
+    },
+    "injection_gross": 0,
+    "ok": true
+   },
+   "stock": {
+    "hot": {
+     "median_us": 24.608,
+     "p10_us": 23.104,
+     "p90_us": 24.867,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 546.0,
+     "x_floor": 0.421
+    },
+    "stream": {
+     "median_us": 69.824,
+     "p10_us": 68.8,
+     "p90_us": 71.616,
+     "n": 920,
+     "ref_slot_us": 1.888,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 8,
+     "gbps": 192.4,
+     "x_floor": 1.195
+    },
+    "cold": {
+     "median_us": 72.64,
+     "p10_us": 69.853,
+     "p90_us": 78.848,
+     "n": 920,
+     "ref_slot_us": 286.72,
+     "mode": "flush",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 185.0,
+     "x_floor": 1.244
+    }
+   },
+   "fused": {
+    "hot": {
+     "median_us": 26.816,
+     "p10_us": 26.752,
+     "p90_us": 26.944,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 501.0,
+     "x_floor": 0.459
+    },
+    "stream": {
+     "median_us": 66.752,
+     "p10_us": 65.728,
+     "p90_us": 68.973,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 8,
+     "gbps": 201.3,
+     "x_floor": 1.143
+    },
+    "cold": {
+     "median_us": 71.456,
+     "p10_us": 69.44,
+     "p90_us": 74.592,
+     "n": 920,
+     "ref_slot_us": 285.856,
+     "mode": "flush",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 188.0,
+     "x_floor": 1.223
+    }
+   },
+   "ratio_hot": 1.09,
+   "ratio_stream": 0.956,
+   "ratio_cold": 0.984
+  },
+  {
+   "m": 32,
+   "module_bytes": 13434880,
+   "floor_us": 58.41,
+   "check": {
+    "residual_bitwise": true,
+    "block_input_err": {
+     "stock": 0.002758562099503454,
+     "fused": 0.002758191055188934
+    },
+    "block_input_gross": 0,
+    "injection_err": {
+     "stock": 0.0031393144674060694,
+     "fused": 0.0031393144674060694
+    },
+    "injection_gross": 0,
+    "ok": true
+   },
+   "stock": {
+    "hot": {
+     "median_us": 35.008,
+     "p10_us": 35.008,
+     "p90_us": 35.104,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 383.8,
+     "x_floor": 0.599
+    },
+    "stream": {
+     "median_us": 72.784,
+     "p10_us": 70.976,
+     "p90_us": 74.115,
+     "n": 920,
+     "ref_slot_us": 1.888,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 8,
+     "gbps": 184.6,
+     "x_floor": 1.246
+    },
+    "cold": {
+     "median_us": 85.984,
+     "p10_us": 83.968,
+     "p90_us": 88.96,
+     "n": 920,
+     "ref_slot_us": 285.696,
+     "mode": "flush",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 156.2,
+     "x_floor": 1.472
+    }
+   },
+   "fused": {
+    "hot": {
+     "median_us": 43.712,
+     "p10_us": 43.168,
+     "p90_us": 45.28,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 307.3,
+     "x_floor": 0.748
+    },
+    "stream": {
+     "median_us": 79.104,
+     "p10_us": 77.728,
+     "p90_us": 82.112,
+     "n": 920,
+     "ref_slot_us": 1.856,
+     "mode": "hot",
+     "calls_per_graph": 24,
+     "distinct_fns": 8,
+     "gbps": 169.8,
+     "x_floor": 1.354
+    },
+    "cold": {
+     "median_us": 109.552,
+     "p10_us": 107.373,
+     "p90_us": 113.424,
+     "n": 920,
+     "ref_slot_us": 285.936,
+     "mode": "flush",
+     "calls_per_graph": 24,
+     "distinct_fns": 1,
+     "gbps": 122.6,
+     "x_floor": 1.875
+    }
+   },
+   "ratio_hot": 1.249,
+   "ratio_stream": 1.087,
+   "ratio_cold": 1.274
+  }
+ ]
+}

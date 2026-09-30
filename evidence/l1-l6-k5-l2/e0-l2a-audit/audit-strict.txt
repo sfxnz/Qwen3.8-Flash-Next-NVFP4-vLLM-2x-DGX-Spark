@@ -1,0 +1,5 @@
+WARNING audit head: nccl-lines: 761 NCCL capture lines vs 787 captured NCCL calls counted by the router
+WARNING audit worker: nccl-lines: 761 NCCL capture lines vs 787 captured NCCL calls counted by the router
+head: engaged=1 graphs=25 [collectives per graph: 6 x18, 97 x7] captured=787 captured_nccl=787 nccl_lines=761 nccl_env=1 eager_on_twin=1000
+worker: engaged=1 graphs=25 [collectives per graph: 6 x18, 97 x7] captured=787 captured_nccl=787 nccl_lines=761 nccl_env=1 eager_on_twin=1000
+strict_rc=1

@@ -1,0 +1,54 @@
+USDT:2026-09-29 20:55:34 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:34 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:34 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:34 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:35 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:35 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:35 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:35 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=1  stream stock   70.88 fused   70.85 us (1.0x, fused 1.213x floor) | hot 0.934x | cold 1.006x
+USDT:2026-09-29 20:55:36 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:36 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:36 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:36 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:37 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:37 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:37 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:37 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=2  stream stock   68.80 fused   68.80 us (1.0x, fused 1.178x floor) | hot 1.266x | cold 1.009x
+USDT:2026-09-29 20:55:38 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:38 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:38 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:38 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:39 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:39 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:39 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:39 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=4  stream stock   71.25 fused   70.74 us (0.993x, fused 1.211x floor) | hot 1.231x | cold 0.999x
+USDT:2026-09-29 20:55:40 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:40 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:40 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:40 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:41 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:41 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:41 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:41 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=8  stream stock   67.76 fused   67.84 us (1.001x, fused 1.161x floor) | hot 1.151x | cold 0.987x
+USDT:2026-09-29 20:55:42 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:42 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:42 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:42 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:43 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:43 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:43 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:43 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=16 stream stock   70.85 fused   70.61 us (0.997x, fused 1.209x floor) | hot 1.146x | cold 0.942x
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-29 20:55:45 1:1 SyncActivityProfilerHandler.cpp:59] profiler_stop
+HC-K5 M=32 stream stock   70.85 fused   73.50 us (1.037x, fused 1.258x floor) | hot 1.116x | cold 0.949x

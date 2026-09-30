@@ -1,0 +1,20 @@
+2026-09-29T23:06:23.761+00:00 ruler_steps v1 url=http://127.0.0.1:8000/v1/chat/completions model=nvidia/Qwen3.8-Flash-Next-NVFP4 max_tokens=200 runs=3 concurrency=[1, 2, 8] phases=['prose', 'structured'] warmup=True sentinels=True anchor_ms=[60.7, 62.7]
+2026-09-29T23:06:23.780+00:00 warmup: single request
+2026-09-29T23:06:24.438+00:00 warmup: 50 ms staggered pair
+2026-09-29T23:06:25.330+00:00 warmup: simultaneous pair
+2026-09-29T23:06:26.385+00:00 warmup: long prompt (>=8193 tokens)
+2026-09-29T23:06:29.783+00:00 warmup: done long_prompt_tokens=9999 long_ttft=3.34s
+2026-09-29T23:06:38.109+00:00 sentinel=start attempt=1 run=1 EXCURSION=anchor[60.7,62.7] wall=2.76s agg=75.77 ms_step_med=52.51 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[75.80] ms_step=[52.5] completion=[200] chunks=[51] decode_s=[2.625] ttft=[0.132]
+2026-09-29T23:06:38.110+00:00 sentinel=start attempt=1 run=2 EXCURSION=anchor[60.7,62.7] wall=2.76s agg=75.36 ms_step_med=52.80 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[75.39] ms_step=[52.8] completion=[200] chunks=[51] decode_s=[2.640] ttft=[0.117]
+2026-09-29T23:06:38.110+00:00 sentinel=start attempt=1 run=3 EXCURSION=anchor[60.7,62.7] wall=2.74s agg=75.98 ms_step_med=52.37 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[76.00] ms_step=[52.4] completion=[200] chunks=[51] decode_s=[2.619] ttft=[0.120]
+2026-09-29T23:06:38.110+00:00 sentinel=start excursion; waiting 35s before re-run
+2026-09-29T23:07:21.387+00:00 sentinel=start attempt=2 run=1 EXCURSION=anchor[60.7,62.7] wall=2.69s agg=76.68 ms_step_med=51.90 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[76.69] ms_step=[51.9] completion=[200] chunks=[51] decode_s=[2.595] ttft=[0.096]
+2026-09-29T23:07:21.387+00:00 sentinel=start attempt=2 run=2 EXCURSION=anchor[60.7,62.7] wall=2.79s agg=76.25 ms_step_med=52.19 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[76.27] ms_step=[52.2] completion=[200] chunks=[51] decode_s=[2.609] ttft=[0.178]
+2026-09-29T23:07:21.387+00:00 sentinel=start attempt=2 run=3 EXCURSION=anchor[60.7,62.7] wall=2.73s agg=76.29 ms_step_med=52.16 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[76.31] ms_step=[52.2] completion=[200] chunks=[51] decode_s=[2.608] ttft=[0.118]
+2026-09-29T23:07:21.387+00:00 sentinel=start excursion; waiting 35s before re-run
+2026-09-29T23:08:04.698+00:00 sentinel=start attempt=3 run=1 EXCURSION=anchor[60.7,62.7] wall=2.70s agg=76.32 ms_step_med=52.14 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[76.34] ms_step=[52.1] completion=[200] chunks=[51] decode_s=[2.607] ttft=[0.097]
+2026-09-29T23:08:04.698+00:00 sentinel=start attempt=3 run=2 EXCURSION=anchor[60.7,62.7] wall=2.71s agg=77.06 ms_step_med=51.63 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[77.08] ms_step=[51.6] completion=[200] chunks=[51] decode_s=[2.582] ttft=[0.123]
+2026-09-29T23:08:04.698+00:00 sentinel=start attempt=3 run=3 EXCURSION=anchor[60.7,62.7]+>boot_min51.63+2% wall=2.84s agg=74.02 ms_step_med=53.75 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[74.04] ms_step=[53.8] completion=[200] chunks=[51] decode_s=[2.688] ttft=[0.152]
+2026-09-29T23:08:04.698+00:00 sentinel=start failed 3x: BOOT VOID
+2026-09-29T23:08:04.698+00:00 SUMMARY REFUSED: boot void (sentinel failed)
+2026-09-29T23:08:04.698+00:00 SENTINEL runs=9 excursions=9 rate=1.000 boot_min_ms=51.63 clean_median_ms=na void=True

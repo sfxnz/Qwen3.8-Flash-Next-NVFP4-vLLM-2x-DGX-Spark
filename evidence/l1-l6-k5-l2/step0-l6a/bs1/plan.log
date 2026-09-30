@@ -1,0 +1,1 @@
+PLAN {'E': 512, 'topk': 10, 'N': 320, 'hidden': 2560, 'block': [64, 64], 'space': 960, 'file': 'E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json'}

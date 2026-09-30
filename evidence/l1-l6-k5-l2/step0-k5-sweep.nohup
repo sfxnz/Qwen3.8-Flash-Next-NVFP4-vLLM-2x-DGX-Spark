@@ -1,0 +1,11 @@
+test rc=0
+block_j=8: stock   69.79 fused   75.68 us (1.084x, fused 1.296x floor) | hot 1.352x | cold 1.074x stock   70.91 fused   78.75 us (1.111x, fused 1.348x floor) | hot 1.246x | cold 1.02x 
+block_j=32: stock   69.23 fused   67.62 us (0.977x, fused 1.158x floor) | hot 1.161x | cold 0.942x stock   72.86 fused   72.42 us (0.994x, fused 1.24x floor) | hot 1.105x | cold 0.929x 
+block_j=64: stock   68.77 fused   66.43 us (0.966x, fused 1.137x floor) | hot 1.096x | cold 0.942x stock   73.86 fused   72.86 us (0.987x, fused 1.247x floor) | hot 1.175x | cold 1.021x 
+block_k_up=32: stock   69.79 fused   84.58 us (1.212x, fused 1.448x floor) | hot 1.432x | cold 1.187x stock   71.90 fused   87.68 us (1.219x, fused 1.501x floor) | hot 1.294x | cold 1.083x 
+block_k_up=128: stock   69.79 fused   66.91 us (0.959x, fused 1.146x floor) | hot 1.329x | cold 0.96x stock   71.81 fused   71.30 us (0.993x, fused 1.221x floor) | hot 1.069x | cold 0.94x 
+split_k=4: stock   69.82 fused   70.06 us (1.003x, fused 1.199x floor) | hot 1.25x | cold 0.993x stock   72.93 fused   71.87 us (0.986x, fused 1.23x floor) | hot 1.059x | cold 0.905x 
+split_k=16: stock   69.76 fused   71.07 us (1.019x, fused 1.217x floor) | hot 1.263x | cold 1.071x stock   73.20 fused   73.86 us (1.009x, fused 1.264x floor) | hot 1.117x | cold 0.97x 
+block_n=32: stock   69.82 fused   69.79 us (1.0x, fused 1.195x floor) | hot 1.101x | cold 1.02x stock   72.83 fused   72.16 us (0.991x, fused 1.235x floor) | hot 0.987x | cold 0.943x 
+block_k=256: stock   69.82 fused   70.72 us (1.013x, fused 1.211x floor) | hot 1.413x | cold 1.022x stock   72.10 fused   74.78 us (1.037x, fused 1.28x floor) | hot 1.291x | cold 0.975x 
+split_k=16,block_j=8: stock   69.82 fused   76.86 us (1.101x, fused 1.316x floor) | hot 1.415x | cold 1.113x stock   73.89 fused   79.78 us (1.08x, fused 1.366x floor) | hot 1.299x | cold 1.032x 

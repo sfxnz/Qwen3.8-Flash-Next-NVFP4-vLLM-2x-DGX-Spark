@@ -1,0 +1,28 @@
+2026-09-29T22:01:19.418Z session_gate: evidence dir /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/a-l6a-l1a/gate self_test=0
+receipts → /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/a-l6a-l1a/gate/receipts
+telemetry started → /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/a-l6a-l1a/gate/telemetry
+2026-09-29T22:01:21.685Z session_gate: start smoke-thinking
+2026-09-29T22:01:22.870Z session_gate: end smoke-thinking rc=0
+2026-09-29T22:01:22.873Z session_gate: start smoke-tools
+2026-09-29T22:01:24.360Z session_gate: end smoke-tools rc=0
+2026-09-29T22:01:24.363Z session_gate: start smoke-vision
+2026-09-29T22:01:25.023Z session_gate: end smoke-vision rc=0
+2026-09-29T22:01:25.026Z session_gate: start smoke-count
+2026-09-29T22:01:39.421Z session_gate: end smoke-count rc=0
+2026-09-29T22:01:39.424Z session_gate: start probe
+2026-09-29T22:05:38.945Z session_gate: end probe rc=0
+2026-09-29T22:05:38.947Z session_gate: start ruler
+2026-09-29T22:07:15.592Z session_gate: end ruler rc=0
+2026-09-29T22:07:15.594Z session_gate: start bench-frozen
+2026-09-29T22:07:53.175Z session_gate: end bench-frozen rc=0
+finished_at=2026-09-29T22:07:53.924Z
+self_test=0
+smoke-thinking=0
+smoke-tools=0
+smoke-vision=0
+smoke-count=0
+probe=0
+ruler=0
+bench-frozen=0
+GATE=PASS
+telemetry stopped

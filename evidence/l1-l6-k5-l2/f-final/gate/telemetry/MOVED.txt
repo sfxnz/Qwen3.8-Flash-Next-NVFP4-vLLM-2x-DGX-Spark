@@ -1,0 +1,2 @@
+spark1.csv moved to /home/sfxnz/projects/data/qwen38-evals/runs/session4/f-final/telemetry
+spark2.csv moved to /home/sfxnz/projects/data/qwen38-evals/runs/session4/f-final/telemetry

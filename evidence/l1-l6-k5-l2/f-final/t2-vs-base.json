@@ -1,0 +1,44 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t2",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session4/f-final/t2",
+ "gate": "T2",
+ "verdict": "FAIL",
+ "pass": false,
+ "checks": {
+  "gsm8k": true,
+  "json": true,
+  "tools": false
+ },
+ "tasks": {
+  "gsm8k": {
+   "n": 250,
+   "ref_acc": 0.968,
+   "cand_acc": 0.964,
+   "drop_pp": 0.4,
+   "lost": 2,
+   "gained": 1,
+   "p": 1.0,
+   "rule": "McNemar p >= 0.05 and drop <= 2.0 pp"
+  },
+  "json": {
+   "n": 30,
+   "ref_acc": 1.0,
+   "cand_acc": 1.0,
+   "drop_pp": 0.0,
+   "lost": 0,
+   "gained": 0,
+   "p": 1.0,
+   "rule": "30/30 must be all correct"
+  },
+  "tools": {
+   "n": 60,
+   "ref_acc": 0.983333,
+   "cand_acc": 0.983333,
+   "drop_pp": 0.0,
+   "lost": 0,
+   "gained": 0,
+   "p": 1.0,
+   "rule": "59/60 must be all correct"
+  }
+ }
+}

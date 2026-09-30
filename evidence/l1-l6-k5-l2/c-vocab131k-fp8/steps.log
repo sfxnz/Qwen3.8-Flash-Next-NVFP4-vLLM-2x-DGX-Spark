@@ -1,0 +1,11 @@
+2026-09-29T23:08:38.646Z [c-vocab131k-fp8] gate rc=1
+2026-09-29T23:08:38.647Z [c-vocab131k-fp8] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/c-vocab131k-fp8/ruler-noanchor.json
+2026-09-29T23:10:05.587Z [c-vocab131k-fp8] end ruler-noanchor rc=0
+2026-09-29T23:10:05.590Z [c-vocab131k-fp8] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/c-vocab131k-fp8/diverse.jsonl --label c-vocab131k-fp8
+2026-09-29T23:16:57.360Z [c-vocab131k-fp8] end diverse rc=0
+2026-09-29T23:16:57.362Z [c-vocab131k-fp8] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session4/c-vocab131k-fp8/t1g --limit 10 --repeats 5
+2026-09-29T23:20:21.996Z [c-vocab131k-fp8] end t1g rc=0
+2026-09-29T23:20:21.999Z [c-vocab131k-fp8] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/c-vocab131k-fp8/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/c-vocab131k-fp8/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/c-vocab131k-fp8/t1g-self.json
+2026-09-29T23:20:22.152Z [c-vocab131k-fp8] end t1g-self rc=0
+2026-09-29T23:20:22.154Z [c-vocab131k-fp8] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/c-vocab131k-fp8/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/c-vocab131k-fp8/identity.json
+2026-09-29T23:20:22.179Z [c-vocab131k-fp8] end identity rc=0

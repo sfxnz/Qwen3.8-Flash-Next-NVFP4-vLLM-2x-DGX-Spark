@@ -1,0 +1,50 @@
+1:WARNING 09-30 00:05:35 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_NCCL_TWIN
+2:WARNING 09-30 00:05:35 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_DRAFT_HEAD_FP8
+10:INFO 09-30 00:05:43 [nccl_twin.py>:451] qwen38: nccl twin armed: NCCL_GRAPH_MIXING_SUPPORT=0 written before the first communicator
+32:INFO 09-30 00:05:55 [nccl_twin.py>:451] qwen38: nccl twin armed: NCCL_GRAPH_MIXING_SUPPORT=0 written before the first communicator
+39:(Worker pid=378) INFO 09-30 00:07:05 [nccl_twin.py>:380] qwen38: nccl twin engaged on tp:0 rank=1/2 nccl=2.30.7 NCCL_GRAPH_MIXING_SUPPORT=0: captured collectives -> stock comm, eager -> twin; twin self-test ok
+41:(Worker pid=378) WARNING 09-30 00:07:05 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+43:(Worker pid=378) INFO 09-30 00:07:06 [nccl_twin.py>:367] qwen38: nccl twin guard on ep:0 rank=1/2: eager-only, a captured call raises
+49:(Worker_TP1 pid=378) INFO 09-30 00:07:07 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+50:(Worker_TP1 pid=378) INFO 09-30 00:07:07 [qwen_gdn_linear_attn.py:528] GDN decode kernel: cuda
+51:(Worker_TP1 pid=378) INFO 09-30 00:07:07 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+52:(Worker_TP1 pid=378) INFO 09-30 00:07:08 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+63:(Worker_TP1 pid=378) INFO 09-30 00:12:30 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+64:(Worker_TP1 pid=378) INFO 09-30 00:12:30 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+68:(Worker_TP1 pid=378) INFO 09-30 00:14:34 [mtp.py:782] Draft head (L1b'): 124160 rows on this rank (ids 124160..248319), FP8 marlin, 303.6 MiB; the target keeps its BF16 lm_head for verify.
+83:(Worker_TP1 pid=378) INFO 09-30 00:14:55 [nccl_twin.py>:231] qwen38: nccl twin eager on tp:0 rank=1 eager=1 eager_nccl=1 total_captured=0 total_captured_nccl=0 graphs=0
+84:(Worker_TP1 pid=378) INFO 09-30 00:14:55 [nccl_twin.py>:231] qwen38: nccl twin eager on tp:0 rank=1 eager=10 eager_nccl=10 total_captured=0 total_captured_nccl=0 graphs=0
+85:(Worker_TP1 pid=378) INFO 09-30 00:15:05 [nccl_twin.py>:231] qwen38: nccl twin eager on tp:0 rank=1 eager=100 eager_nccl=100 total_captured=0 total_captured_nccl=0 graphs=0
+89:(Worker_TP1 pid=378) WARNING 09-30 00:15:09 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+91:(Worker_TP1 pid=378) INFO 09-30 00:15:12 [nccl_twin.py>:245] qwen38: nccl twin graph 1 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=268 eager_nccl=268 total_captured=97 total_captured_nccl=97 graphs=1
+92:(Worker_TP1 pid=378) INFO 09-30 00:15:12 [nccl_twin.py>:245] qwen38: nccl twin graph 2 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=365 eager_nccl=365 total_captured=194 total_captured_nccl=194 graphs=2
+94:(Worker_TP1 pid=378) INFO 09-30 00:15:13 [nccl_twin.py>:245] qwen38: nccl twin graph 3 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=371 eager_nccl=371 total_captured=200 total_captured_nccl=200 graphs=3
+95:(Worker_TP1 pid=378) INFO 09-30 00:15:13 [nccl_twin.py>:245] qwen38: nccl twin graph 4 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=377 eager_nccl=377 total_captured=206 total_captured_nccl=206 graphs=4
+96:(Worker_TP1 pid=378) INFO 09-30 00:15:13 [nccl_twin.py>:245] qwen38: nccl twin graph 5 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=383 eager_nccl=383 total_captured=212 total_captured_nccl=212 graphs=5
+97:(Worker_TP1 pid=378) INFO 09-30 00:15:13 [nccl_twin.py>:245] qwen38: nccl twin graph 6 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=389 eager_nccl=389 total_captured=218 total_captured_nccl=218 graphs=6
+98:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [nccl_twin.py>:245] qwen38: nccl twin graph 7 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=395 eager_nccl=395 total_captured=224 total_captured_nccl=224 graphs=7
+99:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [nccl_twin.py>:245] qwen38: nccl twin graph 8 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=401 eager_nccl=401 total_captured=230 total_captured_nccl=230 graphs=8
+100:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [nccl_twin.py>:245] qwen38: nccl twin graph 9 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=407 eager_nccl=407 total_captured=236 total_captured_nccl=236 graphs=9
+101:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [nccl_twin.py>:245] qwen38: nccl twin graph 10 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=413 eager_nccl=413 total_captured=242 total_captured_nccl=242 graphs=10
+102:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [nccl_twin.py>:245] qwen38: nccl twin graph 11 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=419 eager_nccl=419 total_captured=248 total_captured_nccl=248 graphs=11
+103:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [model_runner.py:1066] Graph capturing finished in 5 secs, took 0.15 GiB
+104:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [gpu_worker.py:640] Available KV cache memory: 24.18 GiB
+105:(Worker_TP1 pid=378) INFO 09-30 00:15:14 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7587 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7613. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+114:(Worker_TP1 pid=378) INFO 09-30 00:15:38 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+160:(Worker_TP1 pid=378) INFO 09-30 00:16:17 [nccl_twin.py>:231] qwen38: nccl twin eager on tp:0 rank=1 eager=1000 eager_nccl=1000 total_captured=248 total_captured_nccl=248 graphs=11
+161:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 12 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=1334 eager_nccl=1334 total_captured=345 total_captured_nccl=345 graphs=12
+162:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 13 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=1431 eager_nccl=1431 total_captured=442 total_captured_nccl=442 graphs=13
+163:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 14 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=1528 eager_nccl=1528 total_captured=539 total_captured_nccl=539 graphs=14
+164:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 15 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=1625 eager_nccl=1625 total_captured=636 total_captured_nccl=636 graphs=15
+165:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 16 captured=+97 captured_nccl=+97 on tp:0 rank=1 eager=1722 eager_nccl=1722 total_captured=733 total_captured_nccl=733 graphs=16
+167:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 17 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1728 eager_nccl=1728 total_captured=739 total_captured_nccl=739 graphs=17
+168:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 18 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1734 eager_nccl=1734 total_captured=745 total_captured_nccl=745 graphs=18
+169:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 19 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1740 eager_nccl=1740 total_captured=751 total_captured_nccl=751 graphs=19
+170:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 20 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1746 eager_nccl=1746 total_captured=757 total_captured_nccl=757 graphs=20
+171:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 21 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1752 eager_nccl=1752 total_captured=763 total_captured_nccl=763 graphs=21
+172:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 22 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1758 eager_nccl=1758 total_captured=769 total_captured_nccl=769 graphs=22
+173:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 23 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1764 eager_nccl=1764 total_captured=775 total_captured_nccl=775 graphs=23
+174:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 24 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1770 eager_nccl=1770 total_captured=781 total_captured_nccl=781 graphs=24
+175:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [nccl_twin.py>:245] qwen38: nccl twin graph 25 captured=+6 captured_nccl=+6 on tp:0 rank=1 eager=1776 eager_nccl=1776 total_captured=787 total_captured_nccl=787 graphs=25
+176:(Worker_TP1 pid=378) INFO 09-30 00:16:27 [model_runner.py:1066] Graph capturing finished in 8 secs, took 0.35 GiB
+188:(Worker_TP1 pid=378) INFO 09-30 00:19:39 [nccl_twin.py>:231] qwen38: nccl twin eager on tp:0 rank=1 eager=10000 eager_nccl=10000 total_captured=787 total_captured_nccl=787 graphs=25
