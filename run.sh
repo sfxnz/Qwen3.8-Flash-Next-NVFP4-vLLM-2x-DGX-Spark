@@ -17,6 +17,7 @@ TP="${TP:-2}"
 NNODES="${NNODES:-2}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-262144}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-8}"
+THROUGHPUT_PROFILE="${THROUGHPUT_PROFILE:-0}"
 UTIL="${UTIL:-0.76}"
 KV_CACHE_DTYPE="${KV_CACHE_DTYPE:-auto}"
 NUM_SPECULATIVE_TOKENS="${NUM_SPECULATIVE_TOKENS:-3}"
@@ -93,7 +94,7 @@ done
 [[ "$LONG_PREFILL_TOKEN_THRESHOLD" == none || "$LONG_PREFILL_TOKEN_THRESHOLD" =~ ^[1-9][0-9]*$ ]] || die "LONG_PREFILL_TOKEN_THRESHOLD=$LONG_PREFILL_TOKEN_THRESHOLD is not none or a positive decimal integer."
 # none = do not pass the env (the image default is 512 MiB).
 [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none || "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" =~ ^[1-9][0-9]*$ ]] || die "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB is not none or a positive decimal integer."
-for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8; do
+for name in THROUGHPUT_PROFILE FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8; do
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
@@ -321,8 +322,13 @@ fi
 if [[ "$MAX_MODEL_LEN" -gt 1048576 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
   die "--max-model-len $MAX_MODEL_LEN is above 1048576. Native max_position_embeddings is 262144. 1M is a lab ceiling. Community 1M YaRN on GB10 hangs on long prefills (vLLM #54629). FORCE_UNSAFE_CTX=1 overrides."
 fi
-if [[ "$MAX_NUM_SEQS" -gt 8 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
-  die "MAX_NUM_SEQS=$MAX_NUM_SEQS exceeds 8. seqs=8 is the measured occupancy pin; above 8 has no occupancy row. FORCE_UNSAFE_CTX=1 overrides."
+# throughput profile (X10): 16 sequences, the only occupancy row above 8 (evidence/extras/SUMMARY.md).
+[[ "$THROUGHPUT_PROFILE" == 1 && "$MAX_NUM_SEQS" == 8 ]] && MAX_NUM_SEQS=16
+if [[ "$MAX_NUM_SEQS" -gt 16 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
+  die "MAX_NUM_SEQS=$MAX_NUM_SEQS exceeds 16. The occupancy rows are seqs=8 (default) and seqs=16 (THROUGHPUT_PROFILE=1, evidence/extras/SUMMARY.md); above 16 has no row. FORCE_UNSAFE_CTX=1 overrides."
+fi
+if [[ "$MAX_NUM_SEQS" -gt 8 && "$THROUGHPUT_PROFILE" != 1 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
+  die "MAX_NUM_SEQS=$MAX_NUM_SEQS exceeds 8. seqs=8 is the default occupancy pin; 9..16 is the opt-in throughput profile: set THROUGHPUT_PROFILE=1 (occupancy row at 16: evidence/extras/SUMMARY.md). FORCE_UNSAFE_CTX=1 overrides."
 fi
 if [[ "$MAX_MODEL_LEN" -gt 262144 && "$VLLM_ALLOW_LONG_MAX_MODEL_LEN" != 1 ]]; then
   die "MAX_MODEL_LEN=$MAX_MODEL_LEN exceeds native 262144. vLLM refuses that unless VLLM_ALLOW_LONG_MAX_MODEL_LEN=1. This does not enable YaRN. FORCE_UNSAFE_CTX=1 does not replace that env."
@@ -711,7 +717,7 @@ FORWARD_VARS=(
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
   OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
   LONG_PREFILL_TOKEN_THRESHOLD ASYNC_SCHEDULING MM_PROCESSOR_CACHE_GB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO
-  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB FP8_DENSE
+  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB FP8_DENSE THROUGHPUT_PROFILE
 )
 
 worker_env() {

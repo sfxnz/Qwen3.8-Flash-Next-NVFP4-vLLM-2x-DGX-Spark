@@ -289,6 +289,17 @@ class RecipeOpsTests(unittest.TestCase):
         proc = _run_sh(MAX_NUM_SEQS="16")
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("exceeds 8", proc.stderr)
+        self.assertIn("THROUGHPUT_PROFILE=1", proc.stderr)
+
+    def test_throughput_profile_serves_16_seqs(self) -> None:
+        proc = _run_sh(THROUGHPUT_PROFILE="1")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("seqs=16", proc.stdout)
+
+    def test_throughput_profile_refuses_above_16(self) -> None:
+        proc = _run_sh(THROUGHPUT_PROFILE="1", MAX_NUM_SEQS="24")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("exceeds 16", proc.stderr)
 
     def test_validate_only_refuses_window_above_1m(self) -> None:
         proc = _run_sh(MAX_MODEL_LEN="2097152")
