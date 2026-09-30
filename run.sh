@@ -55,7 +55,11 @@ HF_HUB_DISABLE_XET="${HF_HUB_DISABLE_XET:-0}"
 ORCHESTRATE="${ORCHESTRATE:-auto}"
 OVERLAYS="${OVERLAYS:-auto}"
 OVERLAYS_PIN="${OVERLAYS_PIN:-docker/ple_layer.py docker/modelopt.py docker/ple_ops.py}"
-OVERLAYS_V030="${OVERLAYS_V030:-docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py}"
+OVERLAYS_V030="${OVERLAYS_V030:-docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py}"
+DRAFT_MOE_CONFIG="${DRAFT_MOE_CONFIG:-1}"
+DRAFT_LOCAL_ARGMAX="${DRAFT_LOCAL_ARGMAX:-1}"
+DRAFT_HEAD_FP8="${DRAFT_HEAD_FP8:-1}"
+DRAFT_VOCAB="${DRAFT_VOCAB:-none}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 EXTRA_ENV="${EXTRA_ENV:-}"
 # END generated
@@ -88,10 +92,11 @@ done
 [[ "$LONG_PREFILL_TOKEN_THRESHOLD" == none || "$LONG_PREFILL_TOKEN_THRESHOLD" =~ ^[1-9][0-9]*$ ]] || die "LONG_PREFILL_TOKEN_THRESHOLD=$LONG_PREFILL_TOKEN_THRESHOLD is not none or a positive decimal integer."
 # none = do not pass the env (the image default is 512 MiB).
 [[ "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" == none || "$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB" =~ ^[1-9][0-9]*$ ]] || die "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=$VLLM_SPARSE_INDEXER_MAX_LOGITS_MB is not none or a positive decimal integer."
-for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING; do
+for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONLY VLLM_ALLOW_LONG_MAX_MODEL_LEN SKIP_DOWNLOAD HF_HUB_DISABLE_XET MEMGUARD ASYNC_SCHEDULING DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8; do
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
+[[ "$DRAFT_VOCAB" == none || "$DRAFT_VOCAB" =~ ^[A-Za-z0-9_.-]+\.json$ ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB must be none or a .json file name under \$HF_CACHE/qwen38-draft-vocab/."
 [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
 [[ "$MM_PROCESSOR_CACHE_GB" =~ ^(0|[1-9][0-9]*)(\.[0-9]+)?$ ]] || die "MM_PROCESSOR_CACHE_GB=$MM_PROCESSOR_CACHE_GB is not a non-negative decimal."
 (( MM_MIN_PIXELS <= MM_MAX_PIXELS )) || die "MM_MIN_PIXELS=$MM_MIN_PIXELS exceeds MM_MAX_PIXELS=$MM_MAX_PIXELS."
@@ -103,6 +108,7 @@ ON_PIN=0
 [[ "$IMAGE_DIGEST" == "$NIGHTLY_PIN_DIGEST" ]] && ON_PIN=1
 
 # --- speculative and compilation config.
+SPEC_DEFAULTED=0
 if [[ -z "${SPEC_CONFIG:-}" ]]; then
   case "$SPEC" in
     mtp)
@@ -110,6 +116,7 @@ if [[ -z "${SPEC_CONFIG:-}" ]]; then
       # kernel config (v1/worker/gpu/spec_decode/eagle/utils.py:72-100), so the drafter inherits
       # --moe-backend auto, which picks Triton for the 64x64-refined FP8 blocks. v0.30 honours it.
       SPEC_CONFIG='{"method":"mtp","num_speculative_tokens":'"$NUM_SPECULATIVE_TOKENS"',"moe_backend":"triton"}'
+      SPEC_DEFAULTED=1
       ;;
     none)
       [[ "$DIAGNOSTIC" == 1 ]] || die "SPEC=none boots without MTP. That is a diagnostic arm only. Set DIAGNOSTIC=1."
@@ -257,6 +264,42 @@ LIMIT_MM_PER_PROMPT='{"image":'"$MM_LIMIT_IMAGE"',"video":'"$MM_LIMIT_VIDEO"'}'
 BASE_ENV=()
 [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && BASE_ENV=(VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0)
 
+# --- L1a / L1b' / L1b draft head (docker/v030/MTP_HEAD.md). They take effect only on the v0.30 digest with
+# the docker/v030/mtp.py overlay mounted (it defines get_top_tokens and reads the two envs); otherwise
+# (the pin rollback, OVERLAYS=none) the drafter is stock and the knobs are ignored.
+DRAFT_HEAD_ON=0
+if [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && overlays_define get_top_tokens; then
+  DRAFT_HEAD_ON=1
+elif [[ "$DRAFT_LOCAL_ARGMAX" == 1 || "$DRAFT_HEAD_FP8" == 1 || "$DRAFT_VOCAB" != none ]]; then
+  echo "note: DRAFT_LOCAL_ARGMAX / DRAFT_HEAD_FP8 / DRAFT_VOCAB ignored (needs the v0.30 digest and the docker/v030/mtp.py overlay)." >&2
+fi
+if [[ "$DRAFT_HEAD_ON" == 1 ]]; then
+  # L1a: drafts pick a local argmax per TP shard and all-gather [M, 2]. An explicit SPEC_CONFIG wins.
+  if [[ "$DRAFT_LOCAL_ARGMAX" == 1 && "$SPEC_DEFAULTED" == 1 ]]; then
+    SPEC_CONFIG="${SPEC_CONFIG%\}}"',"use_local_argmax_reduction":true}'
+    LOCAL_ARGMAX=true
+  fi
+  [[ "$DRAFT_HEAD_FP8" == 1 ]] && BASE_ENV+=(VLLM_QWEN38_DRAFT_HEAD_FP8=1)
+  [[ "$DRAFT_VOCAB" != none ]] && BASE_ENV+=("VLLM_QWEN38_DRAFT_VOCAB=$HF_HOME_IN_CONTAINER/qwen38-draft-vocab/$DRAFT_VOCAB")
+fi
+if [[ "$DRAFT_VOCAB" != none && "$DRAFT_HEAD_ON" == 1 ]]; then
+  [[ "$LOCAL_ARGMAX" == true ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB needs use_local_argmax_reduction (DRAFT_LOCAL_ARGMAX=1 or SPEC_CONFIG); the reduced head only serves get_top_tokens (docker/v030/MTP_HEAD.md)."
+  [[ "${ROLE:-}" == worker || -f "$HF_CACHE/qwen38-draft-vocab/$DRAFT_VOCAB" ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB: $HF_CACHE/qwen38-draft-vocab/$DRAFT_VOCAB is missing. Copy tools/vocab/$DRAFT_VOCAB there on BOTH nodes."
+fi
+
+# --- L6a drafter Triton MoE config (tools/kernels/README.md): v0.30 digest only. The head validates the
+# folder; a failing check falls closed to the stock default config. The worker gets a copy (like overlays).
+DRAFT_MOE_CONFIG_DIR="${DRAFT_MOE_CONFIG_DIR:-$SCRIPT_DIR/docker/v030/moe_configs}"
+DRAFT_MOE_CONFIG_MOUNT=/opt/qwen38-moe-configs
+# Other digests (the pin rollback) ignore it: the config is tuned against v0.30.0's Triton fused_moe.
+[[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] || DRAFT_MOE_CONFIG=0
+if [[ "$DRAFT_MOE_CONFIG" == 1 ]]; then
+  if [[ "${ROLE:-}" != worker ]] && ! "$SCRIPT_DIR/tools/kernels/tune_draft_moe.sh" check "$DRAFT_MOE_CONFIG_DIR" >&2; then
+    echo "WARNING: DRAFT_MOE_CONFIG=1 but $DRAFT_MOE_CONFIG_DIR fails tune_draft_moe.sh check; the drafter keeps the stock default MoE config." >&2
+    DRAFT_MOE_CONFIG=0
+  fi
+fi
+
 # --- context and occupancy.
 if [[ "$MAX_MODEL_LEN" -gt 1048576 && "$FORCE_UNSAFE_CTX" != 1 ]]; then
   die "--max-model-len $MAX_MODEL_LEN is above 1048576. Native max_position_embeddings is 262144. 1M is a lab ceiling. Community 1M YaRN on GB10 hangs on long prefills (vLLM #54629). FORCE_UNSAFE_CTX=1 overrides."
@@ -328,6 +371,8 @@ if [[ "${VALIDATE_ONLY:-0}" == "1" ]]; then
   printf '==> long-prefill-token-threshold=%s\n' "$LONG_PREFILL_TOKEN_THRESHOLD"
   printf '==> async-scheduling=%s mm-processor-kwargs=%s limit-mm-per-prompt=%s mm-processor-cache-gb=%s\n' \
     "$ASYNC_SCHEDULING" "$MM_PROCESSOR_KWARGS" "$LIMIT_MM_PER_PROMPT" "$MM_PROCESSOR_CACHE_GB"
+  printf '==> spec-config %s\n' "${SPEC_CONFIG:-none}"
+  [[ "$DRAFT_MOE_CONFIG" != 1 ]] || printf '==> draft-moe-config %s -> %s (VLLM_TUNED_CONFIG_FOLDER)\n' "$DRAFT_MOE_CONFIG_DIR" "$DRAFT_MOE_CONFIG_MOUNT"
   [[ -z "$EXTRA_ENV" ]] || printf '==> extra-env %s\n' "$EXTRA_ENV"
   exit 0
 fi
@@ -543,6 +588,7 @@ start_local() {
   for kv in "${BASE_ENV[@]}"; do
     env_args+=(-e "$kv")
   done
+  [[ "$DRAFT_MOE_CONFIG" != 1 ]] || env_args+=(-e "VLLM_TUNED_CONFIG_FOLDER=$DRAFT_MOE_CONFIG_MOUNT")
   # Later -e wins, so EXTRA_ENV can override the defaults above (e.g. NCCL_DEBUG=INFO).
   env_args+=("${EXTRA_ENV_ARGS[@]}")
 
@@ -569,6 +615,7 @@ start_local() {
   for i in "${!OVERLAY_FILES[@]}"; do
     vol_args+=(-v "${OVERLAY_FILES[$i]}:${SITE_PACKAGES}/${OVERLAY_TARGETS[$i]}:ro")
   done
+  [[ "$DRAFT_MOE_CONFIG" != 1 ]] || vol_args+=(-v "${DRAFT_MOE_CONFIG_DIR}:${DRAFT_MOE_CONFIG_MOUNT}:ro")
   local batched_args=()
   if [[ -n "$MAX_NUM_BATCHED_TOKENS" ]]; then
     batched_args+=(--max-num-batched-tokens "$MAX_NUM_BATCHED_TOKENS")
@@ -645,13 +692,14 @@ FORWARD_VARS=(
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
   OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
   LONG_PREFILL_TOKEN_THRESHOLD ASYNC_SCHEDULING MM_PROCESSOR_CACHE_GB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO
+  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB
 )
 
 worker_env() {
   # $1: space-separated overlay paths on the worker.
   local v out
   # The chat template is an API-server (head) setting; the worker copy of run.sh has no template file.
-  out="ROLE=worker ORCHESTRATE=0 CHAT_TEMPLATE=none OVERLAYS=$(printf '%q' "${1:-none}")"
+  out="ROLE=worker ORCHESTRATE=0 CHAT_TEMPLATE=none OVERLAYS=$(printf '%q' "${1:-none}") DRAFT_MOE_CONFIG_DIR=/tmp/qwen38-moe-configs"
   for v in "${FORWARD_VARS[@]}"; do
     out+=" $v=$(printf '%q' "${!v}")"
   done
@@ -730,6 +778,10 @@ if [[ "$ORCHESTRATE" == "auto" && "$ROLE" == "head" ]]; then
         scp -q "$f" "${WORKER_HOST}:$remote"
         remote_overlays+="$remote "
       done
+    fi
+    if [[ "$DRAFT_MOE_CONFIG" == 1 ]]; then
+      ssh "$WORKER_HOST" "rm -rf /tmp/qwen38-moe-configs && mkdir -p /tmp/qwen38-moe-configs"
+      scp -q "$DRAFT_MOE_CONFIG_DIR"/*.json "${WORKER_HOST}:/tmp/qwen38-moe-configs/"
     fi
     ssh "$WORKER_HOST" "$(worker_env "$remote_overlays") bash /tmp/qwen38-run.sh"
     log "Worker container started. Waiting 25s for NCCL listen, then starting head"
