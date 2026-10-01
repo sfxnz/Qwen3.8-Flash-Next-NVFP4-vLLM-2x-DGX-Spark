@@ -1,0 +1,39 @@
+2026-09-30T16:21:55Z memcheck avail=118618MB swap_used=4645MB
+2026-09-30T16:21:55Z start selftest: selftest
+2026-09-30T16:22:07Z end selftest rc=0
+2026-09-30T16:22:07Z memcheck avail=118595MB swap_used=4645MB
+2026-09-30T16:22:07Z start exact: exact --conc 1 8 --steps 256
+2026-09-30T16:22:19Z end exact rc=1
+2026-09-30T16:22:19Z memcheck avail=118722MB swap_used=4645MB
+2026-09-30T16:22:19Z start exact-red: exact --conc 1 --steps 32
+2026-09-30T16:22:30Z end exact-red rc=0
+2026-09-30T16:22:30Z memcheck avail=118875MB swap_used=4645MB
+2026-09-30T16:22:30Z start sim64: sim --block 64 --nreq 8 --steps 400
+2026-09-30T16:22:40Z end sim64 rc=1
+2026-09-30T16:22:40Z memcheck avail=118880MB swap_used=4645MB
+2026-09-30T16:22:40Z start sim1600: sim --block 1600 --nreq 8 --steps 1500
+2026-09-30T16:22:51Z end sim1600 rc=1
+2026-09-30T16:22:51Z memcheck avail=118962MB swap_used=4645MB
+2026-09-30T16:22:51Z start bench: bench --conc 1 8 --abab 4 --reps 50
+2026-09-30T16:23:48Z end bench rc=0
+2026-09-30T16:23:48Z memcheck avail=117027MB swap_used=4645MB
+2026-09-30T16:23:48Z start ncu
+2026-09-30T16:24:01Z end ncu rc=0
+2026-09-30T16:24:31Z memcheck avail=118878MB swap_used=4645MB
+2026-09-30T16:24:31Z start selftest: selftest
+2026-09-30T16:24:42Z end selftest rc=0
+2026-09-30T16:24:42Z memcheck avail=118900MB swap_used=4645MB
+2026-09-30T16:24:42Z start exact: exact --conc 1 8 --steps 256
+2026-09-30T16:24:54Z end exact rc=0
+2026-09-30T16:24:54Z memcheck avail=118992MB swap_used=4645MB
+2026-09-30T16:24:54Z start exact-red: exact --conc 1 --steps 32
+2026-09-30T16:25:05Z end exact-red rc=0
+2026-09-30T16:25:05Z memcheck avail=119010MB swap_used=4645MB
+2026-09-30T16:25:05Z start sim64: sim --block 64 --nreq 8 --steps 400
+2026-09-30T16:25:18Z end sim64 rc=0
+2026-09-30T16:25:18Z memcheck avail=119050MB swap_used=4645MB
+2026-09-30T16:25:18Z start sim1600: sim --block 1600 --nreq 8 --steps 1500
+2026-09-30T16:25:35Z end sim1600 rc=0
+2026-09-30T16:25:35Z memcheck avail=119091MB swap_used=4645MB
+2026-09-30T16:25:35Z start bench: bench --conc 1 8 --abab 4 --reps 50
+2026-09-30T16:26:33Z end bench rc=0

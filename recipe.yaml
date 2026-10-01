@@ -47,6 +47,9 @@ serve:
     NNODES: *nnodes
     MAX_MODEL_LEN: 262144
     MAX_NUM_SEQS: 8
+    # throughput profile (plan X10/R8), opt-in: 1 serves MAX_NUM_SEQS=16 (when MAX_NUM_SEQS is left at 8)
+    # and allows 9..16. Occupancy row: evidence/extras/SUMMARY.md. Not the default.
+    THROUGHPUT_PROFILE: 0
     # 0.76 leaves ~4.9 GiB/rank more host headroom than 0.80; 0.80 drove spark1 into a global OOM
     # (evidence/incident-2026-09-29-oom). Plan P2-2.
     UTIL: 0.76
@@ -97,6 +100,10 @@ serve:
     OVERLAYS: auto
     OVERLAYS_PIN: docker/ple_layer.py docker/modelopt.py docker/ple_ops.py
     OVERLAYS_V030: docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py
+    # K3 (plan L3): GDN MTP decode with lazy state commit, bit-exact vs the stock CUDA kernel (load-time self-test,
+    # fail closed). 1 swaps gdn_attn.py for gdn_lazy_attn.py, adds gdn_lazy_linear_attn.py and sets
+    # VLLM_QWEN38_GDN_LAZY=1 on both ranks (v0.30 digest only). c8 ruler -7%, c1 flat (evidence/k3). 0 = stock.
+    GDN_LAZY: 1
     # L6a: mount docker/v030/moe_configs (the drafter's GB10 Triton fused-MoE config) on both ranks as
     # VLLM_TUNED_CONFIG_FOLDER. v0.30 digest only; a failing `tune_draft_moe.sh check` falls back to stock.
     DRAFT_MOE_CONFIG: 1
@@ -110,7 +117,8 @@ serve:
     DRAFT_VOCAB: none
     # lab-fp8-dense profile (plan P4-1/R8), opt-in: per_block = online FP8 (Marlin W8A16) on the 99 dense
     # GDN/QSA/PLE-kv/MTP-attention linears. c1 -13% ms/step, -1.28 GiB/rank; fails the T1-B top-1 gate
-    # (94.3%) while passing T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision). Not the default.
+    # (94.3%) while passing T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision) and T4 (evidence/extras).
+    # Not the default without owner sign-off.
     FP8_DENSE: none
     EXTRA_ARGS: ""
     # Space-separated KEY=VALUE pairs passed as `-e` to both ranks.
@@ -131,7 +139,9 @@ readme:
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it)"
     - Draft head: "`DRAFT_LOCAL_ARGMAX={DRAFT_LOCAL_ARGMAX}` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8={DRAFT_HEAD_FP8}` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB={DRAFT_VOCAB}` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG={DRAFT_MOE_CONFIG}` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2)"
-    - lab-fp8-dense (opt-in): "`FP8_DENSE={FP8_DENSE}`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision). Not the default."
+    - lab-fp8-dense (opt-in): "`FP8_DENSE={FP8_DENSE}`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision), and T4 full GSM8K thinking on: 97.65% vs 97.80%, McNemar p 0.75 (evidence/extras). Not the default."
+    - throughput (opt-in): "`THROUGHPUT_PROFILE={THROUGHPUT_PROFILE}`. `1` serves `--max-num-seqs 16` (X10): diverse aggregate at 16 clients 235 tok/s prose / 255 structured against 160 / 190 at c=8 on the default (+47% / +34%), 0 preemptions, T0 incl. N=16 bursts clean, c1/c8 ruler within 1.3%, spark1 ≥ 15 GiB available under load (evidence/extras). Not the default."
+    - GDN decode (K3): "`GDN_LAZY={GDN_LAZY}`. `1` (v0.30 digest) serves the MTP verify step's GDN state with a lazy commit: one fp32 state write per head instead of one per verify token (L2 writes 6.3 → 1.7 MB per layer per request). Bit-exact vs the stock CUDA kernel (load-time self-test on both ranks, fail closed; greedy output, T1 NLL and 4096-token generations across 1600-token blocks identical). Ruler c8 −7%, c1 flat (evidence/k3). `0` = stock kernel."
     - Overlays: "`OVERLAYS={OVERLAYS}` → v0.30: `{OVERLAYS_V030}`; pin rollback: `{OVERLAYS_PIN}` (R11 headers, see `docker/OVERLAYS.md`)"
     - v0.30 envs: "`VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0` on both ranks when IMAGE is the v0.30 digest (F33: offload pins 32 GiB of host memory per node)"
     - Scheduling: "`--async-scheduling` (`ASYNC_SCHEDULING={ASYNC_SCHEDULING}`); `--per-request-spec-decode-metrics` is not passed (costs ~1 ms/step)"

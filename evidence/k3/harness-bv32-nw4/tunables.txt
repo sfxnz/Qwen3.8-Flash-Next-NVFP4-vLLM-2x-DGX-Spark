@@ -1,0 +1,29 @@
+avail 118170
+== BV=32 NW=8
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 39.18, 'lazy': 35.75, 'eager': 43.97}, -0.123), 'c8': ({'stock': 300.91, 'lazy': 131.89, 'eager': 306.54}, -6.085)}
+avail 118698
+== BV=64 NW=8
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 38.85, 'lazy': 32.2, 'eager': 44.56}, -0.239), 'c8': ({'stock': 299.4, 'lazy': 134.0, 'eager': 312.77}, -5.954)}
+avail 118104
+== BV=16 NW=4
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 38.94, 'lazy': 48.64, 'eager': 49.43}, 0.349), 'c8': ({'stock': 298.89, 'lazy': 131.01, 'eager': 307.93}, -6.044)}
+avail 118745
+== BV=64 NW=4
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 38.97, 'lazy': 32.25, 'eager': 43.43}, -0.242), 'c8': ({'stock': 299.1, 'lazy': 135.31, 'eager': 309.25}, -5.896)}
+avail 118102
+== BV=32 NW=2
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 38.85, 'lazy': 40.68, 'eager': 45.56}, 0.066), 'c8': ({'stock': 304.38, 'lazy': 129.16, 'eager': 309.1}, -6.308)}
+== BV=64 NW=16
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 39.24, 'lazy': 32.74, 'eager': 43.8}, -0.234), 'c8': ({'stock': 299.3, 'lazy': 134.5, 'eager': 310.44}, -5.933)}
+== BV=128 NW=8
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 38.89, 'lazy': 29.92, 'eager': 44.82}, -0.323), 'c8': ({'stock': 319.16, 'lazy': 146.86, 'eager': 343.75}, -6.203)}
+== BV=128 NW=16
+{"ok": true, "detail": "bitwise over 4 steps, W=4, G=3"}
+{'c1': ({'stock': 39.03, 'lazy': 30.36, 'eager': 45.73}, -0.312), 'c8': ({'stock': 299.73, 'lazy': 142.81, 'eager': 313.38}, -5.649)}

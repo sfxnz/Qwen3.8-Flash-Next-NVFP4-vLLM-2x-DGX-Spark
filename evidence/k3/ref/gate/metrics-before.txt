@@ -1,0 +1,708 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 61787.0
+python_gc_objects_collected_total{generation="1"} 8705.0
+python_gc_objects_collected_total{generation="2"} 480.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 5087.0
+python_gc_collections_total{generation="1"} 462.0
+python_gc_collections_total{generation="2"} 20.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="3",version="3.12.3"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 2.5448013824e+010
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 9.77944576e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79077853395e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 107.17
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 75.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 65535.0
+# HELP vllm:spec_decode_num_drafts_total Number of spec decoding drafts.
+# TYPE vllm:spec_decode_num_drafts_total counter
+vllm:spec_decode_num_drafts_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+# HELP vllm:spec_decode_num_drafts_created Number of spec decoding drafts.
+# TYPE vllm:spec_decode_num_drafts_created gauge
+vllm:spec_decode_num_drafts_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791798698773e+09
+# HELP vllm:spec_decode_num_draft_tokens_total Number of draft tokens.
+# TYPE vllm:spec_decode_num_draft_tokens_total counter
+vllm:spec_decode_num_draft_tokens_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 653556.0
+# HELP vllm:spec_decode_num_draft_tokens_created Number of draft tokens.
+# TYPE vllm:spec_decode_num_draft_tokens_created gauge
+vllm:spec_decode_num_draft_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791798699346e+09
+# HELP vllm:spec_decode_num_accepted_tokens_total Number of accepted tokens.
+# TYPE vllm:spec_decode_num_accepted_tokens_total counter
+vllm:spec_decode_num_accepted_tokens_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 431304.0
+# HELP vllm:spec_decode_num_accepted_tokens_created Number of accepted tokens.
+# TYPE vllm:spec_decode_num_accepted_tokens_created gauge
+vllm:spec_decode_num_accepted_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179870577e+09
+# HELP vllm:spec_decode_num_accepted_tokens_per_pos_total Accepted tokens per draft position.
+# TYPE vllm:spec_decode_num_accepted_tokens_per_pos_total counter
+vllm:spec_decode_num_accepted_tokens_per_pos_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="0"} 173473.0
+vllm:spec_decode_num_accepted_tokens_per_pos_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="1"} 141774.0
+vllm:spec_decode_num_accepted_tokens_per_pos_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="2"} 116057.0
+# HELP vllm:spec_decode_num_accepted_tokens_per_pos_created Accepted tokens per draft position.
+# TYPE vllm:spec_decode_num_accepted_tokens_per_pos_created gauge
+vllm:spec_decode_num_accepted_tokens_per_pos_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="0"} 1.7907791798729792e+09
+vllm:spec_decode_num_accepted_tokens_per_pos_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="1"} 1.790779179872983e+09
+vllm:spec_decode_num_accepted_tokens_per_pos_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",position="2"} 1.790779179872986e+09
+# HELP vllm:estimated_flops_per_gpu_total Estimated number of floating point operations per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_flops_per_gpu_total counter
+vllm:estimated_flops_per_gpu_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:estimated_flops_per_gpu_created Estimated number of floating point operations per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_flops_per_gpu_created gauge
+vllm:estimated_flops_per_gpu_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179875579e+09
+# HELP vllm:estimated_read_bytes_per_gpu_total Estimated number of bytes read from memory per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_read_bytes_per_gpu_total counter
+vllm:estimated_read_bytes_per_gpu_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:estimated_read_bytes_per_gpu_created Estimated number of bytes read from memory per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_read_bytes_per_gpu_created gauge
+vllm:estimated_read_bytes_per_gpu_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791798767765e+09
+# HELP vllm:estimated_write_bytes_per_gpu_total Estimated number of bytes written to memory per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_write_bytes_per_gpu_total counter
+vllm:estimated_write_bytes_per_gpu_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:estimated_write_bytes_per_gpu_created Estimated number of bytes written to memory per GPU (for Model Flops Utilization calculations).
+# TYPE vllm:estimated_write_bytes_per_gpu_created gauge
+vllm:estimated_write_bytes_per_gpu_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791798773804e+09
+# HELP vllm:num_requests_running Number of requests in model execution batches.
+# TYPE vllm:num_requests_running gauge
+vllm:num_requests_running{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:num_requests_waiting Number of requests waiting to be processed.
+# TYPE vllm:num_requests_waiting gauge
+vllm:num_requests_waiting{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:num_requests_waiting_by_reason Number of waiting requests by reason. Reason labels: 'capacity' = waiting for scheduling capacity; 'deferred' = deferred by transient constraints (LoRA budget, KV transfer, blocked status). Sum of all reasons equals vllm:num_requests_waiting.
+# TYPE vllm:num_requests_waiting_by_reason gauge
+vllm:num_requests_waiting_by_reason{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",reason="capacity"} 0.0
+vllm:num_requests_waiting_by_reason{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",reason="deferred"} 0.0
+# HELP vllm:engine_sleep_state Engine sleep state; awake = 0 means engine is sleeping; awake = 1 means engine is awake; weights_offloaded = 1 means sleep level 1; discard_all = 1 means sleep level 2.
+# TYPE vllm:engine_sleep_state gauge
+vllm:engine_sleep_state{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",sleep_state="awake"} 1.0
+vllm:engine_sleep_state{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",sleep_state="weights_offloaded"} 0.0
+vllm:engine_sleep_state{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",sleep_state="discard_all"} 0.0
+# HELP vllm:kv_cache_usage_perc KV-cache usage. 1 means 100 percent usage.
+# TYPE vllm:kv_cache_usage_perc gauge
+vllm:kv_cache_usage_perc{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:prefix_cache_queries_total Prefix cache queries, in terms of number of queried tokens.
+# TYPE vllm:prefix_cache_queries_total counter
+vllm:prefix_cache_queries_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 286852.0
+# HELP vllm:prefix_cache_queries_created Prefix cache queries, in terms of number of queried tokens.
+# TYPE vllm:prefix_cache_queries_created gauge
+vllm:prefix_cache_queries_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799153762e+09
+# HELP vllm:prefix_cache_hits_total Prefix cache hits, in terms of number of cached tokens.
+# TYPE vllm:prefix_cache_hits_total counter
+vllm:prefix_cache_hits_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:prefix_cache_hits_created Prefix cache hits, in terms of number of cached tokens.
+# TYPE vllm:prefix_cache_hits_created gauge
+vllm:prefix_cache_hits_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179915781e+09
+# HELP vllm:external_prefix_cache_queries_total External prefix cache queries from KV connector cross-instance cache sharing, in terms of number of queried tokens.
+# TYPE vllm:external_prefix_cache_queries_total counter
+vllm:external_prefix_cache_queries_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:external_prefix_cache_queries_created External prefix cache queries from KV connector cross-instance cache sharing, in terms of number of queried tokens.
+# TYPE vllm:external_prefix_cache_queries_created gauge
+vllm:external_prefix_cache_queries_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799167807e+09
+# HELP vllm:external_prefix_cache_hits_total External prefix cache hits from KV connector cross-instance cache sharing, in terms of number of cached tokens.
+# TYPE vllm:external_prefix_cache_hits_total counter
+vllm:external_prefix_cache_hits_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:external_prefix_cache_hits_created External prefix cache hits from KV connector cross-instance cache sharing, in terms of number of cached tokens.
+# TYPE vllm:external_prefix_cache_hits_created gauge
+vllm:external_prefix_cache_hits_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799173825e+09
+# HELP vllm:mm_cache_queries_total Multi-modal cache queries, in terms of number of queried items.
+# TYPE vllm:mm_cache_queries_total counter
+vllm:mm_cache_queries_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 7.0
+# HELP vllm:mm_cache_queries_created Multi-modal cache queries, in terms of number of queried items.
+# TYPE vllm:mm_cache_queries_created gauge
+vllm:mm_cache_queries_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.79077917991798e+09
+# HELP vllm:mm_cache_hits_total Multi-modal cache hits, in terms of number of cached items.
+# TYPE vllm:mm_cache_hits_total counter
+vllm:mm_cache_hits_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 2.0
+# HELP vllm:mm_cache_hits_created Multi-modal cache hits, in terms of number of cached items.
+# TYPE vllm:mm_cache_hits_created gauge
+vllm:mm_cache_hits_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799185798e+09
+# HELP vllm:num_preemptions_total Cumulative number of preemption from the engine.
+# TYPE vllm:num_preemptions_total counter
+vllm:num_preemptions_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:num_preemptions_created Cumulative number of preemption from the engine.
+# TYPE vllm:num_preemptions_created gauge
+vllm:num_preemptions_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179919579e+09
+# HELP vllm:prompt_tokens_total Number of prefill tokens processed.
+# TYPE vllm:prompt_tokens_total counter
+vllm:prompt_tokens_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 428993.0
+# HELP vllm:prompt_tokens_created Number of prefill tokens processed.
+# TYPE vllm:prompt_tokens_created gauge
+vllm:prompt_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799199758e+09
+# HELP vllm:prompt_tokens_by_source_total Number of prompt tokens by source.
+# TYPE vllm:prompt_tokens_by_source_total counter
+vllm:prompt_tokens_by_source_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="local_compute"} 428993.0
+vllm:prompt_tokens_by_source_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="local_cache_hit"} 0.0
+vllm:prompt_tokens_by_source_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="external_kv_transfer"} 0.0
+# HELP vllm:prompt_tokens_by_source_created Number of prompt tokens by source.
+# TYPE vllm:prompt_tokens_by_source_created gauge
+vllm:prompt_tokens_by_source_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="local_compute"} 1.7907791799213755e+09
+vllm:prompt_tokens_by_source_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="local_cache_hit"} 1.7907791799217784e+09
+vllm:prompt_tokens_by_source_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",source="external_kv_transfer"} 1.7907791799219759e+09
+# HELP vllm:prompt_tokens_cached_total Number of cached prompt tokens (local + external).
+# TYPE vllm:prompt_tokens_cached_total counter
+vllm:prompt_tokens_cached_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:prompt_tokens_cached_created Number of cached prompt tokens (local + external).
+# TYPE vllm:prompt_tokens_cached_created gauge
+vllm:prompt_tokens_cached_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799223762e+09
+# HELP vllm:generation_tokens_total Number of generation tokens processed.
+# TYPE vllm:generation_tokens_total counter
+vllm:generation_tokens_total{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 648368.0
+# HELP vllm:generation_tokens_created Number of generation tokens processed.
+# TYPE vllm:generation_tokens_created gauge
+vllm:generation_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799227755e+09
+# HELP vllm:request_success_total Count of successfully processed requests.
+# TYPE vllm:request_success_total counter
+vllm:request_success_total{engine="0",finished_reason="stop",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1547.0
+vllm:request_success_total{engine="0",finished_reason="length",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 130.0
+vllm:request_success_total{engine="0",finished_reason="abort",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_success_total{engine="0",finished_reason="error",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_success_total{engine="0",finished_reason="repetition",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:request_success_created Count of successfully processed requests.
+# TYPE vllm:request_success_created gauge
+vllm:request_success_created{engine="0",finished_reason="stop",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799249787e+09
+vllm:request_success_created{engine="0",finished_reason="length",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799249828e+09
+vllm:request_success_created{engine="0",finished_reason="abort",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799253757e+09
+vllm:request_success_created{engine="0",finished_reason="error",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799255779e+09
+vllm:request_success_created{engine="0",finished_reason="repetition",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179926176e+09
+# HELP vllm:request_prompt_tokens Number of prefill tokens processed.
+# TYPE vllm:request_prompt_tokens histogram
+vllm:request_prompt_tokens_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prompt_tokens_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prompt_tokens_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prompt_tokens_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prompt_tokens_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prompt_tokens_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 312.0
+vllm:request_prompt_tokens_bucket{engine="0",le="100.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 320.0
+vllm:request_prompt_tokens_bucket{engine="0",le="200.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1621.0
+vllm:request_prompt_tokens_bucket{engine="0",le="500.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1640.0
+vllm:request_prompt_tokens_bucket{engine="0",le="1000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1660.0
+vllm:request_prompt_tokens_bucket{engine="0",le="2000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_prompt_tokens_bucket{engine="0",le="5000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_prompt_tokens_bucket{engine="0",le="10000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1664.0
+vllm:request_prompt_tokens_bucket{engine="0",le="20000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1676.0
+vllm:request_prompt_tokens_bucket{engine="0",le="50000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prompt_tokens_bucket{engine="0",le="100000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prompt_tokens_bucket{engine="0",le="200000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prompt_tokens_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prompt_tokens_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prompt_tokens_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 428993.0
+# HELP vllm:request_prompt_tokens_created Number of prefill tokens processed.
+# TYPE vllm:request_prompt_tokens_created gauge
+vllm:request_prompt_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179931377e+09
+# HELP vllm:request_generation_tokens Number of generation tokens processed.
+# TYPE vllm:request_generation_tokens histogram
+vllm:request_generation_tokens_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_generation_tokens_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 35.0
+vllm:request_generation_tokens_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 39.0
+vllm:request_generation_tokens_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 43.0
+vllm:request_generation_tokens_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 51.0
+vllm:request_generation_tokens_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 72.0
+vllm:request_generation_tokens_bucket{engine="0",le="100.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 233.0
+vllm:request_generation_tokens_bucket{engine="0",le="200.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 817.0
+vllm:request_generation_tokens_bucket{engine="0",le="500.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1467.0
+vllm:request_generation_tokens_bucket{engine="0",le="1000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1595.0
+vllm:request_generation_tokens_bucket{engine="0",le="2000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1637.0
+vllm:request_generation_tokens_bucket{engine="0",le="5000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_generation_tokens_bucket{engine="0",le="10000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:request_generation_tokens_bucket{engine="0",le="20000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_bucket{engine="0",le="50000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_bucket{engine="0",le="100000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_bucket{engine="0",le="200000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_generation_tokens_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 648368.0
+# HELP vllm:request_generation_tokens_created Number of generation tokens processed.
+# TYPE vllm:request_generation_tokens_created gauge
+vllm:request_generation_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799359775e+09
+# HELP vllm:iteration_tokens_total Histogram of number of tokens per engine_step.
+# TYPE vllm:iteration_tokens_total histogram
+vllm:iteration_tokens_total_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 2175.0
+vllm:iteration_tokens_total_bucket{engine="0",le="8.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 14451.0
+vllm:iteration_tokens_total_bucket{engine="0",le="16.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 15527.0
+vllm:iteration_tokens_total_bucket{engine="0",le="32.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 38708.0
+vllm:iteration_tokens_total_bucket{engine="0",le="64.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 38786.0
+vllm:iteration_tokens_total_bucket{engine="0",le="128.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 38856.0
+vllm:iteration_tokens_total_bucket{engine="0",le="256.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40093.0
+vllm:iteration_tokens_total_bucket{engine="0",le="512.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40125.0
+vllm:iteration_tokens_total_bucket{engine="0",le="1024.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40147.0
+vllm:iteration_tokens_total_bucket{engine="0",le="2048.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40149.0
+vllm:iteration_tokens_total_bucket{engine="0",le="4096.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40149.0
+vllm:iteration_tokens_total_bucket{engine="0",le="8192.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40149.0
+vllm:iteration_tokens_total_bucket{engine="0",le="16384.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40162.0
+vllm:iteration_tokens_total_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40163.0
+vllm:iteration_tokens_total_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40163.0
+vllm:iteration_tokens_total_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.077361e+06
+# HELP vllm:iteration_tokens_total_created Histogram of number of tokens per engine_step.
+# TYPE vllm:iteration_tokens_total_created gauge
+vllm:iteration_tokens_total_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799379838e+09
+# HELP vllm:request_max_num_generation_tokens Histogram of maximum number of requested generation tokens.
+# TYPE vllm:request_max_num_generation_tokens histogram
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 35.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 39.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 43.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 51.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 72.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="100.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 233.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="200.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 817.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="500.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1467.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="1000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1595.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="2000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1637.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="5000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="10000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="20000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="50000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="100000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="200000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_max_num_generation_tokens_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 648368.0
+# HELP vllm:request_max_num_generation_tokens_created Histogram of maximum number of requested generation tokens.
+# TYPE vllm:request_max_num_generation_tokens_created gauge
+vllm:request_max_num_generation_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179939782e+09
+# HELP vllm:request_params_n Histogram of the n request parameter.
+# TYPE vllm:request_params_n histogram
+vllm:request_params_n_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_n_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+# HELP vllm:request_params_n_created Histogram of the n request parameter.
+# TYPE vllm:request_params_n_created gauge
+vllm:request_params_n_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179942181e+09
+# HELP vllm:request_params_max_tokens Histogram of the max_tokens request parameter.
+# TYPE vllm:request_params_max_tokens histogram
+vllm:request_params_max_tokens_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_params_max_tokens_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_params_max_tokens_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_params_max_tokens_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 33.0
+vllm:request_params_max_tokens_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 33.0
+vllm:request_params_max_tokens_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 45.0
+vllm:request_params_max_tokens_bucket{engine="0",le="100.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 68.0
+vllm:request_params_max_tokens_bucket{engine="0",le="200.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 161.0
+vllm:request_params_max_tokens_bucket{engine="0",le="500.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 354.0
+vllm:request_params_max_tokens_bucket{engine="0",le="1000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 354.0
+vllm:request_params_max_tokens_bucket{engine="0",le="2000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 355.0
+vllm:request_params_max_tokens_bucket{engine="0",le="5000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 358.0
+vllm:request_params_max_tokens_bucket{engine="0",le="10000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 358.0
+vllm:request_params_max_tokens_bucket{engine="0",le="20000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_bucket{engine="0",le="50000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_bucket{engine="0",le="100000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_bucket{engine="0",le="200000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_params_max_tokens_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 2.1693712e+07
+# HELP vllm:request_params_max_tokens_created Histogram of the max_tokens request parameter.
+# TYPE vllm:request_params_max_tokens_created gauge
+vllm:request_params_max_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799429893e+09
+# HELP vllm:time_to_first_token_seconds Histogram of time to first token in seconds.
+# TYPE vllm:time_to_first_token_seconds histogram
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.001",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.005",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.01",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.02",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.04",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.06",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.08",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.1",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 29.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.25",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 210.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1520.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="0.75",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1642.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1643.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1652.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1656.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="7.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1673.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="80.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="160.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="640.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="2560.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:time_to_first_token_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 806.9828081130981
+# HELP vllm:time_to_first_token_seconds_created Histogram of time to first token in seconds.
+# TYPE vllm:time_to_first_token_seconds_created gauge
+vllm:time_to_first_token_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799460669e+09
+# HELP vllm:inter_token_latency_seconds Histogram of inter-token latency in seconds.
+# TYPE vllm:inter_token_latency_seconds histogram
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.01",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.025",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.05",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 26.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.075",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 19513.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.1",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 23872.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.15",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 208762.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.2",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 210586.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217793.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.4",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217794.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217795.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="0.75",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217795.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217810.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="7.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="80.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 217852.0
+vllm:inter_token_latency_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 24484.250300354208
+# HELP vllm:inter_token_latency_seconds_created Histogram of inter-token latency in seconds.
+# TYPE vllm:inter_token_latency_seconds_created gauge
+vllm:inter_token_latency_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799498453e+09
+# HELP vllm:request_time_per_output_token_seconds Histogram of time_per_output_token_seconds per request.
+# TYPE vllm:request_time_per_output_token_seconds histogram
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.01",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 32.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.025",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 176.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.05",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.075",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1665.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.1",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1667.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.15",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1668.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.2",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1672.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.4",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1676.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="0.75",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="7.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="80.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_time_per_output_token_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 60.28303999540052
+# HELP vllm:request_time_per_output_token_seconds_created Histogram of time_per_output_token_seconds per request.
+# TYPE vllm:request_time_per_output_token_seconds_created gauge
+vllm:request_time_per_output_token_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799520447e+09
+# HELP vllm:e2e_request_latency_seconds Histogram of e2e request latency in seconds.
+# TYPE vllm:e2e_request_latency_seconds histogram
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 3.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 26.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.8",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 34.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 40.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="1.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 55.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 61.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 88.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 391.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1071.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="15.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1371.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1484.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="30.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1563.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1594.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1610.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="60.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1621.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="120.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1650.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="240.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1664.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="480.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="960.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="1920.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="7680.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:e2e_request_latency_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:e2e_request_latency_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:e2e_request_latency_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 25290.884417295456
+# HELP vllm:e2e_request_latency_seconds_created Histogram of e2e request latency in seconds.
+# TYPE vllm:e2e_request_latency_seconds_created gauge
+vllm:e2e_request_latency_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799547098e+09
+# HELP vllm:request_queue_time_seconds Histogram of time spent in WAITING phase for request.
+# TYPE vllm:request_queue_time_seconds histogram
+vllm:request_queue_time_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1673.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1673.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="0.8",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1673.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="1.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1674.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1676.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="15.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="30.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="60.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="120.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="240.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="480.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="960.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="1920.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="7680.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_queue_time_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 23.758762902929448
+# HELP vllm:request_queue_time_seconds_created Histogram of time spent in WAITING phase for request.
+# TYPE vllm:request_queue_time_seconds_created gauge
+vllm:request_queue_time_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799577599e+09
+# HELP vllm:request_inference_time_seconds Histogram of time spent in RUNNING phase for request.
+# TYPE vllm:request_inference_time_seconds histogram
+vllm:request_inference_time_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 4.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 29.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="0.8",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 38.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 47.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="1.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 57.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 63.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 92.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 407.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1087.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="15.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1379.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1488.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="30.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1563.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1594.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1610.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="60.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1621.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="120.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1650.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="240.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1664.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="480.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="960.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="1920.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="7680.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_inference_time_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_inference_time_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_inference_time_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 25083.39480201213
+# HELP vllm:request_inference_time_seconds_created Histogram of time spent in RUNNING phase for request.
+# TYPE vllm:request_inference_time_seconds_created gauge
+vllm:request_inference_time_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179960298e+09
+# HELP vllm:request_prefill_time_seconds Histogram of time spent in PREFILL phase for request.
+# TYPE vllm:request_prefill_time_seconds histogram
+vllm:request_prefill_time_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 352.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1639.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="0.8",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1646.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1646.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="1.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1648.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1661.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1661.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1666.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1676.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="15.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="30.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="60.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="120.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="240.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="480.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="960.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="1920.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="7680.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_time_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 599.1445016579237
+# HELP vllm:request_prefill_time_seconds_created Histogram of time spent in PREFILL phase for request.
+# TYPE vllm:request_prefill_time_seconds_created gauge
+vllm:request_prefill_time_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799618907e+09
+# HELP vllm:request_decode_time_seconds Histogram of time spent in DECODE phase for request.
+# TYPE vllm:request_decode_time_seconds histogram
+vllm:request_decode_time_seconds_bucket{engine="0",le="0.3",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 44.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="0.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 47.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="0.8",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 58.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 64.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="1.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 73.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 81.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="2.5",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 113.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 462.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1110.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="15.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1391.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1496.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="30.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1565.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="40.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1594.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1611.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="60.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1621.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="120.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1650.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="240.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1665.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="480.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1675.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="960.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="1920.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="7680.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_decode_time_seconds_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_decode_time_seconds_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_decode_time_seconds_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 24484.250300354208
+# HELP vllm:request_decode_time_seconds_created Histogram of time spent in DECODE phase for request.
+# TYPE vllm:request_decode_time_seconds_created gauge
+vllm:request_decode_time_seconds_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.79077917996228e+09
+# HELP vllm:request_num_preemptions Histogram of the number of times a request was preempted.
+# TYPE vllm:request_num_preemptions histogram
+vllm:request_num_preemptions_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="3.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="4.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_num_preemptions_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+# HELP vllm:request_num_preemptions_created Histogram of the number of times a request was preempted.
+# TYPE vllm:request_num_preemptions_created gauge
+vllm:request_num_preemptions_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.790779179962886e+09
+# HELP vllm:request_prefill_kv_computed_tokens Histogram of new KV tokens computed during prefill (excluding cached tokens).
+# TYPE vllm:request_prefill_kv_computed_tokens histogram
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="1.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="2.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="5.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="10.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="20.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 0.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="50.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 312.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="100.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 320.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="200.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1621.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="500.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1640.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="1000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1660.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="2000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="5000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1663.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="10000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1664.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="20000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1676.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="50000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="100000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="200000.0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_kv_computed_tokens_bucket{engine="0",le="+Inf",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_kv_computed_tokens_count{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1677.0
+vllm:request_prefill_kv_computed_tokens_sum{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 428993.0
+# HELP vllm:request_prefill_kv_computed_tokens_created Histogram of new KV tokens computed during prefill (excluding cached tokens).
+# TYPE vllm:request_prefill_kv_computed_tokens_created gauge
+vllm:request_prefill_kv_computed_tokens_created{engine="0",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4"} 1.7907791799630907e+09
+# HELP vllm:cache_config_info Information of the LLMEngine CacheConfig
+# TYPE vllm:cache_config_info gauge
+vllm:cache_config_info{_block_size_resolved="True",block_size="1600",cache_dtype="auto",enable_mamba_fine_grained_prefix_cache="False",enable_prefix_caching="True",engine="0",gpu_memory_utilization="0.76",is_attention_free="False",kv_cache_dtype_skip_layers="[]",kv_cache_layout="None",kv_cache_max_concurrency="6.059459459459459",kv_cache_memory_bytes="None",kv_cache_size_tokens="1588450",kv_offloading_backend="native",kv_offloading_size="None",kv_sharing_fast_prefill="False",mamba_block_size="16",mamba_cache_dtype="auto",mamba_cache_mode="align",mamba_page_size_padded="None",mamba_ssm_cache_dtype="float32",num_cpu_blocks="None",num_gpu_blocks="1121",num_gpu_blocks_override="None",prefix_cache_retention_interval="0",prefix_caching_hash_algo="sha256",prefix_match_unit="None",replayssm_buffer_len="16",skip_page_size_padded="None",sliding_window="None",use_kda_recoverssm="False",use_replayssm="False",user_specified_block_size="False",user_specified_mamba_block_size="False"} 1.0
+# HELP http_requests_total Total number of requests by method, status and handler.
+# TYPE http_requests_total counter
+http_requests_total{handler="/v1/models",method="GET",status="2xx"} 2533.0
+http_requests_total{handler="/v1/chat/completions",method="POST",status="2xx"} 1677.0
+http_requests_total{handler="/tokenize",method="POST",status="2xx"} 6.0
+# HELP http_requests_created Total number of requests by method, status and handler.
+# TYPE http_requests_created gauge
+http_requests_created{handler="/v1/models",method="GET",status="2xx"} 1.790779196816077e+09
+http_requests_created{handler="/v1/chat/completions",method="POST",status="2xx"} 1.7907792317824335e+09
+http_requests_created{handler="/tokenize",method="POST",status="2xx"} 1.7907830514881928e+09
+# HELP http_request_size_bytes Content length of incoming requests by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_request_size_bytes summary
+http_request_size_bytes_count{handler="/v1/models"} 2533.0
+http_request_size_bytes_sum{handler="/v1/models"} 0.0
+http_request_size_bytes_count{handler="/v1/chat/completions"} 1677.0
+http_request_size_bytes_sum{handler="/v1/chat/completions"} 1.789852e+06
+http_request_size_bytes_count{handler="/tokenize"} 6.0
+http_request_size_bytes_sum{handler="/tokenize"} 314156.0
+# HELP http_request_size_bytes_created Content length of incoming requests by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_request_size_bytes_created gauge
+http_request_size_bytes_created{handler="/v1/models"} 1.7907791968160944e+09
+http_request_size_bytes_created{handler="/v1/chat/completions"} 1.7907792317824535e+09
+http_request_size_bytes_created{handler="/tokenize"} 1.790783051488212e+09
+# HELP http_response_size_bytes Content length of outgoing responses by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_response_size_bytes summary
+http_response_size_bytes_count{handler="/v1/models"} 2533.0
+http_response_size_bytes_sum{handler="/v1/models"} 1.471673e+06
+http_response_size_bytes_count{handler="/v1/chat/completions"} 1677.0
+http_response_size_bytes_sum{handler="/v1/chat/completions"} 5.5355493e+07
+http_response_size_bytes_count{handler="/tokenize"} 6.0
+http_response_size_bytes_sum{handler="/tokenize"} 361837.0
+# HELP http_response_size_bytes_created Content length of outgoing responses by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_response_size_bytes_created gauge
+http_response_size_bytes_created{handler="/v1/models"} 1.7907791968161068e+09
+http_response_size_bytes_created{handler="/v1/chat/completions"} 1.7907792317824745e+09
+http_response_size_bytes_created{handler="/tokenize"} 1.7907830514882271e+09
+# HELP http_request_duration_highr_seconds Latency with many buckets but no API specific labels. Made for more accurate percentile calculations. 
+# TYPE http_request_duration_highr_seconds histogram
+http_request_duration_highr_seconds_bucket{le="0.01"} 2464.0
+http_request_duration_highr_seconds_bucket{le="0.025"} 2537.0
+http_request_duration_highr_seconds_bucket{le="0.05"} 2538.0
+http_request_duration_highr_seconds_bucket{le="0.075"} 2538.0
+http_request_duration_highr_seconds_bucket{le="0.1"} 2539.0
+http_request_duration_highr_seconds_bucket{le="0.25"} 2541.0
+http_request_duration_highr_seconds_bucket{le="0.5"} 2564.0
+http_request_duration_highr_seconds_bucket{le="0.75"} 2571.0
+http_request_duration_highr_seconds_bucket{le="1.0"} 2578.0
+http_request_duration_highr_seconds_bucket{le="1.5"} 2593.0
+http_request_duration_highr_seconds_bucket{le="2.0"} 2600.0
+http_request_duration_highr_seconds_bucket{le="2.5"} 2627.0
+http_request_duration_highr_seconds_bucket{le="3.0"} 2673.0
+http_request_duration_highr_seconds_bucket{le="3.5"} 2769.0
+http_request_duration_highr_seconds_bucket{le="4.0"} 2848.0
+http_request_duration_highr_seconds_bucket{le="4.5"} 2877.0
+http_request_duration_highr_seconds_bucket{le="5.0"} 2927.0
+http_request_duration_highr_seconds_bucket{le="7.5"} 3342.0
+http_request_duration_highr_seconds_bucket{le="10.0"} 3609.0
+http_request_duration_highr_seconds_bucket{le="30.0"} 4102.0
+http_request_duration_highr_seconds_bucket{le="60.0"} 4160.0
+http_request_duration_highr_seconds_bucket{le="+Inf"} 4216.0
+http_request_duration_highr_seconds_count 4216.0
+http_request_duration_highr_seconds_sum 25316.13588037307
+# HELP http_request_duration_highr_seconds_created Latency with many buckets but no API specific labels. Made for more accurate percentile calculations. 
+# TYPE http_request_duration_highr_seconds_created gauge
+http_request_duration_highr_seconds_created 1.7907791843425832e+09
+# HELP http_request_duration_seconds Latency with only few buckets by handler. Made to be only used if aggregation by handler is important. 
+# TYPE http_request_duration_seconds histogram
+http_request_duration_seconds_bucket{handler="/v1/models",le="0.1",method="GET"} 2533.0
+http_request_duration_seconds_bucket{handler="/v1/models",le="0.5",method="GET"} 2533.0
+http_request_duration_seconds_bucket{handler="/v1/models",le="1.0",method="GET"} 2533.0
+http_request_duration_seconds_bucket{handler="/v1/models",le="+Inf",method="GET"} 2533.0
+http_request_duration_seconds_count{handler="/v1/models",method="GET"} 2533.0
+http_request_duration_seconds_sum{handler="/v1/models",method="GET"} 2.1436655313009396
+http_request_duration_seconds_bucket{handler="/v1/chat/completions",le="0.1",method="POST"} 0.0
+http_request_duration_seconds_bucket{handler="/v1/chat/completions",le="0.5",method="POST"} 25.0
+http_request_duration_seconds_bucket{handler="/v1/chat/completions",le="1.0",method="POST"} 39.0
+http_request_duration_seconds_bucket{handler="/v1/chat/completions",le="+Inf",method="POST"} 1677.0
+http_request_duration_seconds_count{handler="/v1/chat/completions",method="POST"} 1677.0
+http_request_duration_seconds_sum{handler="/v1/chat/completions",method="POST"} 25313.84151272883
+http_request_duration_seconds_bucket{handler="/tokenize",le="0.1",method="POST"} 6.0
+http_request_duration_seconds_bucket{handler="/tokenize",le="0.5",method="POST"} 6.0
+http_request_duration_seconds_bucket{handler="/tokenize",le="1.0",method="POST"} 6.0
+http_request_duration_seconds_bucket{handler="/tokenize",le="+Inf",method="POST"} 6.0
+http_request_duration_seconds_count{handler="/tokenize",method="POST"} 6.0
+http_request_duration_seconds_sum{handler="/tokenize",method="POST"} 0.15070211293641478
+# HELP http_request_duration_seconds_created Latency with only few buckets by handler. Made to be only used if aggregation by handler is important. 
+# TYPE http_request_duration_seconds_created gauge
+http_request_duration_seconds_created{handler="/v1/models",method="GET"} 1.7907791968161297e+09
+http_request_duration_seconds_created{handler="/v1/chat/completions",method="POST"} 1.7907792317824984e+09
+http_request_duration_seconds_created{handler="/tokenize",method="POST"} 1.7907830514882631e+09
+# HELP vllm:tool_call_parser_invocations_total Total number of ToolParser invocations. Non-streaming increments once per choice; streaming increments once per delta.
+# TYPE vllm:tool_call_parser_invocations_total counter
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="chat_completions"} 0.0
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="responses"} 0.0
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="other"} 0.0
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="chat_completions"} 9070.0
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="responses"} 0.0
+vllm:tool_call_parser_invocations_total{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="other"} 0.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="chat_completions"} 1.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="responses"} 0.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="other"} 0.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="chat_completions"} 1435.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="responses"} 0.0
+vllm:tool_call_parser_invocations_total{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="other"} 0.0
+# HELP vllm:tool_call_parser_invocations_created Total number of ToolParser invocations. Non-streaming increments once per choice; streaming increments once per delta.
+# TYPE vllm:tool_call_parser_invocations_created gauge
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="chat_completions"} 1.7907791843604417e+09
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="responses"} 1.7907791843612761e+09
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="other"} 1.7907791843626952e+09
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="chat_completions"} 1.790779184363164e+09
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="responses"} 1.790779184363498e+09
+vllm:tool_call_parser_invocations_created{mode="streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="other"} 1.7907791843642187e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="chat_completions"} 1.790779184364668e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="responses"} 1.7907791843646786e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="tool_call",request_type="other"} 1.7907791843648703e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="chat_completions"} 1.7907791843650708e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="responses"} 1.7907791843656676e+09
+vllm:tool_call_parser_invocations_created{mode="non_streaming",model_name="nvidia/Qwen3.8-Flash-Next-NVFP4",outcome="no_tool_call",request_type="other"} 1.7907791843656774e+09

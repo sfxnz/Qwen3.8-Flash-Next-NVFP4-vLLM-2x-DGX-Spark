@@ -1,0 +1,44 @@
+2026-09-30T16:46:50.415Z [k3] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1g --limit 10 --repeats 5
+2026-09-30T16:50:22.927Z [k3] end t1g rc=0
+2026-09-30T16:50:22.930Z [k3] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/t1g-self.json
+2026-09-30T16:50:23.068Z [k3] end t1g-self rc=0
+2026-09-30T16:50:23.070Z [k3] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session7/ref/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/identity.json
+2026-09-30T16:50:23.094Z [k3] end identity rc=0
+2026-09-30T16:50:23.781Z [k3] memcheck ok before t1nll: spark1 avail=16608MB swap_used spark1=8595MB spark2=4751MB
+2026-09-30T16:50:23.783Z [k3] start t1nll: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1 --limit 2
+2026-09-30T16:50:42.148Z [k3] end t1nll rc=0
+2026-09-30T16:50:42.152Z [k3] start t1nll-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session7/ref/t1 /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/t1-vs-base.json
+2026-09-30T16:50:42.242Z [k3] end t1nll-score rc=0
+2026-09-30T16:50:43.199Z [k3] memcheck ok before t1long: spark1 avail=15831MB swap_used spark1=8379MB spark2=4750MB
+2026-09-30T16:50:43.201Z [k3] start t1long: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1-long --domains long_whole --long-whole
+2026-09-30T16:51:36.407Z [k3] end t1long rc=0
+2026-09-30T16:51:36.731Z [k3] start t1long-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session7/ref/t1-long /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t1-long --class B --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/t1long-vs-ref.json
+2026-09-30T16:51:36.911Z [k3] end t1long-score rc=0
+2026-09-30T16:51:37.551Z [k3] memcheck ok before longid: spark1 avail=14313MB swap_used spark1=8350MB spark2=4749MB
+2026-09-30T16:51:37.553Z [k3] start longid-pre: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py longid --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/longid-pre.jsonl
+2026-09-30T16:55:12.713Z [k3] end longid-pre rc=0
+2026-09-30T16:55:12.717Z [k3] start longid-pre-cmp: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py cmp /home/sfxnz/projects/data/qwen38-evals/runs/session7/ref/longid-pre.jsonl /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/longid-pre.jsonl
+2026-09-30T16:55:12.773Z [k3] end longid-pre-cmp rc=0
+2026-09-30T17:02:44.561Z [k3] gate rc=0 preemptions_delta=0
+2026-09-30T17:02:44.563Z [k3] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/diverse.jsonl --label k3
+2026-09-30T17:09:38.280Z [k3] end diverse rc=0
+2026-09-30T17:09:38.972Z [k3] memcheck ok before t3-4096: spark1 avail=14089MB swap_used spark1=8178MB spark2=4742MB
+2026-09-30T17:09:38.973Z [k3] start t3-4096: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t3-4096 --lengths 4096
+2026-09-30T17:09:46.552Z [k3] end t3-4096 rc=0
+2026-09-30T17:09:47.602Z [k3] memcheck ok before t3-16384: spark1 avail=14112MB swap_used spark1=8177MB spark2=4742MB
+2026-09-30T17:09:47.604Z [k3] start t3-16384: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t3-16384 --lengths 16384
+2026-09-30T17:10:08.131Z [k3] end t3-16384 rc=0
+2026-09-30T17:10:09.147Z [k3] memcheck ok before t3-32768: spark1 avail=14104MB swap_used spark1=8177MB spark2=4742MB
+2026-09-30T17:10:09.149Z [k3] start t3-32768: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t3-32768 --lengths 32768
+2026-09-30T17:10:47.857Z [k3] end t3-32768 rc=0
+2026-09-30T17:10:48.198Z [k3] start vision: python3 quality/vision_probes/run.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/vision
+2026-09-30T17:11:02.880Z [k3] end vision rc=0
+2026-09-30T17:11:03.754Z [k3] memcheck ok before soak: spark1 avail=13492MB swap_used spark1=7139MB spark2=4741MB
+2026-09-30T17:11:03.768Z [k3] start soak: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py soak --minutes 20 --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/soak.jsonl --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/k3/soak.json
+2026-09-30T17:32:47.881Z [k3] end soak rc=0
+2026-09-30T17:32:47.909Z [k3] soak preemptions_delta=0 spark1 min_avail_mb=13087 max_swap_used_mb=7139 | spark2 min_avail_mb=18043 max_swap_used_mb=4741
+2026-09-30T17:32:48.577Z [k3] memcheck ok before longid: spark1 avail=13957MB swap_used spark1=7037MB spark2=4727MB
+2026-09-30T17:32:48.579Z [k3] start longid-post: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py longid --out /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/longid-post.jsonl
+2026-09-30T17:36:28.677Z [k3] end longid-post rc=0
+2026-09-30T17:36:28.680Z [k3] start longid-post-cmp: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py cmp /home/sfxnz/projects/data/qwen38-evals/runs/session7/ref/longid-pre.jsonl /home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/longid-post.jsonl
+2026-09-30T17:36:28.720Z [k3] end longid-post-cmp rc=0

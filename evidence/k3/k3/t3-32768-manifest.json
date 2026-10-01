@@ -1,0 +1,72 @@
+{
+ "tool": "t3_needles",
+ "utc": "20260930T171009Z",
+ "argv": [
+  "quality/t3_needles.py",
+  "--url",
+  "http://127.0.0.1:8000/v1/chat/completions",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t3-32768",
+  "--lengths",
+  "32768"
+ ],
+ "args": {
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "model": null,
+  "out": "/home/sfxnz/projects/data/qwen38-evals/runs/session7/k3/t3-32768",
+  "lengths": "32768",
+  "with_250k": false,
+  "depths": "0.1,0.5,0.9"
+ },
+ "git": {
+  "rev": "da191ff44e533aca9649d3066f6057a87ad7f587",
+  "branch": "opt/plan-extras",
+  "dirty": false
+ },
+ "host": "spark1",
+ "server": "http://127.0.0.1:8000",
+ "models": {
+  "object": "list",
+  "data": [
+   {
+    "id": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+    "object": "model",
+    "created": 1790788209,
+    "owned_by": "vllm",
+    "root": "/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+     {
+      "id": "modelperm-b52339ad2a01a8f1",
+      "object": "model_permission",
+      "created": 1790788209,
+      "allow_create_engine": false,
+      "allow_sampling": true,
+      "allow_logprobs": true,
+      "allow_search_indices": false,
+      "allow_view": true,
+      "allow_fine_tuning": false,
+      "organization": "*",
+      "group": null,
+      "is_blocking": false
+     }
+    ]
+   }
+  ]
+ },
+ "sha256": {
+  "quality/collect_t1.py": "ed9f125e1ee8efdadfeab74fe936fc4c6fc3181244b11ecac67ed2f88838a6f7",
+  "quality/collect_t1d.py": "ff186b3a61f1f6b060979137166405e9b6b587d3bd87d88ebfdc4df4adad233a",
+  "quality/collect_t1g.py": "f36265f5dcf7e571debc35094aa3b4d85f1994778a0f1d7a10a72c00a62ef1ad",
+  "quality/data/build_t1_corpus.py": "ccd681be0a9df0a861a920059d79ab5cf5c4de37298521c78a692eb51c239d60",
+  "quality/ifeval.py": "b68f7bb53858c2bebcc0738e01b3213f675ea96f9b82dd0773f544e8cb8b9afb",
+  "quality/qlib.py": "7b5faf95968295cc5e4d0c42b9b78264643f76cc9e2ffcef58cf6130b4eb243f",
+  "quality/score.py": "809a7a60d9dc8fcd5e062c074c93b775d0da7ccace42e245f9396420c1e90bac",
+  "quality/t2.py": "2d95d9f87118bcbf16726db365bfa97ca8b0860c814d4f0fd2dd26f6d6f397dd",
+  "quality/t3_needles.py": "5a9eb792276f24fba5b2fc12f51449e31d88afc91b48d55bf749322a153436d3",
+  "quality/t4_gsm8k_full.py": "db76964350a2779ee644d1da563affef1d8e67999320c63a3391673f722f4371",
+  "quality/vision_probes/probes.py": "b2eb1e893ec0313ee0a6eb9c93c02d4d14dd14e15869c2b16bda280efcd4eff3",
+  "quality/vision_probes/run.py": "7fc5697b1a1b83b4a6938534d7f65b09c864327a8f992f6e14f7f174ef1bc7f4"
+ }
+}

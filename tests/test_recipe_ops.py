@@ -289,6 +289,17 @@ class RecipeOpsTests(unittest.TestCase):
         proc = _run_sh(MAX_NUM_SEQS="16")
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("exceeds 8", proc.stderr)
+        self.assertIn("THROUGHPUT_PROFILE=1", proc.stderr)
+
+    def test_throughput_profile_serves_16_seqs(self) -> None:
+        proc = _run_sh(THROUGHPUT_PROFILE="1")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("seqs=16", proc.stdout)
+
+    def test_throughput_profile_refuses_above_16(self) -> None:
+        proc = _run_sh(THROUGHPUT_PROFILE="1", MAX_NUM_SEQS="24")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("exceeds 16", proc.stderr)
 
     def test_validate_only_refuses_window_above_1m(self) -> None:
         proc = _run_sh(MAX_MODEL_LEN="2097152")
@@ -483,7 +494,7 @@ class OverlayTests(unittest.TestCase):
         run = _read("run.sh")
         m = re.search(r'^OVERLAYS_V030="\$\{OVERLAYS_V030:-(.*)\}"$', run, re.M)
         self.assertEqual(m.group(1).split(), list(V030_OVERLAYS))
-        proc = _run_sh()
+        proc = _run_sh(GDN_LAZY="0")  # K3 (GDN_LAZY=1, the default) swaps gdn_attn.py: tests/test_gdn_lazy.py
         self.assertEqual(proc.returncode, 0, proc.stderr)
         for rel, target in V030_OVERLAYS.items():
             self.assertEqual(_header(_read(rel))["base_image_digest"], V030_IMAGE.rsplit("@", 1)[1], rel)

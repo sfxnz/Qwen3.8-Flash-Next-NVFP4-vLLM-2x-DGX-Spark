@@ -1,0 +1,18 @@
+1:WARNING 09-30 16:34:57 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_DRAFT_HEAD_FP8
+2:WARNING 09-30 16:34:57 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_GDN_LAZY
+38:(Worker pid=378) WARNING 09-30 16:36:18 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+45:(Worker_TP1 pid=378) INFO 09-30 16:36:20 [qwen_gdn_linear_attn.py:186] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+46:(Worker_TP1 pid=378) INFO 09-30 16:36:20 [qwen_gdn_linear_attn.py:538] GDN decode kernel: cuda
+47:(Worker_TP1 pid=378) INFO 09-30 16:36:23 [qwen_gdn_linear_attn.py:2943] K3 gdn_lazy self-test passed (3, 'sigmoid', torch.bfloat16, torch.bfloat16): bitwise over 4 steps, W=4, G=3
+48:(Worker_TP1 pid=378) INFO 09-30 16:36:23 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+49:(Worker_TP1 pid=378) INFO 09-30 16:36:24 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+60:(Worker_TP1 pid=378) INFO 09-30 16:42:23 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+61:(Worker_TP1 pid=378) INFO 09-30 16:42:23 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+65:(Worker_TP1 pid=378) INFO 09-30 16:43:57 [mtp.py:782] Draft head (L1b'): 124160 rows on this rank (ids 124160..248319), FP8 marlin, 303.6 MiB; the target keeps its BF16 lm_head for verify.
+83:(Worker_TP1 pid=378) WARNING 09-30 16:44:37 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+86:(Worker_TP1 pid=378) INFO 09-30 16:44:41 [model_runner.py:1066] Graph capturing finished in 5 secs, took 0.11 GiB
+87:(Worker_TP1 pid=378) INFO 09-30 16:44:42 [gpu_worker.py:640] Available KV cache memory: 23.66 GiB
+88:(Worker_TP1 pid=378) INFO 09-30 16:44:42 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7588 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7612. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+97:(Worker_TP1 pid=378) INFO 09-30 16:45:02 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+143:(Worker_TP1 pid=378) INFO 09-30 16:45:38 [qwen_gdn_linear_attn.py:2972] K3 gdn_lazy dispatch: ACTIVE (key (3, 'sigmoid', torch.bfloat16, torch.bfloat16), tested ["(3, 'sigmoid', torch.bfloat16, torch.bfloat16)"])
+145:(Worker_TP1 pid=378) INFO 09-30 16:45:58 [model_runner.py:1066] Graph capturing finished in 9 secs, took 0.33 GiB

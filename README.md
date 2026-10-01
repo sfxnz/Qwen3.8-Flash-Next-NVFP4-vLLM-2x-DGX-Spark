@@ -27,7 +27,7 @@ Conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 
 1. Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in every session-3 and session-4 frozen run: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base.
 <!-- END generated measured -->
 
-Native `max_position_embeddings` is 262144. This recipe serves that window. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
+Native `max_position_embeddings` is 262144. This recipe serves that window. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. The opt-in `THROUGHPUT_PROFILE=1` serves 16 (occupancy row in `evidence/extras/SUMMARY.md`); above 16 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
 
 ## Requirements
 
@@ -126,7 +126,9 @@ Stop both ranks from the head:
 | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
 | Speculative | MTP-3 (`SPEC=mtp`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it) |
 | Draft head | `DRAFT_LOCAL_ARGMAX=1` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8=1` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB=none` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG=1` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2) |
-| lab-fp8-dense (opt-in) | `FP8_DENSE=none`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision). Not the default. |
+| lab-fp8-dense (opt-in) | `FP8_DENSE=none`. `per_block` mounts `docker/v030/modelopt.py` and serves the 99 dense linears in online FP8 (Marlin W8A16): prose c1 57.1 tok/s, structured c1 84.2, −1.28 GiB/rank. It fails T1-B top-1 (94.3%, KL 0.032) and passes T1-D, paired T2, T3 to 64k and V (evidence/k-sweep-precision), and T4 full GSM8K thinking on: 97.65% vs 97.80%, McNemar p 0.75 (evidence/extras). Not the default. |
+| throughput (opt-in) | `THROUGHPUT_PROFILE=0`. `1` serves `--max-num-seqs 16` (X10): diverse aggregate at 16 clients 235 tok/s prose / 255 structured against 160 / 190 at c=8 on the default (+47% / +34%), 0 preemptions, T0 incl. N=16 bursts clean, c1/c8 ruler within 1.3%, spark1 ≥ 15 GiB available under load (evidence/extras). Not the default. |
+| GDN decode (K3) | `GDN_LAZY=1`. `1` (v0.30 digest) serves the MTP verify step's GDN state with a lazy commit: one fp32 state write per head instead of one per verify token (L2 writes 6.3 → 1.7 MB per layer per request). Bit-exact vs the stock CUDA kernel (load-time self-test on both ranks, fail closed; greedy output, T1 NLL and 4096-token generations across 1600-token blocks identical). Ruler c8 −7%, c1 flat (evidence/k3). `0` = stock kernel. |
 | Overlays | `OVERLAYS=auto` → v0.30: `docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py`; pin rollback: `docker/ple_layer.py docker/modelopt.py docker/ple_ops.py` (R11 headers, see `docker/OVERLAYS.md`) |
 | v0.30 envs | `VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0` on both ranks when IMAGE is the v0.30 digest (F33: offload pins 32 GiB of host memory per node) |
 | Scheduling | `--async-scheduling` (`ASYNC_SCHEDULING=1`); `--per-request-spec-decode-metrics` is not passed (costs ~1 ms/step) |
@@ -149,7 +151,7 @@ MTP draft experts are FP8_BLOCK_SCALES. The pin refines their 128x128 blocks to 
 
 - non-decimal or zero-padded integers (`MAX_NUM_SEQS=010` would be octal 8 to bash and 10 to vLLM), non-JSON `SPEC_CONFIG` / `COMPILATION_CONFIG`, an `IMAGE` without a digest
 - an overlay that is missing, has no R11 header, was generated for another digest, or is a pin-only overlay (by content sha) on a non-pin image; on the pin, a missing `modelopt.py` or `ops/ple.py` overlay (`DIAGNOSTIC=1` overrides)
-- a window above 1048576, `MAX_NUM_SEQS` above 8, compile `mode` other than 0 on the pin (Inductor copies the PLE table; vLLM #55272), and a changed `MAX_NUM_BATCHED_TOKENS`, any `LONG_PREFILL_TOKEN_THRESHOLD` other than `none`, or `indexer_kv_dtype` with `VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=none` (`FORCE_UNSAFE_CTX=1` overrides)
+- a window above 1048576, `MAX_NUM_SEQS` above 8 without `THROUGHPUT_PROFILE=1` or above 16 with it, compile `mode` other than 0 on the pin (Inductor copies the PLE table; vLLM #55272), and a changed `MAX_NUM_BATCHED_TOKENS`, any `LONG_PREFILL_TOKEN_THRESHOLD` other than `none`, or `indexer_kv_dtype` with `VLLM_SPARSE_INDEXER_MAX_LOGITS_MB=none` (`FORCE_UNSAFE_CTX=1` overrides)
 - a window above 262144 without `VLLM_ALLOW_LONG_MAX_MODEL_LEN=1`
 - `EXTRA_ARGS` that re-sets a flag `run.sh` builds and guards (`--compilation-config`/`-cc`/`-O`, `--speculative-config`, `--moe-backend`, `--max-num-batched-tokens`, `--max-num-seqs`, `--max-model-len`, `--enforce-eager`); use the matching variable
 - `MOE_BACKEND` other than `auto` on the pin, and `b12x` / `flashinfer_b12x` anywhere (`FORCE_UNSAFE_MOE=1` overrides)

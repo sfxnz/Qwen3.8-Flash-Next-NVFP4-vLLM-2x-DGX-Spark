@@ -1,0 +1,15 @@
+1:WARNING 09-30 12:58:17 [envs.py:2248] Unknown vLLM environment variable detected: VLLM_QWEN38_DRAFT_HEAD_FP8
+23:INFO 09-30 12:58:32 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=4832.
+28:WARNING 09-30 12:58:32 [vllm.py:2135] max_num_scheduled_tokens is set to 4832 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+45:(Worker_TP1 pid=379) INFO 09-30 12:59:39 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+47:(Worker_TP1 pid=379) INFO 09-30 12:59:39 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+48:(Worker_TP1 pid=379) INFO 09-30 12:59:40 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+58:(Worker_TP1 pid=379) WARNING 09-30 13:04:48 [vllm.py:2135] max_num_scheduled_tokens is set to 4832 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+60:(Worker_TP1 pid=379) INFO 09-30 13:04:52 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+61:(Worker_TP1 pid=379) INFO 09-30 13:04:52 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+65:(Worker_TP1 pid=379) INFO 09-30 13:07:38 [mtp.py:782] Draft head (L1b'): 124160 rows on this rank (ids 124160..248319), FP8 marlin, 303.6 MiB; the target keeps its BF16 lm_head for verify.
+83:(Worker_TP1 pid=379) WARNING 09-30 13:08:16 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+86:(Worker_TP1 pid=379) INFO 09-30 13:08:21 [model_runner.py:1066] Graph capturing finished in 5 secs, took 0.18 GiB
+87:(Worker_TP1 pid=379) INFO 09-30 13:08:21 [gpu_worker.py:640] Available KV cache memory: 25.11 GiB
+88:(Worker_TP1 pid=379) INFO 09-30 13:08:21 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7583 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7617. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+144:(Worker_TP1 pid=379) INFO 09-30 13:09:05 [model_runner.py:1066] Graph capturing finished in 1 secs, took 0.30 GiB

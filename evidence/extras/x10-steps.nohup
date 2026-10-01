@@ -1,0 +1,5 @@
+2026-09-30T12:49:07.113Z [x10-seqs16] gate rc=0 preemptions_delta=0
+2026-09-30T12:49:07.815Z [x10-seqs16] memcheck ok before diverse16: spark1 avail=15327MB swap_used spark1=8393MB spark2=4688MB
+2026-09-30T12:49:07.826Z [x10-seqs16] start diverse16: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 16 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/extras/x10-seqs16/diverse16.jsonl --label x10-seqs16
+2026-09-30T12:57:06.098Z [x10-seqs16] end diverse16 rc=0
+2026-09-30T12:57:06.113Z [x10-seqs16] diverse16 preemptions_delta=0 spark1 min_avail_mb=15011 max_swap_used_mb=8393 | spark2 min_avail_mb=18874 max_swap_used_mb=4687

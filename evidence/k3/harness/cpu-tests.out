@@ -1,0 +1,8 @@
+/usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+WARNING 09-30 16:34:14 [interface.py:368] Failed to import from vllm._C: ModuleNotFoundError("No module named 'vllm._C'")
+.
+----------------------------------------------------------------------
+Ran 17 tests in 153.986s
+
+OK

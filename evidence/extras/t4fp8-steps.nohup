@@ -1,0 +1,4 @@
+2026-09-30T13:32:32.486Z [t4-fp8-dense] memcheck ok before t4: spark1 avail=16392MB swap_used spark1=8780MB spark2=4657MB
+2026-09-30T13:32:32.489Z [t4-fp8-dense] start t4: python3 quality/t4_gsm8k_full.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session6/t4-fp8-dense/t4 --workers 8 --limit 0
+2026-09-30T14:27:54.549Z [t4-fp8-dense] end t4 rc=0
+2026-09-30T14:27:54.555Z [t4-fp8-dense] t4 spark1 min_avail_mb=15724 max_swap_used_mb=8780 | spark2 min_avail_mb=19201 max_swap_used_mb=4656

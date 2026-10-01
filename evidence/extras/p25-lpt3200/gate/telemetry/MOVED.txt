@@ -1,0 +1,3 @@
+Moved to ~/projects/data/qwen38-evals/runs/session6/p25-lpt3200/telemetry/
+abb573825127e93cf6c5a67d6ec66d48b4d604a5dad4879b451d1b31980ed5db  spark1.csv
+b22df128d41afcf25fc867a6d56c8305f010b4a9adb77c45cfaca718cbdb9c40  spark2.csv

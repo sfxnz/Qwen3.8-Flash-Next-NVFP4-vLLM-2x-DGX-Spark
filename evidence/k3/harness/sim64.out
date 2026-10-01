@@ -1,0 +1,12 @@
+{
+ "steps": 400,
+ "crossings": 117,
+ "checkpoints": 99,
+ "mixed": 172,
+ "reused": 128,
+ "lazy_rows": 1615,
+ "spec_rows": 1824,
+ "finished": 130,
+ "materialized_rows": 643,
+ "state_blocks_checked": 235
+}

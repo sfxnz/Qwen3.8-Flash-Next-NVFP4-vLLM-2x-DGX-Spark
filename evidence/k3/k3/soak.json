@@ -1,0 +1,14 @@
+{
+ "minutes": 20.0,
+ "wall_s": 1304.1,
+ "requests": 106,
+ "by_kind": {
+  "long": 58,
+  "short": 43,
+  "prefill32k": 5
+ },
+ "long_tokens": 237568,
+ "long_distinct4_min": 0.5722,
+ "errors": 0,
+ "error_rows": []
+}

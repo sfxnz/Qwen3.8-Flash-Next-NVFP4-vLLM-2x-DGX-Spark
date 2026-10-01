@@ -1,0 +1,136 @@
+==PROF== Connected to process 66 (/usr/bin/python3.12)
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+expect per layer per request: stock ~1.6 MB read + ~6.3 MB write; lazy ~1.6 MB read + ~1.6 MB write (+ <= 66 KB ring)
+==PROF== Disconnected from process 66
+[66] python3.12@127.0.0.1
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        23.10
+    ---------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 13, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        36.70
+    ---------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        34.91
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        35.71
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 21, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        53.06
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us        58.88
+    ---------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       280.03
+    ---------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 25, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       289.89
+    ---------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       298.72
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       137.12
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 29, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       142.72
+    ---------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    dram__bytes_read.sum                    (!) n/a
+    dram__bytes_write.sum                   (!) n/a
+    gpu__time_duration.sum          us       148.45
+    ---------------------- ----------- ------------
+

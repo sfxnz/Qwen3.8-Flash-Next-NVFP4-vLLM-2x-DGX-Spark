@@ -1,0 +1,4 @@
+2026-09-30T11:32:44.275Z [ref] memcheck ok before t4: spark1 avail=14923MB swap_used spark1=8394MB spark2=4252MB
+2026-09-30T11:32:44.278Z [ref] start t4: python3 quality/t4_gsm8k_full.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session6/ref/t4 --workers 8 --limit 0
+2026-09-30T12:29:27.515Z [ref] end t4 rc=0
+2026-09-30T12:29:27.521Z [ref] t4 spark1 min_avail_mb=13129 max_swap_used_mb=8394 | spark2 min_avail_mb=17763 max_swap_used_mb=4252

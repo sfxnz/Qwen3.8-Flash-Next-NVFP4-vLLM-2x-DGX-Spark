@@ -1,0 +1,184 @@
+==PROF== Connected to process 67 (/usr/bin/python3.12)
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "gdn_decode_post_conv_mtp_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+==PROF== Profiling "_gdl_decode_kernel": 0%....50%....100% - 1 pass
+expect per layer per request: stock ~1.6 MB read + ~6.3 MB write; lazy ~1.6 MB read + ~1.6 MB write (+ <= 66 KB ring)
+==PROF== Disconnected from process 67
+[67] python3.12@127.0.0.1
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        35.74
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         1.86
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         6.32
+    lts__t_sectors_op_read.sum                        sector        57231
+    lts__t_sectors_op_write.sum                       sector       198080
+    -------------------------------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 13, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        33.22
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         1.86
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         6.32
+    lts__t_sectors_op_read.sum                        sector        57011
+    lts__t_sectors_op_write.sum                       sector       197708
+    -------------------------------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        32.42
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         1.86
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         6.32
+    lts__t_sectors_op_read.sum                        sector        56878
+    lts__t_sectors_op_write.sum                       sector       197810
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        47.55
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         4.17
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         1.68
+    lts__t_sectors_op_read.sum                        sector        58218
+    lts__t_sectors_op_write.sum                       sector        53057
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 21, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        60.48
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         4.80
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         1.68
+    lts__t_sectors_op_read.sum                        sector        58982
+    lts__t_sectors_op_write.sum                       sector        53188
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (1, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us        53.09
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte         4.80
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte         1.68
+    lts__t_sectors_op_read.sum                        sector        59074
+    lts__t_sectors_op_write.sum                       sector        52949
+    -------------------------------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       299.39
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        14.84
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        50.53
+    lts__t_sectors_op_read.sum                        sector       427880
+    lts__t_sectors_op_write.sum                       sector      1580203
+    -------------------------------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 25, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       299.90
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        14.84
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        50.53
+    lts__t_sectors_op_read.sum                        sector       427858
+    lts__t_sectors_op_write.sum                       sector      1580306
+    -------------------------------------------- ----------- ------------
+
+  void <unnamed>::gdn_decode_post_conv_mtp_kernel<float, 3, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, const __nv_bfloat16 *, const float *, const void *, const int *, const int *, const int *, T1 *, const __nv_bfloat16 *, const void *, __nv_bfloat16 *, int, int, int, int, bool, float, float, <unnamed>::GdnDecodeStrides) (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       312.67
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        14.84
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        50.53
+    lts__t_sectors_op_read.sum                        sector       427941
+    lts__t_sectors_op_write.sum                       sector      1580377
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       123.30
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        33.33
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        13.42
+    lts__t_sectors_op_read.sum                        sector       428016
+    lts__t_sectors_op_write.sum                       sector       420108
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 29, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       142.62
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        38.44
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        13.42
+    lts__t_sectors_op_read.sum                        sector       439037
+    lts__t_sectors_op_write.sum                       sector       420628
+    -------------------------------------------- ----------- ------------
+
+  _gdl_decode_kernel (8, 24, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 12.1
+    Section: Command line profiler metrics
+    -------------------------------------------- ----------- ------------
+    Metric Name                                  Metric Unit Metric Value
+    -------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                          (!) n/a
+    dram__bytes_write.sum                                         (!) n/a
+    gpu__time_duration.sum                                us       145.34
+    l1tex__t_bytes_pipe_lsu_mem_global_op_ld.sum       Mbyte        38.44
+    l1tex__t_bytes_pipe_lsu_mem_global_op_st.sum       Mbyte        13.42
+    lts__t_sectors_op_read.sum                        sector       439433
+    lts__t_sectors_op_write.sum                       sector       420372
+    -------------------------------------------- ----------- ------------
+
