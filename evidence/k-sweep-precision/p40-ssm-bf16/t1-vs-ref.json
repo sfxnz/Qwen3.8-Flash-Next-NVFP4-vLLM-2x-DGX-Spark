@@ -1,0 +1,207 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p40-ssm-bf16/t1",
+ "gate": "T1-B",
+ "verdict": "PASS",
+ "pass": true,
+ "checks": {
+  "top1": true,
+  "kl": true,
+  "domains": true
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.002,
+  "domain_disagree": 0.0015,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 312326,
+  "top1_agree": 1.0,
+  "kl": 0.0,
+  "kl_p99": 0.0,
+  "nll_ref": 0.774411,
+  "nll_delta": 0.0,
+  "flips": {
+   "lost": 0,
+   "gained": 0,
+   "flip_rate": 0.0,
+   "p": 1.0
+  }
+ },
+ "by_domain": {
+  "code": {
+   "tokens": 39906,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.336339,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "de": {
+   "tokens": 5622,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.1721,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "es": {
+   "tokens": 5667,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.427991,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "image": {
+   "tokens": 351,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.368122,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "ja": {
+   "tokens": 1658,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.612094,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "json": {
+   "tokens": 12407,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.699293,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "long": {
+   "tokens": 122247,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.649245,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "math": {
+   "tokens": 26276,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.637674,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "multi": {
+   "tokens": 16875,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.872152,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "prose": {
+   "tokens": 70470,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.800503,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "tools": {
+   "tokens": 2286,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.821266,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  },
+  "zh": {
+   "tokens": 8561,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 1.860801,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  }
+ },
+ "bad_domains": [],
+ "missing_items": [],
+ "mismatched_items": []
+}

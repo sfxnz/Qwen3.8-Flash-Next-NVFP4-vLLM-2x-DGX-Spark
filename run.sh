@@ -60,6 +60,7 @@ DRAFT_MOE_CONFIG="${DRAFT_MOE_CONFIG:-1}"
 DRAFT_LOCAL_ARGMAX="${DRAFT_LOCAL_ARGMAX:-1}"
 DRAFT_HEAD_FP8="${DRAFT_HEAD_FP8:-1}"
 DRAFT_VOCAB="${DRAFT_VOCAB:-none}"
+FP8_DENSE="${FP8_DENSE:-none}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 EXTRA_ENV="${EXTRA_ENV:-}"
 # END generated
@@ -96,6 +97,7 @@ for name in FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER DIAGNOSTIC BENCH_ONL
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
+[[ "$FP8_DENSE" == none || "$FP8_DENSE" == per_block ]] || die "FP8_DENSE=$FP8_DENSE must be none or per_block (lab-fp8-dense profile, docker/v030/FP8_DENSE.md)."
 [[ "$DRAFT_VOCAB" == none || "$DRAFT_VOCAB" =~ ^[A-Za-z0-9_.-]+\.json$ ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB must be none or a .json file name under \$HF_CACHE/qwen38-draft-vocab/."
 [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
 [[ "$MM_PROCESSOR_CACHE_GB" =~ ^(0|[1-9][0-9]*)(\.[0-9]+)?$ ]] || die "MM_PROCESSOR_CACHE_GB=$MM_PROCESSOR_CACHE_GB is not a non-negative decimal."
@@ -207,6 +209,16 @@ case "$OVERLAYS" in
   none) OVERLAYS="" ;;
 esac
 
+# --- lab-fp8-dense profile (plan P4-1, R8; opt-in, not the default: fails T1-B top-1, passes T1-D/T2/T3/V).
+FP8_DENSE_OVERLAY=docker/v030/modelopt.py
+if [[ "$FP8_DENSE" != none ]]; then
+  [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] || die "FP8_DENSE=$FP8_DENSE needs the v0.30 digest ($FP8_DENSE_OVERLAY is generated against it)."
+  # The head adds the overlay; the worker receives the head's resolved list.
+  if [[ "${ROLE:-}" != worker && " $OVERLAYS " != *" $FP8_DENSE_OVERLAY "* ]]; then
+    OVERLAYS="$OVERLAYS $FP8_DENSE_OVERLAY"
+  fi
+fi
+
 OVERLAY_FILES=()
 OVERLAY_TARGETS=()
 for f in $OVERLAYS; do
@@ -263,6 +275,11 @@ LIMIT_MM_PER_PROMPT='{"image":'"$MM_LIMIT_IMAGE"',"video":'"$MM_LIMIT_VIDEO"'}'
 # pins 32 GiB of host memory per node for the PLE table (F33); breakable CUDA graphs stay off (D4).
 BASE_ENV=()
 [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] && BASE_ENV=(VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0)
+FP8_DENSE_ARGS=()
+if [[ "$FP8_DENSE" == per_block ]]; then
+  BASE_ENV+=(VLLM_QWEN38_FP8_DENSE=per_block)
+  FP8_DENSE_ARGS=(--kernel-config '{"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}')
+fi
 
 # --- L1a / L1b' / L1b draft head (docker/v030/MTP_HEAD.md). They take effect only on the v0.30 digest with
 # the docker/v030/mtp.py overlay mounted (it defines get_top_tokens and reads the two envs); otherwise
@@ -369,6 +386,7 @@ if [[ "${VALIDATE_ONLY:-0}" == "1" ]]; then
   [[ ${#BASE_ENV[@]} -eq 0 ]] || printf '==> base-env %s\n' "${BASE_ENV[*]}"
   printf '==> chat-template %s\n' "${CHAT_TEMPLATE_FILE:-none}"
   printf '==> long-prefill-token-threshold=%s\n' "$LONG_PREFILL_TOKEN_THRESHOLD"
+  printf '==> fp8-dense=%s %s\n' "$FP8_DENSE" "${FP8_DENSE_ARGS[*]}"
   printf '==> async-scheduling=%s mm-processor-kwargs=%s limit-mm-per-prompt=%s mm-processor-cache-gb=%s\n' \
     "$ASYNC_SCHEDULING" "$MM_PROCESSOR_KWARGS" "$LIMIT_MM_PER_PROMPT" "$MM_PROCESSOR_CACHE_GB"
   printf '==> spec-config %s\n' "${SPEC_CONFIG:-none}"
@@ -620,6 +638,7 @@ start_local() {
   if [[ -n "$MAX_NUM_BATCHED_TOKENS" ]]; then
     batched_args+=(--max-num-batched-tokens "$MAX_NUM_BATCHED_TOKENS")
   fi
+  batched_args+=("${FP8_DENSE_ARGS[@]}")
   if [[ "$LONG_PREFILL_TOKEN_THRESHOLD" != none ]]; then
     batched_args+=(--long-prefill-token-threshold "$LONG_PREFILL_TOKEN_THRESHOLD")
   fi
@@ -692,7 +711,7 @@ FORWARD_VARS=(
   MOE_BACKEND SNAPSHOT_SHA HF_CACHE MODEL EXTRA_ARGS EXTRA_ENV
   OOM_SCORE_ADJ MEMGUARD MEMGUARD_MIN_AVAIL_MB MEMGUARD_MIN_SWAP_FREE_MB
   LONG_PREFILL_TOKEN_THRESHOLD ASYNC_SCHEDULING MM_PROCESSOR_CACHE_GB MM_MIN_PIXELS MM_MAX_PIXELS MM_LIMIT_IMAGE MM_LIMIT_VIDEO
-  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB
+  DRAFT_MOE_CONFIG DRAFT_LOCAL_ARGMAX DRAFT_HEAD_FP8 DRAFT_VOCAB FP8_DENSE
 )
 
 worker_env() {

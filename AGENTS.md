@@ -46,6 +46,8 @@ spark1 went into a global host OOM with swap thrash during an in-serve torch-pro
 - T1 gates on the determinism base: the same-build floor is exact. Kernel-reorder levers move logits and the model amplifies ulp noise into nats, so class-A gates use NLL delta and paired task accuracy (T2), not a top-1 threshold.
 - On builds without the determinism overlays (the pin, stock v0.30) greedy c=1 repeats diverge and T2 tools lands at 57-58/60 on different items per run. That is non-determinism, not a regression.
 
+- `FP8_DENSE=per_block` is the opt-in `lab-fp8-dense` profile (P4-1): about 13% faster at c=1, but it fails the T1-B top-1 gate while passing T1-D, T2, T3 and V. Never make it the default without owner sign-off and T4 (`evidence/k-sweep-precision/SUMMARY.md`).
+
 ## Refuse-guards (`run.sh`)
 
 All run before `VALIDATE_ONLY=1` exits. Overrides in brackets; no bracket means no override.

@@ -1,0 +1,4 @@
+smoke_thinking exit=0
+smoke_tools exit=0
+smoke_vision exit=0
+smoke_count exit=0

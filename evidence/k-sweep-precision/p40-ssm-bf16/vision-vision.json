@@ -1,0 +1,20 @@
+{
+ "pass": true,
+ "probes_passed": 16,
+ "probes": 16,
+ "failed": [],
+ "pair": true,
+ "straddle": {
+  "text_tokens_before_image": 6728,
+  "image_span": [
+   6728,
+   10824
+  ],
+  "crosses": {
+   "4800": true,
+   "8000": true,
+   "8192": true
+  },
+  "prompt_tokens": 10874
+ }
+}

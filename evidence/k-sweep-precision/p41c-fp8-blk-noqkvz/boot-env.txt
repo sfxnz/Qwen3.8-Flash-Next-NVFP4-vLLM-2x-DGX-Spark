@@ -1,0 +1,18 @@
+overrides: OVERLAYS_V030=docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py docker/v030/modelopt.py EXTRA_ENV=VLLM_QWEN38_FP8_DENSE=per_block VLLM_QWEN38_FP8_DENSE_ALLOW=linear_attn\.out_proj$,self_attn\.qkv_proj$,self_attn\.o_proj$,ple\.kv_proj$ EXTRA_ARGS=--kernel-config={"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}
+20ea4ceb10908bc05bb7030055ade02d37f93f4e
+==> validate-only spec=mtp seqs=8 spec_tokens=3 eager=0 compilation={"mode":0,"cudagraph_mode":"FULL_DECODE_ONLY"} image=vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56 moe=auto ple=0 host=0.0.0.0 diagnostic=0
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/flashinfer_cutlass_moe.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/experts/flashinfer_cutlass_moe.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/gdn_attn.py -> /usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/gdn_attn.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/qsa_indexer.py -> /usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/serving.py -> /usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/chat_completion/serving.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/mtp.py -> /usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/mtp.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/modelopt.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py
+==> base-env VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0 VLLM_QWEN38_DRAFT_HEAD_FP8=1
+==> chat-template /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/chat_template_alias.jinja
+==> long-prefill-token-threshold=4800
+==> async-scheduling=1 mm-processor-kwargs={"images_kwargs":{"min_pixels":65536,"max_pixels":4194304},"videos_kwargs":{"cap_pixels_per_frame":true}} limit-mm-per-prompt={"image":8,"video":1} mm-processor-cache-gb=1
+==> spec-config {"method":"mtp","num_speculative_tokens":3,"moe_backend":"triton","use_local_argmax_reduction":true}
+==> draft-moe-config /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/moe_configs -> /opt/qwen38-moe-configs (VLLM_TUNED_CONFIG_FOLDER)
+==> extra-env VLLM_QWEN38_FP8_DENSE=per_block VLLM_QWEN38_FP8_DENSE_ALLOW=linear_attn\.out_proj$,self_attn\.qkv_proj$,self_attn\.o_proj$,ple\.kv_proj$
+spark1 after stop: avail 119416 MiB, swap used 4404 MiB
+run_rc=0 boot_s=681

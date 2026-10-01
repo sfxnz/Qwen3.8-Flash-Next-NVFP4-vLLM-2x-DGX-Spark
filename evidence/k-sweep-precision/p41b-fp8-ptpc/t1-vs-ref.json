@@ -1,0 +1,214 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1",
+ "gate": "T1-B",
+ "verdict": "FAIL",
+ "pass": false,
+ "checks": {
+  "top1": false,
+  "kl": false,
+  "domains": false
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.07074038,
+  "domain_disagree": 0.119394,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 312326,
+  "top1_agree": 0.940303,
+  "kl": 0.03537019,
+  "kl_p99": 0.519627,
+  "nll_ref": 0.774411,
+  "nll_delta": 0.011238,
+  "flips": {
+   "lost": 5607,
+   "gained": 4907,
+   "flip_rate": 0.033664,
+   "p": 0.0
+  }
+ },
+ "by_domain": {
+  "code": {
+   "tokens": 39906,
+   "top1_agree": 0.972485,
+   "kl": 0.01813362,
+   "kl_p99": 0.335819,
+   "nll_ref": 0.336339,
+   "nll_delta": 0.001541,
+   "flips": {
+    "lost": 348,
+    "gained": 352,
+    "flip_rate": 0.017541,
+    "p": 0.909732
+   }
+  },
+  "de": {
+   "tokens": 5622,
+   "top1_agree": 0.877801,
+   "kl": 0.07912303,
+   "kl_p99": 0.777848,
+   "nll_ref": 1.1721,
+   "nll_delta": 0.007906,
+   "flips": {
+    "lost": 217,
+    "gained": 176,
+    "flip_rate": 0.069904,
+    "p": 0.043482
+   }
+  },
+  "es": {
+   "tokens": 5667,
+   "top1_agree": 0.858302,
+   "kl": 0.07730443,
+   "kl_p99": 0.699639,
+   "nll_ref": 1.427991,
+   "nll_delta": 0.018476,
+   "flips": {
+    "lost": 232,
+    "gained": 194,
+    "flip_rate": 0.075172,
+    "p": 0.072904
+   }
+  },
+  "image": {
+   "tokens": 351,
+   "top1_agree": 0.917379,
+   "kl": 0.07029393,
+   "kl_p99": 0.742495,
+   "nll_ref": 1.368122,
+   "nll_delta": -0.049251,
+   "flips": {
+    "lost": 7,
+    "gained": 12,
+    "flip_rate": 0.054131,
+    "p": 0.359283
+   }
+  },
+  "ja": {
+   "tokens": 1658,
+   "top1_agree": 0.856454,
+   "kl": 0.09349329,
+   "kl_p99": 0.830867,
+   "nll_ref": 1.612094,
+   "nll_delta": 0.020253,
+   "flips": {
+    "lost": 63,
+    "gained": 52,
+    "flip_rate": 0.069361,
+    "p": 0.351125
+   }
+  },
+  "json": {
+   "tokens": 12407,
+   "top1_agree": 0.924801,
+   "kl": 0.00339524,
+   "kl_p99": 0.056678,
+   "nll_ref": 0.699293,
+   "nll_delta": -4e-05,
+   "flips": {
+    "lost": 126,
+    "gained": 114,
+    "flip_rate": 0.019344,
+    "p": 0.477752
+   }
+  },
+  "long": {
+   "tokens": 122247,
+   "top1_agree": 0.949962,
+   "kl": 0.03507889,
+   "kl_p99": 0.545766,
+   "nll_ref": 0.649245,
+   "nll_delta": 0.015249,
+   "flips": {
+    "lost": 2120,
+    "gained": 1751,
+    "flip_rate": 0.031665,
+    "p": 0.0
+   }
+  },
+  "math": {
+   "tokens": 26276,
+   "top1_agree": 0.964873,
+   "kl": 0.01762019,
+   "kl_p99": 0.231843,
+   "nll_ref": 0.637674,
+   "nll_delta": 0.011417,
+   "flips": {
+    "lost": 329,
+    "gained": 268,
+    "flip_rate": 0.02272,
+    "p": 0.013996
+   }
+  },
+  "multi": {
+   "tokens": 16875,
+   "top1_agree": 0.870637,
+   "kl": 0.0543376,
+   "kl_p99": 0.621155,
+   "nll_ref": 1.872152,
+   "nll_delta": 0.009522,
+   "flips": {
+    "lost": 482,
+    "gained": 492,
+    "flip_rate": 0.057719,
+    "p": 0.773074
+   }
+  },
+  "prose": {
+   "tokens": 70470,
+   "top1_agree": 0.937094,
+   "kl": 0.03963836,
+   "kl_p99": 0.559654,
+   "nll_ref": 0.800503,
+   "nll_delta": 0.011493,
+   "flips": {
+    "lost": 1383,
+    "gained": 1224,
+    "flip_rate": 0.036994,
+    "p": 0.001972
+   }
+  },
+  "tools": {
+   "tokens": 2286,
+   "top1_agree": 0.92301,
+   "kl": 0.14263795,
+   "kl_p99": 3.003051,
+   "nll_ref": 0.821266,
+   "nll_delta": -0.004466,
+   "flips": {
+    "lost": 58,
+    "gained": 57,
+    "flip_rate": 0.050306,
+    "p": 1.0
+   }
+  },
+  "zh": {
+   "tokens": 8561,
+   "top1_agree": 0.880271,
+   "kl": 0.05035108,
+   "kl_p99": 0.438973,
+   "nll_ref": 1.860801,
+   "nll_delta": 0.018562,
+   "flips": {
+    "lost": 242,
+    "gained": 215,
+    "flip_rate": 0.053382,
+    "p": 0.223858
+   }
+  }
+ },
+ "bad_domains": [
+  "de",
+  "es",
+  "ja",
+  "multi",
+  "tools",
+  "zh"
+ ],
+ "missing_items": [],
+ "mismatched_items": []
+}

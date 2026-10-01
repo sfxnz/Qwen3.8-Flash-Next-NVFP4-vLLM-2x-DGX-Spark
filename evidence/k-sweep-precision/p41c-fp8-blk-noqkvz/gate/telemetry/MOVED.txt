@@ -1,0 +1,3 @@
+Moved to ~/projects/data/qwen38-evals/runs/session5/p41c-fp8-blk-noqkvz/telemetry/
+6a5b2a52ba04b5c9e33fcb5476b811e7637c16b47e4a242721f46d088a858d49  spark2.csv
+7bc21bed17af31bf3aba3d83480a3973c7fdc1df19c8e867d84e468b521d6cb3  spark1.csv

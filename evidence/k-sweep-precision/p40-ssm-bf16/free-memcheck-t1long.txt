@@ -1,0 +1,16 @@
+== spark1 2026-09-30T05:56:39.318Z
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       107Gi       1.4Gi       2.6Gi        16Gi        13Gi
+Swap:           15Gi       6.7Gi       9.3Gi
+== spark2
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       104Gi       4.3Gi       2.5Gi        16Gi        17Gi
+Swap:           15Gi       4.1Gi        11Gi
+== spark1 2026-09-30T05:56:50.643Z
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       107Gi       1.3Gi       2.6Gi        16Gi        13Gi
+Swap:           15Gi       6.7Gi       9.3Gi
+== spark2
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       104Gi       4.4Gi       2.5Gi        16Gi        17Gi
+Swap:           15Gi       4.1Gi        11Gi

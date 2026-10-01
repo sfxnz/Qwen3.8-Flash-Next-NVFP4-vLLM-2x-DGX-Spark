@@ -1,0 +1,33 @@
+CHECK OK /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/v030/moe_configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+==> role=head host=spark1
+==> Starting worker on spark2 first
+==> role=worker host=spark2
+==> drop_caches: skipped (no passwordless sudo)
+==> Ensuring image vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a (index shards and tokenizer present)
+==> Starting qwen38-flash-next-nvfp4 rank=1 model=/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a ctx=262144 kv=auto spec=mtp moe=auto overlays=5
+12beb1d171f5559371e358e06497cc301808093aa2559858cb99d7e1a782746c
+==> memguard pid=102142 min_avail=2048MB min_swap_free=2048MB log=/tmp/.run-state/memguard.log
+==> Worker rank 1 is up. Head should start next.
+==> Worker container started. Waiting 25s for NCCL listen, then starting head
+==> drop_caches: skipped (no passwordless sudo)
+==> Ensuring image vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
+==> Using pinned snapshot /home/sfxnz/.cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a (index shards and tokenizer present)
+==> Starting qwen38-flash-next-nvfp4 rank=0 model=/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a ctx=262144 kv=auto spec=mtp moe=auto overlays=5
+d89018f0917007ba8cb0e26444b27e22bb4a43ecb4d83955cf6f11c7e5848b3b
+==> memguard pid=1929920 min_avail=2048MB min_swap_free=2048MB log=/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/.run-state/memguard.log
+==> Waiting for http://127.0.0.1:8000/health and /v1/models
+==> still loading… (12×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (24×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (36×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (48×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (60×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (72×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (84×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (96×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (108×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> still loading… (120×5s) health=000 — docker logs -f qwen38-flash-next-nvfp4
+==> Ready → http://0.0.0.0:8000/v1  (context=262144 health=200)
+{"object":"list","data":[{"id":"nvidia/Qwen3.8-Flash-Next-NVFP4","object":"model","created":1790738867,"owned_by":"vllm","root":"/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a","parent":null,"max_model_len":262144,"permission":[{"id":"modelperm-b0befa585cc9157b","object":"model_permission","created":1790738867,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+
+==> Stop with: ./stop.sh

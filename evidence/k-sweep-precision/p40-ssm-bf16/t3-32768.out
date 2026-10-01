@@ -1,0 +1,7 @@
+    32768 @0.1 needle0: found (32226 tok, 11.674 s)
+    32768 @0.1 needle1: found (32225 tok, 0.885 s)
+    32768 @0.5 needle0: found (32568 tok, 11.573 s)
+    32768 @0.5 needle1: found (32568 tok, 0.708 s)
+    32768 @0.9 needle0: found (32085 tok, 10.907 s)
+    32768 @0.9 needle1: found (32086 tok, 0.825 s)
+T3 PASS 6/6 per_length={'32768': '6/6'}

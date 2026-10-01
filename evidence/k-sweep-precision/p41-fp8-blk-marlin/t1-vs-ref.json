@@ -1,0 +1,213 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p41-fp8-blk-marlin/t1",
+ "gate": "T1-B",
+ "verdict": "FAIL",
+ "pass": false,
+ "checks": {
+  "top1": false,
+  "kl": false,
+  "domains": false
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.06461972,
+  "domain_disagree": 0.113824,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 312326,
+  "top1_agree": 0.943088,
+  "kl": 0.03230986,
+  "kl_p99": 0.466727,
+  "nll_ref": 0.774411,
+  "nll_delta": 0.005637,
+  "flips": {
+   "lost": 5226,
+   "gained": 4721,
+   "flip_rate": 0.031848,
+   "p": 0.0
+  }
+ },
+ "by_domain": {
+  "code": {
+   "tokens": 39906,
+   "top1_agree": 0.975517,
+   "kl": 0.0161012,
+   "kl_p99": 0.29319,
+   "nll_ref": 0.336339,
+   "nll_delta": 0.000922,
+   "flips": {
+    "lost": 320,
+    "gained": 315,
+    "flip_rate": 0.015912,
+    "p": 0.873894
+   }
+  },
+  "de": {
+   "tokens": 5622,
+   "top1_agree": 0.881893,
+   "kl": 0.07206849,
+   "kl_p99": 0.782803,
+   "nll_ref": 1.1721,
+   "nll_delta": 0.011692,
+   "flips": {
+    "lost": 216,
+    "gained": 173,
+    "flip_rate": 0.069192,
+    "p": 0.033081
+   }
+  },
+  "es": {
+   "tokens": 5667,
+   "top1_agree": 0.860596,
+   "kl": 0.07417638,
+   "kl_p99": 0.683613,
+   "nll_ref": 1.427991,
+   "nll_delta": 0.008221,
+   "flips": {
+    "lost": 224,
+    "gained": 205,
+    "flip_rate": 0.075701,
+    "p": 0.384844
+   }
+  },
+  "image": {
+   "tokens": 351,
+   "top1_agree": 0.945869,
+   "kl": 0.05665222,
+   "kl_p99": 0.708103,
+   "nll_ref": 1.368122,
+   "nll_delta": -0.065482,
+   "flips": {
+    "lost": 5,
+    "gained": 10,
+    "flip_rate": 0.042735,
+    "p": 0.301758
+   }
+  },
+  "ja": {
+   "tokens": 1658,
+   "top1_agree": 0.853438,
+   "kl": 0.09339655,
+   "kl_p99": 0.908107,
+   "nll_ref": 1.612094,
+   "nll_delta": 0.025804,
+   "flips": {
+    "lost": 69,
+    "gained": 65,
+    "flip_rate": 0.08082,
+    "p": 0.795629
+   }
+  },
+  "json": {
+   "tokens": 12407,
+   "top1_agree": 0.924962,
+   "kl": 0.00336641,
+   "kl_p99": 0.051596,
+   "nll_ref": 0.699293,
+   "nll_delta": -0.001419,
+   "flips": {
+    "lost": 145,
+    "gained": 127,
+    "flip_rate": 0.021923,
+    "p": 0.302637
+   }
+  },
+  "long": {
+   "tokens": 122247,
+   "top1_agree": 0.952915,
+   "kl": 0.03131386,
+   "kl_p99": 0.481823,
+   "nll_ref": 0.649245,
+   "nll_delta": 0.008852,
+   "flips": {
+    "lost": 1903,
+    "gained": 1663,
+    "flip_rate": 0.02917,
+    "p": 6.3e-05
+   }
+  },
+  "math": {
+   "tokens": 26276,
+   "top1_agree": 0.966167,
+   "kl": 0.01684285,
+   "kl_p99": 0.218977,
+   "nll_ref": 0.637674,
+   "nll_delta": -0.008261,
+   "flips": {
+    "lost": 296,
+    "gained": 278,
+    "flip_rate": 0.021845,
+    "p": 0.478005
+   }
+  },
+  "multi": {
+   "tokens": 16875,
+   "top1_agree": 0.874904,
+   "kl": 0.05261213,
+   "kl_p99": 0.598272,
+   "nll_ref": 1.872152,
+   "nll_delta": 0.006512,
+   "flips": {
+    "lost": 477,
+    "gained": 477,
+    "flip_rate": 0.056533,
+    "p": 1.0
+   }
+  },
+  "prose": {
+   "tokens": 70470,
+   "top1_agree": 0.939535,
+   "kl": 0.03555419,
+   "kl_p99": 0.488251,
+   "nll_ref": 0.800503,
+   "nll_delta": 0.008563,
+   "flips": {
+    "lost": 1300,
+    "gained": 1151,
+    "flip_rate": 0.034781,
+    "p": 0.002795
+   }
+  },
+  "tools": {
+   "tokens": 2286,
+   "top1_agree": 0.926072,
+   "kl": 0.15115474,
+   "kl_p99": 3.385413,
+   "nll_ref": 0.821266,
+   "nll_delta": 0.008589,
+   "flips": {
+    "lost": 53,
+    "gained": 54,
+    "flip_rate": 0.046807,
+    "p": 1.0
+   }
+  },
+  "zh": {
+   "tokens": 8561,
+   "top1_agree": 0.88728,
+   "kl": 0.04639477,
+   "kl_p99": 0.441834,
+   "nll_ref": 1.860801,
+   "nll_delta": 0.001307,
+   "flips": {
+    "lost": 218,
+    "gained": 203,
+    "flip_rate": 0.049176,
+    "p": 0.495084
+   }
+  }
+ },
+ "bad_domains": [
+  "de",
+  "es",
+  "ja",
+  "multi",
+  "tools"
+ ],
+ "missing_items": [],
+ "mismatched_items": []
+}

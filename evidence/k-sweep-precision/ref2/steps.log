@@ -1,0 +1,7 @@
+2026-09-30T06:09:30.314Z [ref2] memcheck ok before t1long: spark1 avail=16538MB swap_used spark1=8184MB spark2=4294MB
+2026-09-30T06:09:30.325Z [ref2] start t1long: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref2/t1-long --domains long_whole --long-whole
+2026-09-30T06:10:30.256Z [ref2] end t1long rc=0
+2026-09-30T06:10:30.608Z [ref2] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --k 3 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/ref2/ruler-noanchor.json
+2026-09-30T06:11:59.585Z [ref2] end ruler-noanchor rc=0
+2026-09-30T06:11:59.588Z [ref2] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/ref2/diverse.jsonl --label ref2
+2026-09-30T06:18:51.583Z [ref2] end diverse rc=0

@@ -1,0 +1,53 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1-long",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/final/t1-long",
+ "gate": "T1-B",
+ "verdict": "PASS",
+ "pass": true,
+ "checks": {
+  "top1": true,
+  "kl": true,
+  "domains": true
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.002,
+  "domain_disagree": 0.0015,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 122247,
+  "top1_agree": 1.0,
+  "kl": 0.0,
+  "kl_p99": 0.0,
+  "nll_ref": 0.457783,
+  "nll_delta": 0.0,
+  "flips": {
+   "lost": 0,
+   "gained": 0,
+   "flip_rate": 0.0,
+   "p": 1.0
+  }
+ },
+ "by_domain": {
+  "long_whole": {
+   "tokens": 122247,
+   "top1_agree": 1.0,
+   "kl": 0.0,
+   "kl_p99": 0.0,
+   "nll_ref": 0.457783,
+   "nll_delta": 0.0,
+   "flips": {
+    "lost": 0,
+    "gained": 0,
+    "flip_rate": 0.0,
+    "p": 1.0
+   }
+  }
+ },
+ "bad_domains": [],
+ "missing_items": [],
+ "mismatched_items": []
+}

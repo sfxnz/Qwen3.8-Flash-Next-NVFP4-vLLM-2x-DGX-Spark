@@ -521,6 +521,27 @@ class OverlayTests(unittest.TestCase):
         self.assertNotIn("draft-moe-config", proc.stdout)
         self.assertNotEqual(_run_sh(DRAFT_MOE_CONFIG="2").returncode, 0)
 
+    def test_fp8_dense_profile_is_opt_in(self) -> None:
+        self.assertIn('FP8_DENSE="${FP8_DENSE:-none}"', _read("run.sh"))
+        proc = _run_sh(IMAGE=V030_IMAGE)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertNotIn("quantization/modelopt.py", proc.stdout)
+        self.assertNotIn("VLLM_QWEN38_FP8_DENSE", proc.stdout)
+        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("docker/v030/modelopt.py -> ", proc.stdout)
+        self.assertIn('--kernel-config {"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}', proc.stdout)
+        # The worker gets the head's resolved overlay list and must not add the overlay a second time.
+        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block", ROLE="worker",
+                       OVERLAYS="docker/v030/modelopt.py")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertNotIn("Two overlays target", proc.stderr)
+        proc = _run_sh(IMAGE=PINNED_IMAGE, FP8_DENSE="per_block")
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("needs the v0.30 digest", proc.stderr)
+        self.assertNotEqual(_run_sh(IMAGE=V030_IMAGE, FP8_DENSE="ptpc").returncode, 0)
+        self.assertRegex(_read("run.sh"), r"FORWARD_VARS=\([^)]*\bFP8_DENSE\b")
+
     def test_draft_head_knobs(self) -> None:
         mtp = " ".join(V030_OVERLAYS)
         base = " ".join(k for k in V030_OVERLAYS if not k.endswith("mtp.py"))

@@ -1,0 +1,7 @@
+     4096 @0.1 needle0: found (3951 tok, 1.505 s)
+     4096 @0.1 needle1: found (3950 tok, 1.005 s)
+     4096 @0.5 needle0: found (3915 tok, 1.472 s)
+     4096 @0.5 needle1: found (3915 tok, 1.063 s)
+     4096 @0.9 needle0: found (3919 tok, 1.524 s)
+     4096 @0.9 needle1: found (3920 tok, 0.995 s)
+T3 PASS 6/6 per_length={'4096': '6/6'}

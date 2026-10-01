@@ -1,0 +1,53 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1-long",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1-long",
+ "gate": "T1-B",
+ "verdict": "FAIL",
+ "pass": false,
+ "checks": {
+  "top1": false,
+  "kl": false,
+  "domains": true
+ },
+ "thresholds": {
+  "top1": 0.985,
+  "kl": 0.02,
+  "domain_kl": 0.05916756,
+  "domain_disagree": 0.075388,
+  "floor_top1": null,
+  "floor_kl": null
+ },
+ "metrics": {
+  "tokens": 122247,
+  "top1_agree": 0.962306,
+  "kl": 0.02958378,
+  "kl_p99": 0.509772,
+  "nll_ref": 0.457783,
+  "nll_delta": 0.010461,
+  "flips": {
+   "lost": 1657,
+   "gained": 1334,
+   "flip_rate": 0.024467,
+   "p": 0.0
+  }
+ },
+ "by_domain": {
+  "long_whole": {
+   "tokens": 122247,
+   "top1_agree": 0.962306,
+   "kl": 0.02958378,
+   "kl_p99": 0.509772,
+   "nll_ref": 0.457783,
+   "nll_delta": 0.010461,
+   "flips": {
+    "lost": 1657,
+    "gained": 1334,
+    "flip_rate": 0.024467,
+    "p": 0.0
+   }
+  }
+ },
+ "bad_domains": [],
+ "missing_items": [],
+ "mismatched_items": []
+}

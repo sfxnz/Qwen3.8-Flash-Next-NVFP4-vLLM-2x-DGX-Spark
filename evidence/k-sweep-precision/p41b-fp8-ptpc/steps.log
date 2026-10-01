@@ -1,0 +1,17 @@
+2026-09-30T07:56:22.798Z [p41b-fp8-ptpc] memcheck ok before t1full: spark1 avail=17768MB swap_used spark1=9605MB spark2=4360MB
+2026-09-30T07:56:22.800Z [p41b-fp8-ptpc] start t1full: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1
+2026-09-30T07:59:18.434Z [p41b-fp8-ptpc] end t1full rc=0
+2026-09-30T07:59:18.437Z [p41b-fp8-ptpc] start t1full-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1 /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1 --class B --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p41b-fp8-ptpc/t1-vs-ref.json
+2026-09-30T07:59:18.783Z [p41b-fp8-ptpc] end t1full-score rc=1
+2026-09-30T07:59:19.442Z [p41b-fp8-ptpc] memcheck ok before t1long: spark1 avail=16181MB swap_used spark1=8218MB spark2=4356MB
+2026-09-30T07:59:19.444Z [p41b-fp8-ptpc] start t1long: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1-long --domains long_whole --long-whole
+2026-09-30T08:00:11.974Z [p41b-fp8-ptpc] end t1long rc=0
+2026-09-30T08:00:12.338Z [p41b-fp8-ptpc] start t1long-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1-long /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1-long --class B --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p41b-fp8-ptpc/t1long-vs-ref.json
+2026-09-30T08:00:12.521Z [p41b-fp8-ptpc] end t1long-score rc=1
+2026-09-30T08:06:56.349Z [p41b-fp8-ptpc] gate rc=1
+2026-09-30T08:06:56.350Z [p41b-fp8-ptpc] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --k 3 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p41b-fp8-ptpc/ruler-noanchor.json
+2026-09-30T08:08:18.680Z [p41b-fp8-ptpc] end ruler-noanchor rc=0
+2026-09-30T08:08:18.682Z [p41b-fp8-ptpc] start t1d: python3 quality/collect_t1d.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1d
+2026-09-30T08:11:19.052Z [p41b-fp8-ptpc] end t1d rc=0
+2026-09-30T08:11:19.053Z [p41b-fp8-ptpc] start t1d-score: python3 quality/score.py t1d /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1d /home/sfxnz/projects/data/qwen38-evals/runs/session5/p41b-fp8-ptpc/t1d --class B --floor /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/ref/t1d-floor.json --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k-sweep-precision/p41b-fp8-ptpc/t1d-vs-ref.json
+2026-09-30T08:11:19.155Z [p41b-fp8-ptpc] end t1d-score rc=0
