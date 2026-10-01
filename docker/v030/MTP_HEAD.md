@@ -111,15 +111,19 @@ Gate it as in plan L1:
 - T1-G 40×5, L1 off vs on.
 - For L1b′, check argmax equality against the BF16 head on captured states (K1: ≥ 99.9%).
 
-## Not verified yet
+## Measured (session 4, `evidence/l1-l6-k5-l2/`)
 
-Nothing here has booted, and no GPU was used. Under a CPU torch, the tests cover the parts that do not
-need the GPU:
-- the quantiser;
-- install and fallback in `_finish_draft_head`, `get_top_tokens` and `compute_logits` against stubs;
-- the v0.30 API signatures (`V030_SRC=<vllm pkg dir>`).
+Booted on 2x GB10 (v0.30.0 + determinism overlays). Marlin FP8 built on sm_121 for N = 124160, 81920
+and 65536 (`Draft head (L1b'|L1b+L1b'): … FP8 marlin` on rank 0), and the drafter captured CUDA graphs.
+Greedy c=1 output was bit-identical to U2 on every arm (T1-G 10 prompts, bench_diverse 64 prompts).
 
-Confirm on the first boot:
-- Marlin FP8 builds on sm_121 with N = 124160 and 65536 (the log line shows the kernel).
-- CUDA-graph capture of the drafter with the FP8 head.
-- GEMV GB/s at M = 1–4 in the profile.
+| Arm (all + L6a config) | prose c1 ms/step | struct c1 | struct c8 | diverse CJK acceptance | verdict |
+|---|---|---|---|---|---|
+| U2 | 60.40 | 61.98 | 81.98 | 2.384 | base |
+| L1a | 60.43 | 61.04 | 79.09 | – | kept |
+| L1a + L1b′ (full vocab FP8) | 53.09 | 54.78 | 75.62 | 2.382 | **kept (default)** |
+| L1a + L1b′ + L1b 131072 | 50.99 | 52.43 | 72.70 | 2.185 (−8.3%) | not kept |
+| L1a + L1b′ + L1b 163840 | 51.21 | 52.88 | 73.11 | 2.259 (−5.2%) | not kept (CJK gate −5%) |
+
+`run.sh`: `DRAFT_LOCAL_ARGMAX=1`, `DRAFT_HEAD_FP8=1` default; `DRAFT_VOCAB=draft_vocab_163840.json`
+is the opt-in for non-CJK traffic (+2-5% tok/s on prose/code/JSON/tools, −2.4% on CJK).

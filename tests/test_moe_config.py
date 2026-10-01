@@ -27,6 +27,7 @@ SCRIPT = ROOT / "tools" / "kernels" / "tune_draft_moe.sh"
 CONFIG_DIR = ROOT / "docker" / "v030" / "moe_configs"
 CFG_NAME = "E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json"
 SEED_SRC = "E=512,N=320,device_name=NVIDIA_B200,dtype=fp8_w8a8,block_shape=[64,64].json"
+TUNED_KEYS = {"1"}  # batch keys replaced by the GB10 tune
 BENCH_DIR = "/vllm-workspace/benchmarks/kernels"
 HF_CONFIG = Path.home() / (
     ".cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/"
@@ -195,9 +196,15 @@ class Vllm030(unittest.TestCase):
                             True, False, False, [64, 64], f"{t}/out")
             self.assertEqual(os.listdir(f"{t}/out"), [CFG_NAME])
 
-    def test_seed_is_image_b200_file(self):
+    def test_config_is_image_b200_file_plus_tuned_keys(self):
+        # Session 4 L6a: the time-boxed GB10 tune reached only M=1 (evidence/l1-l6-k5-l2/step0-l6a);
+        # every other key is still the image's B200 seed.
         stock = Path(self.fm.__file__).parent / "configs" / SEED_SRC
-        self.assertEqual(stock.read_bytes(), (CONFIG_DIR / CFG_NAME).read_bytes())
+        seed, ours = json.loads(stock.read_text()), _seed()
+        self.assertEqual(set(seed), set(ours))
+        for k in seed:
+            if k not in TUNED_KEYS:
+                self.assertEqual(seed[k], ours[k], k)
         self.assertFalse((stock.parent / CFG_NAME).exists(), "image already ships a GB10 file")
 
 

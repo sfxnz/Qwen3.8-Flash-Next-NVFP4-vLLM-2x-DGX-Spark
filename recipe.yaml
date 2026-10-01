@@ -15,7 +15,7 @@ image:
   base: vllm/vllm-openai:v0.30.0-aarch64
   digest: sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
   local_tag: &image vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
-  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU)
+  build: R11 overlays (OVERLAYS_V030) docker/v030/flashinfer_cutlass_moe.py, gdn_attn.py, qsa_indexer.py (S1.5 c=1 determinism), serving.py (vLLM #56067 API CPU), mtp.py (L1a local-argmax drafts, L1b' FP8 draft head)
   # Rollback: IMAGE=<rollback.local_tag> ./run.sh mounts OVERLAYS_PIN (ple_layer.py, modelopt.py, ple_ops.py).
   rollback:
     local_tag: vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
@@ -96,7 +96,18 @@ serve:
     # R11 overlays (docker/OVERLAYS.md). auto picks the list for the IMAGE digest; none mounts nothing.
     OVERLAYS: auto
     OVERLAYS_PIN: docker/ple_layer.py docker/modelopt.py docker/ple_ops.py
-    OVERLAYS_V030: docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py
+    OVERLAYS_V030: docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py
+    # L6a: mount docker/v030/moe_configs (the drafter's GB10 Triton fused-MoE config) on both ranks as
+    # VLLM_TUNED_CONFIG_FOLDER. v0.30 digest only; a failing `tune_draft_moe.sh check` falls back to stock.
+    DRAFT_MOE_CONFIG: 1
+    # L1a: default SPEC_CONFIG gets "use_local_argmax_reduction": true on the v0.30 digest (needs the
+    # docker/v030/mtp.py get_top_tokens overlay; docker/v030/MTP_HEAD.md). Ignored with an explicit SPEC_CONFIG.
+    DRAFT_LOCAL_ARGMAX: 1
+    # L1b': draft-only FP8 copy of the lm_head rows (VLLM_QWEN38_DRAFT_HEAD_FP8 on both ranks, v0.30 + mtp.py).
+    DRAFT_HEAD_FP8: 1
+    # L1b: reduced draft vocabulary, a file name under $HF_CACHE/qwen38-draft-vocab/ on BOTH nodes
+    # (tools/vocab/draft_vocab_<V>.json); none = full vocab. Needs L1a.
+    DRAFT_VOCAB: none
     EXTRA_ARGS: ""
     # Space-separated KEY=VALUE pairs passed as `-e` to both ranks.
     EXTRA_ENV: ""
@@ -115,6 +126,7 @@ readme:
     - "`--moe-backend`": "`{MOE_BACKEND}` (NVFP4 target resolves to FlashInfer CUTLASS on GB10; the MTP drafter inherits `auto`, which picks Triton for its 64x64-refined FP8 blocks. On the pin `run.sh` refuses anything but `auto`, and `b12x`/`flashinfer_b12x` everywhere)"
     - Checkpoint: "`{SNAPSHOT_SHA}`"
     - Speculative: "MTP-{NUM_SPECULATIVE_TOKENS} (`SPEC={SPEC}`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it)"
+    - Draft head: "`DRAFT_LOCAL_ARGMAX={DRAFT_LOCAL_ARGMAX}` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8={DRAFT_HEAD_FP8}` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB={DRAFT_VOCAB}` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG={DRAFT_MOE_CONFIG}` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2)"
     - Overlays: "`OVERLAYS={OVERLAYS}` → v0.30: `{OVERLAYS_V030}`; pin rollback: `{OVERLAYS_PIN}` (R11 headers, see `docker/OVERLAYS.md`)"
     - v0.30 envs: "`VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0` on both ranks when IMAGE is the v0.30 digest (F33: offload pins 32 GiB of host memory per node)"
     - Scheduling: "`--async-scheduling` (`ASYNC_SCHEDULING={ASYNC_SCHEDULING}`); `--per-request-spec-decode-metrics` is not passed (costs ~1 ms/step)"
@@ -132,14 +144,14 @@ measured:
   # The README decode table. One row per (phase, concurrency); a row's three numbers come from one
   # bench_decode.py run. evidence: the file under evidence/ that contains them, or null while there is none.
   decode:
-    conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays (greedy output and prose acceptance are pinned run to run), recipe defaults at session 3
+    conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays (greedy output and prose acceptance are pinned run to run), recipe defaults at session 4 (+ L1a local-argmax drafts, L1b' FP8 draft head, L6a drafter MoE config)
     units: {decode: tok/s per stream (median), aggregate: tok/s, ttft_p50: s}
     rows:
-      - {phase: prose, concurrency: 1, decode: 38.7, aggregate: 38.7, ttft_p50: 0.16, evidence: evidence/u2-v030-default/c-final/gate/bench-frozen.out}
-      - {phase: prose, concurrency: 2, decode: 31.9, aggregate: 64.5, ttft_p50: 0.17, evidence: evidence/u2-v030-default/c-final/gate/bench-frozen.out,
-         note: "Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in all three session-3 frozen runs: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base."}
-      - {phase: structured, concurrency: 1, decode: 64.7, aggregate: 64.7, ttft_p50: 0.16, evidence: evidence/u2-v030-default/c-final/gate/bench-frozen.out}
-      - {phase: structured, concurrency: 2, decode: 62.9, aggregate: 125.8, ttft_p50: 0.17, evidence: evidence/u2-v030-default/c-final/gate/bench-frozen.out}
+      - {phase: prose, concurrency: 1, decode: 44.0, aggregate: 44.0, ttft_p50: 0.15, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
+      - {phase: prose, concurrency: 2, decode: 34.8, aggregate: 69.0, ttft_p50: 0.16, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out,
+         note: "Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in every session-3 and session-4 frozen run: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base."}
+      - {phase: structured, concurrency: 1, decode: 73.3, aggregate: 73.3, ttft_p50: 0.14, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
+      - {phase: structured, concurrency: 2, decode: 67.4, aggregate: 134.8, ttft_p50: 0.16, evidence: evidence/l1-l6-k5-l2/f-final/gate/bench-frozen.out}
 
 links:
   model: https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4

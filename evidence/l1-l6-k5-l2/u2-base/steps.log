@@ -1,0 +1,18 @@
+2026-09-29T20:22:14.942Z [u2-base] gate rc=0
+2026-09-29T20:22:14.943Z [u2-base] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/u2-base/diverse.jsonl --label u2-base
+2026-09-29T20:29:57.924Z [u2-base] end diverse rc=0
+2026-09-29T20:29:57.926Z [u2-base] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g --limit 10 --repeats 5
+2026-09-29T20:33:58.714Z [u2-base] end t1g rc=0
+2026-09-29T20:33:58.717Z [u2-base] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/u2-base/t1g-self.json
+2026-09-29T20:33:58.823Z [u2-base] end t1g-self rc=0
+2026-09-29T20:33:58.825Z [u2-base] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/u2-base/identity.json
+2026-09-29T20:33:58.865Z [u2-base] end identity rc=0
+2026-09-29T20:33:59.532Z [u2-base] memcheck ok before t1nll: spark1 avail=14713MB swap_used spark1=8074MB spark2=4064MB
+2026-09-29T20:33:59.534Z [u2-base] start t1nll: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1 --limit 2
+2026-09-29T20:34:11.964Z [u2-base] end t1nll rc=0
+2026-09-29T20:34:11.967Z [u2-base] start t1nll-score: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1 /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/u2-base/t1-vs-base.json
+2026-09-29T20:34:12.077Z [u2-base] end t1nll-score rc=0
+2026-09-29T20:34:12.078Z [u2-base] start t2q: python3 quality/t2.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t2 --tasks tools,json,gsm8k --workers 4
+2026-09-29T20:44:30.202Z [u2-base] end t2q rc=0
+2026-09-29T20:44:30.212Z [u2-base] start t2q-score: python3 quality/score.py t2 /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t2 /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t2 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/u2-base/t2-vs-base.json
+2026-09-29T20:44:30.309Z [u2-base] end t2q-score rc=1

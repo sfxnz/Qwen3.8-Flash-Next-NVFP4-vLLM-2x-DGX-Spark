@@ -50,9 +50,10 @@ and `vllm/models/qwen4_exp/nvidia/ops/ple.py` unless `DIAGNOSTIC=1`.
 | `v030/gdn_attn.py` | `vllm/v1/attention/backends/gdn_attn.py` | `v030/apply_gdn_fresh_prefill_overlay.py` | `treat_short_extends_as_decodes=m.is_prefilling is None`: a fresh 1-token prompt no longer runs the GDN decode kernel on a leftover state slot. |
 | `v030/qsa_indexer.py` | `vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py` | `v030/apply_qsa_topk_order_overlay.py` | Sorted `persistent_topk` rows; prefill ties resolve to the lowest index (F23). |
 | `v030/serving.py` | `vllm/entrypoints/openai/chat_completion/serving.py` | `v030/apply_api_overlays.py` | vLLM #56067: streamed tool-call arguments stop costing O(n²) API-server CPU (G05). |
+| `v030/mtp.py` | `vllm/models/qwen4_exp/nvidia/mtp.py` | `v030/apply_mtp_overlay.py` | L1a `get_top_tokens` (local-argmax drafts) and the L1b′ / L1b draft heads; `run.sh` turns them on with `DRAFT_LOCAL_ARGMAX`, `DRAFT_HEAD_FP8`, `DRAFT_VOCAB` (`v030/MTP_HEAD.md`, `evidence/l1-l6-k5-l2/`). Greedy output unchanged. |
 
 The first three are the S1.5 determinism fixes (`evidence/s15-determinism/SUMMARY.md`): with them c=1 greedy is bit-exact run to run.
-Other generated files in `docker/v030/` (`hyperconnection.py`, `modelopt.py`, `mtp.py`, `nccl_twin_cuda_communicator.py`) are lever overlays that are off by default; they mount only when named in `OVERLAYS`.
+Other generated files in `docker/v030/` (`hyperconnection.py`, `modelopt.py`, `nccl_twin_cuda_communicator.py`) are lever overlays that are off by default; they mount only when named in `OVERLAYS`. `hyperconnection.py` (K5) missed its microbench gate in session 4 and was not booted.
 
 ## Pin overlays (rollback)
 

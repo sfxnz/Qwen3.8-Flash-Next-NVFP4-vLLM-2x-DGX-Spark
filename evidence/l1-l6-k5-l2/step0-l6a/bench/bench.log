@@ -1,0 +1,64 @@
+== arm stock
+Namespace(model='/synth', tp_size=2, enable_expert_parallel=False, dtype='fp8_w8a8', use_deep_gemm=False, save_dir='/out', seed=0, batch_size=[1, 2, 4, 8, 32], tune=False, trust_remote_code=False, model_prefix=None)
+WARNING 09-29 21:47:06 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+INFO 09-29 21:47:07 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-29 21:47:07 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-29 21:47:07 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+Batch size: 1, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 82.07 us
+Batch size: 2, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 246.17 us
+Batch size: 4, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 466.74 us
+Batch size: 8, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 922.90 us
+Batch size: 32, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 32, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 2804.68 us
+== arm config
+Namespace(model='/synth', tp_size=2, enable_expert_parallel=False, dtype='fp8_w8a8', use_deep_gemm=False, save_dir='/out', seed=0, batch_size=[1, 2, 4, 8, 32], tune=False, trust_remote_code=False, model_prefix=None)
+INFO 09-29 21:47:28 [fused_moe.py:1154] Using configuration from /cfg/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json for MoE layer.
+INFO 09-29 21:47:28 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-29 21:47:28 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-29 21:47:28 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+Batch size: 1, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 64, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 80.62 us
+Batch size: 2, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 242.37 us
+Batch size: 4, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 458.17 us
+Batch size: 8, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 897.07 us
+Batch size: 32, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 128, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 2736.09 us
+== arm stock
+Namespace(model='/synth', tp_size=2, enable_expert_parallel=False, dtype='fp8_w8a8', use_deep_gemm=False, save_dir='/out', seed=0, batch_size=[1, 2, 4, 8, 32], tune=False, trust_remote_code=False, model_prefix=None)
+WARNING 09-29 21:47:50 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+INFO 09-29 21:47:50 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-29 21:47:50 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-29 21:47:50 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+Batch size: 1, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 82.31 us
+Batch size: 2, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 247.87 us
+Batch size: 4, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 468.56 us
+Batch size: 8, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 926.98 us
+Batch size: 32, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 32, 'SPLIT_K': 1, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 2807.72 us
+== arm config
+Namespace(model='/synth', tp_size=2, enable_expert_parallel=False, dtype='fp8_w8a8', use_deep_gemm=False, save_dir='/out', seed=0, batch_size=[1, 2, 4, 8, 32], tune=False, trust_remote_code=False, model_prefix=None)
+INFO 09-29 21:48:12 [fused_moe.py:1154] Using configuration from /cfg/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json for MoE layer.
+INFO 09-29 21:48:13 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-29 21:48:13 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-29 21:48:13 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+Batch size: 1, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 64, 'num_warps': 4, 'num_stages': 3}
+Kernel time: 80.34 us
+Batch size: 2, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 241.90 us
+Batch size: 4, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 32, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 454.93 us
+Batch size: 8, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 64, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 2, 'num_stages': 5}
+Kernel time: 902.87 us
+Batch size: 32, config: {'BLOCK_SIZE_M': 16, 'BLOCK_SIZE_N': 128, 'BLOCK_SIZE_K': 64, 'GROUP_SIZE_M': 1, 'num_warps': 4, 'num_stages': 4}
+Kernel time: 2737.74 us

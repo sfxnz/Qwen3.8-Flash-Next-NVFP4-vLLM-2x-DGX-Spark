@@ -1,0 +1,26 @@
+test_deterministic (test_hc_fused.KernelNumerics.test_deterministic) ... /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+ok
+test_dispatch_fail_closed_paths (test_hc_fused.KernelNumerics.test_dispatch_fail_closed_paths) ... WARNING 09-29 20:58:20 [hyperconnection.py:931] K5 hc_fused self-test FAILED (4, 256, 32, True, False, False, 1024): stub; stock HC path
+INFO 09-29 20:58:20 [hyperconnection.py:934] K5 hc_fused self-test passed (4, 256, 32, True, False, False, 1024): stub
+ok
+test_dispatch_gates (test_hc_fused.KernelNumerics.test_dispatch_gates) ... ok
+test_distributions (test_hc_fused.KernelNumerics.test_distributions) ... ok
+test_full_shape (test_hc_fused.KernelNumerics.test_full_shape) ... ok
+test_hooks_call_dispatch (test_hc_fused.KernelNumerics.test_hooks_call_dispatch) ... ok
+test_reduced_all_variants (test_hc_fused.KernelNumerics.test_reduced_all_variants) ... 
+  injection pooled rel err fused/stock = 1.00 over 30 cases
+ok
+test_self_test_covers_dispatch_range (test_hc_fused.KernelNumerics.test_self_test_covers_dispatch_range) ... ok
+test_self_test_passes_and_fails_closed (test_hc_fused.KernelNumerics.test_self_test_passes_and_fails_closed) ... 
+  self-test: pooled err/stock block_input=1.00, injection=1.00
+ok
+test_compiles_and_default_off (test_hc_fused.OverlayHost.test_compiles_and_default_off) ... ok
+test_header (test_hc_fused.OverlayHost.test_header) ... ok
+test_refuses_other_stock (test_hc_fused.OverlayHost.test_refuses_other_stock) ... ok
+test_roundtrip_is_stock_plus_hunks_plus_kernels (test_hc_fused.OverlayHost.test_roundtrip_is_stock_plus_hunks_plus_kernels) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 21.788s
+
+OK

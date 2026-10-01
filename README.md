@@ -15,16 +15,16 @@ Pinned snapshot: `fab0aecb760cec45227f6656abcaafa11abca87a`. Checkpoint credit i
 The table is `python3 bench_decode.py` at c=1 and c=2 on the seqs=8 default (v0.30.0 + overlays). Do not copy community tok/s into this table. Rollback-pin numbers live in `evidence/b1-pin-stride/`. Full gate pack, rulers and long-context numbers: `evidence/u2-v030-default/SUMMARY.md`.
 
 <!-- BEGIN generated measured from recipe.yaml — edit recipe.yaml and run kit/render.py -->
-Conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays (greedy output and prose acceptance are pinned run to run), recipe defaults at session 3.
+Conditions: streamed greedy, thinking off, max_tokens 200 (prose ≈93 at EOS), 3-run median; max-num-seqs=8, kv auto, context 262144, MTP-3; v0.30.0 + determinism overlays (greedy output and prose acceptance are pinned run to run), recipe defaults at session 4 (+ L1a local-argmax drafts, L1b' FP8 draft head, L6a drafter MoE config).
 
 | Phase | Concurrency | Decode tok/s (median per stream) | Aggregate tok/s | TTFT p50 |
 |---|---|---:|---:|---:|
-| prose | 1 | 38.7 | 38.7 | 0.16 s |
-| prose (note 1) | 2 | 31.9 | 64.5 | 0.17 s |
-| structured | 1 | 64.7 | 64.7 | 0.16 s |
-| structured | 2 | 62.9 | 125.8 | 0.17 s |
+| prose | 1 | 44.0 | 44.0 | 0.15 s |
+| prose (note 1) | 2 | 34.8 | 69.0 | 0.16 s |
+| structured | 1 | 73.3 | 73.3 | 0.14 s |
+| structured | 2 | 67.4 | 134.8 | 0.16 s |
 
-1. Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in all three session-3 frozen runs: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base.
+1. Acceptance is 2.15 at c=2 against 2.37 at c=1, identical in every session-3 and session-4 frozen run: a batch of two computes a different (but reproducible) greedy text than c=1. Compare prose cells only against the same base.
 <!-- END generated measured -->
 
 Native `max_position_embeddings` is 262144. This recipe serves that window. `run.sh` refuses `--max-model-len` above 1048576 unless `FORCE_UNSAFE_CTX=1`. Occupancy is eight sequences. seqs above 8 is unmeasured. Spark Arena TP=2 on this SHA used MTP-3, kv auto, context 262144, seqs 8.
@@ -125,7 +125,8 @@ Stop both ranks from the head:
 | `--moe-backend` | `auto` (NVFP4 target resolves to FlashInfer CUTLASS on GB10; the MTP drafter inherits `auto`, which picks Triton for its 64x64-refined FP8 blocks. On the pin `run.sh` refuses anything but `auto`, and `b12x`/`flashinfer_b12x` everywhere) |
 | Checkpoint | `fab0aecb760cec45227f6656abcaafa11abca87a` |
 | Speculative | MTP-3 (`SPEC=mtp`; the drafter's SPEC_CONFIG `moe_backend` is `triton`: v0.30 honours it, the pin's V2 runner ignores it) |
-| Overlays | `OVERLAYS=auto` → v0.30: `docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py`; pin rollback: `docker/ple_layer.py docker/modelopt.py docker/ple_ops.py` (R11 headers, see `docker/OVERLAYS.md`) |
+| Draft head | `DRAFT_LOCAL_ARGMAX=1` (L1a: `use_local_argmax_reduction`), `DRAFT_HEAD_FP8=1` (L1b': draft-only FP8 lm_head copy, Marlin W8A16, +304 MiB/rank), `DRAFT_VOCAB=none` (L1b reduced vocab, off: −5% CJK acceptance at 163840), `DRAFT_MOE_CONFIG=1` (L6a GB10 drafter Triton MoE config); v0.30 + `mtp.py` only, greedy output unchanged (evidence/l1-l6-k5-l2) |
+| Overlays | `OVERLAYS=auto` → v0.30: `docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py docker/v030/serving.py docker/v030/mtp.py`; pin rollback: `docker/ple_layer.py docker/modelopt.py docker/ple_ops.py` (R11 headers, see `docker/OVERLAYS.md`) |
 | v0.30 envs | `VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0` on both ranks when IMAGE is the v0.30 digest (F33: offload pins 32 GiB of host memory per node) |
 | Scheduling | `--async-scheduling` (`ASYNC_SCHEDULING=1`); `--per-request-spec-decode-metrics` is not passed (costs ~1 ms/step) |
 | Vision | `--mm-processor-kwargs` images 65536..4194304 px, video `cap_pixels_per_frame`; `--limit-mm-per-prompt` image 8 / video 1; `--mm-processor-cache-gb 1` |

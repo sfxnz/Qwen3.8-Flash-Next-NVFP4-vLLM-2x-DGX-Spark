@@ -1,0 +1,11 @@
+2026-09-29T22:37:50.323Z [b-fp8head] gate rc=1
+2026-09-29T22:37:50.325Z [b-fp8head] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/b-fp8head/diverse.jsonl --label b-fp8head
+2026-09-29T22:44:46.675Z [b-fp8head] end diverse rc=0
+2026-09-29T22:44:46.677Z [b-fp8head] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session4/b-fp8head/t1g --limit 10 --repeats 5
+2026-09-29T22:48:19.765Z [b-fp8head] end t1g rc=0
+2026-09-29T22:48:19.767Z [b-fp8head] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/b-fp8head/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/b-fp8head/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/b-fp8head/t1g-self.json
+2026-09-29T22:48:19.918Z [b-fp8head] end t1g-self rc=0
+2026-09-29T22:48:19.920Z [b-fp8head] start identity: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/identity.py /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session4/b-fp8head/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/b-fp8head/identity.json
+2026-09-29T22:48:19.959Z [b-fp8head] end identity rc=0
+2026-09-29T22:48:31.282Z [b-fp8head] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/l1-l6-k5-l2/b-fp8head/ruler-noanchor.json
+2026-09-29T22:50:02.941Z [b-fp8head] end ruler-noanchor rc=0

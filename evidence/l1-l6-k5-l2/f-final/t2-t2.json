@@ -1,0 +1,20 @@
+{
+ "tools": {
+  "n": 60,
+  "correct": 59,
+  "acc": 0.9833,
+  "errors": 0
+ },
+ "json": {
+  "n": 30,
+  "correct": 30,
+  "acc": 1.0,
+  "errors": 0
+ },
+ "gsm8k": {
+  "n": 250,
+  "correct": 241,
+  "acc": 0.964,
+  "errors": 0
+ }
+}

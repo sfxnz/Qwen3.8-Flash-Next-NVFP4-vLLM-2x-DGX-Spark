@@ -25,11 +25,12 @@ batch key is closest to M. The image has no GB10 file for this shape, so every d
 
 ### Files
 
-- `docker/v030/moe_configs/<name>`: the config. Right now it is the **seed**, a byte copy of v0.30.0's
-  `E=512,N=320,device_name=NVIDIA_B200,...,block_shape=[64,64].json`. That is the only bundled
-  file for this exact shape. It keeps all 14 keys (1 to 8192), not only 1 to 64. Lookup picks the
-  nearest key, so a 1..64 file would give 8192-token prefill chunks the M=64 tile. The seed is **not
-  measured on GB10**. `tune` replaces every entry. The check's shared-memory estimate is at most
+- `docker/v030/moe_configs/<name>`: the config. It is the **seed**, a copy of v0.30.0's
+  `E=512,N=320,device_name=NVIDIA_B200,...,block_shape=[64,64].json`, with the **M=1 entry tuned on
+  GB10** (session 4; a 45-min time box covered only M=1, `evidence/l1-l6-k5-l2/step0-l6a/`). The B200
+  file is the only bundled file for this exact shape. It keeps all 14 keys (1 to 8192), not only 1 to 64. Lookup picks the
+  nearest key, so a 1..64 file would give 8192-token prefill chunks the M=64 tile. Keys other than 1
+  are **not measured on GB10**; kernel bench vs the stock default: −1.6 to −2.9% at M=1..32. A full `tune` replaces every entry. The check's shared-memory estimate is at most
   73.7 KB per entry, under GB10's 101376 B opt-in limit.
 - `tests/test_moe_config.py`: the host tests run the checker. In the image, CPU only, the tests also
   run v0.30's real `get_config_file_name`, `get_moe_configs` and `try_get_optimal_moe_config`, with
@@ -51,13 +52,13 @@ tuner's model params come from a synthetic `Qwen3MoeForCausalLM` config (`synth`
 `Qwen4ExpForConditionalGeneration` is not in `get_model_params`. Before tuning, `tune` runs a plan
 step on the real GPU and refuses if the target name is not the one above.
 
-### Mount (default OFF)
+### Mount (`DRAFT_MOE_CONFIG`, default ON since session 4)
 
 Set `VLLM_TUNED_CONFIG_FOLDER`. It exists in v0.30 `envs.py`, and the compile-cache hash ignores it.
 No overlay is needed. The folder holds only this file. The other folder users are Mamba SSU configs
 and LoRA, which look up different names and fall through to stock. The NVFP4 target MoE does not
 use Triton configs. The flag is proposed as `DRAFT_MOE_CONFIG=0|1`, v0.30 digest only (see the report
-or `run.sh` once wired):
+or `run.sh`; wired in session 4 as `DRAFT_MOE_CONFIG`, default 1, v0.30 digest only):
 
 1. Run `tools/kernels/tune_draft_moe.sh check`. On failure, warn and leave the env unset. That
    falls closed to the stock default config.

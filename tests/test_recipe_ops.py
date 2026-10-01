@@ -33,6 +33,7 @@ V030_OVERLAYS = {
     "docker/v030/gdn_attn.py": "vllm/v1/attention/backends/gdn_attn.py",
     "docker/v030/qsa_indexer.py": "vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py",
     "docker/v030/serving.py": "vllm/entrypoints/openai/chat_completion/serving.py",
+    "docker/v030/mtp.py": "vllm/models/qwen4_exp/nvidia/mtp.py",
 }
 HEADER_KEYS = ("base_image_digest", "upstream_file", "upstream_file_sha256", "upstream_PR", "generator")
 
@@ -500,6 +501,66 @@ class OverlayTests(unittest.TestCase):
         self.assertIn('vol_args+=(-v "${OVERLAY_FILES[$i]}:${SITE_PACKAGES}/${OVERLAY_TARGETS[$i]}:ro")', start)
         self.assertIn("/tmp/qwen38-overlays/", run)
 
+    def test_draft_moe_config_mounts_on_v030_only(self) -> None:
+        run = _read("run.sh")
+        start = _func_body(run, "start_local")
+        self.assertIn('vol_args+=(-v "${DRAFT_MOE_CONFIG_DIR}:${DRAFT_MOE_CONFIG_MOUNT}:ro")', start)
+        self.assertIn('env_args+=(-e "VLLM_TUNED_CONFIG_FOLDER=$DRAFT_MOE_CONFIG_MOUNT")', start)
+        self.assertIn("DRAFT_MOE_CONFIG_DIR=/tmp/qwen38-moe-configs", _func_body(run, "worker_env"))
+        forwarded = re.search(r"^FORWARD_VARS=\((.*?)\)", run, re.M | re.S).group(1).split()
+        self.assertIn("DRAFT_MOE_CONFIG", forwarded)
+        proc = _run_sh(IMAGE=V030_IMAGE, DRAFT_MOE_CONFIG="1")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("draft-moe-config", proc.stdout)
+        proc = _run_sh(IMAGE=V030_IMAGE, DRAFT_MOE_CONFIG="1", DRAFT_MOE_CONFIG_DIR="/nonexistent")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertNotIn("draft-moe-config", proc.stdout)  # failing check falls closed to stock
+        self.assertIn("WARNING: DRAFT_MOE_CONFIG=1", proc.stderr)
+        proc = _run_sh(IMAGE=PINNED_IMAGE, DRAFT_MOE_CONFIG="1")  # the pin rollback ignores it
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertNotIn("draft-moe-config", proc.stdout)
+        self.assertNotEqual(_run_sh(DRAFT_MOE_CONFIG="2").returncode, 0)
+
+    def test_draft_head_knobs(self) -> None:
+        mtp = " ".join(V030_OVERLAYS)
+        base = " ".join(k for k in V030_OVERLAYS if not k.endswith("mtp.py"))
+        with tempfile.TemporaryDirectory() as hf:
+            os.makedirs(f"{hf}/qwen38-draft-vocab")
+            Path(f"{hf}/qwen38-draft-vocab/draft_vocab_163840.json").write_text("[]")
+            on = dict(IMAGE=V030_IMAGE, OVERLAYS_V030=mtp, HF_CACHE=hf, DRAFT_LOCAL_ARGMAX="1",
+                      DRAFT_HEAD_FP8="1", DRAFT_VOCAB="draft_vocab_163840.json")
+            proc = _run_sh(**on)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertIn('"use_local_argmax_reduction":true}', proc.stdout)
+            self.assertIn("VLLM_QWEN38_DRAFT_HEAD_FP8=1", proc.stdout)
+            self.assertIn("VLLM_QWEN38_DRAFT_VOCAB=/cache/huggingface/qwen38-draft-vocab/draft_vocab_163840.json",
+                          proc.stdout)
+            # the knobs are read only by the mtp.py overlay: ignored (stock drafter) without it
+            for extra in ({"OVERLAYS_V030": base}, {"OVERLAYS": "none"}):
+                proc = _run_sh(**{**on, **extra})
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+                self.assertIn("ignored", proc.stderr)
+                self.assertNotIn("use_local_argmax_reduction", proc.stdout)
+                self.assertNotIn("VLLM_QWEN38_DRAFT", proc.stdout)
+            # an explicit SPEC_CONFIG wins over DRAFT_LOCAL_ARGMAX
+            proc = _run_sh(**{**on, "DRAFT_VOCAB": "none",
+                              "SPEC_CONFIG": '{"method":"mtp","num_speculative_tokens":3}'})
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertNotIn("use_local_argmax_reduction", proc.stdout)
+            # a reduced vocab needs local argmax
+            proc = _run_sh(**{**on, "DRAFT_LOCAL_ARGMAX": "0"})
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn("use_local_argmax_reduction", proc.stderr)
+            proc = _run_sh(**{**on, "DRAFT_VOCAB": "draft_vocab_131072.json"})
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn("missing", proc.stderr)
+            self.assertNotEqual(_run_sh(**{**on, "DRAFT_VOCAB": "../x.json"}).returncode, 0)
+            # the pin rollback ignores all three
+            proc = _run_sh(**{**on, "IMAGE": PINNED_IMAGE})
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertNotIn("use_local_argmax_reduction", proc.stdout)
+            self.assertNotIn("VLLM_QWEN38_DRAFT", proc.stdout)
+
 
 def _unapply(body: str, hunks) -> str:
     for old, new, _count in reversed(hunks):
@@ -565,7 +626,8 @@ class GuardTests(unittest.TestCase):
 
     def test_local_argmax_needs_get_top_tokens_overlay(self) -> None:
         spec = '{"method":"mtp","num_speculative_tokens":3,"use_local_argmax_reduction":true}'
-        self.refused("get_top_tokens", SPEC_CONFIG=spec)
+        no_mtp = " ".join(k for k in V030_OVERLAYS if not k.endswith("mtp.py"))
+        self.refused("get_top_tokens", SPEC_CONFIG=spec, OVERLAYS=no_mtp)
         with tempfile.TemporaryDirectory() as tmp:
             fake = Path(tmp) / "mtp.py"
             fake.write_text(

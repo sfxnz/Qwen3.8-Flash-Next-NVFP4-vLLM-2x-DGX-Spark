@@ -1,0 +1,4 @@
+  tools: {"n": 60, "correct": 59, "acc": 0.9833, "errors": 0} (34 s)
+  json: {"n": 30, "correct": 30, "acc": 1.0, "errors": 0} (46 s)
+  gsm8k: {"n": 250, "correct": 242, "acc": 0.968, "errors": 0} (618 s)
+T2 captured -> /home/sfxnz/projects/data/qwen38-evals/runs/session4/u2-base/t2/t2.jsonl

@@ -18,7 +18,8 @@ Per M in {1,2,4,8,16,32}:
      hot (one module, L2-resident), stream (8 distinct modules cycled: the
      serve case, DRAM-bound), cold (one module after a 64 MB flush).
   3. per-kernel split from one profiled pass after a flush.
-Gate (plan L4): fused stream <= 0.6x stock stream at M=4 and M=32.
+Gate (restated session 4): fused stream <= 0.95x stock stream at M=4 and M=32
+(target ~0.9x). The plan's 0.6x assumed a WMMA stock baseline; S1.1 found split-K.
 
   python3 -S tools/kernels/hc_bench.py plan
   python3 tools/kernels/hc_bench.py run --json OUT.json [--variant final] \
@@ -45,7 +46,7 @@ EPS = 1e-6
 MS = (1, 2, 4, 8, 16, 32)
 STREAM_MODULES = 8
 GATE_MS = (4, 32)
-GATE_RATIO = 0.6
+GATE_RATIO = 0.95
 
 
 def rows(variant: str) -> int:
