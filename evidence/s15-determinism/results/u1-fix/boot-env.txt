@@ -1,0 +1,6 @@
+EXTRA_ARGS=--per-request-spec-decode-metrics summary
+EXTRA_ENV=VLLM_PLE_CPU_OFFLOAD=0 VLLM_USE_BREAKABLE_CUDAGRAPH=0
+IMAGE=vllm/vllm-openai:v0.30.0-aarch64@sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56
+OVERLAYS=docker/v030/flashinfer_cutlass_moe.py docker/v030/gdn_attn.py docker/v030/qsa_indexer.py
+spark1 after stop: avail 119423 MiB, swap used 4029 MiB
+boot_s=681

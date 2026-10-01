@@ -1,0 +1,13 @@
+36:(Worker pid=378) WARNING 09-29 19:27:36 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+43:(Worker_TP1 pid=378) INFO 09-29 19:27:38 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+44:(Worker_TP1 pid=378) INFO 09-29 19:27:38 [qwen_gdn_linear_attn.py:528] GDN decode kernel: cuda
+45:(Worker_TP1 pid=378) INFO 09-29 19:27:38 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+46:(Worker_TP1 pid=378) INFO 09-29 19:27:39 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+57:(Worker_TP1 pid=378) INFO 09-29 19:33:24 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+58:(Worker_TP1 pid=378) INFO 09-29 19:33:24 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+78:(Worker_TP1 pid=378) WARNING 09-29 19:35:47 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+81:(Worker_TP1 pid=378) INFO 09-29 19:35:51 [model_runner.py:1066] Graph capturing finished in 4 secs, took 0.17 GiB
+82:(Worker_TP1 pid=378) INFO 09-29 19:35:51 [gpu_worker.py:640] Available KV cache memory: 23.74 GiB
+83:(Worker_TP1 pid=378) INFO 09-29 19:35:51 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7586 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7614. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+92:(Worker_TP1 pid=378) INFO 09-29 19:36:03 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+139:(Worker_TP1 pid=378) INFO 09-29 19:36:40 [model_runner.py:1066] Graph capturing finished in 1 secs, took 0.31 GiB

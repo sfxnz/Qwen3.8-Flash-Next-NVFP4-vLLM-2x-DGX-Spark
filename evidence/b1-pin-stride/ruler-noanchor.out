@@ -1,0 +1,284 @@
+2026-09-29T14:23:15.706+00:00 ruler_steps v1 url=http://127.0.0.1:8000/v1/chat/completions model=nvidia/Qwen3.8-Flash-Next-NVFP4 max_tokens=200 runs=3 concurrency=[1, 2, 8] phases=['prose', 'structured'] warmup=True sentinels=True anchor_ms=[0.0, 0.0]
+2026-09-29T14:23:15.726+00:00 warmup: single request
+2026-09-29T14:23:16.545+00:00 warmup: 50 ms staggered pair
+2026-09-29T14:23:17.765+00:00 warmup: simultaneous pair
+2026-09-29T14:23:18.805+00:00 warmup: long prompt (>=8193 tokens)
+2026-09-29T14:23:22.078+00:00 warmup: done long_prompt_tokens=9999 long_ttft=3.19s
+2026-09-29T14:23:31.788+00:00 sentinel=start attempt=1 run=1 wall=3.22s agg=64.69 ms_step_med=61.51 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.70] ms_step=[61.5] completion=[200] chunks=[51] decode_s=[3.076] ttft=[0.143]
+2026-09-29T14:23:31.788+00:00 sentinel=start attempt=1 run=2 wall=3.21s agg=64.75 ms_step_med=61.46 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.76] ms_step=[61.5] completion=[200] chunks=[51] decode_s=[3.073] ttft=[0.137]
+2026-09-29T14:23:31.788+00:00 sentinel=start attempt=1 run=3 wall=3.21s agg=64.90 ms_step_med=61.31 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.92] ms_step=[61.3] completion=[200] chunks=[51] decode_s=[3.065] ttft=[0.142]
+2026-09-29T14:23:34.611+00:00 phase=prose c=1 run=1 wall=2.80s agg=35.72 ms_step_med=60.43 acc=2.205 d_drafts=44 sum_steps=44 xcheck=1.000 per_stream=[35.73] ms_step=[60.4] completion=[96] chunks=[45] decode_s=[2.659] ttft=[0.140]
+2026-09-29T14:23:37.129+00:00 phase=prose c=1 run=2 wall=2.49s agg=37.77 ms_step_med=60.41 acc=2.333 d_drafts=39 sum_steps=39 xcheck=1.000 per_stream=[37.78] ms_step=[60.4] completion=[90] chunks=[40] decode_s=[2.356] ttft=[0.136]
+2026-09-29T14:23:39.531+00:00 phase=prose c=1 run=3 wall=2.38s agg=38.81 ms_step_med=62.26 acc=2.432 d_drafts=37 sum_steps=36 xcheck=0.973 per_stream=[38.82] ms_step=[62.3] completion=[88] chunks=[37] decode_s=[2.241] ttft=[0.137]
+2026-09-29T14:23:42.297+00:00 phase=prose c=2 run=1 wall=2.74s agg=71.00 ms_step_med=65.63 acc=2.423 d_drafts=78 sum_steps=77 xcheck=0.987 per_stream=[37.74,35.13] ms_step=[64.8,66.4] completion=[94,92] chunks=[39,40] decode_s=[2.464,2.590] ttft=[0.152,0.153]
+2026-09-29T14:23:45.064+00:00 phase=prose c=2 run=2 wall=2.74s agg=69.07 ms_step_med=64.71 acc=2.278 d_drafts=79 sum_steps=79 xcheck=1.000 per_stream=[34.90,35.13] ms_step=[64.7,64.8] completion=[89,92] chunks=[40,41] decode_s=[2.522,2.591] ttft=[0.152,0.151]
+2026-09-29T14:23:47.914+00:00 phase=prose c=2 run=3 wall=2.83s agg=70.54 ms_step_med=65.39 acc=2.430 d_drafts=79 sum_steps=79 xcheck=1.000 per_stream=[38.60,34.73] ms_step=[65.5,65.3] completion=[97,94] chunks=[39,42] decode_s=[2.487,2.678] ttft=[0.147,0.147]
+2026-09-29T14:23:52.438+00:00 phase=prose c=8 run=1 wall=4.50s agg=174.30 ms_step_med=93.25 acc=2.265 d_drafts=336 sum_steps=333 xcheck=0.991 per_stream=[24.63,25.83,23.80,22.44,24.71,22.71,24.59,22.91] ms_step=[92.9,93.3,95.9,95.8,93.2,93.2,94.3,91.0] completion=[88,95,90,87,100,92,103,99] chunks=[39,40,40,41,44,44,45,48] decode_s=[3.532,3.639,3.739,3.832,4.007,4.006,4.148,4.277] ttft=[0.222,0.219,0.222,0.221,0.219,0.220,0.223,0.222]
+2026-09-29T14:23:56.959+00:00 phase=prose c=8 run=2 wall=4.50s agg=173.44 ms_step_med=94.52 acc=2.314 d_drafts=325 sum_steps=324 xcheck=0.997 per_stream=[25.60,24.06,25.41,25.41,23.49,23.99,24.35,22.45] ms_step=[94.4,97.4,94.9,94.9,94.5,94.5,93.6,91.0] completion=[88,90,95,95,92,94,99,97] chunks=[37,39,40,40,42,42,44,48] decode_s=[3.399,3.699,3.699,3.700,3.875,3.876,4.025,4.276] ttft=[0.222,0.219,0.221,0.220,0.222,0.220,0.221,0.222]
+2026-09-29T14:24:01.247+00:00 phase=prose c=8 run=3 wall=4.27s agg=180.92 ms_step_med=94.25 acc=2.360 d_drafts=314 sum_steps=314 xcheck=1.000 per_stream=[26.85,26.54,25.20,25.25,25.53,24.12,23.34,22.97] ms_step=[94.1,94.2,94.4,94.4,94.4,94.3,92.7,92.0] completion=[92,91,89,94,95,92,94,94] chunks=[37,37,38,40,40,41,44,45] decode_s=[3.389,3.391,3.491,3.683,3.682,3.772,3.984,4.049] ttft=[0.219,0.218,0.221,0.218,0.220,0.219,0.221,0.218]
+2026-09-29T14:24:10.869+00:00 sentinel=middle attempt=1 run=1 wall=3.20s agg=64.93 ms_step_med=61.28 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.95] ms_step=[61.3] completion=[200] chunks=[51] decode_s=[3.064] ttft=[0.139]
+2026-09-29T14:24:10.869+00:00 sentinel=middle attempt=1 run=2 wall=3.17s agg=65.53 ms_step_med=60.72 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[65.55] ms_step=[60.7] completion=[200] chunks=[51] decode_s=[3.036] ttft=[0.135]
+2026-09-29T14:24:10.869+00:00 sentinel=middle attempt=1 run=3 wall=3.18s agg=65.43 ms_step_med=60.81 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[65.45] ms_step=[60.8] completion=[200] chunks=[51] decode_s=[3.041] ttft=[0.141]
+2026-09-29T14:24:14.073+00:00 phase=structured c=1 run=1 wall=3.18s agg=65.36 ms_step_med=60.88 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[65.37] ms_step=[60.9] completion=[200] chunks=[51] decode_s=[3.044] ttft=[0.136]
+2026-09-29T14:24:17.277+00:00 phase=structured c=1 run=2 wall=3.18s agg=65.41 ms_step_med=60.83 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[65.43] ms_step=[60.8] completion=[200] chunks=[51] decode_s=[3.042] ttft=[0.139]
+2026-09-29T14:24:20.465+00:00 phase=structured c=1 run=3 wall=3.17s agg=65.70 ms_step_med=60.56 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[65.72] ms_step=[60.6] completion=[200] chunks=[51] decode_s=[3.028] ttft=[0.136]
+2026-09-29T14:24:23.727+00:00 phase=structured c=2 run=1 wall=3.24s agg=128.78 ms_step_med=61.79 acc=4.000 d_drafts=100 sum_steps=100 xcheck=1.000 per_stream=[64.41,64.42] ms_step=[61.8,61.8] completion=[200,200] chunks=[51,51] decode_s=[3.090,3.089] ttft=[0.149,0.149]
+2026-09-29T14:24:26.993+00:00 phase=structured c=2 run=2 wall=3.24s agg=128.43 ms_step_med=61.96 acc=4.000 d_drafts=100 sum_steps=100 xcheck=1.000 per_stream=[64.24,64.23] ms_step=[62.0,62.0] completion=[200,200] chunks=[51,51] decode_s=[3.098,3.098] ttft=[0.144,0.145]
+2026-09-29T14:24:30.262+00:00 phase=structured c=2 run=3 wall=3.24s agg=128.45 ms_step_med=61.95 acc=4.000 d_drafts=100 sum_steps=100 xcheck=1.000 per_stream=[64.24,64.24] ms_step=[62.0,62.0] completion=[200,200] chunks=[51,51] decode_s=[3.098,3.098] ttft=[0.146,0.146]
+2026-09-29T14:24:34.565+00:00 phase=structured c=8 run=1 wall=4.28s agg=391.68 ms_step_med=81.22 acc=4.000 d_drafts=400 sum_steps=400 xcheck=1.000 per_stream=[49.00,49.01,49.00,49.00,49.00,48.99,49.00,48.99] ms_step=[81.2,81.2,81.2,81.2,81.2,81.2,81.2,81.2] completion=[200,200,200,200,200,200,200,200] chunks=[51,51,51,51,51,51,51,51] decode_s=[4.061,4.060,4.061,4.061,4.061,4.062,4.061,4.062] ttft=[0.219,0.219,0.221,0.221,0.219,0.219,0.221,0.220]
+2026-09-29T14:24:38.892+00:00 phase=structured c=8 run=2 wall=4.31s agg=391.18 ms_step_med=81.33 acc=4.000 d_drafts=400 sum_steps=400 xcheck=1.000 per_stream=[48.94,48.94,48.95,48.94,48.94,48.93,48.93,48.93] ms_step=[81.3,81.3,81.3,81.3,81.3,81.3,81.3,81.3] completion=[200,200,200,200,200,200,200,200] chunks=[51,51,51,51,51,51,51,51] decode_s=[4.066,4.066,4.065,4.066,4.066,4.067,4.067,4.067] ttft=[0.242,0.242,0.242,0.244,0.245,0.243,0.243,0.242]
+2026-09-29T14:24:43.241+00:00 phase=structured c=8 run=3 wall=4.33s agg=389.30 ms_step_med=81.73 acc=4.000 d_drafts=400 sum_steps=400 xcheck=1.000 per_stream=[48.70,48.71,48.70,48.70,48.70,48.69,48.69,48.69] ms_step=[81.7,81.7,81.7,81.7,81.7,81.7,81.7,81.7] completion=[200,200,200,200,200,200,200,200] chunks=[51,51,51,51,51,51,51,51] decode_s=[4.086,4.086,4.087,4.086,4.086,4.087,4.087,4.087] ttft=[0.240,0.239,0.240,0.241,0.240,0.239,0.241,0.239]
+2026-09-29T14:24:53.042+00:00 sentinel=end attempt=1 run=1 EXCURSION=>boot_min60.72+2% wall=3.26s agg=64.24 ms_step_med=61.95 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.25] ms_step=[61.9] completion=[200] chunks=[51] decode_s=[3.097] ttft=[0.163]
+2026-09-29T14:24:53.042+00:00 sentinel=end attempt=1 run=2 wall=3.21s agg=64.92 ms_step_med=61.29 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.94] ms_step=[61.3] completion=[200] chunks=[51] decode_s=[3.064] ttft=[0.143]
+2026-09-29T14:24:53.042+00:00 sentinel=end attempt=1 run=3 EXCURSION=>boot_min60.72+2% wall=3.28s agg=63.89 ms_step_med=62.28 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[63.91] ms_step=[62.3] completion=[200] chunks=[51] decode_s=[3.114] ttft=[0.167]
+2026-09-29T14:24:53.042+00:00 sentinel=end excursion; waiting 35s before re-run
+2026-09-29T14:25:37.773+00:00 sentinel=end attempt=2 run=1 EXCURSION=>boot_min60.72+2% wall=3.20s agg=64.15 ms_step_med=62.02 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.17] ms_step=[62.0] completion=[200] chunks=[51] decode_s=[3.101] ttft=[0.097]
+2026-09-29T14:25:37.773+00:00 sentinel=end attempt=2 run=2 wall=3.22s agg=64.49 ms_step_med=61.70 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.50] ms_step=[61.7] completion=[200] chunks=[51] decode_s=[3.085] ttft=[0.137]
+2026-09-29T14:25:37.773+00:00 sentinel=end attempt=2 run=3 EXCURSION=>boot_min60.72+2% wall=3.25s agg=64.19 ms_step_med=61.99 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.20] ms_step=[62.0] completion=[200] chunks=[51] decode_s=[3.100] ttft=[0.151]
+2026-09-29T14:25:37.773+00:00 sentinel=end excursion; waiting 35s before re-run
+2026-09-29T14:26:22.471+00:00 sentinel=end attempt=3 run=1 wall=3.19s agg=64.33 ms_step_med=61.85 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.35] ms_step=[61.8] completion=[200] chunks=[51] decode_s=[3.092] ttft=[0.097]
+2026-09-29T14:26:22.471+00:00 sentinel=end attempt=3 run=2 wall=3.24s agg=64.44 ms_step_med=61.76 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.45] ms_step=[61.8] completion=[200] chunks=[51] decode_s=[3.088] ttft=[0.149]
+2026-09-29T14:26:22.471+00:00 sentinel=end attempt=3 run=3 wall=3.22s agg=64.70 ms_step_med=61.50 acc=4.000 d_drafts=50 sum_steps=50 xcheck=1.000 per_stream=[64.72] ms_step=[61.5] completion=[200] chunks=[51] decode_s=[3.075] ttft=[0.145]
+SUMMARY [
+  {
+    "phase": "prose",
+    "concurrency": 1,
+    "n_waves": 3,
+    "n_streams": 3,
+    "median_ms_per_step": 60.428837954532355,
+    "min_ms_per_step": 60.40569223188915,
+    "per_wave_ms_per_step": [
+      60.428837954532355,
+      60.40569223188915,
+      62.256002779273935
+    ],
+    "median_decode_tok_s": 37.778745640242,
+    "min_decode_tok_s": 35.72947920520074,
+    "per_wave_median_decode_tok_s": [
+      35.72947920520074,
+      37.778745640242,
+      38.81821123715343
+    ],
+    "median_agg_tok_s": 37.76548933625073,
+    "min_agg_tok_s": 35.72078688278017,
+    "per_wave_agg_tok_s": [
+      35.72078688278017,
+      37.76548933625073,
+      38.806132126627595
+    ],
+    "per_wave_acceptance_len": [
+      2.2045454545454546,
+      2.333333333333333,
+      2.4324324324324325
+    ],
+    "median_ttft_s": 0.13715900399256498,
+    "median_completion_tokens": 90,
+    "per_wave_xcheck_steps_over_drafts": [
+      1.0,
+      1.0,
+      0.972972972972973
+    ],
+    "foreign_waves": 0
+  },
+  {
+    "phase": "prose",
+    "concurrency": 2,
+    "n_waves": 3,
+    "n_streams": 6,
+    "median_ms_per_step": 65.38791011426233,
+    "min_ms_per_step": 64.7137257170144,
+    "per_wave_ms_per_step": [
+      65.6300530193217,
+      64.7137257170144,
+      65.38791011426233
+    ],
+    "median_decode_tok_s": 35.129783379587025,
+    "min_decode_tok_s": 34.72506598614762,
+    "per_wave_median_decode_tok_s": [
+      36.437120016742824,
+      35.01110343817412,
+      36.66083894188142
+    ],
+    "median_agg_tok_s": 70.54366666030654,
+    "min_agg_tok_s": 69.06889826638823,
+    "per_wave_agg_tok_s": [
+      71.00441434897832,
+      69.06889826638823,
+      70.54366666030654
+    ],
+    "per_wave_acceptance_len": [
+      2.4230769230769234,
+      2.2784810126582276,
+      2.430379746835443
+    ],
+    "median_ttft_s": 0.15138098649913445,
+    "median_completion_tokens": 93.0,
+    "per_wave_xcheck_steps_over_drafts": [
+      0.9871794871794872,
+      1.0,
+      1.0
+    ],
+    "foreign_waves": 0
+  },
+  {
+    "phase": "prose",
+    "concurrency": 8,
+    "n_waves": 3,
+    "n_streams": 24,
+    "median_ms_per_step": 94.2453291879954,
+    "min_ms_per_step": 93.25165674114683,
+    "per_wave_ms_per_step": [
+      93.25165674114683,
+      94.51891250039519,
+      94.2453291879954
+    ],
+    "median_decode_tok_s": 24.46957300349184,
+    "min_decode_tok_s": 22.44020190772339,
+    "per_wave_median_decode_tok_s": [
+      24.196000351451197,
+      24.20347370560817,
+      25.228890224982095
+    ],
+    "median_agg_tok_s": 174.3047528064693,
+    "min_agg_tok_s": 173.43928675678907,
+    "per_wave_agg_tok_s": [
+      174.3047528064693,
+      173.43928675678907,
+      180.91719415506648
+    ],
+    "per_wave_acceptance_len": [
+      2.2648809523809526,
+      2.313846153846154,
+      2.359872611464968
+    ],
+    "median_ttft_s": 0.22052883345168084,
+    "median_completion_tokens": 94.0,
+    "per_wave_xcheck_steps_over_drafts": [
+      0.9910714285714286,
+      0.9969230769230769,
+      1.0
+    ],
+    "foreign_waves": 0
+  },
+  {
+    "phase": "structured",
+    "concurrency": 1,
+    "n_waves": 3,
+    "n_streams": 3,
+    "median_ms_per_step": 60.83056105999276,
+    "min_ms_per_step": 60.56315321940929,
+    "per_wave_ms_per_step": [
+      60.88093411875889,
+      60.83056105999276,
+      60.56315321940929
+    ],
+    "median_decode_tok_s": 65.42763917753143,
+    "min_decode_tok_s": 65.37350416201426,
+    "per_wave_median_decode_tok_s": [
+      65.37350416201426,
+      65.42763917753143,
+      65.71652545205471
+    ],
+    "median_agg_tok_s": 65.41437976044544,
+    "min_agg_tok_s": 65.35887836146391,
+    "per_wave_agg_tok_s": [
+      65.35887836146391,
+      65.41437976044544,
+      65.7004626761196
+    ],
+    "per_wave_acceptance_len": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "median_ttft_s": 0.1364919600309804,
+    "median_completion_tokens": 200,
+    "per_wave_xcheck_steps_over_drafts": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "foreign_waves": 0
+  },
+  {
+    "phase": "structured",
+    "concurrency": 2,
+    "n_waves": 3,
+    "n_streams": 6,
+    "median_ms_per_step": 61.95203715004027,
+    "min_ms_per_step": 61.78901621024124,
+    "per_wave_ms_per_step": [
+      61.78901621024124,
+      61.958942690398544,
+      61.95203715004027
+    ],
+    "median_decode_tok_s": 64.2432466276955,
+    "min_decode_tok_s": 64.23269039962479,
+    "per_wave_median_decode_tok_s": [
+      64.41274290927981,
+      64.23608664552555,
+      64.2432466276955
+    ],
+    "median_agg_tok_s": 128.44784427944754,
+    "min_agg_tok_s": 128.43336319553418,
+    "per_wave_agg_tok_s": [
+      128.78326037971604,
+      128.43336319553418,
+      128.44784427944754
+    ],
+    "per_wave_acceptance_len": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "median_ttft_s": 0.14586993004195392,
+    "median_completion_tokens": 200.0,
+    "per_wave_xcheck_steps_over_drafts": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "foreign_waves": 0
+  },
+  {
+    "phase": "structured",
+    "concurrency": 8,
+    "n_waves": 3,
+    "n_streams": 24,
+    "median_ms_per_step": 81.32541127852164,
+    "min_ms_per_step": 81.22358272084966,
+    "per_wave_ms_per_step": [
+      81.22358272084966,
+      81.32541127852164,
+      81.72963698860258
+    ],
+    "median_decode_tok_s": 48.93919303059442,
+    "min_decode_tok_s": 48.687705864910704,
+    "per_wave_median_decode_tok_s": [
+      49.000547283412956,
+      48.93919303059442,
+      48.69714524879832
+    ],
+    "median_agg_tok_s": 391.1815589804388,
+    "min_agg_tok_s": 389.2975943353334,
+    "per_wave_agg_tok_s": [
+      391.68467710259944,
+      391.1815589804388,
+      389.2975943353334
+    ],
+    "per_wave_acceptance_len": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "median_ttft_s": 0.23997888655867428,
+    "median_completion_tokens": 200.0,
+    "per_wave_xcheck_steps_over_drafts": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "foreign_waves": 0
+  }
+]
+2026-09-29T14:26:22.471+00:00 SENTINEL runs=15 excursions=4 rate=0.267 boot_min_ms=60.72 clean_median_ms=61.46 void=False

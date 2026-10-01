@@ -1,0 +1,638 @@
+{
+ "bench": "drafthead",
+ "meta": {
+  "host": "spark1",
+  "time": "2026-09-29T11:56:54Z",
+  "image": "vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b",
+  "floor_gbps": 230.0,
+  "torch": "2.13.0+cu130",
+  "vllm": "0.28.1rc1.dev437+ge962733e0",
+  "flashinfer": "0.6.18"
+ },
+ "rows": [
+  {
+   "v_prime": 32768,
+   "rows_per_rank": 16384,
+   "m": 1,
+   "weight_bytes": 83886080,
+   "hot": {
+    "median_us": 499.392,
+    "p10_us": 497.408,
+    "p90_us": 504.765,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 168.0
+   },
+   "flush": {
+    "median_us": 503.472,
+    "p10_us": 497.664,
+    "p90_us": 522.4,
+    "n": 760,
+    "ref_slot_us": 286.72,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 166.6
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 493.51
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 5.92
+    }
+   ],
+   "floor_us": 364.72
+  },
+  {
+   "v_prime": 32768,
+   "rows_per_rank": 16384,
+   "m": 2,
+   "weight_bytes": 83886080,
+   "hot": {
+    "median_us": 373.472,
+    "p10_us": 371.84,
+    "p90_us": 378.317,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.6
+   },
+   "flush": {
+    "median_us": 372.992,
+    "p10_us": 370.912,
+    "p90_us": 376.685,
+    "n": 760,
+    "ref_slot_us": 284.416,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.9
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 381.0
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 7.17
+    }
+   ],
+   "floor_us": 364.72
+  },
+  {
+   "v_prime": 32768,
+   "rows_per_rank": 16384,
+   "m": 4,
+   "weight_bytes": 83886080,
+   "hot": {
+    "median_us": 374.88,
+    "p10_us": 372.928,
+    "p90_us": 379.043,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.8
+   },
+   "flush": {
+    "median_us": 373.984,
+    "p10_us": 371.712,
+    "p90_us": 386.048,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.3
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 365.41
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 6.85
+    }
+   ],
+   "floor_us": 364.72
+  },
+  {
+   "v_prime": 32768,
+   "rows_per_rank": 16384,
+   "m": 8,
+   "weight_bytes": 83886080,
+   "hot": {
+    "median_us": 376.0,
+    "p10_us": 374.72,
+    "p90_us": 379.04,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.1
+   },
+   "flush": {
+    "median_us": 375.808,
+    "p10_us": 373.466,
+    "p90_us": 380.355,
+    "n": 760,
+    "ref_slot_us": 284.64,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 223.2
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 368.13
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 6.88
+    }
+   ],
+   "floor_us": 364.72
+  },
+  {
+   "v_prime": 47104,
+   "rows_per_rank": 23552,
+   "m": 1,
+   "weight_bytes": 120586240,
+   "hot": {
+    "median_us": 688.32,
+    "p10_us": 685.248,
+    "p90_us": 693.229,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 175.2
+   },
+   "flush": {
+    "median_us": 689.92,
+    "p10_us": 686.08,
+    "p90_us": 695.402,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 174.8
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 682.89
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 7.1
+    }
+   ],
+   "floor_us": 524.29
+  },
+  {
+   "v_prime": 47104,
+   "rows_per_rank": 23552,
+   "m": 2,
+   "weight_bytes": 120586240,
+   "hot": {
+    "median_us": 505.632,
+    "p10_us": 503.808,
+    "p90_us": 508.646,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 238.5
+   },
+   "flush": {
+    "median_us": 506.224,
+    "p10_us": 502.957,
+    "p90_us": 525.702,
+    "n": 760,
+    "ref_slot_us": 285.328,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 238.2
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 494.92
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 9.25
+    }
+   ],
+   "floor_us": 524.29
+  },
+  {
+   "v_prime": 47104,
+   "rows_per_rank": 23552,
+   "m": 4,
+   "weight_bytes": 120586240,
+   "hot": {
+    "median_us": 507.04,
+    "p10_us": 505.088,
+    "p90_us": 511.168,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 237.8
+   },
+   "flush": {
+    "median_us": 508.256,
+    "p10_us": 504.608,
+    "p90_us": 527.139,
+    "n": 760,
+    "ref_slot_us": 284.896,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 237.3
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 506.95
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 8.93
+    }
+   ],
+   "floor_us": 524.29
+  },
+  {
+   "v_prime": 47104,
+   "rows_per_rank": 23552,
+   "m": 8,
+   "weight_bytes": 120586240,
+   "hot": {
+    "median_us": 511.136,
+    "p10_us": 507.997,
+    "p90_us": 531.712,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 235.9
+   },
+   "flush": {
+    "median_us": 509.6,
+    "p10_us": 506.528,
+    "p90_us": 520.544,
+    "n": 760,
+    "ref_slot_us": 285.024,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 236.6
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 495.69
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 9.06
+    }
+   ],
+   "floor_us": 524.29
+  },
+  {
+   "v_prime": 65536,
+   "rows_per_rank": 32768,
+   "m": 1,
+   "weight_bytes": 167772160,
+   "hot": {
+    "median_us": 971.824,
+    "p10_us": 967.872,
+    "p90_us": 983.235,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 172.6
+   },
+   "flush": {
+    "median_us": 975.168,
+    "p10_us": 971.165,
+    "p90_us": 983.04,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 172.0
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 964.66
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 8.61
+    }
+   ],
+   "floor_us": 729.44
+  },
+  {
+   "v_prime": 65536,
+   "rows_per_rank": 32768,
+   "m": 2,
+   "weight_bytes": 167772160,
+   "hot": {
+    "median_us": 725.184,
+    "p10_us": 723.136,
+    "p90_us": 737.405,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 231.4
+   },
+   "flush": {
+    "median_us": 724.992,
+    "p10_us": 721.92,
+    "p90_us": 731.078,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 231.4
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 714.45
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 11.78
+    }
+   ],
+   "floor_us": 729.44
+  },
+  {
+   "v_prime": 65536,
+   "rows_per_rank": 32768,
+   "m": 4,
+   "weight_bytes": 167772160,
+   "hot": {
+    "median_us": 727.328,
+    "p10_us": 724.925,
+    "p90_us": 740.221,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 230.7
+   },
+   "flush": {
+    "median_us": 727.072,
+    "p10_us": 723.968,
+    "p90_us": 733.184,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 230.8
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 716.33
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 11.49
+    }
+   ],
+   "floor_us": 729.44
+  },
+  {
+   "v_prime": 65536,
+   "rows_per_rank": 32768,
+   "m": 8,
+   "weight_bytes": 167772160,
+   "hot": {
+    "median_us": 731.024,
+    "p10_us": 728.285,
+    "p90_us": 736.416,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 229.5
+   },
+   "flush": {
+    "median_us": 731.136,
+    "p10_us": 728.064,
+    "p90_us": 736.915,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 229.5
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 716.69
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 11.43
+    }
+   ],
+   "floor_us": 729.44
+  },
+  {
+   "v_prime": 248320,
+   "rows_per_rank": 124160,
+   "m": 1,
+   "weight_bytes": 635699200,
+   "hot": {
+    "median_us": 3706.64,
+    "p10_us": 3695.773,
+    "p90_us": 3781.469,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 171.5
+   },
+   "flush": {
+    "median_us": 3704.832,
+    "p10_us": 3694.589,
+    "p90_us": 3746.457,
+    "n": 760,
+    "ref_slot_us": 284.672,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 171.6
+   },
+   "kernels": [
+    {
+     "name": "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 6, false, c",
+     "us": 3677.33
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 23.04
+    }
+   ],
+   "floor_us": 2763.91
+  },
+  {
+   "v_prime": 248320,
+   "rows_per_rank": 124160,
+   "m": 2,
+   "weight_bytes": 635699200,
+   "hot": {
+    "median_us": 2740.352,
+    "p10_us": 2735.197,
+    "p90_us": 2768.746,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 232.0
+   },
+   "flush": {
+    "median_us": 2741.248,
+    "p10_us": 2734.813,
+    "p90_us": 2810.938,
+    "n": 760,
+    "ref_slot_us": 285.696,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 231.9
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 2697.63
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 38.46
+    }
+   ],
+   "floor_us": 2763.91
+  },
+  {
+   "v_prime": 248320,
+   "rows_per_rank": 124160,
+   "m": 4,
+   "weight_bytes": 635699200,
+   "hot": {
+    "median_us": 2747.584,
+    "p10_us": 2742.429,
+    "p90_us": 2761.92,
+    "n": 760,
+    "ref_slot_us": 1.888,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 231.4
+   },
+   "flush": {
+    "median_us": 2792.352,
+    "p10_us": 2742.048,
+    "p90_us": 2856.982,
+    "n": 760,
+    "ref_slot_us": 290.016,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 227.7
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 2809.73
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 38.34
+    }
+   ],
+   "floor_us": 2763.91
+  },
+  {
+   "v_prime": 248320,
+   "rows_per_rank": 124160,
+   "m": 8,
+   "weight_bytes": 635699200,
+   "hot": {
+    "median_us": 2823.92,
+    "p10_us": 2798.259,
+    "p90_us": 2908.378,
+    "n": 760,
+    "ref_slot_us": 1.856,
+    "mode": "hot",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 225.1
+   },
+   "flush": {
+    "median_us": 2829.312,
+    "p10_us": 2761.562,
+    "p90_us": 2923.558,
+    "n": 760,
+    "ref_slot_us": 291.84,
+    "mode": "flush",
+    "calls_per_graph": 20,
+    "distinct_fns": 1,
+    "gbps": 224.7
+   },
+   "kernels": [
+    {
+     "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8",
+     "us": 2746.2
+    },
+    {
+     "name": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<c10::BFloat16, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<c10::B",
+     "us": 36.19
+    }
+   ],
+   "floor_us": 2763.91
+  }
+ ]
+}

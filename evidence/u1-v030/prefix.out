@@ -1,0 +1,50 @@
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695511.837, "label": "u1-v030", "tokens": 16000, "mode": "repeat", "idx": 0, "foreign_requests": 0.0, "prefix_hits": 0.0, "prefix_queries": 15994.0, "hit_ratio": 0.0, "ttft_s": 4.666, "prompt_tokens": 15994, "cached_tokens": null, "completion_tokens": 24, "error": null}
+repeat #0: ttft=4.666 prompt=15994 hits=0.0 queries=15994.0
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695513.454, "label": "u1-v030", "tokens": 16000, "mode": "repeat", "idx": 1, "foreign_requests": 0.0, "prefix_hits": 12800.0, "prefix_queries": 15994.0, "hit_ratio": 0.8, "ttft_s": 0.95, "prompt_tokens": 15994, "cached_tokens": null, "completion_tokens": 24, "error": null}
+repeat #1: ttft=0.95 prompt=15994 hits=12800.0 queries=15994.0
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695515.134, "label": "u1-v030", "tokens": 16000, "mode": "repeat", "idx": 2, "foreign_requests": 0.0, "prefix_hits": 12800.0, "prefix_queries": 15994.0, "hit_ratio": 0.8, "ttft_s": 0.959, "prompt_tokens": 15994, "cached_tokens": null, "completion_tokens": 22, "error": null}
+repeat #2: ttft=0.959 prompt=15994 hits=12800.0 queries=15994.0
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695520.973, "label": "u1-v030", "tokens": 16000, "mode": "chat", "idx": 0, "foreign_requests": 0.0, "prefix_hits": 0.0, "prefix_queries": 16001.0, "hit_ratio": 0.0, "ttft_s": 5.124, "prompt_tokens": 16001, "cached_tokens": null, "completion_tokens": 22, "error": null}
+chat #0: ttft=5.124 prompt=16001 hits=0.0 queries=16001.0
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695522.316, "label": "u1-v030", "tokens": 16000, "mode": "chat", "idx": 1, "foreign_requests": 0.0, "prefix_hits": 14400.0, "prefix_queries": 16046.0, "hit_ratio": 0.897, "ttft_s": 0.575, "prompt_tokens": 16046, "cached_tokens": null, "completion_tokens": 32, "error": null}
+chat #1: ttft=0.575 prompt=16046 hits=14400.0 queries=16046.0
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "request", "ts": 1790695523.141, "label": "u1-v030", "tokens": 16000, "mode": "chat", "idx": 2, "foreign_requests": 0.0, "prefix_hits": 14400.0, "prefix_queries": 16099.0, "hit_ratio": 0.894, "ttft_s": 0.593, "prompt_tokens": 16099, "cached_tokens": null, "completion_tokens": 7, "error": null}
+chat #2: ttft=0.593 prompt=16099 hits=14400.0 queries=16099.0
+SUMMARY {
+  "ruler": "probe_prefix",
+  "ruler_set": "1",
+  "ruler_sha": "62aa321baaf3",
+  "label": "u1-v030",
+  "tokens": 16000,
+  "summary": [
+    {
+      "mode": "repeat",
+      "tokenized": 15994,
+      "ttft_s": [
+        4.666,
+        0.95,
+        0.959
+      ],
+      "hits": [
+        0.0,
+        12800.0,
+        12800.0
+      ]
+    },
+    {
+      "mode": "chat",
+      "tokenized": 16001,
+      "ttft_s": [
+        5.124,
+        0.575,
+        0.593
+      ],
+      "hits": [
+        0.0,
+        14400.0,
+        14400.0
+      ]
+    }
+  ]
+}
+ROW {"ruler": "probe_prefix", "ruler_set": "1", "ruler_sha": "62aa321baaf3", "kind": "summary", "ts": 1790695523.154, "label": "u1-v030", "tokens": 16000, "summary": [{"mode": "repeat", "tokenized": 15994, "ttft_s": [4.666, 0.95, 0.959], "hits": [0.0, 12800.0, 12800.0]}, {"mode": "chat", "tokenized": 16001, "ttft_s": [5.124, 0.575, 0.593], "hits": [0.0, 14400.0, 14400.0]}]}

@@ -1,0 +1,23 @@
+2026-09-29T14:46:54.797Z [u1-v030] gate rc=1
+2026-09-29T14:46:54.798Z [u1-v030] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u1-v030/diverse.jsonl --label u1-v030
+2026-09-29T14:54:39.370Z [u1-v030] end diverse rc=0
+2026-09-29T14:54:39.372Z [u1-v030] start sampled: python3 bench_sampled.py --url http://127.0.0.1:8000/v1/chat/completions --profiles A T1 --concurrency 1 8 --prompts 8 --reps 1 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u1-v030/sampled.jsonl --label u1-v030
+2026-09-29T14:56:53.600Z [u1-v030] end sampled rc=0
+2026-09-29T14:56:54.283Z [u1-v030] memcheck ok before qaa: spark1 avail=15873MB swap_used spark1=8437MB spark2=4306MB
+2026-09-29T14:56:54.285Z [u1-v030] start t1-a: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1-a --limit 2
+2026-09-29T14:57:05.848Z [u1-v030] end t1-a rc=0
+2026-09-29T14:57:05.850Z [u1-v030] start t1-b: python3 quality/collect_t1.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1-b --limit 2
+2026-09-29T14:57:15.782Z [u1-v030] end t1-b rc=0
+2026-09-29T14:57:15.783Z [u1-v030] start t1-aa: python3 quality/score.py t1 /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1-a /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1-b --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u1-v030/t1-aa.json
+2026-09-29T14:57:15.886Z [u1-v030] end t1-aa rc=1
+2026-09-29T14:57:15.888Z [u1-v030] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1g --limit 10 --repeats 5
+2026-09-29T15:01:30.841Z [u1-v030] end t1g rc=0
+2026-09-29T15:01:30.843Z [u1-v030] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u1-v030/t1g-self.json
+2026-09-29T15:01:30.944Z [u1-v030] end t1g-self rc=0
+2026-09-29T15:01:30.958Z [u1-v030] start t2: python3 quality/t2.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t2 --tasks tools,json,rep4,effort,ifeval,gsm8k --workers 4
+2026-09-29T15:24:06.324Z [u1-v030] end t2 rc=0
+2026-09-29T15:24:07.009Z [u1-v030] memcheck ok before t3: spark1 avail=15380MB swap_used spark1=8304MB spark2=4300MB
+2026-09-29T15:24:07.011Z [u1-v030] start t3: python3 quality/t3_needles.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t3 --lengths 4096,16384,32768
+2026-09-29T15:25:06.056Z [u1-v030] end t3 rc=0
+2026-09-29T15:25:06.420Z [u1-v030] start prefix: python3 probe_prefix.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u1-v030/prefix.jsonl --label u1-v030
+2026-09-29T15:25:23.178Z [u1-v030] end prefix rc=0

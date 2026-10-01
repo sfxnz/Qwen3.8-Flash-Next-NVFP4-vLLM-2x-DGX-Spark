@@ -1,0 +1,8 @@
+== spark1 after stop
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       5.8Gi       109Gi        28Mi       8.5Gi       115Gi
+Swap:           15Gi       3.9Gi        12Gi
+== spark2
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       4.6Gi       103Gi       240Ki        15Gi       117Gi
+Swap:           15Gi       1.9Gi        14Gi

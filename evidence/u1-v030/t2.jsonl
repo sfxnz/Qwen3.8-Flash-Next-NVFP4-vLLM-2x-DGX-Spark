@@ -1,0 +1,529 @@
+{"task": "tools", "id": "t00.nonstream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Wellington\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t00.stream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Wellington\"}"}], "content": "I'll check the current weather in Wellington for you.\n\n", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t01.nonstream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Tokyo\", \"unit\": \"fahrenheit\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t01.stream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Tokyo\", \"unit\": \"fahrenheit\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t02.nonstream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Berlin\", \"unit\": \"celsius\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t02.stream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"Berlin\", \"unit\": \"celsius\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t03.nonstream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 250, \"from_currency\": \"USD\", \"to_currency\": \"EUR\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t03.stream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 250, \"from_currency\": \"USD\", \"to_currency\": \"EUR\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t04.nonstream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 99.5, \"from_currency\": \"GBP\", \"to_currency\": \"JPY\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t04.stream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 99.5, \"from_currency\": \"GBP\", \"to_currency\": \"JPY\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t05.nonstream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 1200, \"from_currency\": \"NZD\", \"to_currency\": \"AUD\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t05.stream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 1200, \"from_currency\": \"NZD\", \"to_currency\": \"AUD\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t06.nonstream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Quarterly review\", \"date\": \"2026-10-14\", \"start_time\": \"15:30\", \"duration_minutes\": 45}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t06.stream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Quarterly review\", \"date\": \"2026-10-14\", \"start_time\": \"15:30\", \"duration_minutes\": 45}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t08.nonstream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Dentist\", \"date\": \"2027-01-05\", \"start_time\": \"08:15\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t08.stream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Dentist\", \"date\": \"2027-01-05\", \"start_time\": \"08:15\"}"}], "content": "The event \"Dentist\" has been created for 2027-01-05 at 08:15.\n\n", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t09.nonstream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"origin\": \"AKL\", \"destination\": \"SYD\", \"date\": \"2026-12-20\"}"}], "content": "I'll search for flights from Auckland to Sydney on that date.", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t09.stream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"origin\": \"AKL\", \"destination\": \"SYD\", \"date\": \"2026-12-20\"}"}], "content": "I'll search for flights from Auckland (AKL) to Sydney (SYD) on that date.\n\n", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t10.nonstream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"origin\": \"JFK\", \"destination\": \"LHR\", \"date\": \"2027-03-01\", \"passengers\": 2, \"cabin\": \"business\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t10.stream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"origin\": \"JFK\", \"destination\": \"LHR\", \"date\": \"2027-03-01\", \"passengers\": 2, \"cabin\": \"business\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t11.nonstream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"cabin\": \"economy\", \"date\": \"2026-11-11\", \"destination\": \"NRT\", \"origin\": \"SFO\", \"passengers\": 3}"}], "content": "Let me search for that flight and also get some useful route information for your arrival in Tokyo.", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t11.stream", "correct": 0, "calls": [], "content": "Which airline do you want?", "finish_reason": "stop"}
+{"task": "tools", "id": "t12.nonstream", "correct": 1, "calls": [{"name": "send_email", "arguments": "{\"to\": \"bob@example.com\", \"subject\": \"Lunch\", \"body\": \"Are you free at noon?\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t12.stream", "correct": 1, "calls": [{"name": "send_email", "arguments": "{\"to\": \"bob@example.com\", \"subject\": \"Lunch\", \"body\": \"Are you free at noon?\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t15.nonstream", "correct": 1, "calls": [{"name": "set_thermostat", "arguments": "{\"room\": \"living room\", \"temperature_c\": 21.5}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t15.stream", "correct": 1, "calls": [{"name": "set_thermostat", "arguments": "{\"room\": \"living room\", \"temperature_c\": 21.5}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t19.nonstream", "correct": 1, "calls": [{"name": "lookup_stock", "arguments": "{\"exchange\": \"NASDAQ\", \"ticker\": \"AAPL\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t19.stream", "correct": 1, "calls": [{"name": "lookup_stock", "arguments": "{\"ticker\": \"AAPL\", \"exchange\": \"NASDAQ\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t20.nonstream", "correct": 1, "calls": [{"name": "lookup_stock", "arguments": "{\"ticker\": \"MSFT\"}"}], "content": "I'll look up the latest price for MSFT.", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t20.stream", "correct": 1, "calls": [{"name": "lookup_stock", "arguments": "{\"ticker\": \"MSFT\"}"}], "content": "I'll look up the latest price for MSFT.\n\n", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t24.nonstream", "correct": 1, "calls": [{"name": "run_sql", "arguments": "{\"query\": \"SELECT count(*) FROM orders\"}"}], "content": "I'll run that query for you.", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t24.stream", "correct": 1, "calls": [{"name": "run_sql", "arguments": "{\"query\": \"SELECT count(*) FROM orders\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t27.nonstream", "correct": 1, "calls": [{"name": "translate_text", "arguments": "{\"text\": \"good morning, how are you?\", \"target_language\": \"es\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t27.stream", "correct": 1, "calls": [{"name": "translate_text", "arguments": "{\"text\": \"good morning, how are you?\", \"target_language\": \"es\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t33.nonstream", "correct": 1, "calls": [{"name": "book_restaurant", "arguments": "{\"restaurant\": \"Logan Brown\", \"date\": \"2026-10-31\", \"time\": \"19:30\", \"party_size\": 4}"}], "content": "I'll book that table for you.", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t33.stream", "correct": 1, "calls": [{"name": "book_restaurant", "arguments": "{\"restaurant\": \"Logan Brown\", \"date\": \"2026-10-31\", \"time\": \"19:30\", \"party_size\": 4}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t35.nonstream", "correct": 1, "calls": [{"name": "book_restaurant", "arguments": "{\"restaurant\": \"Noma\", \"date\": \"2027-02-14\", \"time\": \"18:00\", \"party_size\": 6}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t35.stream", "correct": 1, "calls": [{"name": "book_restaurant", "arguments": "{\"restaurant\": \"Noma\", \"date\": \"2027-02-14\", \"time\": \"18:00\", \"party_size\": 6}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t36.nonstream", "correct": 1, "calls": [{"name": "compute_loan", "arguments": "{\"principal\": 450000, \"annual_rate_percent\": 6.25, \"years\": 30}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t36.stream", "correct": 1, "calls": [{"name": "compute_loan", "arguments": "{\"annual_rate_percent\": 6.25, \"principal\": 450000, \"years\": 30}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t37.nonstream", "correct": 1, "calls": [{"name": "compute_loan", "arguments": "{\"principal\": 20000, \"annual_rate_percent\": 4.9, \"years\": 5}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t37.stream", "correct": 1, "calls": [{"name": "compute_loan", "arguments": "{\"principal\": 20000, \"annual_rate_percent\": 4.9, \"years\": 5}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t39.nonstream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/data/photos/cat.png\", \"width\": 800, \"height\": 600}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t39.stream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/data/photos/cat.png\", \"width\": 800, \"height\": 600}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t40.nonstream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/tmp/banner.jpg\", \"width\": 1920, \"height\": 480, \"keep_aspect\": false}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t40.stream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/tmp/banner.jpg\", \"width\": 1920, \"height\": 480, \"keep_aspect\": false}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t41.nonstream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/home/me/logo.webp\", \"width\": 256, \"height\": 256, \"keep_aspect\": true}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t41.stream", "correct": 1, "calls": [{"name": "resize_image", "arguments": "{\"path\": \"/home/me/logo.webp\", \"width\": 256, \"height\": 256, \"keep_aspect\": true}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t42.nonstream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"São Paulo\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t42.stream", "correct": 1, "calls": [{"name": "get_weather", "arguments": "{\"city\": \"São Paulo\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t43.nonstream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 3500, \"from_currency\": \"CHF\", \"to_currency\": \"USD\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t43.stream", "correct": 1, "calls": [{"name": "convert_currency", "arguments": "{\"amount\": 3500, \"from_currency\": \"CHF\", \"to_currency\": \"USD\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t44.nonstream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Team offsite\", \"date\": \"2026-10-20\", \"start_time\": \"10:00\", \"duration_minutes\": 240, \"attendees\": [\"lee@example.com\"]}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t44.stream", "correct": 1, "calls": [{"name": "create_event", "arguments": "{\"title\": \"Team offsite\", \"date\": \"2026-10-20\", \"start_time\": \"10:00\", \"duration_minutes\": 240, \"attendees\": [\"lee@example.com\"]}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t45.nonstream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"destination\": \"FCO\", \"origin\": \"CDG\", \"date\": \"2026-12-01\", \"cabin\": \"premium\", \"passengers\": 1}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t45.stream", "correct": 1, "calls": [{"name": "search_flights", "arguments": "{\"origin\": \"CDG\", \"destination\": \"FCO\", \"date\": \"2026-12-01\", \"passengers\": 1, \"cabin\": \"premium\"}"}], "content": "I'll search that flight for you now.\n\n", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t46.nonstream", "correct": 1, "calls": [{"name": "set_thermostat", "arguments": "{\"room\": \"kitchen\", \"temperature_c\": 20, \"mode\": \"auto\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t46.stream", "correct": 1, "calls": [{"name": "set_thermostat", "arguments": "{\"room\": \"kitchen\", \"temperature_c\": 20, \"mode\": \"auto\"}"}], "content": "", "finish_reason": "tool_calls"}
+{"task": "tools", "id": "t47.nonstream", "correct": 0, "calls": [], "content": "I've translated that for you:\n\n**Where is the train station?**", "finish_reason": "stop"}
+{"task": "tools", "id": "t47.stream", "correct": 0, "calls": [], "content": "The translation of \"où est la gare ?\" into English is:\n\n**Where is the train station?**\n\n*(Note: \"Gare\" specifically ref", "finish_reason": "stop"}
+{"task": "json", "id": "j00.person", "correct": 1, "errors": [], "content": "{\n  \"name\": \"Ana Silva\",\n  \"age\": 34,\n  \"email\": \"ana@example.com\",\n  \"languages\": [\n    \"Portuguese\",\n    \"English\"\n  ]\n}"}
+{"task": "json", "id": "j01.person", "correct": 1, "errors": [], "content": "{\n  \"name\": \"Kenji Mori\",\n  \"age\": 58,\n  \"email\": \"kenji.mori@example.jp\",\n  \"languages\": [\n    \"Japanese\"\n  ]\n}"}
+{"task": "json", "id": "j02.person", "correct": 1, "errors": [], "content": "{\n  \"name\": \"Liam O'Brien\",\n  \"age\": 27,\n  \"email\": \"liam@example.ie\",\n  \"languages\": [\n    \"English\",\n    \"Irish\",\n    \"French\"\n  ]\n}"}
+{"task": "json", "id": "j03.person", "correct": 1, "errors": [], "content": "{\n  \"name\": \"Fatima Zahra\",\n  \"age\": 41,\n  \"email\": \"fz@example.ma\",\n  \"languages\": [\n    \"Arabic\",\n    \"French\",\n    \"Spanish\"\n  ]\n}"}
+{"task": "json", "id": "j04.person", "correct": 1, "errors": [], "content": "{\n  \"name\": \"Tomasz Nowak\",\n  \"age\": 19,\n  \"email\": \"tn@example.pl\",\n  \"languages\": [\n    \"Polish\"\n  ]\n}"}
+{"task": "json", "id": "j05.order", "correct": 1, "errors": [], "content": "{\n  \"order_id\": \"A-1001\",\n  \"items\": [\n    {\n      \"sku\": \"PEN-01\",\n      \"qty\": 2\n    },\n    {\n      \"sku\": \"INK-09\",\n      \"qty\": 1\n    }\n  ],\n  \"total\": 14.50,\n  \"paid\": true\n}"}
+{"task": "json", "id": "j06.order", "correct": 1, "errors": [], "content": "{\n  \"order_id\": \"B-77\",\n  \"items\": [\n    {\n      \"sku\": \"CUP-3\",\n      \"qty\": 5\n    }\n  ],\n  \"total\": 42,\n  \"paid\": false\n}"}
+{"task": "json", "id": "j07.order", "correct": 1, "errors": [], "content": "{\n  \"order_id\": \"Z9\",\n  \"items\": [\n    {\n      \"sku\": \"BAG-2\",\n      \"qty\": 1\n    },\n    {\n      \"sku\": \"TAG-8\",\n      \"qty\": 10\n    }\n  ],\n  \"total\": 88.2,\n  \"paid\": true\n}"}
+{"task": "json", "id": "j08.order", "correct": 1, "errors": [], "content": "{\n  \"order_id\": \"2026-555\",\n  \"items\": [\n    {\n      \"sku\": \"LAMP-7\",\n      \"qty\": 3\n    }\n  ],\n  \"total\": 129.99,\n  \"paid\": false\n}"}
+{"task": "json", "id": "j09.order", "correct": 1, "errors": [], "content": "{\n  \"order_id\": \"Q-1\",\n  \"items\": [\n    {\n      \"sku\": \"KEY-1\",\n      \"qty\": 4\n    },\n    {\n      \"sku\": \"KEY-2\",\n      \"qty\": 4\n    }\n  ],\n  \"total\": 20,\n  \"paid\": true\n}"}
+{"task": "json", "id": "j10.event", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Team retro\",\n  \"date\": \"2026-11-03\",\n  \"attendees\": 8,\n  \"online\": true\n}"}
+{"task": "json", "id": "j11.event", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Annual Gala\",\n  \"date\": \"2027-02-14\",\n  \"attendees\": 250,\n  \"online\": false\n}"}
+{"task": "json", "id": "j12.event", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Intro to Rust\",\n  \"date\": \"2026-10-21\",\n  \"attendees\": 30,\n  \"online\": true\n}"}
+{"task": "json", "id": "j13.event", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Board meeting\",\n  \"date\": \"2026-12-01\",\n  \"attendees\": 9,\n  \"online\": false\n}"}
+{"task": "json", "id": "j14.event", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Hackathon kickoff\",\n  \"date\": \"2027-01-09\",\n  \"attendees\": 120,\n  \"online\": false\n}"}
+{"task": "json", "id": "j15.weather", "correct": 1, "errors": [], "content": "{\n  \"city\": \"Lisbon\",\n  \"temp_c\": 21.5,\n  \"conditions\": \"sunny\"\n}"}
+{"task": "json", "id": "j16.weather", "correct": 1, "errors": [], "content": "{\n  \"city\": \"Oslo\",\n  \"temp_c\": -4,\n  \"conditions\": \"snow\"\n}"}
+{"task": "json", "id": "j17.weather", "correct": 1, "errors": [], "content": "{\n  \"city\": \"Wellington\",\n  \"temp_c\": 13,\n  \"conditions\": \"cloudy\"\n}"}
+{"task": "json", "id": "j18.weather", "correct": 1, "errors": [], "content": "{\n  \"city\": \"Mumbai\",\n  \"temp_c\": 29,\n  \"conditions\": \"rain\"\n}"}
+{"task": "json", "id": "j19.weather", "correct": 1, "errors": [], "content": "{\n  \"city\": \"Cairo\",\n  \"temp_c\": 35,\n  \"conditions\": \"sunny\"\n}"}
+{"task": "json", "id": "j20.book", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Dune\",\n  \"author\": \"Frank Herbert\",\n  \"year\": 1965,\n  \"genres\": [\n    \"science fiction\",\n    \"adventure\"\n  ]\n}"}
+{"task": "json", "id": "j21.book", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Pride and Prejudice\",\n  \"author\": \"Jane Austen\",\n  \"year\": 1813,\n  \"genres\": [\n    \"romance\",\n    \"satire\"\n  ]\n}"}
+{"task": "json", "id": "j22.book", "correct": 1, "errors": [], "content": "{\n  \"title\": \"The Hobbit\",\n  \"author\": \"J. R. R. Tolkien\",\n  \"year\": 1937,\n  \"genres\": [\n    \"fantasy\",\n    \"children's literature\"\n  ]\n}"}
+{"task": "json", "id": "j23.book", "correct": 1, "errors": [], "content": "{\n  \"title\": \"One Hundred Years of Solitude\",\n  \"author\": \"Gabriel Garcia Marquez\",\n  \"year\": 1967,\n  \"genres\": [\n    \"magical realism\"\n  ]\n}"}
+{"task": "json", "id": "j24.book", "correct": 1, "errors": [], "content": "{\n  \"title\": \"Neuromancer\",\n  \"author\": \"William Gibson\",\n  \"year\": 1984,\n  \"genres\": [\n    \"cyberpunk\",\n    \"science fiction\"\n  ]\n}"}
+{"task": "json", "id": "j25.sentiment", "correct": 1, "errors": [], "content": "{\n  \"label\": \"positive\",\n  \"confidence\": 0.98\n}"}
+{"task": "json", "id": "j26.sentiment", "correct": 1, "errors": [], "content": "{\n  \"label\": \"negative\",\n  \"confidence\": 0.98\n}"}
+{"task": "json", "id": "j27.sentiment", "correct": 1, "errors": [], "content": "{\n  \"label\": \"neutral\",\n  \"confidence\": 1.0\n}"}
+{"task": "json", "id": "j28.sentiment", "correct": 1, "errors": [], "content": "{\n  \"label\": \"neutral\",\n  \"confidence\": 0.95\n}"}
+{"task": "json", "id": "j29.sentiment", "correct": 1, "errors": [], "content": "{\n  \"label\": \"negative\",\n  \"confidence\": 0.98\n}"}
+{"task": "rep4", "id": "r00", "correct": 1, "value": 0.002577, "completion_tokens": 512}
+{"task": "rep4", "id": "r01", "correct": 1, "value": 0.0, "completion_tokens": 440}
+{"task": "rep4", "id": "r02", "correct": 1, "value": 0.005362, "completion_tokens": 512}
+{"task": "rep4", "id": "r03", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r04", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r05", "correct": 1, "value": 0.0, "completion_tokens": 249}
+{"task": "rep4", "id": "r06", "correct": 1, "value": 0.005249, "completion_tokens": 512}
+{"task": "rep4", "id": "r07", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r08", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r09", "correct": 1, "value": 0.0, "completion_tokens": 476}
+{"task": "rep4", "id": "r10", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r11", "correct": 1, "value": 0.002564, "completion_tokens": 512}
+{"task": "rep4", "id": "r12", "correct": 1, "value": 0.0, "completion_tokens": 424}
+{"task": "rep4", "id": "r13", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r14", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r15", "correct": 1, "value": 0.005319, "completion_tokens": 512}
+{"task": "rep4", "id": "r16", "correct": 1, "value": 0.002618, "completion_tokens": 512}
+{"task": "rep4", "id": "r17", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r18", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r19", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r20", "correct": 1, "value": 0.0, "completion_tokens": 475}
+{"task": "rep4", "id": "r21", "correct": 1, "value": 0.0, "completion_tokens": 500}
+{"task": "rep4", "id": "r22", "correct": 1, "value": 0.0, "completion_tokens": 504}
+{"task": "rep4", "id": "r23", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r24", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r25", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r26", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r27", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r28", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r29", "correct": 1, "value": 0.0, "completion_tokens": 496}
+{"task": "rep4", "id": "r30", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r31", "correct": 1, "value": 0.002597, "completion_tokens": 512}
+{"task": "rep4", "id": "r32", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r33", "correct": 1, "value": 0.0, "completion_tokens": 407}
+{"task": "rep4", "id": "r34", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r35", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r36", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r37", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r38", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r39", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r40", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r41", "correct": 1, "value": 0.0, "completion_tokens": 424}
+{"task": "rep4", "id": "r42", "correct": 1, "value": 0.002488, "completion_tokens": 512}
+{"task": "rep4", "id": "r43", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r44", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r45", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r46", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r47", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r48", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r49", "correct": 1, "value": 0.0, "completion_tokens": 382}
+{"task": "rep4", "id": "r50", "correct": 1, "value": 0.005141, "completion_tokens": 512}
+{"task": "rep4", "id": "r51", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r52", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r53", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r54", "correct": 1, "value": 0.002591, "completion_tokens": 512}
+{"task": "rep4", "id": "r55", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r56", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r57", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r58", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r59", "correct": 1, "value": 0.002558, "completion_tokens": 512}
+{"task": "rep4", "id": "r60", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "rep4", "id": "r61", "correct": 1, "value": 0.0, "completion_tokens": 471}
+{"task": "rep4", "id": "r62", "correct": 1, "value": 0.005076, "completion_tokens": 512}
+{"task": "rep4", "id": "r63", "correct": 1, "value": 0.0, "completion_tokens": 512}
+{"task": "effort", "id": "None", "correct": 1, "content": "42", "reasoning_chars": 0, "finish_reason": "stop"}
+{"task": "effort", "id": "none", "correct": 1, "content": "42", "reasoning_chars": 0, "finish_reason": "stop"}
+{"task": "effort", "id": "low", "correct": 1, "content": "\n\n42", "reasoning_chars": 89, "finish_reason": "stop"}
+{"task": "effort", "id": "medium", "correct": 1, "content": "\n\n42", "reasoning_chars": 78, "finish_reason": "stop"}
+{"task": "effort", "id": "xhigh", "correct": 1, "content": "\n\n42", "reasoning_chars": 135, "finish_reason": "stop"}
+{"task": "ifeval", "id": 19, "correct": 0, "instructions": [true, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 167, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 227, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 247, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 260, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 332, "correct": 0, "instructions": [true, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1019, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1040, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1069, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1072, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1130, "correct": 0, "instructions": [false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1148, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1162, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1203, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1219, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1251, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1265, "correct": 1, "instructions": [true, true], "finish_reason": "length"}
+{"task": "ifeval", "id": 1325, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1348, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1361, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1367, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1375, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1392, "correct": 0, "instructions": [true, false, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1393, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1418, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1466, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1476, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1481, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1531, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1537, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1546, "correct": 0, "instructions": [false, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1548, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1571, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1591, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1592, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1644, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1658, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1691, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1705, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1713, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1825, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1837, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1858, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1879, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1893, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1939, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 1954, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2041, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2070, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2071, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2097, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2192, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2215, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2230, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2247, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2250, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2253, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2266, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2268, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2275, "correct": 0, "instructions": [false, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2304, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2311, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2323, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2362, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2374, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2381, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2386, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2396, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2398, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2404, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2436, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2439, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2447, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2505, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2571, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2591, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2616, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2649, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2674, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2704, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2713, "correct": 0, "instructions": [true, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2739, "correct": 0, "instructions": [true, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2749, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2765, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2779, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2785, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2787, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2844, "correct": 0, "instructions": [false, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2849, "correct": 0, "instructions": [false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2859, "correct": 0, "instructions": [false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2905, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2908, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2909, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2918, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2925, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 2943, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3041, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3057, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3069, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3084, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3109, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3198, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3243, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3245, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3280, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3315, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3326, "correct": 0, "instructions": [false, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3351, "correct": 1, "instructions": [true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3505, "correct": 0, "instructions": [false, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3536, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3572, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3595, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3606, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3608, "correct": 1, "instructions": [true, true], "finish_reason": "length"}
+{"task": "ifeval", "id": 3631, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3633, "correct": 0, "instructions": [true, false], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3644, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3690, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3710, "correct": 1, "instructions": [true, true, true], "finish_reason": "stop"}
+{"task": "ifeval", "id": 3719, "correct": 1, "instructions": [true], "finish_reason": "stop"}
+{"task": "gsm8k", "id": 2, "correct": 1, "got": "70000", "gold": "70000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 3, "correct": 1, "got": "540", "gold": "540", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 15, "correct": 1, "got": "125", "gold": "125", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 18, "correct": 1, "got": "7", "gold": "7", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 29, "correct": 1, "got": "104", "gold": "104", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 30, "correct": 1, "got": "109", "gold": "109", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 37, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 39, "correct": 1, "got": "18", "gold": "18", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 41, "correct": 1, "got": "200", "gold": "200", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 43, "correct": 1, "got": "48", "gold": "48", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 58, "correct": 1, "got": "57", "gold": "57", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 59, "correct": 1, "got": "187", "gold": "187", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 65, "correct": 1, "got": "36", "gold": "36", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 72, "correct": 1, "got": "221", "gold": "221", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 76, "correct": 1, "got": "5", "gold": "5", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 85, "correct": 0, "got": "48", "gold": "44", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 90, "correct": 1, "got": "225", "gold": "225", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 99, "correct": 1, "got": "58", "gold": "58", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 109, "correct": 1, "got": "28", "gold": "28", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 112, "correct": 1, "got": "24", "gold": "24", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 113, "correct": 1, "got": "25", "gold": "25", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 120, "correct": 1, "got": "240", "gold": "240", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 122, "correct": 1, "got": "48", "gold": "48", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 123, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 134, "correct": 1, "got": "720", "gold": "720", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 136, "correct": 1, "got": "6", "gold": "6", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 139, "correct": 1, "got": "70", "gold": "70", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 141, "correct": 1, "got": "400", "gold": "400", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 144, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 145, "correct": 1, "got": "4000", "gold": "4000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 148, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 150, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 153, "correct": 1, "got": "48", "gold": "48", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 159, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 168, "correct": 1, "got": "18", "gold": "18", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 178, "correct": 1, "got": "122", "gold": "122", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 186, "correct": 1, "got": "5", "gold": "5", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 196, "correct": 1, "got": "120", "gold": "120", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 198, "correct": 1, "got": "320", "gold": "320", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 203, "correct": 1, "got": "31", "gold": "31", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 209, "correct": 1, "got": "145", "gold": "145", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 215, "correct": 1, "got": "44", "gold": "44", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 230, "correct": 1, "got": "276000", "gold": "276000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 247, "correct": 1, "got": "32", "gold": "32", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 255, "correct": 1, "got": "192", "gold": "192", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 256, "correct": 1, "got": "45", "gold": "45", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 259, "correct": 1, "got": "168", "gold": "168", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 262, "correct": 1, "got": "270", "gold": "270", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 267, "correct": 1, "got": "91", "gold": "91", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 268, "correct": 1, "got": "1375", "gold": "1375", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 269, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 271, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 272, "correct": 1, "got": "5", "gold": "5", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 278, "correct": 1, "got": "40", "gold": "40", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 279, "correct": 1, "got": "6", "gold": "6", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 293, "correct": 1, "got": "83", "gold": "83", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 297, "correct": 1, "got": "55", "gold": "55", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 301, "correct": 1, "got": "8", "gold": "8", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 306, "correct": 0, "got": "5", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 309, "correct": 1, "got": "8", "gold": "8", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 310, "correct": 1, "got": "2050", "gold": "2050", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 312, "correct": 1, "got": "32", "gold": "32", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 313, "correct": 1, "got": "120000", "gold": "120000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 317, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 322, "correct": 1, "got": "9", "gold": "9", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 329, "correct": 1, "got": "14", "gold": "14", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 331, "correct": 1, "got": "8400", "gold": "8400", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 332, "correct": 1, "got": "44", "gold": "44", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 337, "correct": 1, "got": "1", "gold": "1", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 341, "correct": 1, "got": "260", "gold": "260", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 360, "correct": 1, "got": "25", "gold": "25", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 361, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 371, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 377, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 378, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 380, "correct": 0, "got": "760.42", "gold": "803", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 383, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 386, "correct": 1, "got": "80", "gold": "80", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 387, "correct": 1, "got": "36", "gold": "36", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 393, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 400, "correct": 1, "got": "48", "gold": "48", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 411, "correct": 1, "got": "1110", "gold": "1110", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 415, "correct": 1, "got": "350", "gold": "350", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 421, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 438, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 445, "correct": 1, "got": "6", "gold": "6", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 452, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 459, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 467, "correct": 1, "got": "1200", "gold": "1200", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 468, "correct": 1, "got": "120", "gold": "120", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 469, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 472, "correct": 1, "got": "6", "gold": "6", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 478, "correct": 1, "got": "621", "gold": "621", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 482, "correct": 1, "got": "26", "gold": "26", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 484, "correct": 1, "got": "240", "gold": "240", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 498, "correct": 1, "got": "40", "gold": "40", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 499, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 500, "correct": 1, "got": "16", "gold": "16", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 502, "correct": 1, "got": "26", "gold": "26", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 509, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 516, "correct": 1, "got": "375", "gold": "375", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 518, "correct": 1, "got": "32", "gold": "32", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 520, "correct": 1, "got": "63", "gold": "63", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 526, "correct": 1, "got": "21", "gold": "21", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 528, "correct": 1, "got": "172", "gold": "172", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 529, "correct": 1, "got": "11", "gold": "11", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 531, "correct": 1, "got": "66", "gold": "66", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 540, "correct": 1, "got": "39", "gold": "39", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 544, "correct": 1, "got": "80", "gold": "80", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 553, "correct": 1, "got": "92", "gold": "92", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 561, "correct": 1, "got": "180", "gold": "180", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 569, "correct": 1, "got": "21", "gold": "21", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 571, "correct": 1, "got": "308", "gold": "308", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 576, "correct": 1, "got": "11232", "gold": "11232", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 585, "correct": 1, "got": "40", "gold": "40", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 587, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 590, "correct": 1, "got": "319", "gold": "319", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 595, "correct": 1, "got": "13", "gold": "13", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 603, "correct": 1, "got": "1800", "gold": "1800", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 607, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 613, "correct": 1, "got": "93000", "gold": "93000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 616, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 619, "correct": 1, "got": "76", "gold": "76", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 622, "correct": 1, "got": "7", "gold": "7", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 637, "correct": 1, "got": "17", "gold": "17", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 641, "correct": 1, "got": "262500", "gold": "262500", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 645, "correct": 1, "got": "48", "gold": "48", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 655, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 664, "correct": 1, "got": "32", "gold": "32", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 667, "correct": 1, "got": "53", "gold": "53", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 670, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 672, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 676, "correct": 1, "got": "240", "gold": "240", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 682, "correct": 1, "got": "80", "gold": "80", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 690, "correct": 1, "got": "5760", "gold": "5760", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 693, "correct": 1, "got": "68", "gold": "68", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 711, "correct": 1, "got": "6", "gold": "6", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 723, "correct": 1, "got": "160", "gold": "160", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 726, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 728, "correct": 1, "got": "40", "gold": "40", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 739, "correct": 1, "got": "98", "gold": "98", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 740, "correct": 1, "got": "25", "gold": "25", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 747, "correct": 1, "got": "350", "gold": "350", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 749, "correct": 0, "got": "6", "gold": "3", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 762, "correct": 1, "got": "85", "gold": "85", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 767, "correct": 1, "got": "60", "gold": "60", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 783, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 809, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 810, "correct": 1, "got": "310", "gold": "310", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 816, "correct": 1, "got": "4500", "gold": "4500", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 833, "correct": 1, "got": "40", "gold": "40", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 839, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 846, "correct": 1, "got": "11", "gold": "11", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 847, "correct": 1, "got": "975", "gold": "975", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 849, "correct": 1, "got": "75", "gold": "75", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 853, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 855, "correct": 1, "got": "13", "gold": "13", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 860, "correct": 1, "got": "3", "gold": "3", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 861, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 864, "correct": 1, "got": "80", "gold": "80", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 865, "correct": 1, "got": "23", "gold": "23", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 867, "correct": 1, "got": "7", "gold": "7", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 868, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 875, "correct": 1, "got": "60", "gold": "60", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 879, "correct": 1, "got": "575", "gold": "575", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 880, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 886, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 888, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 891, "correct": 1, "got": "55", "gold": "55", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 893, "correct": 1, "got": "480", "gold": "480", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 900, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 904, "correct": 1, "got": "8", "gold": "8", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 910, "correct": 1, "got": "700", "gold": "700", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 911, "correct": 1, "got": "64", "gold": "64", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 917, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 925, "correct": 1, "got": "2000", "gold": "2000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 929, "correct": 1, "got": "60", "gold": "60", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 932, "correct": 1, "got": "24", "gold": "24", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 934, "correct": 1, "got": "410", "gold": "410", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 940, "correct": 1, "got": "280", "gold": "280", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 947, "correct": 1, "got": "13", "gold": "13", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 948, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 959, "correct": 1, "got": "7", "gold": "7", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 964, "correct": 1, "got": "200", "gold": "200", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 978, "correct": 1, "got": "160", "gold": "160", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 979, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 982, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 986, "correct": 1, "got": "70", "gold": "70", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 987, "correct": 1, "got": "3", "gold": "3", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 989, "correct": 1, "got": "45", "gold": "45", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 994, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 999, "correct": 1, "got": "25", "gold": "25", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1000, "correct": 1, "got": "1", "gold": "1", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1001, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1003, "correct": 0, "got": "1.50", "gold": "480", "finish_reason": "length"}
+{"task": "gsm8k", "id": 1009, "correct": 1, "got": "1875", "gold": "1875", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1016, "correct": 0, "got": "139", "gold": "138", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1025, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1027, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1029, "correct": 1, "got": "34", "gold": "34", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1039, "correct": 1, "got": "160", "gold": "160", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1058, "correct": 1, "got": "250", "gold": "250", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1060, "correct": 1, "got": "31", "gold": "31", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1065, "correct": 1, "got": "95", "gold": "95", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1069, "correct": 1, "got": "300", "gold": "300", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1073, "correct": 1, "got": "21", "gold": "21", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1081, "correct": 1, "got": "195", "gold": "195", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1090, "correct": 1, "got": "72", "gold": "72", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1099, "correct": 1, "got": "2", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1114, "correct": 1, "got": "8", "gold": "8", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1115, "correct": 1, "got": "5", "gold": "5", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1121, "correct": 1, "got": "35", "gold": "35", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1122, "correct": 1, "got": "18", "gold": "18", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1124, "correct": 1, "got": "64", "gold": "64", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1128, "correct": 1, "got": "9", "gold": "9", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1133, "correct": 1, "got": "50", "gold": "50", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1134, "correct": 1, "got": "7", "gold": "7", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1135, "correct": 1, "got": "32", "gold": "32", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1150, "correct": 1, "got": "21", "gold": "21", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1152, "correct": 1, "got": "12", "gold": "12", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1160, "correct": 1, "got": "1125", "gold": "1125", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1173, "correct": 1, "got": "10", "gold": "10", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1175, "correct": 1, "got": "16", "gold": "16", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1176, "correct": 0, "got": "3", "gold": "2", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1178, "correct": 1, "got": "17", "gold": "17", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1180, "correct": 1, "got": "5600", "gold": "5600", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1182, "correct": 1, "got": "1800", "gold": "1800", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1190, "correct": 1, "got": "19", "gold": "19", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1194, "correct": 1, "got": "1200", "gold": "1200", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1201, "correct": 1, "got": "42", "gold": "42", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1210, "correct": 1, "got": "288", "gold": "288", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1211, "correct": 1, "got": "448", "gold": "448", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1213, "correct": 1, "got": "31", "gold": "31", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1228, "correct": 1, "got": "31", "gold": "31", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1246, "correct": 1, "got": "3360", "gold": "3360", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1248, "correct": 1, "got": "750", "gold": "750", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1251, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1253, "correct": 1, "got": "120", "gold": "120", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1254, "correct": 1, "got": "30", "gold": "30", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1256, "correct": 1, "got": "15", "gold": "15", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1265, "correct": 1, "got": "36", "gold": "36", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1268, "correct": 1, "got": "20", "gold": "20", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1284, "correct": 1, "got": "25", "gold": "25", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1294, "correct": 1, "got": "36", "gold": "36", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1296, "correct": 1, "got": "335", "gold": "335", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1297, "correct": 1, "got": "60", "gold": "60", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1302, "correct": 1, "got": "72", "gold": "72", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1303, "correct": 1, "got": "4", "gold": "4", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1304, "correct": 1, "got": "1000", "gold": "1000", "finish_reason": "stop"}
+{"task": "gsm8k", "id": 1309, "correct": 0, "got": "2180", "gold": "2280", "finish_reason": "stop"}

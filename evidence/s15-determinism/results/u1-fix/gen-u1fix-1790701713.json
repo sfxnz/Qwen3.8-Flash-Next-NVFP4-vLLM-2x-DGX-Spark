@@ -1,0 +1,209 @@
+{
+ "mode": "gen",
+ "argv": [
+  "gen",
+  "--lens",
+  "1,2,200,8192,16384",
+  "--n",
+  "5",
+  "--tag",
+  "u1fix",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/s15/u1-fix"
+ ],
+ "tag": "u1fix",
+ "t": "2026-09-29T17:07:04Z",
+ "model": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+ "results": {
+  "1": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "2": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "200": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "8192": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "16384": {
+   "distinct": 1,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 3,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    },
+    {
+     "vs": 4,
+     "first_div": null,
+     "first_tok_dlp": 0.0,
+     "max_dlp_before_div": 0.0
+    }
+   ],
+   "first_div_min": null,
+   "first_tok_dlp_max": 0.0,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

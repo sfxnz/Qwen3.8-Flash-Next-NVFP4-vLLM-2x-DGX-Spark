@@ -1,0 +1,125 @@
+{
+ "arm": "dual",
+ "rows": [
+  {
+   "bytes": 8,
+   "us": 17.99,
+   "busbw_GBps": 0.0,
+   "iters": 200
+  },
+  {
+   "bytes": 16,
+   "us": 15.93,
+   "busbw_GBps": 0.001,
+   "iters": 200
+  },
+  {
+   "bytes": 32,
+   "us": 16.47,
+   "busbw_GBps": 0.002,
+   "iters": 200
+  },
+  {
+   "bytes": 64,
+   "us": 14.43,
+   "busbw_GBps": 0.004,
+   "iters": 200
+  },
+  {
+   "bytes": 128,
+   "us": 15.23,
+   "busbw_GBps": 0.008,
+   "iters": 200
+  },
+  {
+   "bytes": 256,
+   "us": 14.2,
+   "busbw_GBps": 0.018,
+   "iters": 200
+  },
+  {
+   "bytes": 512,
+   "us": 14.74,
+   "busbw_GBps": 0.035,
+   "iters": 200
+  },
+  {
+   "bytes": 1024,
+   "us": 15.0,
+   "busbw_GBps": 0.068,
+   "iters": 200
+  },
+  {
+   "bytes": 2048,
+   "us": 15.89,
+   "busbw_GBps": 0.129,
+   "iters": 200
+  },
+  {
+   "bytes": 4096,
+   "us": 34.85,
+   "busbw_GBps": 0.118,
+   "iters": 200
+  },
+  {
+   "bytes": 8192,
+   "us": 21.72,
+   "busbw_GBps": 0.377,
+   "iters": 200
+  },
+  {
+   "bytes": 16384,
+   "us": 22.87,
+   "busbw_GBps": 0.717,
+   "iters": 200
+  },
+  {
+   "bytes": 32768,
+   "us": 28.74,
+   "busbw_GBps": 1.14,
+   "iters": 200
+  },
+  {
+   "bytes": 65536,
+   "us": 64.54,
+   "busbw_GBps": 1.016,
+   "iters": 200
+  },
+  {
+   "bytes": 131072,
+   "us": 51.14,
+   "busbw_GBps": 2.563,
+   "iters": 200
+  },
+  {
+   "bytes": 262144,
+   "us": 110.44,
+   "busbw_GBps": 2.374,
+   "iters": 200
+  },
+  {
+   "bytes": 33554432,
+   "us": 1616.97,
+   "busbw_GBps": 20.751,
+   "iters": 50
+  },
+  {
+   "bytes": 41943040,
+   "us": 2003.81,
+   "busbw_GBps": 20.932,
+   "iters": 20
+  },
+  {
+   "bytes": 67108864,
+   "us": 3328.24,
+   "busbw_GBps": 20.163,
+   "iters": 20
+  },
+  {
+   "bytes": 134217728,
+   "us": 8372.82,
+   "busbw_GBps": 16.03,
+   "iters": 20
+  }
+ ]
+}

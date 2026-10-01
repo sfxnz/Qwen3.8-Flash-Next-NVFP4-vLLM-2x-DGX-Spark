@@ -1,0 +1,182 @@
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703075.671, "label": "u1det-nocap", "case": "sq256", "concurrent": false, "ttft_s": 0.205, "total_s": 1.357, "prompt_tokens": 85, "mm_tokens": 66, "width": 256, "height": 256, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 64, "resized": false}
+case=sq256 concurrent=False ttft_s=0.205 total_s=1.357 prompt_tokens=85 mm_tokens=66 width=256 height=256 expected_unresized=64 resized=False
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703080.754, "label": "u1det-nocap", "case": "sq256", "concurrent": true, "ttft_s": 0.239, "total_s": 1.525, "prompt_tokens": 85, "mm_tokens": 66, "width": 256, "height": 256, "answer_head": "This image displays a grid of 36 distinct, solid-colored squares arranged in six rows and six column", "expected_unresized": 64, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.862, "text_gap_during_mm_max_ms": 60.755, "text_gap_during_mm_p50_ms": 60.406, "text_chunks_during_mm": 2}
+case=sq256 concurrent=True ttft_s=0.239 total_s=1.525 prompt_tokens=85 mm_tokens=66 width=256 height=256 expected_unresized=64 resized=False text_error=None text_gap_baseline_p50_ms=60.862 text_gap_during_mm_max_ms=60.755 text_gap_during_mm_p50_ms=60.406 text_chunks_during_mm=2
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703082.561, "label": "u1det-nocap", "case": "sq1024", "concurrent": false, "ttft_s": 0.858, "total_s": 1.78, "prompt_tokens": 1045, "mm_tokens": 1026, "width": 1024, "height": 1024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 1024, "resized": false}
+case=sq1024 concurrent=False ttft_s=0.858 total_s=1.78 prompt_tokens=1045 mm_tokens=1026 width=1024 height=1024 expected_unresized=1024 resized=False
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703087.832, "label": "u1det-nocap", "case": "sq1024", "concurrent": true, "ttft_s": 0.73, "total_s": 1.694, "prompt_tokens": 1045, "mm_tokens": 1026, "width": 1024, "height": 1024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 1024, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.548, "text_gap_during_mm_max_ms": 514.5, "text_gap_during_mm_p50_ms": 60.852, "text_chunks_during_mm": 5}
+case=sq1024 concurrent=True ttft_s=0.73 total_s=1.694 prompt_tokens=1045 mm_tokens=1026 width=1024 height=1024 expected_unresized=1024 resized=False text_error=None text_gap_baseline_p50_ms=60.548 text_gap_during_mm_max_ms=514.5 text_gap_during_mm_p50_ms=60.852 text_chunks_during_mm=5
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703098.154, "label": "u1det-nocap", "case": "photo12mp", "concurrent": false, "ttft_s": 9.143, "total_s": 10.16, "prompt_tokens": 11865, "mm_tokens": 11846, "width": 4032, "height": 3024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 11970, "resized": false}
+case=photo12mp concurrent=False ttft_s=9.143 total_s=10.16 prompt_tokens=11865 mm_tokens=11846 width=4032 height=3024 expected_unresized=11970 resized=False
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703111.753, "label": "u1det-nocap", "case": "photo12mp", "concurrent": true, "ttft_s": 8.671, "total_s": 9.935, "prompt_tokens": 11865, "mm_tokens": 11846, "width": 4032, "height": 3024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 11970, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.251, "text_gap_during_mm_max_ms": 5972.418, "text_gap_during_mm_p50_ms": 61.289, "text_chunks_during_mm": 21}
+case=photo12mp concurrent=True ttft_s=8.671 total_s=9.935 prompt_tokens=11865 mm_tokens=11846 width=4032 height=3024 expected_unresized=11970 resized=False text_error=None text_gap_baseline_p50_ms=60.251 text_gap_during_mm_max_ms=5972.418 text_gap_during_mm_p50_ms=61.289 text_chunks_during_mm=21
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703124.548, "label": "u1det-nocap", "case": "neg16mp", "concurrent": false, "ttft_s": 11.603, "total_s": 12.626, "prompt_tokens": 15573, "mm_tokens": 15554, "width": 4608, "height": 3456, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 15552, "resized": false}
+case=neg16mp concurrent=False ttft_s=11.603 total_s=12.626 prompt_tokens=15573 mm_tokens=15554 width=4608 height=3456 expected_unresized=15552 resized=False
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703141.5, "label": "u1det-nocap", "case": "neg16mp", "concurrent": true, "ttft_s": 12.097, "total_s": 13.215, "prompt_tokens": 15573, "mm_tokens": 15554, "width": 4608, "height": 3456, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in 6 rows and 8 columns, s", "expected_unresized": 15552, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 59.264, "text_gap_during_mm_max_ms": 7843.049, "text_gap_during_mm_p50_ms": 60.562, "text_chunks_during_mm": 28}
+case=neg16mp concurrent=True ttft_s=12.097 total_s=13.215 prompt_tokens=15573 mm_tokens=15554 width=4608 height=3456 expected_unresized=15552 resized=False text_error=None text_gap_baseline_p50_ms=59.264 text_gap_during_mm_max_ms=7843.049 text_gap_during_mm_p50_ms=60.562 text_chunks_during_mm=28
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703149.313, "label": "u1det-nocap", "case": "video30", "concurrent": false, "ttft_s": 7.181, "total_s": 7.466, "prompt_tokens": 12124, "mm_tokens": 12102, "width": 1280, "height": 720, "answer_head": "The colors of the squares in the grid constantly change.", "frames": 30}
+case=video30 concurrent=False ttft_s=7.181 total_s=7.466 prompt_tokens=12124 mm_tokens=12102 width=1280 height=720 frames=30
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "case", "ts": 1790703162.173, "label": "u1det-nocap", "case": "video30", "concurrent": true, "ttft_s": 8.541, "total_s": 9.024, "prompt_tokens": 12124, "mm_tokens": 12102, "width": 1280, "height": 720, "answer_head": "The colors of the squares in the grid constantly change, creating a dynamic and abstract visual effe", "frames": 30, "text_error": null, "text_gap_baseline_p50_ms": 59.458, "text_gap_during_mm_max_ms": 3919.537, "text_gap_during_mm_p50_ms": 62.508, "text_chunks_during_mm": 49}
+case=video30 concurrent=True ttft_s=8.541 total_s=9.024 prompt_tokens=12124 mm_tokens=12102 width=1280 height=720 frames=30 text_error=None text_gap_baseline_p50_ms=59.458 text_gap_during_mm_max_ms=3919.537 text_gap_during_mm_p50_ms=62.508 text_chunks_during_mm=49
+SUMMARY {
+  "ruler": "bench_vision",
+  "ruler_set": "1",
+  "ruler_sha": "8ab87f286061",
+  "label": "u1det-nocap",
+  "summary": [
+    {
+      "case": "sq256",
+      "concurrent": false,
+      "ttft_s": 0.205,
+      "total_s": 1.357,
+      "prompt_tokens": 85,
+      "mm_tokens": 66,
+      "width": 256,
+      "height": 256,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 64,
+      "resized": false
+    },
+    {
+      "case": "sq256",
+      "concurrent": true,
+      "ttft_s": 0.239,
+      "total_s": 1.525,
+      "prompt_tokens": 85,
+      "mm_tokens": 66,
+      "width": 256,
+      "height": 256,
+      "answer_head": "This image displays a grid of 36 distinct, solid-colored squares arranged in six rows and six column",
+      "expected_unresized": 64,
+      "resized": false,
+      "text_error": null,
+      "text_gap_baseline_p50_ms": 60.862,
+      "text_gap_during_mm_max_ms": 60.755,
+      "text_gap_during_mm_p50_ms": 60.406,
+      "text_chunks_during_mm": 2
+    },
+    {
+      "case": "sq1024",
+      "concurrent": false,
+      "ttft_s": 0.858,
+      "total_s": 1.78,
+      "prompt_tokens": 1045,
+      "mm_tokens": 1026,
+      "width": 1024,
+      "height": 1024,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 1024,
+      "resized": false
+    },
+    {
+      "case": "sq1024",
+      "concurrent": true,
+      "ttft_s": 0.73,
+      "total_s": 1.694,
+      "prompt_tokens": 1045,
+      "mm_tokens": 1026,
+      "width": 1024,
+      "height": 1024,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 1024,
+      "resized": false,
+      "text_error": null,
+      "text_gap_baseline_p50_ms": 60.548,
+      "text_gap_during_mm_max_ms": 514.5,
+      "text_gap_during_mm_p50_ms": 60.852,
+      "text_chunks_during_mm": 5
+    },
+    {
+      "case": "photo12mp",
+      "concurrent": false,
+      "ttft_s": 9.143,
+      "total_s": 10.16,
+      "prompt_tokens": 11865,
+      "mm_tokens": 11846,
+      "width": 4032,
+      "height": 3024,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 11970,
+      "resized": false
+    },
+    {
+      "case": "photo12mp",
+      "concurrent": true,
+      "ttft_s": 8.671,
+      "total_s": 9.935,
+      "prompt_tokens": 11865,
+      "mm_tokens": 11846,
+      "width": 4032,
+      "height": 3024,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 11970,
+      "resized": false,
+      "text_error": null,
+      "text_gap_baseline_p50_ms": 60.251,
+      "text_gap_during_mm_max_ms": 5972.418,
+      "text_gap_during_mm_p50_ms": 61.289,
+      "text_chunks_during_mm": 21
+    },
+    {
+      "case": "neg16mp",
+      "concurrent": false,
+      "ttft_s": 11.603,
+      "total_s": 12.626,
+      "prompt_tokens": 15573,
+      "mm_tokens": 15554,
+      "width": 4608,
+      "height": 3456,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu",
+      "expected_unresized": 15552,
+      "resized": false
+    },
+    {
+      "case": "neg16mp",
+      "concurrent": true,
+      "ttft_s": 12.097,
+      "total_s": 13.215,
+      "prompt_tokens": 15573,
+      "mm_tokens": 15554,
+      "width": 4608,
+      "height": 3456,
+      "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in 6 rows and 8 columns, s",
+      "expected_unresized": 15552,
+      "resized": false,
+      "text_error": null,
+      "text_gap_baseline_p50_ms": 59.264,
+      "text_gap_during_mm_max_ms": 7843.049,
+      "text_gap_during_mm_p50_ms": 60.562,
+      "text_chunks_during_mm": 28
+    },
+    {
+      "case": "video30",
+      "concurrent": false,
+      "ttft_s": 7.181,
+      "total_s": 7.466,
+      "prompt_tokens": 12124,
+      "mm_tokens": 12102,
+      "width": 1280,
+      "height": 720,
+      "answer_head": "The colors of the squares in the grid constantly change.",
+      "frames": 30
+    },
+    {
+      "case": "video30",
+      "concurrent": true,
+      "ttft_s": 8.541,
+      "total_s": 9.024,
+      "prompt_tokens": 12124,
+      "mm_tokens": 12102,
+      "width": 1280,
+      "height": 720,
+      "answer_head": "The colors of the squares in the grid constantly change, creating a dynamic and abstract visual effe",
+      "frames": 30,
+      "text_error": null,
+      "text_gap_baseline_p50_ms": 59.458,
+      "text_gap_during_mm_max_ms": 3919.537,
+      "text_gap_during_mm_p50_ms": 62.508,
+      "text_chunks_during_mm": 49
+    }
+  ]
+}
+ROW {"ruler": "bench_vision", "ruler_set": "1", "ruler_sha": "8ab87f286061", "kind": "summary", "ts": 1790703162.187, "label": "u1det-nocap", "summary": [{"case": "sq256", "concurrent": false, "ttft_s": 0.205, "total_s": 1.357, "prompt_tokens": 85, "mm_tokens": 66, "width": 256, "height": 256, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 64, "resized": false}, {"case": "sq256", "concurrent": true, "ttft_s": 0.239, "total_s": 1.525, "prompt_tokens": 85, "mm_tokens": 66, "width": 256, "height": 256, "answer_head": "This image displays a grid of 36 distinct, solid-colored squares arranged in six rows and six column", "expected_unresized": 64, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.862, "text_gap_during_mm_max_ms": 60.755, "text_gap_during_mm_p50_ms": 60.406, "text_chunks_during_mm": 2}, {"case": "sq1024", "concurrent": false, "ttft_s": 0.858, "total_s": 1.78, "prompt_tokens": 1045, "mm_tokens": 1026, "width": 1024, "height": 1024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 1024, "resized": false}, {"case": "sq1024", "concurrent": true, "ttft_s": 0.73, "total_s": 1.694, "prompt_tokens": 1045, "mm_tokens": 1026, "width": 1024, "height": 1024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 1024, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.548, "text_gap_during_mm_max_ms": 514.5, "text_gap_during_mm_p50_ms": 60.852, "text_chunks_during_mm": 5}, {"case": "photo12mp", "concurrent": false, "ttft_s": 9.143, "total_s": 10.16, "prompt_tokens": 11865, "mm_tokens": 11846, "width": 4032, "height": 3024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 11970, "resized": false}, {"case": "photo12mp", "concurrent": true, "ttft_s": 8.671, "total_s": 9.935, "prompt_tokens": 11865, "mm_tokens": 11846, "width": 4032, "height": 3024, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 11970, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 60.251, "text_gap_during_mm_max_ms": 5972.418, "text_gap_during_mm_p50_ms": 61.289, "text_chunks_during_mm": 21}, {"case": "neg16mp", "concurrent": false, "ttft_s": 11.603, "total_s": 12.626, "prompt_tokens": 15573, "mm_tokens": 15554, "width": 4608, "height": 3456, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in six rows and eight colu", "expected_unresized": 15552, "resized": false}, {"case": "neg16mp", "concurrent": true, "ttft_s": 12.097, "total_s": 13.215, "prompt_tokens": 15573, "mm_tokens": 15554, "width": 4608, "height": 3456, "answer_head": "This image displays a grid of 48 distinct, solid-colored squares arranged in 6 rows and 8 columns, s", "expected_unresized": 15552, "resized": false, "text_error": null, "text_gap_baseline_p50_ms": 59.264, "text_gap_during_mm_max_ms": 7843.049, "text_gap_during_mm_p50_ms": 60.562, "text_chunks_during_mm": 28}, {"case": "video30", "concurrent": false, "ttft_s": 7.181, "total_s": 7.466, "prompt_tokens": 12124, "mm_tokens": 12102, "width": 1280, "height": 720, "answer_head": "The colors of the squares in the grid constantly change.", "frames": 30}, {"case": "video30", "concurrent": true, "ttft_s": 8.541, "total_s": 9.024, "prompt_tokens": 12124, "mm_tokens": 12102, "width": 1280, "height": 720, "answer_head": "The colors of the squares in the grid constantly change, creating a dynamic and abstract visual effe", "frames": 30, "text_error": null, "text_gap_baseline_p50_ms": 59.458, "text_gap_during_mm_max_ms": 3919.537, "text_gap_during_mm_p50_ms": 62.508, "text_chunks_during_mm": 49}]}

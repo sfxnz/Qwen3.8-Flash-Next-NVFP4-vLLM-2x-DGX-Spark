@@ -1,0 +1,153 @@
+36:(Worker pid=380) WARNING 09-29 17:34:53 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+43:(Worker_TP1 pid=380) INFO 09-29 17:34:55 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+44:(Worker_TP1 pid=380) INFO 09-29 17:34:55 [qwen_gdn_linear_attn.py:528] GDN decode kernel: cuda
+45:(Worker_TP1 pid=380) INFO 09-29 17:34:55 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+46:(Worker_TP1 pid=380) INFO 09-29 17:34:56 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+57:(Worker_TP1 pid=380) INFO 09-29 17:41:15 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+58:(Worker_TP1 pid=380) INFO 09-29 17:41:15 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+78:(Worker_TP1 pid=380) WARNING 09-29 17:43:06 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+81:(Worker_TP1 pid=380) INFO 09-29 17:43:10 [model_runner.py:1066] Graph capturing finished in 4 secs, took 0.20 GiB
+82:(Worker_TP1 pid=380) INFO 09-29 17:43:11 [gpu_worker.py:640] Available KV cache memory: 24.56 GiB
+83:(Worker_TP1 pid=380) INFO 09-29 17:43:11 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7583 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7617. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+92:(Worker_TP1 pid=380) INFO 09-29 17:43:28 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+139:(Worker_TP1 pid=380) INFO 09-29 17:44:16 [model_runner.py:1066] Graph capturing finished in 10 secs, took 0.05 GiB
+162:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] WorkerProc hit an exception.
+163:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] Traceback (most recent call last):
+164:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 1047, in _execute_worker_rpc
+165:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = func(*args, **kwargs)
+166:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^
+167:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/worker_base.py", line 375, in execute_model
+168:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self.worker.execute_model(scheduler_output)
+169:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+170:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+171:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+172:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+173:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 1210, in execute_model
+174:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = self.model_runner.execute_model(
+175:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+176:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+177:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+178:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+179:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 1948, in execute_model
+180:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     model_output = self.model(**model_inputs)
+181:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+182:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+183:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+184:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+185:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+186:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+187:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+188:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 1031, in forward
+189:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states = self.language_model.model(
+190:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+191:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+192:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+193:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+194:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+195:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+196:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+197:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 531, in forward
+198:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_output, injection = layer(
+199:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                              ^^^^^^
+200:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+201:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+202:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+203:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+204:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+205:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+206:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 326, in forward
+207:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_input, injection = mlp_hc.combine_and_mix(
+208:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                             ^^^^^^^^^^^^^^^^^^^^^^^
+209:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/hyperconnection.py", line 178, in combine_and_mix
+210:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     down_and_injection = self.input_mix_weight_down_block_inject(xn)
+211:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+212:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+213:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+214:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+215:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+216:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+217:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+218:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 606, in forward
+219:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output_parallel = self.quant_method.apply(self, input_, bias)
+220:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+221:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 238, in apply
+222:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._gemm_impl(layer, x, layer.weight, bias)
+223:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+224:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/utils.py", line 90, in default_unquantized_gemm
+225:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return torch.nn.functional.linear(x, weight, bias)
+226:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+227:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/parameter.py", line 126, in __torch_function__
+228:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return super().__torch_function__(func, types, args, kwargs)
+229:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+230:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmEx( handle, opa, opb, m, n, k, &falpha, a, CUDA_R_16BF, lda, b, CUDA_R_16BF, ldb, &fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, ldc, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+231:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] Traceback (most recent call last):
+232:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py", line 1047, in _execute_worker_rpc
+233:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = func(*args, **kwargs)
+234:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^
+235:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/worker_base.py", line 375, in execute_model
+236:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self.worker.execute_model(scheduler_output)
+237:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+238:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+239:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+240:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+241:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 1210, in execute_model
+242:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output = self.model_runner.execute_model(
+243:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+244:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+245:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return func(*args, **kwargs)
+246:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^
+247:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py", line 1948, in execute_model
+248:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     model_output = self.model(**model_inputs)
+249:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+250:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+251:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+252:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+253:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+254:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+255:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+256:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 1031, in forward
+257:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states = self.language_model.model(
+258:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+259:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+260:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+261:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+262:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+263:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+264:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+265:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 531, in forward
+266:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_output, injection = layer(
+267:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                              ^^^^^^
+268:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+269:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+270:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+271:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+272:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+273:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+274:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/model.py", line 326, in forward
+275:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     hidden_states, block_input, injection = mlp_hc.combine_and_mix(
+276:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                                             ^^^^^^^^^^^^^^^^^^^^^^^
+277:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/hyperconnection.py", line 178, in combine_and_mix
+278:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     down_and_injection = self.input_mix_weight_down_block_inject(xn)
+279:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+280:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+281:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._call_impl(*args, **kwargs)
+282:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+283:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+284:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return forward_call(*args, **kwargs)
+285:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+286:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 606, in forward
+287:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     output_parallel = self.quant_method.apply(self, input_, bias)
+288:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+289:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py", line 238, in apply
+290:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return self._gemm_impl(layer, x, layer.weight, bias)
+291:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+292:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/utils.py", line 90, in default_unquantized_gemm
+293:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return torch.nn.functional.linear(x, weight, bias)
+294:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+295:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/parameter.py", line 126, in __torch_function__
+296:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]     return super().__torch_function__(func, types, args, kwargs)
+297:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+298:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmEx( handle, opa, opb, m, n, k, &falpha, a, CUDA_R_16BF, lda, b, CUDA_R_16BF, ldb, &fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, ldc, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+299:(Worker_TP1 pid=380) ERROR 09-29 18:40:04 [multiproc_executor.py:1055] 
+302:  what():  CUDA error: device-side assert triggered
+344:ERROR 09-29 18:42:52 [multiproc_executor.py:314] Worker proc VllmWorker-1 died unexpectedly (exit code: None), shutting down executor.

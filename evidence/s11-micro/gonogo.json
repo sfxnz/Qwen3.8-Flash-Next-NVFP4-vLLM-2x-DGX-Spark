@@ -1,0 +1,300 @@
+{
+ "pin": [
+  {
+   "measurement": "In-graph AR 5-160 KB, mixing on vs off (L2a booking)",
+   "value": "dAR(M) us 1:20.1, 4:20.6, 8:18.6, 16:17.7, 32:24.4; booked c1 1.10 ms, c8 1.29 ms",
+   "rule": "book 0.5 x (107 x dAR + neighbour slowdown); build L2a if >= 0.75 ms",
+   "verdict": "GO",
+   "note": "gapped mode already contains the slowed neighbour"
+  },
+  {
+   "measurement": "AG vs AR at c=1 payload, mixing off (L2d)",
+   "value": "AG 16.5 / AR 21.0 us = 0.79 at M=4",
+   "rule": "build L2d only if AG_off <= 0.7 x AR_off",
+   "verdict": "NO-GO",
+   "note": ""
+  },
+  {
+   "measurement": "L2 prefetch of a 13.4 MB module during a real AR",
+   "value": "-3.1 us/window at M=4",
+   "rule": ">= 15 us net per window -> revisit F16; otherwise 0",
+   "verdict": "NO-GO",
+   "note": ""
+  },
+  {
+   "measurement": "Logits all-gather 248 KB-8 MB (keep, gapped)",
+   "value": "242 KB:80 us, 970 KB:213 us, 1940 KB:285 us, 3880 KB:439 us, 7760 KB:836 us",
+   "rule": "input to F13 / L1 comm model",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "cuBLAS choice for HC down (336,10240) and HC up at M=4",
+   "value": "down 35.8 us [void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616g + void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat1]; up 30.7 us [void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616g] (split-K kernel seen)",
+   "rule": "WMMA tile (>= 60 us per call) -> L4a first; split-K (~37 us) -> K5 directly, built W8A16-ready",
+   "verdict": "GO",
+   "note": "split-K case: skip L4a, build K5 directly (W8A16-ready)"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (8240,2560) (gdn_in_proj_qkvz_ba)",
+   "value": "221.5 GB/s at M=4 cold (M=1:168.3, M=32:215.4)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (2560,3072) (gdn_out_proj|qsa_o)",
+   "value": "219.9 GB/s at M=4 cold (M=1:163.4, M=32:212.1)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (7296,2560) (qsa_qkv+index)",
+   "value": "228.6 GB/s at M=4 cold (M=1:169.9, M=32:223.6)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (48,2560) (gdn_in_proj_ba)",
+   "value": "12.6 GB/s at M=4 cold (M=1:59.1, M=32:34.0)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (512,2560) (router)",
+   "value": "148.4 GB/s at M=4 cold (M=1:182.9, M=32:161.9)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "w8a16_marlin_ch GB/s at the P4-1 shapes",
+   "value": "worst 192.0 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:217.9, gdn_out_proj|qsa_o:192.0, qsa_qkv:196.8, qsa_qkv+index:207.3, ple_kv_proj:222.3",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "GO",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "w8a16_marlin_b128 GB/s at the P4-1 shapes",
+   "value": "worst 206.0 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:225.9, gdn_out_proj|qsa_o:206.0, qsa_qkv:212.8, qsa_qkv+index:212.5, ple_kv_proj:220.7",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "GO",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "w8a8_cutlass GB/s at the P4-1 shapes",
+   "value": "worst 174.5 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:200.7, gdn_out_proj|qsa_o:174.5, qsa_qkv:196.0, qsa_qkv+index:195.5, ple_kv_proj:207.9",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "MARGINAL",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "D8 arm order (W8A8 >= 200 GB/s?)",
+   "value": "W8A8 worst 174.5 GB/s",
+   "rule": "W8A16 first unless prefill TTFT is the priority and W8A8 >= 200",
+   "verdict": "INFO",
+   "note": "W8A16 arm first"
+  },
+  {
+   "measurement": "NVFP4 MoE TP2 routed vs floor",
+   "value": "296.0 us vs floor 240.4 us = 1.231x (40 experts, M=4, autotuned=True); EP 1.133x",
+   "rule": "TP2 routed <= 1.2x floor -> close F10",
+   "verdict": "NO-GO",
+   "note": "GO = close F10"
+  },
+  {
+   "measurement": "NVFP4 MoE TP2 FC2 vs floor",
+   "value": "FC2 100.35 us vs 80.14 us = 1.252x",
+   "rule": "TP2 FC2 >= 1.6x floor -> run the D2 `ep` A/B",
+   "verdict": "NO-GO",
+   "note": "GO = run D2 ep A/B"
+  },
+  {
+   "measurement": "L6b BF16 activations into FlashInfer",
+   "value": "294.9 us vs fp4_in 296.0 us",
+   "rule": "informs L6b (-0.1 ms expected)",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "Draft-head probe F.linear [V'/2,2560] + argmax",
+   "value": "M=1 cold: V'=32768:166.6 GB/s 503 us, V'=47104:174.8 GB/s 690 us, V'=65536:172.0 GB/s 975 us, V'=248320:171.6 GB/s 3705 us",
+   "rule": ">= 200 GB/s -> L1b is on track",
+   "verdict": "NO-GO",
+   "note": "rule applied at V'=32k"
+  },
+  {
+   "measurement": "42 MB all-reduce, single vs dual rail",
+   "value": "single 3724 us, dual 2008 us (1.855x); worst small-msg latency +107.2%",
+   "rule": "feeds longctx only; records the decode small-message penalty",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "deviceQuery facts (spark1)",
+   "value": "sm_count=48, l2_bytes=25165824, smem_per_block_optin=101376",
+   "rule": "48 SMs, 24 MB L2, ~99 KB opt-in smem",
+   "verdict": "INFO",
+   "note": "kernel track (\u00a74) assumptions"
+  },
+  {
+   "measurement": "HC module chain baseline (L4 gate: <= 0.6x this)",
+   "value": "M=4 stream 71.8 us (1.23x floor), hot 24.7 us, flush 68.6 us",
+   "rule": "baseline for L4 / K5",
+   "verdict": "INFO",
+   "note": ""
+  }
+ ],
+ "v030": [
+  {
+   "measurement": "In-graph AR 5-160 KB, mixing on vs off (L2a booking)",
+   "value": "dAR(M) us 1:16.4, 4:16.6, 8:14.5, 16:14.4, 32:19.3; booked c1 0.89 ms, c8 1.02 ms",
+   "rule": "book 0.5 x (107 x dAR + neighbour slowdown); build L2a if >= 0.75 ms",
+   "verdict": "GO",
+   "note": "gapped mode already contains the slowed neighbour"
+  },
+  {
+   "measurement": "AG vs AR at c=1 payload, mixing off (L2d)",
+   "value": "AG 15.8 / AR 20.9 us = 0.76 at M=4",
+   "rule": "build L2d only if AG_off <= 0.7 x AR_off",
+   "verdict": "NO-GO",
+   "note": ""
+  },
+  {
+   "measurement": "L2 prefetch of a 13.4 MB module during a real AR",
+   "value": "-2.4 us/window at M=4",
+   "rule": ">= 15 us net per window -> revisit F16; otherwise 0",
+   "verdict": "NO-GO",
+   "note": ""
+  },
+  {
+   "measurement": "Logits all-gather 248 KB-8 MB (keep, gapped)",
+   "value": "242 KB:75 us, 970 KB:211 us, 1940 KB:283 us, 3880 KB:434 us, 7760 KB:830 us",
+   "rule": "input to F13 / L1 comm model",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "cuBLAS choice for HC down (336,10240) and HC up at M=4",
+   "value": "down 34.8 us [void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616g + void cublasLt::splitKreduce_kernel<32, 16, int, __nv_bfloat1]; up 29.3 us [void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616g] (split-K kernel seen)",
+   "rule": "WMMA tile (>= 60 us per call) -> L4a first; split-K (~37 us) -> K5 directly, built W8A16-ready",
+   "verdict": "GO",
+   "note": "split-K case: skip L4a, build K5 directly (W8A16-ready)"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (8240,2560) (gdn_in_proj_qkvz_ba)",
+   "value": "222.7 GB/s at M=4 cold (M=1:168.2, M=32:215.7)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (2560,3072) (gdn_out_proj|qsa_o)",
+   "value": "219.4 GB/s at M=4 cold (M=1:160.8, M=32:211.1)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (7296,2560) (qsa_qkv+index)",
+   "value": "225.7 GB/s at M=4 cold (M=1:168.1, M=32:220.4)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "NO-GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (48,2560) (gdn_in_proj_ba)",
+   "value": "12.4 GB/s at M=4 cold (M=1:58.9, M=32:34.3)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "cuBLAS GB/s at (512,2560) (router)",
+   "value": "154.0 GB/s at M=4 cold (M=1:181.4, M=32:159.7)",
+   "rule": "< 195 GB/s -> K4 BF16 pays; >= 215 -> build K4 only as the FP8 substrate",
+   "verdict": "GO",
+   "note": "GO = a K4 BF16 plan pays for this shape"
+  },
+  {
+   "measurement": "w8a16_marlin_ch GB/s at the P4-1 shapes",
+   "value": "worst 198.3 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:213.5, gdn_out_proj|qsa_o:198.3, qsa_qkv:210.1, qsa_qkv+index:212.8, ple_kv_proj:222.2",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "GO",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "w8a16_marlin_b128 GB/s at the P4-1 shapes",
+   "value": "worst 215.4 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:221.0, gdn_out_proj|qsa_o:215.4, qsa_qkv:217.9, qsa_qkv+index:217.1, ple_kv_proj:226.8",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "GO",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "w8a8_cutlass GB/s at the P4-1 shapes",
+   "value": "worst 170.8 GB/s (gdn_out_proj|qsa_o) at M=4; gdn_in_proj_qkvz:209.7, gdn_out_proj|qsa_o:170.8, qsa_qkv:198.0, qsa_qkv+index:200.4, ple_kv_proj:210.7",
+   "rule": ">= 180 GB/s -> stock kernels; < 150 -> K4 FP8 is a prerequisite for P4-1",
+   "verdict": "MARGINAL",
+   "note": "GO = stock kernel; NO-GO = K4 FP8 first"
+  },
+  {
+   "measurement": "D8 arm order (W8A8 >= 200 GB/s?)",
+   "value": "W8A8 worst 170.8 GB/s",
+   "rule": "W8A16 first unless prefill TTFT is the priority and W8A8 >= 200",
+   "verdict": "INFO",
+   "note": "W8A16 arm first"
+  },
+  {
+   "measurement": "NVFP4 MoE TP2 routed vs floor",
+   "value": "297.6 us vs floor 240.4 us = 1.238x (40 experts, M=4, autotuned=True); EP 1.134x",
+   "rule": "TP2 routed <= 1.2x floor -> close F10",
+   "verdict": "NO-GO",
+   "note": "GO = close F10"
+  },
+  {
+   "measurement": "NVFP4 MoE TP2 FC2 vs floor",
+   "value": "FC2 99.94 us vs 80.14 us = 1.247x",
+   "rule": "TP2 FC2 >= 1.6x floor -> run the D2 `ep` A/B",
+   "verdict": "NO-GO",
+   "note": "GO = run D2 ep A/B"
+  },
+  {
+   "measurement": "L6b BF16 activations into FlashInfer",
+   "value": "293.6 us vs fp4_in 297.6 us",
+   "rule": "informs L6b (-0.1 ms expected)",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "Draft-head probe F.linear [V'/2,2560] + argmax",
+   "value": "M=1 cold: V'=32768:169.5 GB/s 495 us, V'=47104:168.9 GB/s 714 us, V'=65536:170.8 GB/s 982 us, V'=248320:168.6 GB/s 3770 us",
+   "rule": ">= 200 GB/s -> L1b is on track",
+   "verdict": "NO-GO",
+   "note": "rule applied at V'=32k"
+  },
+  {
+   "measurement": "42 MB all-reduce, single vs dual rail",
+   "value": "single 3641 us, dual 2004 us (1.817x); worst small-msg latency +113.9%",
+   "rule": "feeds longctx only; records the decode small-message penalty",
+   "verdict": "INFO",
+   "note": ""
+  },
+  {
+   "measurement": "deviceQuery facts (spark1)",
+   "value": "sm_count=48, l2_bytes=25165824, smem_per_block_optin=101376",
+   "rule": "48 SMs, 24 MB L2, ~99 KB opt-in smem",
+   "verdict": "INFO",
+   "note": "kernel track (\u00a74) assumptions"
+  },
+  {
+   "measurement": "HC module chain baseline (L4 gate: <= 0.6x this)",
+   "value": "M=4 stream 70.8 us (1.212x floor), hot 24.7 us, flush 74.5 us",
+   "rule": "baseline for L4 / K5",
+   "verdict": "INFO",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+-- ruler.json: void=True refused=["3 wave(s) with T0 flags: prose c2 r1 ['runaway', 'zero_acceptance']; prose c2 r3 ['runaway', 'zero_acceptance']; prose c8 r2 ['runaway', 'zero_acceptance']", 'boot void (sentinel failed)']
+  prose      c=1 ms/step med=59.16 min=59.00 decode tok/s med=36.1 agg med=36.1 acc=[2.35, 2.02, 2.16] ttft=0.144
+  prose      c=2 ms/step med=59.34 min=58.32 decode tok/s med=33.8 agg med=27.0 acc=[1.22, 2.29, 1.21] ttft=0.160
+  prose      c=8 ms/step med=92.27 min=69.21 decode tok/s med=24.4 agg med=178.8 acc=[2.35, 1.09, 2.32] ttft=0.384
+-- gate/bench-frozen.out (frozen bench_decode)
+  prose      c=1 decode=36.9 agg=36.9 ttft=0.162 acc=2.320
+  prose      c=2 decode=36.2 agg=26.9 ttft=0.167 acc=1.404
+  structured c=1 decode=63.9 agg=63.8 ttft=0.159 acc=4.000
+  structured c=2 decode=60.8 agg=35.7 ttft=0.179 acc=2.003

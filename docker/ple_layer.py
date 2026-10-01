@@ -1,3 +1,9 @@
+# R11-OVERLAY
+# base_image_digest: sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
+# upstream_file: vllm/models/qwen4_exp/nvidia/ple_layer.py
+# upstream_file_sha256: 859ae689a7a74b8e4d8ea8c62b3479dbb214314f4fb168ebc2cb963ab3e4a664
+# upstream_PR: none (on this digest the stock file already selects FP8 PLE; the overlay is a byte-identical copy)
+# generator: docker/apply_ple_overlay.py (do not hand-edit)
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
 """GPU-resident Qwen4Exp position-learning enhancement layers."""

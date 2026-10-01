@@ -1,0 +1,1127 @@
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347] 
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.30.0
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:347] 
+(APIServer pid=1) INFO 09-29 18:48:59 [api_utils.py:286] non-default args: {'model_tag': '/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a', 'chat_template': '/recipe/chat_template_alias.jinja', 'default_chat_template_kwargs': {'enable_thinking': False}, 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_xml', 'host': '0.0.0.0', 'model': '/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a', 'trust_remote_code': True, 'max_model_len': 262144, 'served_model_name': ['nvidia/Qwen3.8-Flash-Next-NVFP4'], 'reasoning_parser': 'qwen3', 'distributed_executor_backend': 'mp', 'master_addr': '10.100.8.1', 'master_port': 29523, 'nnodes': 2, 'tensor_parallel_size': 2, 'gpu_memory_utilization': 0.76, 'enable_prefix_caching': True, 'limit_mm_per_prompt': {'image': 8, 'video': 1}, 'mm_processor_kwargs': {'images_kwargs': {'min_pixels': 65536, 'max_pixels': 4194304}, 'videos_kwargs': {'cap_pixels_per_frame': True}}, 'mm_processor_cache_gb': 1.0, 'max_num_batched_tokens': 8192, 'max_num_seqs': 8, 'enable_chunked_prefill': True, 'async_scheduling': True, 'speculative_config': {'method': 'mtp', 'num_speculative_tokens': 3, 'moe_backend': 'triton'}, 'compilation_config': {'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': None, 'compile_ranges_endpoints': None, 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_DECODE_ONLY: (2, 0)>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': None, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) INFO 09-29 18:49:07 [model.py:692] Resolved architecture: Qwen4ExpForConditionalGeneration
+(APIServer pid=1) INFO 09-29 18:49:07 [model.py:2030] Using max model len 262144
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) INFO 09-29 18:49:09 [arg_utils.py:2286] Inferred data_parallel_rank 0 from node_rank 0
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) INFO 09-29 18:49:15 [model.py:692] Resolved architecture: Qwen4ExpMTP
+(APIServer pid=1) INFO 09-29 18:49:15 [model.py:2030] Using max model len 262144
+(APIServer pid=1) WARNING 09-29 18:49:15 [speculative.py:1361] Enabling num_speculative_tokens > 1 will run multiple times of forward on same MTP layer,which may result in lower acceptance rate
+(APIServer pid=1) INFO 09-29 18:49:15 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=1) INFO 09-29 18:49:15 [config.py:625] Mamba cache mode is set to 'align' for Qwen4ExpForConditionalGeneration by default when prefix caching is enabled
+(APIServer pid=1) INFO 09-29 18:49:15 [vllm.py:1252] Resolved Engram configuration: EngramConfig(cpu_offload=False, embedding_across_dp=False, dp_shared_memory=False)
+(APIServer pid=1) WARNING 09-29 18:49:15 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(APIServer pid=1) INFO 09-29 18:49:15 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(APIServer pid=1) INFO 09-29 18:49:15 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) INFO 09-29 18:49:26 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a', speculative_config=SpeculativeConfig(method='mtp', model='/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a', num_spec_tokens=3), tokenizer='/cache/huggingface/hub/models--nvidia--Qwen3.8-Flash-Next-NVFP4/snapshots/fab0aecb760cec45227f6656abcaafa11abca87a', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=262144, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=modelopt_mixed, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='qwen3', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=nvidia/Qwen3.8-Flash-Next-NVFP4, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+quant_fp8', 'all', '+quant_fp8'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_DECODE_ONLY: (2, 0)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 64, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=364) INFO 09-29 18:49:26 [multiproc_executor.py:153] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=10.100.8.1, mq_connect_ip=10.100.8.1 (local), world_size=2, local_world_size=1
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(APIServer pid=1) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker pid=476) INFO 09-29 18:49:31 [parallel_state.py:1827] world_size=2 rank=0 local_rank=0 distributed_init_method=tcp://10.100.8.1:29523 backend=nccl
+(APIServer pid=1) INFO 09-29 18:49:33 [base.py:261] Multi-modal warmup completed in 11.346s
+(APIServer pid=1) INFO 09-29 18:49:33 [base.py:261] Readonly multi-modal warmup completed in 0.319s
+(Worker pid=476) INFO 09-29 18:49:43 [pynccl.py:148] vLLM is using nccl==2.30.7
+(Worker pid=476) WARNING 09-29 18:49:46 [symm_mem.py:67] SymmMemCommunicator: Device capability 12.1 not supported, communicator is not available.
+(Worker pid=476) WARNING 09-29 18:49:46 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=476) WARNING 09-29 18:49:46 [custom_all_reduce.py:201] Custom collectives are disabled because this multi-node group does not have MNNVL-capable GPUs on every rank.
+(Worker pid=476) INFO 09-29 18:49:46 [cuda_communicator.py:318] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=476) INFO 09-29 18:49:47 [cuda_communicator.py:318] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=476) INFO 09-29 18:49:47 [parallel_state.py:2267] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=476) INFO 09-29 18:49:47 [gpu_worker.py:441] Using V2 Model Runner
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [model_runner.py:396] Loading model from scratch...
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [cuda.py:597] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [qwen_gdn_linear_attn.py:176] Using FlashInfer GDN prefill kernel (requested=auto, head_k_dim=128).
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [qwen_gdn_linear_attn.py:528] GDN decode kernel: cuda
+(Worker_TP0 pid=476) INFO 09-29 18:49:48 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+(Worker_TP0 pid=476) INFO 09-29 18:49:49 [ngram_embedding.py:720] Initialized PLE embedding language_model.model.layers.1.ple.ple_embedding.ngram_embedding: quantization_method=Qwen4ExpPLEFp8EmbeddingMethod, weight_dtype=torch.float8_e4m3fn, weight_device=cuda:0, pinned=False
+(Worker_TP0 pid=476) INFO 09-29 18:49:49 [flash_attn.py:1116] Using FlashAttention version 2
+(Worker_TP0 pid=476) WARNING 09-29 18:49:51 [compilation.py:1361] Op 'quant_fp8' not present in model, enabling with '+quant_fp8' has no effect
+(Worker_TP0 pid=476) INFO 09-29 18:49:51 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 42.92 GiB.
+(Worker_TP0 pid=476) INFO 09-29 18:49:51 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (42.92 GiB).
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:   0% Completed | 0/11 [00:00<?, ?it/s]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:   9% Completed | 1/11 [00:13<02:10, 13.03s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  18% Completed | 2/11 [00:46<03:44, 24.96s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  27% Completed | 3/11 [01:25<04:10, 31.25s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  36% Completed | 4/11 [01:56<03:37, 31.13s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  45% Completed | 5/11 [02:34<03:23, 33.83s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  55% Completed | 6/11 [03:07<02:47, 33.45s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  64% Completed | 7/11 [03:46<02:20, 35.21s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  73% Completed | 8/11 [04:20<01:44, 34.88s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  82% Completed | 9/11 [04:38<00:59, 29.59s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards: 100% Completed | 11/11 [06:06<00:00, 36.34s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards: 100% Completed | 11/11 [06:06<00:00, 33.29s/it]
+(Worker_TP0 pid=476) 
+(Worker_TP0 pid=476) INFO 09-29 18:56:00 [default_loader.py:430] Loading weights took 369.31 seconds
+(Worker_TP0 pid=476) INFO 09-29 18:56:01 [nvfp4.py:613] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0 pid=476) INFO 09-29 18:56:02 [vllm.py:1252] Resolved Engram configuration: EngramConfig(cpu_offload=False, embedding_across_dp=False, dp_shared_memory=False)
+(Worker_TP0 pid=476) WARNING 09-29 18:56:02 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(Worker_TP0 pid=476) INFO 09-29 18:56:02 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0 pid=476) INFO 09-29 18:56:02 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(Worker_TP0 pid=476) INFO 09-29 18:56:06 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0 pid=476) INFO 09-29 18:56:06 [fp8.py:530] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+(Worker_TP0 pid=476) INFO 09-29 18:56:06 [fp8.py:359] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'VLLM_CUTLASS', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_VLLM_CUTLASS', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+(Worker_TP0 pid=476) INFO 09-29 18:56:07 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 40.94 GiB.
+(Worker_TP0 pid=476) INFO 09-29 18:56:07 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (40.94 GiB).
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:   0% Completed | 0/11 [00:00<?, ?it/s]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:   9% Completed | 1/11 [00:02<00:20,  2.10s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  18% Completed | 2/11 [00:07<00:38,  4.33s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  27% Completed | 3/11 [00:14<00:42,  5.28s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  36% Completed | 4/11 [00:21<00:42,  6.06s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  45% Completed | 5/11 [00:27<00:35,  5.89s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  55% Completed | 6/11 [00:33<00:29,  5.85s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  64% Completed | 7/11 [00:38<00:23,  5.80s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  73% Completed | 8/11 [00:45<00:18,  6.04s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  82% Completed | 9/11 [00:55<00:14,  7.31s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards:  91% Completed | 10/11 [00:55<00:05,  5.24s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards: 100% Completed | 11/11 [01:07<00:00,  7.26s/it]
+(Worker_TP0 pid=476) Loading safetensors checkpoint shards: 100% Completed | 11/11 [01:07<00:00,  6.17s/it]
+(Worker_TP0 pid=476) 
+(Worker_TP0 pid=476) INFO 09-29 18:57:15 [default_loader.py:430] Loading weights took 68.06 seconds
+(Worker_TP0 pid=476) INFO 09-29 18:57:15 [fp8.py:740] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0 pid=476) WARNING 09-29 18:57:15 [speculator.py:235] Draft model Qwen4ExpMTP does not support external multimodal embeddings. Embeddings from the target model will not be passed to the drafter; using text-only draft inputs instead.
+(Worker_TP0 pid=476) INFO 09-29 18:57:24 [model_runner.py:428] Model loading took 63.61 GiB memory and 456.468182 seconds
+(Worker_TP0 pid=476) INFO 09-29 18:57:24 [topk_topp_sampler.py:78] Using FlashInfer for top-p & top-k sampling.
+(Worker_TP0 pid=476) INFO 09-29 18:57:24 [interface.py:933] Setting attention block size to 1600 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP0 pid=476) INFO 09-29 18:57:24 [interface.py:957] Padding mamba page size by 0.25% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=364) INFO 09-29 18:57:24 [torch_utils.py:287] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=364) INFO 09-29 18:57:25 [utils.py:320] Using BLNHC KV cache layout.
+(Worker_TP0 pid=476) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP0 pid=476) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP0 pid=476) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker_TP0 pid=476) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP0 pid=476) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP0 pid=476) INFO 09-29 18:57:31 [encoder_runner.py:131] Encoder cache will be initialized with a budget of 12288 tokens, and profiled with 1 video items of the maximum feature size.
+(Worker_TP0 pid=476) INFO 09-29 18:57:51 [deep_gemm.py:192] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP0 pid=476) INFO 09-29 18:57:51 [deep_gemm.py:219] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP0 pid=476) INFO 09-29 18:57:51 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP0 pid=476) WARNING 09-29 18:57:51 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+(Worker_TP0 pid=476) WARNING 09-29 18:57:53 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+(Worker_TP0 pid=476) INFO 09-29 18:57:53 [speculator.py:120] Fused multi-step draft decode is not supported by attention backend(s) QWEN4_EXP_EXP_QSA_STATE; falling back to rebuilding attention metadata between draft steps.
+(Worker_TP0 pid=476) Capturing CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):  50%|█████     | 1/2 [00:01<00:01,  1.87s/it]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:02<00:00,  1.16s/it]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:02<00:00,  1.26s/it]
+(Worker_TP0 pid=476) INFO 09-29 18:57:56 [speculator.py:151] Capturing model for speculator...
+(Worker_TP0 pid=476) Capturing prefill CUDA graphs (FULL):   0%|          | 0/5 [00:00<?, ?it/s]Capturing prefill CUDA graphs (FULL):  20%|██        | 1/5 [00:00<00:02,  1.74it/s]Capturing prefill CUDA graphs (FULL):  60%|██████    | 3/5 [00:00<00:00,  3.78it/s]Capturing prefill CUDA graphs (FULL): 100%|██████████| 5/5 [00:01<00:00,  4.81it/s]Capturing prefill CUDA graphs (FULL): 100%|██████████| 5/5 [00:01<00:00,  4.18it/s]
+(Worker_TP0 pid=476) Capturing decode CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]Capturing decode CUDA graphs (FULL):  25%|██▌       | 1/4 [00:00<00:00,  5.86it/s]Capturing decode CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 18.68it/s]
+(Worker_TP0 pid=476) INFO 09-29 18:57:58 [model_runner.py:1066] Graph capturing finished in 4 secs, took 0.21 GiB
+(Worker_TP0 pid=476) INFO 09-29 18:57:58 [gpu_worker.py:640] Available KV cache memory: 27.69 GiB
+(Worker_TP0 pid=476) INFO 09-29 18:57:58 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7580 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7620. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=364) WARNING 09-29 18:57:58 [kv_cache_utils.py:2206] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+(EngineCore pid=364) INFO 09-29 18:57:58 [kv_cache_utils.py:2395] GPU KV cache size: 1,626,709 tokens, Maximum concurrency for 262,144 tokens per request: 6.21x
+(Worker_TP0 pid=476) INFO 09-29 18:58:07 [kernel_warmup.py:172] JIT kernel warmup starting.
+(Worker_TP0 pid=476) INFO 09-29 18:58:07 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(Worker_TP0 pid=476) INFO 09-29 18:58:09 [qwen_vl_triton_warmup.py:57] Warmed position embedding and vision rotary kernels on grids=[(1, 16, 16), (1, 16, 2), (1, 2, 16), (1, 2, 2)].
+(Worker_TP0 pid=476) INFO 09-29 18:58:09 [qwen_vl_triton_warmup.py:98] Warmed M-RoPE Triton kernels.
+(Worker_TP0 pid=476) INFO 09-29 18:58:09 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP0 pid=476) INFO 09-29 18:58:11 [qwen4_exp_qsa_warmup.py:72] Warmed up Qwen4Exp QSA decode kernels: ((1, 1), (2, 1), (3, 1), (4, 1)).
+(Worker_TP0 pid=476) INFO 09-29 18:58:14 [qwen4_exp_qsa_warmup.py:86] Warmed up Qwen4Exp QSA sparse attention kernels: ((32, 1, 1), (32, 4, 1), (32, 8, 1), (32, 16, 1), (32, 64, 4), (64, 1, 2), (64, 4, 2)).
+(Worker_TP0 pid=476) INFO 09-29 18:58:14 [kernel_warmup.py:438] Using FlashInfer autotune cache file: /root/.cache/vllm/flashinfer_autotune_cache/0.6.18.post1/121a/9e6b1cf2c2390f6533440437df217b29b6be1485f524d205a8e85d7572eadebb/autotune_configs.json
+(Worker_TP0 pid=476) 2026-09-29 18:58:14,505 - INFO - autotuner.py:972 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP0 pid=476) INFO 09-29 18:58:14 [kernel_warmup.py:359] Running FlashInfer autotune with 8192 tokens and token buckets (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 768, 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 8192).
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 18:58:14,999 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   5%|▍         | 1/21 [00:00<00:02,  6.80profile/s]2026-09-29 18:58:15,087 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) 2026-09-29 18:58:15,192 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  14%|█▍        | 3/21 [00:00<00:01,  9.14profile/s]2026-09-29 18:58:15,344 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  19%|█▉        | 4/21 [00:00<00:02,  8.06profile/s]2026-09-29 18:58:15,609 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  24%|██▍       | 5/21 [00:00<00:02,  5.86profile/s]2026-09-29 18:58:15,953 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  29%|██▊       | 6/21 [00:01<00:03,  4.42profile/s]2026-09-29 18:58:16,393 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  33%|███▎      | 7/21 [00:01<00:04,  3.41profile/s]2026-09-29 18:58:17,076 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  38%|███▊      | 8/21 [00:02<00:05,  2.41profile/s]2026-09-29 18:58:17,649 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  43%|████▎     | 9/21 [00:02<00:05,  2.16profile/s]2026-09-29 18:58:18,239 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  48%|████▊     | 10/21 [00:03<00:05,  1.99profile/s]2026-09-29 18:58:18,853 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  52%|█████▏    | 11/21 [00:04<00:05,  1.87profile/s]2026-09-29 18:58:19,452 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  57%|█████▋    | 12/21 [00:04<00:04,  1.80profile/s]2026-09-29 18:58:20,067 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  62%|██████▏   | 13/21 [00:05<00:04,  1.75profile/s]2026-09-29 18:58:20,708 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  67%|██████▋   | 14/21 [00:05<00:04,  1.69profile/s]2026-09-29 18:58:21,336 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  71%|███████▏  | 15/21 [00:06<00:03,  1.66profile/s]2026-09-29 18:58:21,972 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  76%|███████▌  | 16/21 [00:07<00:03,  1.63profile/s]2026-09-29 18:58:22,639 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  81%|████████  | 17/21 [00:07<00:02,  1.59profile/s]2026-09-29 18:58:23,339 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  86%|████████▌ | 18/21 [00:08<00:01,  1.54profile/s]2026-09-29 18:58:24,329 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  90%|█████████ | 19/21 [00:09<00:01,  1.33profile/s]2026-09-29 18:58:25,559 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  95%|█████████▌| 20/21 [00:10<00:00,  1.12profile/s]2026-09-29 18:58:26,529 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:11<00:00,  1.09profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:11<00:00,  1.80profile/s]
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 18:58:26,621 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) 2026-09-29 18:58:26,713 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  10%|▉         | 2/21 [00:00<00:01, 11.58profile/s]2026-09-29 18:58:26,809 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) 2026-09-29 18:58:26,941 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  19%|█▉        | 4/21 [00:00<00:01,  9.74profile/s]2026-09-29 18:58:27,128 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  24%|██▍       | 5/21 [00:00<00:02,  7.84profile/s]2026-09-29 18:58:27,396 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  29%|██▊       | 6/21 [00:00<00:02,  5.90profile/s]2026-09-29 18:58:27,736 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  33%|███▎      | 7/21 [00:01<00:03,  4.54profile/s]2026-09-29 18:58:28,139 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  38%|███▊      | 8/21 [00:01<00:03,  3.64profile/s]2026-09-29 18:58:28,564 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  43%|████▎     | 9/21 [00:02<00:03,  3.13profile/s]2026-09-29 18:58:29,007 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  48%|████▊     | 10/21 [00:02<00:03,  2.80profile/s]2026-09-29 18:58:29,461 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  52%|█████▏    | 11/21 [00:02<00:03,  2.59profile/s]2026-09-29 18:58:29,943 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  57%|█████▋    | 12/21 [00:03<00:03,  2.41profile/s]2026-09-29 18:58:30,439 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  62%|██████▏   | 13/21 [00:03<00:03,  2.28profile/s]2026-09-29 18:58:30,959 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  67%|██████▋   | 14/21 [00:04<00:03,  2.16profile/s]2026-09-29 18:58:31,523 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  71%|███████▏  | 15/21 [00:04<00:02,  2.03profile/s]2026-09-29 18:58:32,112 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  76%|███████▌  | 16/21 [00:05<00:02,  1.91profile/s]2026-09-29 18:58:32,737 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  81%|████████  | 17/21 [00:06<00:02,  1.81profile/s]2026-09-29 18:58:33,429 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  86%|████████▌ | 18/21 [00:06<00:01,  1.68profile/s]2026-09-29 18:58:34,209 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  90%|█████████ | 19/21 [00:07<00:01,  1.54profile/s]2026-09-29 18:58:34,990 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  95%|█████████▌| 20/21 [00:08<00:00,  1.45profile/s]2026-09-29 18:58:36,873 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP0 pid=476) [AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:10<00:00,  1.05s/profile][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:10<00:00,  2.03profile/s]
+(Worker_TP0 pid=476) 2026-09-29 18:58:44,321 - INFO - autotuner.py:995 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP0 pid=476) 2026-09-29 18:58:44,357 - INFO - autotuner.py:2652 - flashinfer.jit: [Autotuner]: Saved 42 configs to /root/.cache/vllm/flashinfer_autotune_cache/0.6.18.post1/121a/9e6b1cf2c2390f6533440437df217b29b6be1485f524d205a8e85d7572eadebb/autotune_configs.json (42 new, 0 from previous config)
+(Worker_TP0 pid=476) Capturing CUDA graphs (FULL):   0%|          | 0/5 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):  20%|██        | 1/5 [00:00<00:00,  6.97it/s]Capturing CUDA graphs (FULL):  40%|████      | 2/5 [00:00<00:00,  7.24it/s]Capturing CUDA graphs (FULL):  60%|██████    | 3/5 [00:00<00:00,  7.87it/s]Capturing CUDA graphs (FULL):  80%|████████  | 4/5 [00:00<00:00,  8.47it/s]Capturing CUDA graphs (FULL): 100%|██████████| 5/5 [00:00<00:00,  8.76it/s]Capturing CUDA graphs (FULL): 100%|██████████| 5/5 [00:00<00:00,  8.29it/s]
+(Worker_TP0 pid=476) INFO 09-29 18:59:06 [speculator.py:151] Capturing model for speculator...
+(Worker_TP0 pid=476) Capturing prefill CUDA graphs (FULL):   0%|          | 0/5 [00:00<?, ?it/s]Capturing prefill CUDA graphs (FULL): 100%|██████████| 5/5 [00:00<00:00, 67.52it/s]
+(Worker_TP0 pid=476) Capturing decode CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]Capturing decode CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 82.42it/s]
+(Worker_TP0 pid=476) INFO 09-29 18:59:06 [model_runner.py:1066] Graph capturing finished in 8 secs, took 0.33 GiB
+(Worker_TP0 pid=476) INFO 09-29 18:59:06 [gpu_worker.py:825] CUDA graph pool memory: 0.33 GiB (actual), 0.24 GiB (estimated), difference: 0.09 GiB (26.0%).
+(Worker_TP0 pid=476) INFO 09-29 18:59:06 [gpu_worker.py:888] Free memory on device (107.58/121.69 GiB) on startup. Desired GPU memory utilization is (0.76, 92.48 GiB). Actual usage is 63.73 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.33 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=29225631253` (27.22 GiB) to fit into requested memory, or `--kv-cache-memory=45433294848` (42.31 GiB) to fully utilize gpu memory. Current kv cache memory in use is 27.69 GiB.
+(EngineCore pid=364) INFO 09-29 18:59:08 [shm_broadcast.py:801] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP0 pid=476) INFO 09-29 18:59:08 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0 pid=476) INFO 09-29 18:59:08 [torch_utils.py:287] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=364) INFO 09-29 18:59:08 [core.py:379] init engine (profile, create kv cache, warmup model) took 103.64 s
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) INFO 09-29 18:59:12 [kv_cache_utils.py:748] kv cache group sizes [1600, 1600, 1600, 1600, 8, 1600]
+(EngineCore pid=364) INFO 09-29 18:59:12 [kv_cache_utils.py:749] kv lcm block sizes 1600
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=364) INFO 09-29 18:59:24 [vllm.py:1252] Resolved Engram configuration: EngramConfig(cpu_offload=False, embedding_across_dp=False, dp_shared_memory=False)
+(EngineCore pid=364) WARNING 09-29 18:59:24 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=364) INFO 09-29 18:59:24 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=364) INFO 09-29 18:59:24 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=1) INFO 09-29 18:59:25 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=1) INFO 09-29 18:59:28 [factories.py:76] Scale-out endpoints are disabled. Set --enable-scale-out to enable them.
+(APIServer pid=1) INFO 09-29 18:59:28 [parser_manager.py:36] "auto" tool choice has been enabled.
+(APIServer pid=1) INFO 09-29 18:59:28 [hf.py:642] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=1) WARNING 09-29 18:59:29 [model.py:1772] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=1) INFO 09-29 18:59:29 [entry.py:139] Starting vLLM server on http://0.0.0.0:8000
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:61] Available routes are:
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /docs, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /load, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /version, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /health, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /metrics, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /tokenize, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /detokenize, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/models, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /ping, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /ping, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /invocations, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/responses, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/completions, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/messages, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /generative_scoring, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 09-29 18:59:29 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=1) INFO:     Started server process [1]
+(APIServer pid=1) INFO:     Waiting for application startup.
+(APIServer pid=1) INFO:     Application startup complete.
+(APIServer pid=1) INFO:     127.0.0.1:34384 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34388 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34392 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34408 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34402 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34410 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34414 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34420 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34422 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34428 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34434 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34450 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34454 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34458 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34462 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34478 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34492 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34506 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34520 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34536 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34546 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34562 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:34574 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35148 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35156 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35158 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35162 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35172 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35184 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35198 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35210 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35216 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35224 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35234 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35248 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35266 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35272 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35284 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35306 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35314 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35324 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35340 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35292 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35342 - "POST /tokenize HTTP/1.1" 200 OK
+(Worker_TP0 pid=476) WARNING 09-29 18:59:58 [jit_monitor.py:141] Triton kernel JIT compilation during inference: layer_norm_fwd_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=476) WARNING 09-29 18:59:58 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=476) WARNING 09-29 18:59:59 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _compute_local_logits_stats_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1) INFO 09-29 18:59:59 [loggers.py:315] Engine 000: Avg prompt throughput: 394.2 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.1%, Prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     127.0.0.1:35352 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35360 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35366 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35378 - "GET /metrics HTTP/1.1" 200 OK
+(Worker_TP0 pid=476) WARNING 09-29 18:59:59 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _rejection_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=476) WARNING 09-29 18:59:59 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _resample_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1) INFO:     127.0.0.1:35344 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35390 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55474 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55490 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55500 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55516 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55520 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55484 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55534 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55528 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55538 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55548 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55550 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55554 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55560 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55540 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55580 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55586 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55592 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55598 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55576 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55610 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55612 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55618 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55634 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55646 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55650 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55662 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55670 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55680 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55686 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:09 [loggers.py:315] Engine 000: Avg prompt throughput: 1481.7 tokens/s, Avg generation throughput: 5.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 20.4%
+(APIServer pid=1) INFO 09-29 19:00:09 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 1.15 tokens/s, Drafted throughput: 1.15 tokens/s, Accepted: 51 tokens, Drafted: 51 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:55688 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55700 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55714 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55728 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35934 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35946 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35960 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35976 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:55652 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35986 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36000 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36008 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36016 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36018 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35984 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36024 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36036 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36054 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36070 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36082 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36092 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36102 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36108 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36110 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36118 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:19 [loggers.py:315] Engine 000: Avg prompt throughput: 1801.7 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.1%, Prefix cache hit rate: 26.6%
+(APIServer pid=1) INFO 09-29 19:00:19 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 1.80 tokens/s, Drafted throughput: 1.80 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:36044 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42846 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42850 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42856 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42872 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36130 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42884 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42888 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42906 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42922 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42928 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42944 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42954 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42970 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42978 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42986 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42988 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:42892 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43012 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43018 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43028 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43044 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43000 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43048 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43060 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43062 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43074 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43086 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43100 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43116 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43134 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43146 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43148 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:43150 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:29 [loggers.py:315] Engine 000: Avg prompt throughput: 3447.6 tokens/s, Avg generation throughput: 3.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 41.0%
+(APIServer pid=1) INFO 09-29 19:00:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 3.30 tokens/s, Drafted throughput: 3.30 tokens/s, Accepted: 33 tokens, Drafted: 33 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:50418 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50432 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50448 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50452 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50468 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50484 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50490 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50498 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50512 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50516 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50528 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50554 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50562 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50570 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50578 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50588 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50602 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50616 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50628 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50644 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:39 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.0%, Prefix cache hit rate: 32.4%
+(APIServer pid=1) INFO:     127.0.0.1:43128 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45902 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45912 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45914 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45920 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45910 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45932 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45934 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45954 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45956 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45966 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45982 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45998 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46008 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46012 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46018 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46020 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46026 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46030 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46040 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46042 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46044 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46048 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46060 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46070 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:49 [loggers.py:315] Engine 000: Avg prompt throughput: 3404.9 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.9%, Prefix cache hit rate: 37.4%
+(APIServer pid=1) INFO 09-29 19:00:49 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.90 tokens/s, Drafted throughput: 0.90 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:53774 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53790 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53798 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53800 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:45938 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53816 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53826 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53834 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53850 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53870 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53882 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53898 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53908 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53924 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53932 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53948 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53960 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53970 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53976 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53984 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53988 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53990 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:00:59 [loggers.py:315] Engine 000: Avg prompt throughput: 3313.2 tokens/s, Avg generation throughput: 1.9 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.4%, Prefix cache hit rate: 40.2%
+(APIServer pid=1) INFO 09-29 19:00:59 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 1.50 tokens/s, Drafted throughput: 1.50 tokens/s, Accepted: 15 tokens, Drafted: 15 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:54000 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:54002 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:54006 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:54020 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46130 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46146 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46154 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46156 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46170 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46184 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46198 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46208 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53860 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46224 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46238 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46254 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46260 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46262 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46268 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46284 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46290 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46294 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46306 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46308 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46328 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46330 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46336 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46342 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:01:09 [loggers.py:315] Engine 000: Avg prompt throughput: 3216.8 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 45.8%
+(APIServer pid=1) INFO 09-29 19:01:09 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 1.80 tokens/s, Drafted throughput: 1.80 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:46354 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57320 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57330 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57334 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57342 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57354 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57360 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57370 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57376 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57380 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57396 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57400 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57408 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57418 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57420 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57432 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57434 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57450 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57456 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57464 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:01:19 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.4%, Prefix cache hit rate: 37.9%
+(APIServer pid=1) INFO:     127.0.0.1:51514 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51520 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51536 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51548 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51550 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51558 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51568 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51584 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51590 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51606 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51608 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51616 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51624 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51626 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51636 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51644 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51646 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51652 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51654 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51664 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51666 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46846 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46850 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46856 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46868 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46876 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46312 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46896 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46904 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46910 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46922 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46888 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46924 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46930 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46942 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46958 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46966 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46968 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46984 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47000 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47010 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47018 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47024 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:01:39 [loggers.py:315] Engine 000: Avg prompt throughput: 6832.3 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.5%, Prefix cache hit rate: 41.7%
+(APIServer pid=1) INFO 09-29 19:01:39 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.60 tokens/s, Drafted throughput: 0.60 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:47032 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47034 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47040 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47044 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38804 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38810 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38818 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38840 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38850 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38866 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38874 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38878 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38886 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38900 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38906 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38918 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38932 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38938 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38952 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:38958 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:01:49 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.8%, Prefix cache hit rate: 41.7%
+(APIServer pid=1) INFO:     127.0.0.1:57322 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57338 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57340 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57356 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57360 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57368 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57380 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57394 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57406 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57412 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57418 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57430 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57442 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57448 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57452 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57464 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57478 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46952 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57494 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57504 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57506 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57510 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57490 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57518 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:01:59 [loggers.py:315] Engine 000: Avg prompt throughput: 5996.8 tokens/s, Avg generation throughput: 1.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 47.9%
+(APIServer pid=1) INFO 09-29 19:01:59 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.75 tokens/s, Drafted throughput: 0.75 tokens/s, Accepted: 15 tokens, Drafted: 15 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:57534 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51418 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51424 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51428 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51438 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51442 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51456 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51466 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51470 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51480 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51486 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51488 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51494 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51502 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51508 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51516 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51520 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51526 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51532 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51546 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51556 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:51572 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:02:09 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.6%, Prefix cache hit rate: 45.3%
+(APIServer pid=1) INFO:     127.0.0.1:40152 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40154 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40160 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40164 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40168 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40172 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40176 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40186 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40196 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40212 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40216 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40220 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40228 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40244 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40256 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40264 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40280 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40286 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40288 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40298 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57548 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39842 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39844 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39860 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39866 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39836 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39870 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39876 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39892 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39900 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39912 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39916 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39932 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39942 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39910 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39954 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39972 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39980 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39988 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40000 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40008 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40024 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40026 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40030 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40036 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:02:29 [loggers.py:315] Engine 000: Avg prompt throughput: 5402.2 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.3%, Prefix cache hit rate: 42.1%
+(APIServer pid=1) INFO 09-29 19:02:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.60 tokens/s, Drafted throughput: 0.60 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:40806 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40814 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40818 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40838 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40846 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40848 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40862 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40874 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40878 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40884 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40890 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40906 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40916 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40918 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40920 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40934 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40950 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40956 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40960 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:02:39 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.6%, Prefix cache hit rate: 42.1%
+(APIServer pid=1) INFO:     127.0.0.1:36672 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36686 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36702 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36714 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36728 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36744 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36752 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36768 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36782 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36792 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36802 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36808 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36816 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36832 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36846 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36858 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36864 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36866 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36880 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36896 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36910 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56236 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56248 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56258 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56274 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56284 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56300 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56308 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56318 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56330 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56344 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56356 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56358 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56366 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56368 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56382 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56394 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56412 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56422 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56428 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56442 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39554 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39560 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39576 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39580 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39596 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39598 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39608 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39616 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39630 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39644 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39658 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39672 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39676 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39688 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39700 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39708 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39710 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39722 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39732 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39738 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39746 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48940 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48956 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48966 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48968 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48970 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48984 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48990 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49002 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49006 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49018 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49024 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49034 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49050 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49062 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49068 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49070 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49076 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50542 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50548 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50562 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50574 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50586 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50596 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50606 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50618 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50620 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50628 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50640 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50652 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50660 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39962 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50678 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50692 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50704 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50712 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50714 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50722 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50730 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50732 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50664 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50748 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50762 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:03:29 [loggers.py:315] Engine 000: Avg prompt throughput: 13377.2 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 49.6%
+(APIServer pid=1) INFO 09-29 19:03:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.30 tokens/s, Drafted throughput: 0.30 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:50778 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52604 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52618 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52632 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52636 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52646 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52658 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52664 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52674 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52680 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52686 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52688 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52700 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52708 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52718 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52724 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52732 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52746 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52754 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52770 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52778 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52782 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:03:39 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.7%, Prefix cache hit rate: 45.1%
+(APIServer pid=1) INFO:     127.0.0.1:49500 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49514 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49522 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49532 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49540 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49546 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49550 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49566 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49576 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49590 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49596 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49608 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49622 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49626 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49632 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49640 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49646 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49652 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49668 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49676 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49682 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41336 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41346 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41360 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41370 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41382 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41384 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41394 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41400 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41416 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41420 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41436 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41448 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41462 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41470 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41486 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41500 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:41514 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40484 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40496 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40512 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40518 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40522 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40526 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40540 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40544 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40556 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40564 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40580 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40596 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40612 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40624 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40640 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40656 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40672 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40674 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40676 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46106 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46110 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46116 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46118 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46130 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46138 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46140 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46156 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46170 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46178 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46182 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46186 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46196 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46198 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46206 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46222 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46226 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46236 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46240 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46246 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:46262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35980 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35994 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35998 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36000 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36016 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36024 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36030 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36044 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36052 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36054 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36056 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36070 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36072 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:50782 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36082 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36088 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36096 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36110 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36074 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36122 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36138 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:04:29 [loggers.py:315] Engine 000: Avg prompt throughput: 11694.9 tokens/s, Avg generation throughput: 1.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 50.7%
+(APIServer pid=1) INFO 09-29 19:04:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.25 tokens/s, Drafted throughput: 0.25 tokens/s, Accepted: 15 tokens, Drafted: 15 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:36156 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36166 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36174 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36188 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47612 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47614 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47620 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47632 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47644 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47646 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47662 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47676 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47692 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47700 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47702 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47716 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47728 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47730 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47732 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47738 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47752 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:04:39 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.3%, Prefix cache hit rate: 47.8%
+(APIServer pid=1) INFO:     127.0.0.1:39124 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39126 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39136 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39150 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39160 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39176 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39180 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39190 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39206 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39208 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39214 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39224 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39232 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39244 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39252 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39268 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39280 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39290 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39306 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39310 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:39326 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56804 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56816 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56824 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56830 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56846 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56860 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56872 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56880 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56890 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56892 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56898 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56902 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56918 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56932 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56948 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56962 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56976 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56980 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:56990 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57004 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37230 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37244 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37252 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37254 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37270 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37286 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37298 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37300 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37308 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37322 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37324 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37328 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37334 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37350 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37360 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37374 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37376 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37390 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37398 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37402 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:37406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40140 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40154 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40156 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40168 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40170 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40174 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40176 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40184 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40186 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40190 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40194 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40204 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40208 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40222 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40230 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40240 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:40244 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33782 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33790 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33802 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33810 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36140 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33828 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33842 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33852 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33860 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33824 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33866 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33876 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33882 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33888 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33902 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33906 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33912 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33916 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33932 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33944 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33952 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33960 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:33966 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:05:29 [loggers.py:315] Engine 000: Avg prompt throughput: 10667.6 tokens/s, Avg generation throughput: 2.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 52.2%
+(APIServer pid=1) INFO 09-29 19:05:29 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 4.00, Accepted throughput: 0.30 tokens/s, Drafted throughput: 0.30 tokens/s, Accepted: 18 tokens, Drafted: 18 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 100.0%
+(APIServer pid=1) INFO:     127.0.0.1:33980 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35124 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35140 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35152 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35164 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35180 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35186 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35200 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35214 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35224 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35238 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35246 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35264 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35276 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35290 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35302 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35310 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35322 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35336 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:35342 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 09-29 19:05:39 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 52.2%
+(APIServer pid=1) INFO:     127.0.0.1:47836 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47846 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47856 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47860 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47870 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47886 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47902 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47910 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47924 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47930 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47938 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47950 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47960 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47974 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:47988 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48000 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48004 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48014 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48030 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48034 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:48038 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36142 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36156 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36162 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36174 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36184 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36192 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36194 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:36196 - "GET /metrics HTTP/1.1" 200 OK

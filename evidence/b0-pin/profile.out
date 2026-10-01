@@ -1,0 +1,49 @@
+== warmup (profiler off) ==
+warmup completion tokens: 128
+== start profile ==
+
+== profiled request(s) (stream, 128 tok, concurrency 1) ==
+profiled req usage: {'prompt_tokens': 36, 'total_tokens': 164, 'completion_tokens': 128, 'completion_tokens_details': {'reasoning_tokens': 0}} content chunks (~steps): 55
+wall s: 3.41
+== stop profile ==
+
+WARN: stop_profile curl rc=28 after 600s; copying both ranks anyway (traces may be partial)
+Tue Sep 29 02:00:20 PM BST 2026
+== trace files: rank 0 (head) ==
+total 152672
+drwxr-xr-x 2 root root      4096 Sep 29 12:52 .
+drwxrwxrwt 1 root root      4096 Sep 29 12:53 ..
+-rw-r--r-- 1 root root 153751773 Sep 29 12:53 dp0_pp0_tp0_dcp0_ep0_rank0.1790686312479521924.pt.trace.json.gz
+-rw-r--r-- 1 root root      7698 Sep 29 12:50 profiler_out_0.txt
+-rw-r--r-- 1 root root   2560828 Sep 29 12:50 spark1_1.async_llm.1790686216313175202.pt.trace.json.gz
+== trace files: rank 1 (spark2) ==
+total 20444
+drwxr-xr-x 2 root root     4096 Sep 29 12:50 .
+drwxrwxrwt 1 root root     4096 Sep 29 12:50 ..
+-rw-r--r-- 1 root root 20899114 Sep 29 12:50 dp0_pp0_tp1_dcp0_ep1_rank1.1790686217912548384.pt.trace.json.gz
+-rw-r--r-- 1 root root    20652 Sep 29 12:50 profiler_out_0.txt
+== MemAvail before cp ==
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       121Gi       989Mi       2.4Gi       3.2Gi       630Mi
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       113Gi       1.4Gi       2.4Gi        11Gi       8.4Gi
+== docker cp BEFORE stop: rank 0 -> spark1:/home/sfxnz/projects/data/qwen38-traces/session1-b0-pin/rank0 ==
+total 152672
+drwxr-xr-x 2 sfxnz sfxnz      4096 Sep 29 13:52 .
+drwxrwxr-x 3 sfxnz sfxnz      4096 Sep 29 14:01 ..
+-rw-r--r-- 1 sfxnz sfxnz 153751773 Sep 29 13:53 dp0_pp0_tp0_dcp0_ep0_rank0.1790686312479521924.pt.trace.json.gz
+-rw-r--r-- 1 sfxnz sfxnz      7698 Sep 29 13:50 profiler_out_0.txt
+-rw-r--r-- 1 sfxnz sfxnz   2560828 Sep 29 13:50 spark1_1.async_llm.1790686216313175202.pt.trace.json.gz
+== docker cp BEFORE stop: rank 1 -> spark2:/home/sfxnz/projects/data/qwen38-traces/session1-b0-pin/rank1 ==
+total 20444
+drwxr-xr-x 2 sfxnz sfxnz     4096 Sep 29 13:50 .
+drwxrwxr-x 3 sfxnz sfxnz     4096 Sep 29 14:01 ..
+-rw-r--r-- 1 sfxnz sfxnz 20899114 Sep 29 13:50 dp0_pp0_tp1_dcp0_ep1_rank1.1790686217912548384.pt.trace.json.gz
+-rw-r--r-- 1 sfxnz sfxnz    20652 Sep 29 13:50 profiler_out_0.txt
+== MemAvail after cp ==
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       121Gi       1.0Gi       2.4Gi       3.2Gi       627Mi
+               total        used        free      shared  buff/cache   available
+Mem:           121Gi       113Gi       1.2Gi       2.4Gi        11Gi       8.3Gi
+Traces saved. Now ./stop.sh, then parse each rank on its own idle host.
+WARN: stop_profile failed (rc=28); check the traces are complete

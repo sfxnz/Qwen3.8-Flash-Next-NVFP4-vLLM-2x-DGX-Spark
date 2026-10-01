@@ -1,0 +1,145 @@
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+INFO 09-29 13:22:19 [model.py:691] Resolved architecture: Qwen4ExpForConditionalGeneration
+INFO 09-29 13:22:19 [model.py:2031] Using max model len 262144
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+INFO 09-29 13:22:21 [arg_utils.py:2227] Inferred data_parallel_rank 0 from node_rank 1
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+INFO 09-29 13:22:27 [model.py:691] Resolved architecture: Qwen4ExpMTP
+INFO 09-29 13:22:27 [model.py:2031] Using max model len 262144
+WARNING 09-29 13:22:27 [speculative.py:1330] Enabling num_speculative_tokens > 1 will run multiple times of forward on same MTP layer,which may result in lower acceptance rate
+INFO 09-29 13:22:27 [scheduler.py:277] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 09-29 13:22:27 [config.py:625] Mamba cache mode is set to 'align' for Qwen4ExpForConditionalGeneration by default when prefix caching is enabled
+WARNING 09-29 13:22:27 [vllm.py:1414] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-29 13:22:27 [kernel.py:372] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 09-29 13:22:27 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+INFO 09-29 13:22:27 [serve.py:217] Launching vLLM (v0.28.1rc1.dev437+ge962733e0) headless multiproc executor, with head node address 10.100.8.1:29523 for torch.distributed process group.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker pid=381) INFO 09-29 13:22:33 [parallel_state.py:1798] world_size=2 rank=1 local_rank=0 distributed_init_method=tcp://10.100.8.1:29523 backend=nccl
+(Worker pid=381) WARNING 09-29 13:23:12 [symm_mem.py:67] SymmMemCommunicator: Device capability 12.1 not supported, communicator is not available.
+(Worker pid=381) WARNING 09-29 13:23:12 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=381) WARNING 09-29 13:23:12 [custom_all_reduce.py:201] Custom collectives are disabled because this multi-node group does not have MNNVL-capable GPUs on every rank.
+(Worker pid=381) INFO 09-29 13:23:13 [parallel_state.py:2142] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 1, EP rank 1, EPLB rank N/A
+(Worker pid=381) INFO 09-29 13:23:13 [gpu_worker.py:436] Using V2 Model Runner
+(Worker_TP1 pid=381) INFO 09-29 13:23:13 [model_runner.py:390] Loading model from scratch...
+(Worker_TP1 pid=381) INFO 09-29 13:23:13 [cuda.py:581] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(Worker_TP1 pid=381) INFO 09-29 13:23:13 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(Worker_TP1 pid=381) INFO 09-29 13:23:14 [qwen_gdn_linear_attn.py:167] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(Worker_TP1 pid=381) INFO 09-29 13:23:14 [qwen_gdn_linear_attn.py:519] GDN decode kernel: cuda
+(Worker_TP1 pid=381) INFO 09-29 13:23:14 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+(Worker_TP1 pid=381) INFO 09-29 13:23:15 [flash_attn.py:897] Using FlashAttention version 2
+(Worker_TP1 pid=381) INFO 09-29 13:23:16 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 46.68 GiB.
+(Worker_TP1 pid=381) INFO 09-29 13:23:16 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (46.68 GiB).
+(Worker_TP1 pid=381) INFO 09-29 13:28:53 [default_loader.py:430] Loading weights took 336.68 seconds
+(Worker_TP1 pid=381) INFO 09-29 13:28:54 [nvfp4.py:613] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=381) WARNING 09-29 13:29:03 [vllm.py:1414] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(Worker_TP1 pid=381) INFO 09-29 13:29:03 [kernel.py:372] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(Worker_TP1 pid=381) INFO 09-29 13:29:03 [fp8.py:529] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+(Worker_TP1 pid=381) INFO 09-29 13:29:03 [fp8.py:438] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+(Worker_TP1 pid=381) INFO 09-29 13:29:03 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 123.57 GiB. Available RAM: 42.54 GiB.
+(Worker_TP1 pid=381) INFO 09-29 13:29:03 [weight_utils.py:925] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre) and the checkpoint size (123.57 GiB) exceeds 90% of available RAM (42.54 GiB).
+(Worker_TP1 pid=381) INFO 09-29 13:29:56 [default_loader.py:430] Loading weights took 52.45 seconds
+(Worker_TP1 pid=381) INFO 09-29 13:29:56 [fp8.py:740] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=381) WARNING 09-29 13:29:56 [speculator.py:203] Draft model Qwen4ExpMTP does not support external multimodal embeddings. Embeddings from the target model will not be passed to the drafter; using text-only draft inputs instead.
+(Worker_TP1 pid=381) INFO 09-29 13:30:04 [model_runner.py:422] Model loading took 63.61 GiB memory and 411.016326 seconds
+(Worker_TP1 pid=381) INFO 09-29 13:30:04 [interface.py:933] Setting attention block size to 1600 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP1 pid=381) INFO 09-29 13:30:04 [interface.py:957] Padding mamba page size by 0.25% to ensure that mamba page size and attention page size are exactly equal.
+INFO 09-29 13:31:09 [torch_utils.py:280] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(Worker_TP1 pid=381) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP1 pid=381) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP1 pid=381) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker_TP1 pid=381) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP1 pid=381) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_TP1 pid=381) INFO 09-29 13:31:15 [encoder_runner.py:131] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(Worker_TP1 pid=381) /usr/local/lib/python3.12/dist-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+(Worker_TP1 pid=381)   warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+(Worker_TP1 pid=381) INFO 09-29 13:32:10 [deep_gemm.py:191] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP1 pid=381) INFO 09-29 13:32:10 [deep_gemm.py:218] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP1 pid=381) INFO 09-29 13:32:10 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP1 pid=381) WARNING 09-29 13:32:10 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/configs/E=512,N=320,device_name=NVIDIA_GB10,dtype=fp8_w8a8,block_shape=[64,64].json
+(Worker_TP1 pid=381) WARNING 09-29 13:32:12 [kv_cache_utils.py:2160] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's, so every group -- including Mamba groups [0, 1, 2, 3] -- will be treated as a draft group. A Mamba group cannot satisfy the widened lookup window that implies, so prefix-cache reuse across requests will be disabled and any external KV offload tier will store without ever serving a hit.
+(Worker_TP1 pid=381) INFO 09-29 13:32:12 [speculator.py:120] Fused multi-step draft decode is not supported by attention backend(s) QWEN4_EXP_EXP_QSA_STATE; falling back to rebuilding attention metadata between draft steps.
+(Worker_TP1 pid=381) INFO 09-29 13:32:15 [speculator.py:151] Capturing model for speculator...
+(Worker_TP1 pid=381) INFO 09-29 13:32:17 [model_runner.py:1001] Graph capturing finished in 5 secs, took 0.06 GiB
+(Worker_TP1 pid=381) INFO 09-29 13:32:17 [gpu_worker.py:632] Available KV cache memory: 24.42 GiB
+(Worker_TP1 pid=381) INFO 09-29 13:32:17 [gpu_worker.py:647] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7591 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7609. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP1 pid=381) INFO 09-29 13:32:24 [kernel_warmup.py:136] JIT kernel warmup starting.
+(Worker_TP1 pid=381) INFO 09-29 13:32:24 [kernel_warmup.py:146] JIT kernel warmup finished in 0.00s.
+(Worker_TP1 pid=381) INFO 09-29 13:32:25 [spec_decode_rejection_warmup.py:64] Warming up spec-decode rejection sampler kernels (vocab=248320, num_spec=3, dtype_pairs=[('torch.bfloat16', 'torch.float32'), ('torch.float32', 'torch.float32'), ('torch.bfloat16', 'torch.bfloat16'), ('torch.float32', 'torch.bfloat16')], block_verify=False).
+(Worker_TP1 pid=381) INFO 09-29 13:32:27 [qwen4_exp_qsa_warmup.py:72] Warmed up Qwen4Exp QSA decode kernels: ((1, 1), (2, 1), (3, 1), (4, 1)).
+(Worker_TP1 pid=381) INFO 09-29 13:32:30 [qwen4_exp_qsa_warmup.py:86] Warmed up Qwen4Exp QSA sparse attention kernels: ((32, 1, 1), (32, 4, 1), (32, 8, 1), (32, 16, 1), (32, 64, 4), (64, 1, 2), (64, 4, 2)).
+(Worker_TP1 pid=381) INFO 09-29 13:32:30 [kernel_warmup.py:290] Running FlashInfer autotune with 8192 tokens.
+(Worker_TP1 pid=381) 2026-09-29 13:32:30,247 - INFO - autotuner.py:972 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 13:32:32,548 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   5%|▍         | 1/21 [00:02<00:43,  2.19s/profile]2026-09-29 13:32:32,633 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) 2026-09-29 13:32:32,729 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  14%|█▍        | 3/21 [00:02<00:11,  1.58profile/s]2026-09-29 13:32:32,864 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  19%|█▉        | 4/21 [00:02<00:07,  2.17profile/s]2026-09-29 13:32:33,052 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  24%|██▍       | 5/21 [00:02<00:05,  2.69profile/s]2026-09-29 13:32:33,352 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  29%|██▊       | 6/21 [00:02<00:05,  2.87profile/s]2026-09-29 13:32:33,773 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  33%|███▎      | 7/21 [00:03<00:05,  2.69profile/s]2026-09-29 13:32:34,313 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  38%|███▊      | 8/21 [00:03<00:05,  2.36profile/s]2026-09-29 13:32:34,888 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  43%|████▎     | 9/21 [00:04<00:05,  2.13profile/s]2026-09-29 13:32:35,476 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  48%|████▊     | 10/21 [00:05<00:05,  1.98profile/s]2026-09-29 13:32:36,071 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  52%|█████▏    | 11/21 [00:05<00:05,  1.88profile/s]2026-09-29 13:32:36,682 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  57%|█████▋    | 12/21 [00:06<00:05,  1.80profile/s]2026-09-29 13:32:37,307 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  62%|██████▏   | 13/21 [00:06<00:04,  1.73profile/s]2026-09-29 13:32:37,943 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  67%|██████▋   | 14/21 [00:07<00:04,  1.68profile/s]2026-09-29 13:32:38,599 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  71%|███████▏  | 15/21 [00:08<00:03,  1.63profile/s]2026-09-29 13:32:39,249 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  76%|███████▌  | 16/21 [00:08<00:03,  1.60profile/s]2026-09-29 13:32:39,930 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  81%|████████  | 17/21 [00:09<00:02,  1.56profile/s]2026-09-29 13:32:40,641 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  86%|████████▌ | 18/21 [00:10<00:01,  1.51profile/s]2026-09-29 13:32:42,672 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  90%|█████████ | 19/21 [00:12<00:02,  1.07s/profile]2026-09-29 13:32:45,054 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:  95%|█████████▌| 20/21 [00:14<00:01,  1.47s/profile]2026-09-29 13:32:46,021 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 4 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:15<00:00,  1.32s/profile][AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 21/21 [00:15<00:00,  1.34profile/s]
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/21 [00:00<?, ?profile/s]2026-09-29 13:32:46,202 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   5%|▍         | 1/21 [00:00<00:03,  5.57profile/s]2026-09-29 13:32:46,376 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  10%|▉         | 2/21 [00:00<00:03,  5.68profile/s]2026-09-29 13:32:46,571 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  14%|█▍        | 3/21 [00:00<00:03,  5.41profile/s]2026-09-29 13:32:46,832 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  19%|█▉        | 4/21 [00:00<00:03,  4.65profile/s]2026-09-29 13:32:47,205 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  24%|██▍       | 5/21 [00:01<00:04,  3.68profile/s]2026-09-29 13:32:47,733 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  29%|██▊       | 6/21 [00:01<00:05,  2.78profile/s]2026-09-29 13:32:48,404 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  33%|███▎      | 7/21 [00:02<00:06,  2.17profile/s]2026-09-29 13:32:49,172 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  38%|███▊      | 8/21 [00:03<00:07,  1.79profile/s]2026-09-29 13:32:49,980 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  43%|████▎     | 9/21 [00:03<00:07,  1.57profile/s]2026-09-29 13:32:50,815 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  48%|████▊     | 10/21 [00:04<00:07,  1.43profile/s]2026-09-29 13:32:51,663 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  52%|█████▏    | 11/21 [00:05<00:07,  1.34profile/s]2026-09-29 13:32:52,543 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  57%|█████▋    | 12/21 [00:06<00:07,  1.27profile/s]2026-09-29 13:32:53,452 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  62%|██████▏   | 13/21 [00:07<00:06,  1.22profile/s]2026-09-29 13:32:54,418 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  67%|██████▋   | 14/21 [00:08<00:06,  1.15profile/s]2026-09-29 13:32:55,423 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  71%|███████▏  | 15/21 [00:09<00:05,  1.10profile/s]2026-09-29 13:32:56,448 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  76%|███████▌  | 16/21 [00:10<00:04,  1.06profile/s]2026-09-29 13:32:57,556 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  81%|████████  | 17/21 [00:11<00:03,  1.01profile/s]2026-09-29 13:33:00,011 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  86%|████████▌ | 18/21 [00:13<00:04,  1.43s/profile]2026-09-29 13:33:02,276 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  90%|█████████ | 19/21 [00:16<00:03,  1.68s/profile]2026-09-29 13:33:03,661 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:  95%|█████████▌| 20/21 [00:17<00:01,  1.59s/profile]2026-09-29 13:33:08,318 - INFO - autotuner.py:1869 - flashinfer.jit: [Autotuner]: Skipped 10 unsupported tactic(s) for trtllm::fused_moe::gemm2 (enable debug logs to see details)
+(Worker_TP1 pid=381) [AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:22<00:00,  2.51s/profile][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 21/21 [00:22<00:00,  1.06s/profile]
+(Worker_TP1 pid=381) 2026-09-29 13:33:23,052 - INFO - autotuner.py:995 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP1 pid=381) INFO 09-29 13:33:36 [speculator.py:151] Capturing model for speculator...
+(Worker_TP1 pid=381) INFO 09-29 13:33:36 [model_runner.py:1001] Graph capturing finished in 1 secs, took 0.38 GiB
+(Worker_TP1 pid=381) INFO 09-29 13:33:36 [gpu_worker.py:808] CUDA graph pool memory: 0.38 GiB (actual), 0.1 GiB (estimated), difference: 0.28 GiB (72.9%).
+(Worker_TP1 pid=381) INFO 09-29 13:33:36 [gpu_worker.py:871] Free memory on device (111.34/121.69 GiB) on startup. Desired GPU memory utilization is (0.76, 92.48 GiB). Actual usage is 67.12 GiB for consumed memory (weights + non-torch), 0.94 GiB for peak activation, and 0.38 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=25651876332` (23.89 GiB) to fit into requested memory, or `--kv-cache-memory=45895766016` (42.74 GiB) to fully utilize gpu memory. Current kv cache memory in use is 24.42 GiB.
+(Worker_TP1 pid=381) INFO 09-29 13:33:38 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1 pid=381) INFO 09-29 13:33:38 [torch_utils.py:280] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(Worker_TP1 pid=381) WARNING 09-29 13:34:25 [jit_monitor.py:141] Triton kernel JIT compilation during inference: layer_norm_fwd_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:34:25 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:34:26 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _compute_local_logits_stats_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:34:26 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _rejection_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:34:26 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _resample_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:35:22 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _ple_conv_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP1 pid=381) WARNING 09-29 13:35:22 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _ple_conv_writeback_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.

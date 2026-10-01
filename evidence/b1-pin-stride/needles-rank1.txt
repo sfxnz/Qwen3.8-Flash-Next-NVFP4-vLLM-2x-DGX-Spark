@@ -1,0 +1,12 @@
+35:(Worker pid=381) WARNING 09-29 13:23:12 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+42:(Worker_TP1 pid=381) INFO 09-29 13:23:14 [qwen_gdn_linear_attn.py:167] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+43:(Worker_TP1 pid=381) INFO 09-29 13:23:14 [qwen_gdn_linear_attn.py:519] GDN decode kernel: cuda
+44:(Worker_TP1 pid=381) INFO 09-29 13:23:14 [nvfp4.py:304] Using 'FLASHINFER_CUTLASS' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTEDSL_BATCHED', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+52:(Worker_TP1 pid=381) INFO 09-29 13:29:03 [fp8.py:529] FP8 MoE block scales refined from [128, 128] to [64, 64] to fit the TP-sharded intermediate size 320.
+53:(Worker_TP1 pid=381) INFO 09-29 13:29:03 [fp8.py:438] Using TRITON Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+75:(Worker_TP1 pid=381) WARNING 09-29 13:32:12 [kv_cache_utils.py:2160] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's, so every group -- including Mamba groups [0, 1, 2, 3] -- will be treated as a draft group. A Mamba group cannot satisfy the widened lookup window that implies, so prefix-cache reuse across requests will be disabled and any external KV offload tier will store without ever serving a hit.
+78:(Worker_TP1 pid=381) INFO 09-29 13:32:17 [model_runner.py:1001] Graph capturing finished in 5 secs, took 0.06 GiB
+79:(Worker_TP1 pid=381) INFO 09-29 13:32:17 [gpu_worker.py:632] Available KV cache memory: 24.42 GiB
+80:(Worker_TP1 pid=381) INFO 09-29 13:32:17 [gpu_worker.py:647] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.7600 is equivalent to --gpu-memory-utilization=0.7591 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.7609. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+86:(Worker_TP1 pid=381) INFO 09-29 13:32:30 [kernel_warmup.py:290] Running FlashInfer autotune with 8192 tokens.
+134:(Worker_TP1 pid=381) INFO 09-29 13:33:36 [model_runner.py:1001] Graph capturing finished in 1 secs, took 0.38 GiB

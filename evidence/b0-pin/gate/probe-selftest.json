@@ -1,0 +1,4657 @@
+{
+ "probe_version": "1",
+ "argv": [
+  "--url",
+  "http://127.0.0.1:8000/v1/chat/completions",
+  "--model",
+  "nvidia/Qwen3.8-Flash-Next-NVFP4",
+  "--self-test",
+  "--json",
+  "/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b0-pin/gate/probe-selftest.json"
+ ],
+ "finished_at": "2026-09-29T12:40:02.503+00:00",
+ "refs": {
+  "d0": {
+   "t0": 850487.994072459,
+   "ttft_s": 0.11316558299586177,
+   "decode_s": 2.3568972109351307,
+   "prompt_tokens": 36,
+   "completion_tokens": 84,
+   "chunks": 40,
+   "finish_reason": "stop",
+   "decode_tok_s": 35.215791174477495,
+   "text_sha256": "5f2c34ad6c15a740e6ae6430811c4bc87f8fabc783507c537379670a76a2b68b",
+   "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+   "tail": "e maintaining high performance on tasks requiring deep contextual understanding.",
+   "spec_source": "server",
+   "steps": 39,
+   "accepted": 45,
+   "acceptance_len": 2.1538461538461537,
+   "acceptance_histogram": [
+    14,
+    13,
+    4,
+    8
+   ]
+  },
+  "d1": {
+   "t0": 850491.464422301,
+   "ttft_s": 0.12097778101451695,
+   "decode_s": 1.6392878919141367,
+   "prompt_tokens": 28,
+   "completion_tokens": 70,
+   "chunks": 28,
+   "finish_reason": "stop",
+   "decode_tok_s": 42.09144735366234,
+   "text_sha256": "af395b6f61d06501880163d1b11cc528a51b2894f94f05c603690248c290fe29",
+   "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. Shi",
+   "tail": "rade-off allows riders to optimize effort based on terrain and desired velocity.",
+   "spec_source": "server",
+   "steps": 27,
+   "accepted": 44,
+   "acceptance_len": 2.6296296296296298,
+   "acceptance_histogram": [
+    7,
+    6,
+    4,
+    10
+   ]
+  },
+  "d2": {
+   "t0": 850494.225034263,
+   "ttft_s": 0.10123403405304998,
+   "decode_s": 0.6638825020054355,
+   "prompt_tokens": 27,
+   "completion_tokens": 43,
+   "chunks": 12,
+   "finish_reason": "stop",
+   "decode_tok_s": 63.26420695398314,
+   "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+   "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+   "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+   "spec_source": "server",
+   "steps": 11,
+   "accepted": 33,
+   "acceptance_len": 4.0,
+   "acceptance_histogram": [
+    0,
+    0,
+    0,
+    11
+   ]
+  },
+  "d3": {
+   "t0": 850495.990447755,
+   "ttft_s": 0.11065992002841085,
+   "decode_s": 2.2633984100539237,
+   "prompt_tokens": 25,
+   "completion_tokens": 100,
+   "chunks": 39,
+   "finish_reason": "stop",
+   "decode_tok_s": 43.73953766170641,
+   "text_sha256": "5a100e077d56b9ba8a3da7b16d8b0120257ac16b1f25225b62f12d4500894389",
+   "head": "The water cycle starts when the sun heats up water in oceans and lakes, turning ",
+   "tail": "ers and oceans, ready to be heated by the sun and start the whole journey again.",
+   "spec_source": "server",
+   "steps": 38,
+   "accepted": 62,
+   "acceptance_len": 2.6315789473684212,
+   "acceptance_histogram": [
+    7,
+    10,
+    11,
+    10
+   ]
+  },
+  "d4": {
+   "t0": 850499.364817752,
+   "ttft_s": 0.1182781649986282,
+   "decode_s": 1.6462974889436737,
+   "prompt_tokens": 29,
+   "completion_tokens": 102,
+   "chunks": 28,
+   "finish_reason": "stop",
+   "decode_tok_s": 61.34978682668428,
+   "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+   "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+   "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+   "spec_source": "server",
+   "steps": 27,
+   "accepted": 75,
+   "acceptance_len": 3.7777777777777777,
+   "acceptance_histogram": [
+    0,
+    3,
+    0,
+    24
+   ]
+  },
+  "d5": {
+   "t0": 850502.129879418,
+   "ttft_s": 0.12857200601138175,
+   "decode_s": 0.4122610940830782,
+   "prompt_tokens": 29,
+   "completion_tokens": 19,
+   "chunks": 8,
+   "finish_reason": "stop",
+   "decode_tok_s": 43.66165097396425,
+   "text_sha256": "fbd9a6af1079b1bbf9d8d428ab3f2c91ff9d81c66ae4b392f3468c9eaa8d175d",
+   "head": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures les jours ouvrabl",
+   "tail": "biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures les jours ouvrables.",
+   "spec_source": "server",
+   "steps": 7,
+   "accepted": 13,
+   "acceptance_len": 2.857142857142857,
+   "acceptance_histogram": [
+    0,
+    3,
+    2,
+    2
+   ]
+  },
+  "d6": {
+   "t0": 850503.671228093,
+   "ttft_s": 0.11261090403422713,
+   "decode_s": 1.956833070027642,
+   "prompt_tokens": 28,
+   "completion_tokens": 70,
+   "chunks": 34,
+   "finish_reason": "stop",
+   "decode_tok_s": 35.261055762423986,
+   "text_sha256": "6ed0508ab41c15390db79b6905f78dc0a2550c1f460c1c25dca99311d47e4a7e",
+   "head": "1. Reduce watering frequency significantly, as most plants enter a dormant phase",
+   "tail": "facing windows or supplementing with grow lights to compensate for shorter days.",
+   "spec_source": "server",
+   "steps": 33,
+   "accepted": 38,
+   "acceptance_len": 2.1515151515151514,
+   "acceptance_histogram": [
+    11,
+    9,
+    10,
+    3
+   ]
+  },
+  "d7": {
+   "t0": 850506.741175058,
+   "ttft_s": 0.13169019599445164,
+   "decode_s": 0.8250761620001867,
+   "prompt_tokens": 37,
+   "completion_tokens": 51,
+   "chunks": 15,
+   "finish_reason": "stop",
+   "decode_tok_s": 60.6004661179251,
+   "text_sha256": "5b10dffd94b8b9f652a6433339ecb624c6466639a056f704e52dfc166fe17f0b",
+   "head": "{\n  \"name\": \"Eiffel Tower\",\n  \"year\": 1889,\n  \"tags\": [\"Paris\", \"France\", \"Landm",
+   "tail": ",\n  \"tags\": [\"Paris\", \"France\", \"Landmark\", \"Iron\", \"Architecture\", \"Tourism\"]\n}",
+   "spec_source": "server",
+   "steps": 14,
+   "accepted": 37,
+   "acceptance_len": 3.642857142857143,
+   "acceptance_histogram": [
+    1,
+    0,
+    2,
+    11
+   ]
+  },
+  "long0": {
+   "t0": 850508.698380305,
+   "ttft_s": 5.937477553030476,
+   "decode_s": 0.20694345596712083,
+   "prompt_tokens": 11965,
+   "completion_tokens": 6,
+   "chunks": 2,
+   "finish_reason": "stop",
+   "decode_tok_s": 24.161189232262554,
+   "text_sha256": "83dab7f91bc119dc78626ca4fe910479c6972d1a162eb1621d4fcc2b2ef41d8c",
+   "head": "74354",
+   "tail": "74354",
+   "spec_source": "server",
+   "steps": 2,
+   "accepted": 6,
+   "acceptance_len": 4.0,
+   "acceptance_histogram": [
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  "long1": {
+   "t0": 850515.843133911,
+   "ttft_s": 3.841259952983819,
+   "decode_s": 0.14735437999479473,
+   "prompt_tokens": 11965,
+   "completion_tokens": 6,
+   "chunks": 2,
+   "finish_reason": "stop",
+   "decode_tok_s": 33.93180440361952,
+   "text_sha256": "0ec41e567fc2725c943cbac580f5a2ac665279ab5254c1ff5426b9c5bb3c048c",
+   "head": "79083",
+   "tail": "79083",
+   "spec_source": "server",
+   "steps": 2,
+   "accepted": 6,
+   "acceptance_len": 4.0,
+   "acceptance_histogram": [
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  "img_red": {
+   "t0": 850520.832691711,
+   "ttft_s": 0.21974501793738455,
+   "decode_s": 0.18136080005206168,
+   "prompt_tokens": 91,
+   "completion_tokens": 11,
+   "chunks": 4,
+   "finish_reason": "stop",
+   "decode_tok_s": 55.13870691532782,
+   "text_sha256": "0e1c14c4131cc48d45d48cbd4d077b4de3d802b8a83efc6e2047a1c4f07c03be",
+   "head": "The image is filled with a solid red color.",
+   "tail": "The image is filled with a solid red color.",
+   "spec_source": "server",
+   "steps": 3,
+   "accepted": 7,
+   "acceptance_len": 3.3333333333333335,
+   "acceptance_histogram": [
+    0,
+    1,
+    0,
+    2
+   ]
+  },
+  "img_blue": {
+   "t0": 850522.234580559,
+   "ttft_s": 0.19407849304843694,
+   "decode_s": 0.18307674396783113,
+   "prompt_tokens": 91,
+   "completion_tokens": 11,
+   "chunks": 4,
+   "finish_reason": "stop",
+   "decode_tok_s": 54.621902177576004,
+   "text_sha256": "705b4320e3b4b65b51ff2fe45566d6425780214e788963599aba597b911451af",
+   "head": "The image is filled with a solid blue color.",
+   "tail": "The image is filled with a solid blue color.",
+   "spec_source": "server",
+   "steps": 3,
+   "accepted": 7,
+   "acceptance_len": 3.3333333333333335,
+   "acceptance_histogram": [
+    0,
+    1,
+    0,
+    2
+   ]
+  }
+ },
+ "bursts": [
+  {
+   "name": "identical-n2-b1",
+   "kind": "identical",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685323.7777724,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.173365494934842,
+   "median_decode_tok_s": 33.33487594463914,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850526.619519828,
+     "ttft_s": 0.27613069594372064,
+     "decode_s": 2.5320929900044575,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.543718321277595,
+     "text_sha256": "28ad902a80be222d5502fc622707482ddc985b10f094a65974be8f9d7baec6cb",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "g the gap between theoretical context limits and practical hardware constraints.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 53,
+     "acceptance_len": 2.358974358974359,
+     "acceptance_histogram": [
+      11,
+      12,
+      7,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850526.619399891,
+     "ttft_s": 0.10288513801060617,
+     "decode_s": 2.8914702479960397,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.126033568000686,
+     "text_sha256": "9bbcc48dc88343b58d229fe48dbdede61be27ac4fe8f3b4266b0aa2f35921c96",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": " balancing resource constraints with the need for deep contextual understanding.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 47,
+     "acceptance_len": 2.0681818181818183,
+     "acceptance_histogram": [
+      19,
+      9,
+      10,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n2-b2",
+   "kind": "identical",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685329.7783477,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": true,
+   "first_token_spread_s": 0.0002532330108806491,
+   "median_decode_tok_s": 26.58913430821527,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850532.619653719,
+     "ttft_s": 0.14507833193056285,
+     "decode_s": 2.637618467095308,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 34.87994990470153,
+     "text_sha256": "49cfa32fdd98a2209146e380c5cac4e97839e816add7dbc9eeef3dd63bad7d6d",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ensive documents or complex reasoning tasks without exponential resource growth.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 52,
+     "acceptance_len": 2.238095238095238,
+     "acceptance_histogram": [
+      13,
+      13,
+      9,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850532.619544071,
+     "ttft_s": 0.14544121292419732,
+     "decode_s": 13.935706554097123,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 18.29831871172901,
+     "text_sha256": "dfb1c7cc56c9ef499fee110c54e599f817d783f406a6c3d7dd23335ccca76d31",
+     "head": "Sparse Register Register Register Register Register Register Register Register R",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 7,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n2-b3",
+   "kind": "identical",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685346.8672144,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.17665786703582853,
+   "median_decode_tok_s": 33.336199576220864,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850549.708575565,
+     "ttft_s": 0.2823628679616377,
+     "decode_s": 3.171099520055577,
+     "prompt_tokens": 36,
+     "completion_tokens": 100,
+     "chunks": 50,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.219455388856705,
+     "text_sha256": "6a2f7e7cb5041a05738896c20703299e4231ae92fd27f6bf8c0983159f890bba",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "ing capabilities across vast amounts of text without prohibitive resource costs.",
+     "spec_source": "server",
+     "steps": 49,
+     "accepted": 52,
+     "acceptance_len": 2.0612244897959187,
+     "acceptance_histogram": [
+      20,
+      15,
+      5,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850549.70852974,
+     "ttft_s": 0.10575082595460117,
+     "decode_s": 2.7924338430166245,
+     "prompt_tokens": 36,
+     "completion_tokens": 100,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.452943763585026,
+     "text_sha256": "bb5d2c61e7aa764c5afc5ae59cad80ca757e12d6b3b70a0255994bb97d9ac7c4",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "or complex codebases, making long-context processing both feasible and scalable.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 60,
+     "acceptance_len": 2.428571428571429,
+     "acceptance_histogram": [
+      12,
+      11,
+      8,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n2-b1",
+   "kind": "distinct",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685353.3289392,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.17341666494030505,
+   "median_decode_tok_s": 34.74428700482444,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850556.170330449,
+     "ttft_s": 0.09952884202357382,
+     "decode_s": 2.743873519008048,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 33.52924227836107,
+     "text_sha256": "8b878fe0448379b32f53993f0b687cf110cade74fd778432ae969c8e32cc1758",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "cal deployment of large language models on extensive documents or conversations.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 53,
+     "acceptance_len": 2.2926829268292686,
+     "acceptance_histogram": [
+      14,
+      11,
+      6,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850556.17025352,
+     "ttft_s": 0.27302243595477194,
+     "decode_s": 2.1413078689947724,
+     "prompt_tokens": 28,
+     "completion_tokens": 78,
+     "chunks": 33,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.95933173128781,
+     "text_sha256": "3173bb0cb3ca51d89a6271b06f535fbabb9a61aa09267dc1f6b41bb17c01f2da",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "eel speed on flat terrain, allowing faster travel with less mechanical leverage.",
+     "spec_source": "server",
+     "steps": 32,
+     "accepted": 47,
+     "acceptance_len": 2.46875,
+     "acceptance_histogram": [
+      10,
+      7,
+      5,
+      10
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n2-b2",
+   "kind": "distinct",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685359.1808903,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.1977230029879138,
+   "median_decode_tok_s": 36.51992927689038,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850562.022644448,
+     "ttft_s": 0.2918612899957225,
+     "decode_s": 2.4504800870781764,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 37.543663580509225,
+     "text_sha256": "b2180cc9de11cab4490b0c131a2b78547334923442157f00aa3213d92c7ca584",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 55,
+     "acceptance_len": 2.447368421052632,
+     "acceptance_histogram": [
+      9,
+      12,
+      8,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850562.02255032,
+     "ttft_s": 0.09423241496551782,
+     "decode_s": 1.8030101549811661,
+     "prompt_tokens": 28,
+     "completion_tokens": 65,
+     "chunks": 27,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.496194973271535,
+     "text_sha256": "3d599a0312f265f2cb98a2aea35d059924e2a658ad1641190e62942b86bb2502",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. Shi",
+     "tail": "errain. This trade-off lets riders optimize power output for varying conditions.",
+     "spec_source": "server",
+     "steps": 26,
+     "accepted": 39,
+     "acceptance_len": 2.5,
+     "acceptance_histogram": [
+      5,
+      10,
+      4,
+      7
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 102,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n2-b3",
+   "kind": "distinct",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685364.9312012,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": true,
+   "first_token_spread_s": 0.00030960096046328545,
+   "median_decode_tok_s": 26.670884643582433,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850567.77254287,
+     "ttft_s": 0.11794969497714192,
+     "decode_s": 14.145841810037382,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 18.026498770759698,
+     "text_sha256": "64deeca9e3a2c4bbdbc8a4b864420f078a991c4c4e05df39abf4ef1f41ea75c0",
+     "head": "Standard Register Register Register Register Register Register Register Register",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850567.772450454,
+     "ttft_s": 0.11835171200800687,
+     "decode_s": 2.010461734025739,
+     "prompt_tokens": 28,
+     "completion_tokens": 72,
+     "chunks": 33,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.31527051640517,
+     "text_sha256": "f69f839b377d75cfd9e18326921d49e0eee606ce0ea97a2d44141a8ee3e5274e",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. A s",
+     "tail": "rade-off allows riders to optimize effort based on terrain and desired velocity.",
+     "spec_source": "server",
+     "steps": 32,
+     "accepted": 41,
+     "acceptance_len": 2.28125,
+     "acceptance_histogram": [
+      10,
+      10,
+      5,
+      7
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n3-b1",
+   "kind": "identical",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685382.2026587,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.11590756801888347,
+   "median_decode_tok_s": 32.27927922624898,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850585.0439852,
+     "ttft_s": 0.2618694850243628,
+     "decode_s": 2.7126947479555383,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 33.17734148592642,
+     "text_sha256": "7e25f8469d0ba7638af415ebebb9bdaa5ccb9bcc89b4a5135af2ddc47055bccf",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "he gap between theoretical context limits and practical application constraints.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 55,
+     "acceptance_len": 2.4864864864864864,
+     "acceptance_histogram": [
+      11,
+      8,
+      7,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850585.044147505,
+     "ttft_s": 0.14579961204435676,
+     "decode_s": 14.402425723033957,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 17.705350814076805,
+     "text_sha256": "64deeca9e3a2c4bbdbc8a4b864420f078a991c4c4e05df39abf4ef1f41ea75c0",
+     "head": "Standard Register Register Register Register Register Register Register Register",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway",
+      "slow"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850585.043895312,
+     "ttft_s": 0.14630860602483153,
+     "decode_s": 2.9740441020112485,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 32.27927922624898,
+     "text_sha256": "6d85d31e640464e4647b2a0e495fc35938d440495192886f76f15f165c017b82",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "tively bridging the gap between theoretical capability and practical deployment.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 58,
+     "acceptance_len": 2.45,
+     "acceptance_histogram": [
+      12,
+      6,
+      14,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "slow",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n3-b2",
+   "kind": "identical",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685399.7569542,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.18962033791467547,
+   "median_decode_tok_s": 31.783432664302907,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850602.598576495,
+     "ttft_s": 0.2957430559908971,
+     "decode_s": 3.0035098450025544,
+     "prompt_tokens": 36,
+     "completion_tokens": 99,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 32.62849301561609,
+     "text_sha256": "a6ab606cd66071bb6a4a1f5289e02d54ae793886131761b8749929fc80b04174",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "nts without the prohibitive costs associated with dense attention architectures.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 59,
+     "acceptance_len": 2.4390243902439024,
+     "acceptance_histogram": [
+      11,
+      9,
+      13,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850602.598232366,
+     "ttft_s": 0.29576695896685123,
+     "decode_s": 2.7372751369839534,
+     "prompt_tokens": 36,
+     "completion_tokens": 88,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.783432664302907,
+     "text_sha256": "b7682e924320687f5c5157005150ce7d2146b9d40c564dc33f05b26d8abeb9a3",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, creating",
+     "tail": "ng extended context windows computationally feasible for practical applications.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 51,
+     "acceptance_len": 2.378378378378378,
+     "acceptance_histogram": [
+      10,
+      9,
+      12,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850602.598156893,
+     "ttft_s": 0.10654231999069452,
+     "decode_s": 3.006599923945032,
+     "prompt_tokens": 36,
+     "completion_tokens": 84,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.60593431103853,
+     "text_sha256": "05952cbec43bc55d9c449d6c4dcde95feadad5fc43dd0e9e15974445caf2a01e",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "applications requiring deep contextual understanding across thousands of tokens.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 45,
+     "acceptance_len": 2.125,
+     "acceptance_histogram": [
+      15,
+      12,
+      6,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n3-b3",
+   "kind": "identical",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685406.0624542,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.18921066902112216,
+   "median_decode_tok_s": 30.867503911002917,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850608.903992705,
+     "ttft_s": 0.29489760694559664,
+     "decode_s": 3.044245733995922,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.53490499401603,
+     "text_sha256": "e5d03b8999eaa8ad819e6a10caf9751cd5e306f30a64bdd46d83abf91a21f3b0",
+     "head": "Sparse attention mitigates the quadratic computational cost of standard self-att",
+     "tail": " preserving the ability to capture essential dependencies across vast distances.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 55,
+     "acceptance_len": 2.3095238095238093,
+     "acceptance_histogram": [
+      14,
+      10,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 57,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850608.904155906,
+     "ttft_s": 0.29444177995901555,
+     "decode_s": 2.9156876519555226,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 30.867503911002917,
+     "text_sha256": "36c1afc2a132dccadb6a7828f9d464171c58f2734eb735ced25cbfc3aa756204",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, creating",
+     "tail": "eper reasoning capabilities without the exponential overhead of dense attention.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 51,
+     "acceptance_len": 2.275,
+     "acceptance_histogram": [
+      14,
+      9,
+      9,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850608.903929585,
+     "ttft_s": 0.10575005796272308,
+     "decode_s": 2.760778423049487,
+     "prompt_tokens": 36,
+     "completion_tokens": 83,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.70176792001469,
+     "text_sha256": "900bc88a4d6e87105b13e701a18f6ec5eae0b4da3237122b9a50e653c6303d61",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "deployment of long-context language models in resource-constrained environments.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 47,
+     "acceptance_len": 2.27027027027027,
+     "acceptance_histogram": [
+      11,
+      12,
+      7,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n3-b1",
+   "kind": "distinct",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685412.4078553,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2732104149181396,
+   "median_decode_tok_s": 33.44910652398295,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850615.249301712,
+     "ttft_s": 0.39152065792586654,
+     "decode_s": 2.9708435920765623,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 32.31405391251104,
+     "text_sha256": "8c72002c99a828d6ca2e1da225c8d42f6da808364c8de403bc4ddbc6e64b8303",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "cessary for processing extensive documents or complex, multi-turn conversations.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 57,
+     "acceptance_len": 2.357142857142857,
+     "acceptance_histogram": [
+      13,
+      11,
+      8,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850615.249461793,
+     "ttft_s": 0.39104303903877735,
+     "decode_s": 2.0628353690262884,
+     "prompt_tokens": 28,
+     "completion_tokens": 70,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 33.44910652398295,
+     "text_sha256": "af395b6f61d06501880163d1b11cc528a51b2894f94f05c603690248c290fe29",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. Shi",
+     "tail": "rade-off allows riders to optimize effort based on terrain and desired velocity.",
+     "spec_source": "server",
+     "steps": 27,
+     "accepted": 44,
+     "acceptance_len": 2.6296296296296298,
+     "acceptance_histogram": [
+      7,
+      6,
+      4,
+      10
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850615.249209536,
+     "ttft_s": 0.11840241902973503,
+     "decode_s": 1.1371982150012627,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 36.932875417812156,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n3-b2",
+   "kind": "distinct",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685418.778379,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.5018583439523354,
+   "median_decode_tok_s": 34.232251522567225,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850621.620160717,
+     "ttft_s": 0.10366475000046194,
+     "decode_s": 3.09518903598655,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.723548038698784,
+     "text_sha256": "a332783dfd0d7b7b36ba18d973cf97c6f582615615394138031d14082fca3208",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "ch as analyzing large documents or maintaining coherent long-term conversations.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 53,
+     "acceptance_len": 2.358974358974359,
+     "acceptance_histogram": [
+      13,
+      9,
+      7,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850621.620696863,
+     "ttft_s": 0.6049869479611516,
+     "decode_s": 2.044855272048153,
+     "prompt_tokens": 28,
+     "completion_tokens": 71,
+     "chunks": 29,
+     "finish_reason": "stop",
+     "decode_tok_s": 34.232251522567225,
+     "text_sha256": "53845d361929003f2de226173de87b186b72f5cb0453e23f70806aabbde84930",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "per pedal stroke but requiring significantly more torque to overcome resistance.",
+     "spec_source": "server",
+     "steps": 28,
+     "accepted": 44,
+     "acceptance_len": 2.571428571428571,
+     "acceptance_histogram": [
+      8,
+      5,
+      6,
+      9
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850621.620067853,
+     "ttft_s": 0.6052627399330959,
+     "decode_s": 0.8914214820833877,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 47.11575931717464,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n3-b3",
+   "kind": "distinct",
+   "n": 3,
+   "stagger_s": 0.0,
+   "t_start": 1790685424.9833395,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.19205821107607335,
+   "median_decode_tok_s": 37.85787300644545,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850627.824899893,
+     "ttft_s": 0.10125854494981468,
+     "decode_s": 2.293435860075988,
+     "prompt_tokens": 36,
+     "completion_tokens": 80,
+     "chunks": 32,
+     "finish_reason": "stop",
+     "decode_tok_s": 34.44613445495812,
+     "text_sha256": "e30b84c694543a6b349e43bcd0d7ff8e5aba4951d85ae0b90ead54ebeee7f950",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "ing deep contextual understanding while maintaining performance and scalability.",
+     "spec_source": "server",
+     "steps": 31,
+     "accepted": 50,
+     "acceptance_len": 2.6129032258064515,
+     "acceptance_histogram": [
+      8,
+      6,
+      7,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850627.825246759,
+     "ttft_s": 0.29258680006023496,
+     "decode_s": 2.033923035953194,
+     "prompt_tokens": 28,
+     "completion_tokens": 78,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 37.85787300644545,
+     "text_sha256": "e1d0e9dc4546dfa600fbf2322f7497aef786dda7f007413882d6c9d29065145d",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "ter torque. This trade-off allows riders to optimize effort for varying terrain.",
+     "spec_source": "server",
+     "steps": 28,
+     "accepted": 52,
+     "acceptance_len": 2.857142857142857,
+     "acceptance_histogram": [
+      5,
+      7,
+      3,
+      13
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850627.824808357,
+     "ttft_s": 0.2934082919964567,
+     "decode_s": 0.8834061049856246,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 47.54325305538097,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n5-b1",
+   "kind": "identical",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685430.3846874,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2332392770331353,
+   "median_decode_tok_s": 27.864248990786468,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850633.226184503,
+     "ttft_s": 0.10657349601387978,
+     "decode_s": 3.8192050880752504,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 46,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.136120681170524,
+     "text_sha256": "adcb00cf18b19689932cbc4abace713f9aa8b4dd8c0e8229e0677acc8bbbdde2",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "scaling up context windows while preserving computational feasibility and speed.",
+     "spec_source": "server",
+     "steps": 45,
+     "accepted": 53,
+     "acceptance_len": 2.177777777777778,
+     "acceptance_histogram": [
+      17,
+      12,
+      7,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850633.227164107,
+     "ttft_s": 0.3388331689639017,
+     "decode_s": 3.520317126996815,
+     "prompt_tokens": 36,
+     "completion_tokens": 92,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.8499438309503,
+     "text_sha256": "1765bc5c05ca0698c04a611fbf25532bd8df3a46b6aaab5a6fae67147e47dd58",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ons without the prohibitive costs associated with dense attention architectures.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 51,
+     "acceptance_len": 2.2142857142857144,
+     "acceptance_histogram": [
+      15,
+      10,
+      10,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850633.227509757,
+     "ttft_s": 0.33834710298106074,
+     "decode_s": 3.3729092680150643,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.86911610442412,
+     "text_sha256": "92b003fca59329f1a8358f072299e23e0194b56ab0a5c94ce253c0935f1d59f9",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "oretical capacity and practical resource constraints in real-world applications.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 54,
+     "acceptance_len": 2.35,
+     "acceptance_histogram": [
+      13,
+      8,
+      11,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850633.226790762,
+     "ttft_s": 0.3389702889835462,
+     "decode_s": 3.1937911689747125,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.432105928884628,
+     "text_sha256": "e116340b37c2bf6d71371e9667c1e56d2544fe28a4fbbde5191ebfb1b1da0549",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "ing long-context capabilities practical and accessible for broader applications.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 57,
+     "acceptance_len": 2.5,
+     "acceptance_histogram": [
+      8,
+      12,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850633.226096615,
+     "ttft_s": 0.33953419607132673,
+     "decode_s": 3.373498421977274,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.864248990786468,
+     "text_sha256": "ae5bb4f5308e0b0b5c388bed8eaea0445868b79e2228ac68db923eea8233cc25",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": " models capable of maintaining coherence and accuracy across extensive contexts.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 56,
+     "acceptance_len": 2.4,
+     "acceptance_histogram": [
+      13,
+      8,
+      9,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n5-b2",
+   "kind": "identical",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685437.3170478,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.21132557303644717,
+   "median_decode_tok_s": 25.107763036338003,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850640.158821425,
+     "ttft_s": 0.32542780600488186,
+     "decode_s": 3.3433400279609486,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 28.115596742736678,
+     "text_sha256": "400beada291c7fa1de0c7f46d64d77d37ec5da531dafe9fd513d607351bd0a15",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "etical capability and practical resource constraints in real-world applications.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 54,
+     "acceptance_len": 2.35,
+     "acceptance_histogram": [
+      14,
+      8,
+      8,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850640.15897109,
+     "ttft_s": 0.11406199296470731,
+     "decode_s": 14.962061681086197,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 17.04310578550481,
+     "text_sha256": "64deeca9e3a2c4bbdbc8a4b864420f078a991c4c4e05df39abf4ef1f41ea75c0",
+     "head": "Standard Register Register Register Register Register Register Register Register",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850640.158899121,
+     "ttft_s": 0.11445367499254644,
+     "decode_s": 3.8633469600463286,
+     "prompt_tokens": 36,
+     "completion_tokens": 98,
+     "chunks": 47,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.107763036338003,
+     "text_sha256": "e7df309edc7ef560936790ed6902e72f341fbe2eed48cfae5754d4614d2b6ca8",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "ks or complex codebases, making long-range dependencies manageable and scalable.",
+     "spec_source": "server",
+     "steps": 46,
+     "accepted": 53,
+     "acceptance_len": 2.1521739130434785,
+     "acceptance_histogram": [
+      20,
+      10,
+      5,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850640.159414788,
+     "ttft_s": 0.3249438679777086,
+     "decode_s": 3.0908093879697844,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.118586332208924,
+     "text_sha256": "4f1dcb86c568661199222fe20e62c205c442efba7fe6dafc16d94fbe5361a7a1",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ality while making extended context windows feasible for practical applications.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 54,
+     "acceptance_len": 2.4594594594594597,
+     "acceptance_histogram": [
+      10,
+      9,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850640.158697408,
+     "ttft_s": 0.32499634893611073,
+     "decode_s": 3.7928059650585055,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 47,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.256447824527946,
+     "text_sha256": "91f0dac668d4fe61870202ba76be3231b25a0a33940d194c124db055fe79f80b",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ore complex, document-level reasoning tasks without exponential resource growth.",
+     "spec_source": "server",
+     "steps": 46,
+     "accepted": 48,
+     "acceptance_len": 2.0434782608695654,
+     "acceptance_histogram": [
+      20,
+      12,
+      6,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n5-b3",
+   "kind": "identical",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685455.4010606,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2124391389079392,
+   "median_decode_tok_s": 22.957279124789867,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850658.244443064,
+     "ttft_s": 0.11836738407146186,
+     "decode_s": 4.312357725924812,
+     "prompt_tokens": 36,
+     "completion_tokens": 100,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.957279124789867,
+     "text_sha256": "9fd58a7d1df51437a453edcdf45e3e4b2159baa37bfaf9c61f8d80e332527cae",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "nguage models to support extended document analysis and complex reasoning tasks.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 55,
+     "acceptance_len": 2.25,
+     "acceptance_histogram": [
+      15,
+      14,
+      4,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850658.245667454,
+     "ttft_s": 0.3295821329811588,
+     "decode_s": 4.167459805030376,
+     "prompt_tokens": 36,
+     "completion_tokens": 96,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.795660772859588,
+     "text_sha256": "772570b2862c08f467a77d7056bcd3afa25e5c02bc010d5619af8a0b83278462",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": " facilitating practical applications in document analysis and extended dialogue.",
+     "spec_source": "server",
+     "steps": 43,
+     "accepted": 55,
+     "acceptance_len": 2.2790697674418605,
+     "acceptance_histogram": [
+      14,
+      11,
+      10,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850658.244573865,
+     "ttft_s": 0.33045039302669466,
+     "decode_s": 3.8698898990405723,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.031691450202928,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 55,
+     "acceptance_len": 2.4102564102564106,
+     "acceptance_histogram": [
+      11,
+      10,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850658.245170635,
+     "ttft_s": 0.3294182448880747,
+     "decode_s": 3.7820378380129114,
+     "prompt_tokens": 36,
+     "completion_tokens": 100,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.176364235428895,
+     "text_sha256": "358feec54b93cf7a0f2076d413488f79fe342cfc2ad7f0357885ab6201396947",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ng extensive context windows, such as document analysis or long-form generation.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 63,
+     "acceptance_len": 2.6578947368421053,
+     "acceptance_histogram": [
+      9,
+      7,
+      10,
+      12
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850658.244358568,
+     "ttft_s": 0.1185198969906196,
+     "decode_s": 15.319834256079048,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 16.645088695970305,
+     "text_sha256": "dfb1c7cc56c9ef499fee110c54e599f817d783f406a6c3d7dd23335ccca76d31",
+     "head": "Sparse Register Register Register Register Register Register Register Register R",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 7,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n5-b1",
+   "kind": "distinct",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685473.8478127,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2136612799949944,
+   "median_decode_tok_s": 31.684601625294732,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850676.689757457,
+     "ttft_s": 0.15320393594447523,
+     "decode_s": 14.633266952005215,
+     "prompt_tokens": 36,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 17.426047159281612,
+     "text_sha256": "dfb1c7cc56c9ef499fee110c54e599f817d783f406a6c3d7dd23335ccca76d31",
+     "head": "Sparse Register Register Register Register Register Register Register Register R",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 7,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence",
+      "slow"
+     ]
+    },
+    {
+     "t0": 850676.689836881,
+     "ttft_s": 0.36644271900877357,
+     "decode_s": 2.4649796129669994,
+     "prompt_tokens": 28,
+     "completion_tokens": 70,
+     "chunks": 29,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.992117921392218,
+     "text_sha256": "af395b6f61d06501880163d1b11cc528a51b2894f94f05c603690248c290fe29",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. Shi",
+     "tail": "rade-off allows riders to optimize effort based on terrain and desired velocity.",
+     "spec_source": "server",
+     "steps": 28,
+     "accepted": 43,
+     "acceptance_len": 2.5357142857142856,
+     "acceptance_histogram": [
+      8,
+      6,
+      5,
+      9
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850676.690347059,
+     "ttft_s": 0.3662756138946861,
+     "decode_s": 1.059577240026556,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 39.63845051914041,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850676.690620068,
+     "ttft_s": 0.36580324405804276,
+     "decode_s": 3.219229365931824,
+     "prompt_tokens": 25,
+     "completion_tokens": 103,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.684601625294732,
+     "text_sha256": "1ebf21fa54cfc1d568b4c96ed7aaf2f58d3b5f66a9ddaa09fac1b4cc44157c19",
+     "head": "The water cycle starts when the sun warms up water in oceans and lakes, turning ",
+     "tail": "ceans, ready to be heated by the sun and start the whole journey all over again.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 62,
+     "acceptance_len": 2.55,
+     "acceptance_histogram": [
+      10,
+      8,
+      12,
+      10
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 36,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850676.689515584,
+     "ttft_s": 0.1536638099933043,
+     "decode_s": 2.370272501022555,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 27,
+     "finish_reason": "stop",
+     "decode_tok_s": 42.611134355407565,
+     "text_sha256": "d3af644442cdab10c9f910f360c583e9643a3ec676117d2d1b64cea98d426e85",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 26,
+     "accepted": 75,
+     "acceptance_len": 3.8846153846153846,
+     "acceptance_histogram": [
+      0,
+      1,
+      1,
+      24
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": 80,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence",
+    "slow"
+   ]
+  },
+  {
+   "name": "distinct-n5-b2",
+   "kind": "distinct",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685491.6408422,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.23355363390874118,
+   "median_decode_tok_s": 31.232176916972488,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850694.482723105,
+     "ttft_s": 0.3317610629601404,
+     "decode_s": 3.294578870991245,
+     "prompt_tokens": 36,
+     "completion_tokens": 92,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.621132643463074,
+     "text_sha256": "7697be75c53ce8915707a8ee020ef0eb5e6a21add1f212b281ef270de7140321",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "ch as analyzing large documents or maintaining coherent long-term conversations.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 51,
+     "acceptance_len": 2.275,
+     "acceptance_histogram": [
+      15,
+      9,
+      6,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850694.482954706,
+     "ttft_s": 0.33212711301166564,
+     "decode_s": 2.3125647380948067,
+     "prompt_tokens": 28,
+     "completion_tokens": 71,
+     "chunks": 26,
+     "finish_reason": "stop",
+     "decode_tok_s": 30.269422882262358,
+     "text_sha256": "4799d5ca873a131816156aa6cbb8ac342ce0da8206eff240bab74db6dfd3075d",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "eed per pedal stroke but requiring significantly more torque to turn the wheels.",
+     "spec_source": "server",
+     "steps": 25,
+     "accepted": 47,
+     "acceptance_len": 2.88,
+     "acceptance_histogram": [
+      5,
+      5,
+      3,
+      12
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850694.482773937,
+     "ttft_s": 0.33210119290743023,
+     "decode_s": 1.0919459230499342,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 38.463443210346014,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850694.483056226,
+     "ttft_s": 0.09847195900510997,
+     "decode_s": 3.0417348189512268,
+     "prompt_tokens": 25,
+     "completion_tokens": 96,
+     "chunks": 35,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.232176916972488,
+     "text_sha256": "c22c50ca9e228883708f7a089b26400da3b39e921cb4e8b9e4e4fcd354547293",
+     "head": "The water cycle starts when the sun heats up water in oceans and lakes, turning ",
+     "tail": "e water flows into rivers and oceans, ready to start the journey all over again.",
+     "spec_source": "server",
+     "steps": 34,
+     "accepted": 61,
+     "acceptance_len": 2.7941176470588234,
+     "acceptance_histogram": [
+      5,
+      9,
+      8,
+      12
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 319,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850694.482627632,
+     "ttft_s": 0.3320096890674904,
+     "decode_s": 2.4058320010080934,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 26,
+     "finish_reason": "stop",
+     "decode_tok_s": 41.98131871123125,
+     "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 26,
+     "accepted": 78,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      26
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n5-b3",
+   "kind": "distinct",
+   "n": 5,
+   "stagger_s": 0.0,
+   "t_start": 1790685498.2742956,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2650114019634202,
+   "median_decode_tok_s": 30.56536991111728,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850701.117096137,
+     "ttft_s": 0.3575528209330514,
+     "decode_s": 3.1408093629870564,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 30.56536991111728,
+     "text_sha256": "3468330c753fbddb618f8972e4c22410299f3c14b3773728b3e94f30d9ff2d97",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e documents and complex reasoning tasks without overwhelming hardware resources.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 61,
+     "acceptance_len": 2.6944444444444446,
+     "acceptance_histogram": [
+      7,
+      8,
+      10,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850701.116689127,
+     "ttft_s": 0.3573636529035866,
+     "decode_s": 2.8640794940292835,
+     "prompt_tokens": 28,
+     "completion_tokens": 74,
+     "chunks": 33,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.48811935987892,
+     "text_sha256": "6d6d59556b1f077dcb4fab0956420c8d37412affdf9aace9807f3afe75025bf2",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "d. This trade-off lets riders optimize power for varying terrain and conditions.",
+     "spec_source": "server",
+     "steps": 32,
+     "accepted": 42,
+     "acceptance_len": 2.3125,
+     "acceptance_histogram": [
+      10,
+      10,
+      4,
+      8
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850701.116187541,
+     "ttft_s": 0.35813967196736485,
+     "decode_s": 1.0883672059280798,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 38.589916869266084,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850701.116073412,
+     "ttft_s": 0.0935641439864412,
+     "decode_s": 3.280401487951167,
+     "prompt_tokens": 25,
+     "completion_tokens": 97,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.26471054003774,
+     "text_sha256": "848a1dbf27d3813924ec2dda18effbe490221eae10cb2d0678630c30bb5877b6",
+     "head": "The water cycle starts when the sun warms up water in oceans and lakes, turning ",
+     "tail": "e water flows into rivers and oceans, ready to start the journey all over again.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 60,
+     "acceptance_len": 2.666666666666667,
+     "acceptance_histogram": [
+      9,
+      7,
+      7,
+      13
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 36,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850701.115996548,
+     "ttft_s": 0.20223347505088896,
+     "decode_s": 2.5484363809227943,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 39.63214493250472,
+     "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 27,
+     "accepted": 75,
+     "acceptance_len": 3.7777777777777777,
+     "acceptance_histogram": [
+      0,
+      3,
+      0,
+      24
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n8-b1",
+   "kind": "identical",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685504.7815807,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.24410740192979574,
+   "median_decode_tok_s": 24.538556219701878,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850707.625407167,
+     "ttft_s": 0.3484640410169959,
+     "decode_s": 3.887236502021551,
+     "prompt_tokens": 36,
+     "completion_tokens": 100,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.467964181884792,
+     "text_sha256": "693799d12f1091ec6cedd87ef7968a3256c5a61a2738d69fe02960e7a2ba3a04",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "cal technique for deploying practical, high-performance long-context AI systems.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 58,
+     "acceptance_len": 2.380952380952381,
+     "acceptance_histogram": [
+      12,
+      12,
+      8,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 250,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850707.623950137,
+     "ttft_s": 0.3497729110531509,
+     "decode_s": 4.102109965053387,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 46,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.671259618168147,
+     "text_sha256": "5ea913999162459bcfea13fcf168d9dc885398f8799fc194bc209d62a895b447",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": " process entire books or codebases while preserving performance and scalability.",
+     "spec_source": "server",
+     "steps": 45,
+     "accepted": 50,
+     "acceptance_len": 2.111111111111111,
+     "acceptance_histogram": [
+      17,
+      15,
+      4,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.625070366,
+     "ttft_s": 0.34933246101718396,
+     "decode_s": 3.4154072280507535,
+     "prompt_tokens": 36,
+     "completion_tokens": 82,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.71605919632267,
+     "text_sha256": "85ac3cb3e5cde5700d9c285cbbb3a7bb15750b898d6037ab4bd11685e3db12b2",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "exts while maintaining performance levels comparable to dense attention methods.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 46,
+     "acceptance_len": 2.243243243243243,
+     "acceptance_histogram": [
+      13,
+      10,
+      6,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.625340047,
+     "ttft_s": 0.3486402180278674,
+     "decode_s": 3.132930602063425,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 35,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.684666471305786,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 34,
+     "accepted": 60,
+     "acceptance_len": 2.764705882352941,
+     "acceptance_histogram": [
+      6,
+      7,
+      10,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.624081369,
+     "ttft_s": 0.35077173192985356,
+     "decode_s": 4.036198185058311,
+     "prompt_tokens": 36,
+     "completion_tokens": 101,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.775790339084974,
+     "text_sha256": "c8c5a067547669f2f1e12fbf6a0e316ca9a1de166a5de229079482762712691c",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "ing efficient, high-performance large language models in practical applications.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 57,
+     "acceptance_len": 2.2954545454545454,
+     "acceptance_histogram": [
+      15,
+      11,
+      8,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.624621068,
+     "ttft_s": 0.3489837709348649,
+     "decode_s": 3.887966361013241,
+     "prompt_tokens": 36,
+     "completion_tokens": 96,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.434367784818512,
+     "text_sha256": "de4a45e2af697e0a5983ecd0f39c6efb11f4b73d8fc24231196eebbcb5fc460c",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "ed long-context capabilities practical and accessible for widespread deployment.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 55,
+     "acceptance_len": 2.3095238095238093,
+     "acceptance_histogram": [
+      14,
+      10,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.624555084,
+     "ttft_s": 0.3500785760115832,
+     "decode_s": 3.6116106889676303,
+     "prompt_tokens": 36,
+     "completion_tokens": 90,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.642744654585243,
+     "text_sha256": "08038b8d630073a00a1f82b427ba2ad4b530d718402f4cb4511b81b4e3c8191b",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ing practical applications in document analysis and extended dialogue scenarios.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 52,
+     "acceptance_len": 2.333333333333333,
+     "acceptance_histogram": [
+      13,
+      9,
+      8,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850707.623839528,
+     "ttft_s": 0.10690617107320577,
+     "decode_s": 4.03919317596592,
+     "prompt_tokens": 36,
+     "completion_tokens": 97,
+     "chunks": 44,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.767122744022476,
+     "text_sha256": "31d9136ae31b165f74427f6a7f60eec46e44d7736fafd01a8d0a54b3d1d6f900",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "vely bridging the gap between theoretical potential and operational feasibility.",
+     "spec_source": "server",
+     "steps": 43,
+     "accepted": 55,
+     "acceptance_len": 2.2790697674418605,
+     "acceptance_histogram": [
+      16,
+      9,
+      8,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n8-b2",
+   "kind": "identical",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685512.2415314,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.24592353496700525,
+   "median_decode_tok_s": 25.633583813610244,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850715.083761327,
+     "ttft_s": 0.3573123150272295,
+     "decode_s": 3.4827932550106198,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.702704751768685,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 56,
+     "acceptance_len": 2.473684210526316,
+     "acceptance_histogram": [
+      10,
+      11,
+      6,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.083839279,
+     "ttft_s": 0.3566907929489389,
+     "decode_s": 3.4825359099777415,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.843236746573915,
+     "text_sha256": "cae0eb1857c3a06387eab1e70c60d7dc286c92218cf236c7bc7d03d626da767b",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 53,
+     "acceptance_len": 2.394736842105263,
+     "acceptance_histogram": [
+      12,
+      8,
+      9,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.084161361,
+     "ttft_s": 0.35668868001084775,
+     "decode_s": 3.382890766952187,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.491280802953117,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 57,
+     "acceptance_len": 2.5405405405405403,
+     "acceptance_histogram": [
+      9,
+      9,
+      9,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.085132197,
+     "ttft_s": 0.35488854395225644,
+     "decode_s": 3.736636967980303,
+     "prompt_tokens": 36,
+     "completion_tokens": 96,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.423930880646573,
+     "text_sha256": "70a4ab21d55dea4bf15062fa7250ec70ed8104fa1bc1d32b355b7fd51edf9187",
+     "head": "Sparse attention mitigates the quadratic computational cost of standard self-att",
+     "tail": "preserving the ability to capture essential long-range dependencies effectively.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 57,
+     "acceptance_len": 2.3902439024390243,
+     "acceptance_histogram": [
+      12,
+      10,
+      10,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 57,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.085203221,
+     "ttft_s": 0.3549919209908694,
+     "decode_s": 3.968713656067848,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.433285457067527,
+     "text_sha256": "18d49d8723d48e3003ceda8fc2e2556521643f62c42ae96b64d6447a2c993a3e",
+     "head": "Sparse attention mitigates the quadratic computational cost of standard self-att",
+     "tail": "onal context window limitations while preserving essential semantic connections.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 51,
+     "acceptance_len": 2.159090909090909,
+     "acceptance_histogram": [
+      16,
+      12,
+      9,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 57,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.085248661,
+     "ttft_s": 0.35538264305796474,
+     "decode_s": 3.9683943109121174,
+     "prompt_tokens": 36,
+     "completion_tokens": 92,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.931189007547,
+     "text_sha256": "1765bc5c05ca0698c04a611fbf25532bd8df3a46b6aaab5a6fae67147e47dd58",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ons without the prohibitive costs associated with dense attention architectures.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 49,
+     "acceptance_len": 2.1136363636363633,
+     "acceptance_histogram": [
+      17,
+      11,
+      10,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.08449565,
+     "ttft_s": 0.3559202289907262,
+     "decode_s": 3.96895301702898,
+     "prompt_tokens": 36,
+     "completion_tokens": 99,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.691650311688342,
+     "text_sha256": "1d89d6e15890dbd52a12f394e234b67b3271817f88bc9a03151de82bb772c8a8",
+     "head": "Sparse attention mitigates the quadratic computational complexity of standard se",
+     "tail": "the ability to capture essential contextual relationships across vast distances.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 55,
+     "acceptance_len": 2.25,
+     "acceptance_histogram": [
+      15,
+      12,
+      8,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 193,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850715.083658862,
+     "ttft_s": 0.11149124498479068,
+     "decode_s": 3.6297802579356357,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.896884472411728,
+     "text_sha256": "cc7e2a2818fd412eba1435788fd6833225daef4d246bf1ff9e40c8074b788244",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ical context windows and practical, resource-constrained inference environments.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 57,
+     "acceptance_len": 2.4615384615384617,
+     "acceptance_histogram": [
+      11,
+      9,
+      9,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "identical-n8-b3",
+   "kind": "identical",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685519.5770926,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.311907391063869,
+   "median_decode_tok_s": 26.180756986965967,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850722.418910441,
+     "ttft_s": 0.4188414140371606,
+     "decode_s": 3.525185154983774,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 39,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.53057386865521,
+     "text_sha256": "28ad902a80be222d5502fc622707482ddc985b10f094a65974be8f9d7baec6cb",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "g the gap between theoretical context limits and practical hardware constraints.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 54,
+     "acceptance_len": 2.4210526315789473,
+     "acceptance_histogram": [
+      11,
+      10,
+      7,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.41963846,
+     "ttft_s": 0.4179848659550771,
+     "decode_s": 4.093257526983507,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 46,
+     "finish_reason": "stop",
+     "decode_tok_s": 21.98737787854867,
+     "text_sha256": "49c54b96f80fb10910065195d4673eb81afe9c20be24c28d59bb4974506a2bc0",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "acilitating more complex and extended reasoning tasks in modern language models.",
+     "spec_source": "server",
+     "steps": 46,
+     "accepted": 47,
+     "acceptance_len": 2.0217391304347827,
+     "acceptance_histogram": [
+      20,
+      11,
+      9,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.420810737,
+     "ttft_s": 0.4163842990528792,
+     "decode_s": 3.3531494539929554,
+     "prompt_tokens": 36,
+     "completion_tokens": 96,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 28.33157343669048,
+     "text_sha256": "2eb332235b484827024a6facdd0be0394ad6102f18f407d6a3def7394a2ec8d1",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "capable of maintaining coherence and understanding across vast textual contexts.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 60,
+     "acceptance_len": 2.666666666666667,
+     "acceptance_histogram": [
+      9,
+      7,
+      7,
+      13
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.4195599,
+     "ttft_s": 0.10628456401173025,
+     "decode_s": 4.27965594897978,
+     "prompt_tokens": 36,
+     "completion_tokens": 102,
+     "chunks": 46,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.6000279471244,
+     "text_sha256": "623f2315e376c750df78e3af48ab4c16867afbf8aebfde16012a1194ea5df99e",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "debases while maintaining reasonable inference speeds and resource requirements.",
+     "spec_source": "server",
+     "steps": 46,
+     "accepted": 58,
+     "acceptance_len": 2.2608695652173916,
+     "acceptance_histogram": [
+      19,
+      7,
+      9,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.420179486,
+     "ttft_s": 0.4174924639519304,
+     "decode_s": 3.758751175017096,
+     "prompt_tokens": 36,
+     "completion_tokens": 98,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.806443545590326,
+     "text_sha256": "6ae12ea8fd29f81a58347ed359330033616ab838685e3008c722113e7ed0cd8b",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "limits and practical, resource-constrained applications in real-world scenarios.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 58,
+     "acceptance_len": 2.4146341463414633,
+     "acceptance_histogram": [
+      12,
+      10,
+      9,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.420880865,
+     "ttft_s": 0.41624329099431634,
+     "decode_s": 3.3531243500765413,
+     "prompt_tokens": 36,
+     "completion_tokens": 92,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.138868261155526,
+     "text_sha256": "c3e9164431e8223f60d6c6ae61617fd8f6e374b0464793546237fa7401c33026",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ts and complex reasoning tasks without the prohibitive costs of dense attention.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 56,
+     "acceptance_len": 2.5555555555555554,
+     "acceptance_histogram": [
+      9,
+      9,
+      7,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.419038009,
+     "ttft_s": 0.23354960593860596,
+     "decode_s": 3.238552886992693,
+     "prompt_tokens": 36,
+     "completion_tokens": 87,
+     "chunks": 36,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.555070428341608,
+     "text_sha256": "5ed92d5122d3a51842b1992cb72d4398addd37a865f3d88e880c56356ba14e02",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ality while making extended context windows feasible for practical applications.",
+     "spec_source": "server",
+     "steps": 35,
+     "accepted": 52,
+     "acceptance_len": 2.4857142857142858,
+     "acceptance_histogram": [
+      9,
+      7,
+      12,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850722.41882764,
+     "ttft_s": 0.2335098299663514,
+     "decode_s": 3.3842435280093923,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 27.480291896931686,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 58,
+     "acceptance_len": 2.611111111111111,
+     "acceptance_histogram": [
+      8,
+      9,
+      8,
+      11
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n8-b1",
+   "kind": "distinct",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685527.0987206,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.3212105151033029,
+   "median_decode_tok_s": 25.02077648044464,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850729.943528722,
+     "ttft_s": 0.45340621599461883,
+     "decode_s": 4.076451382017694,
+     "prompt_tokens": 36,
+     "completion_tokens": 99,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.04051730686742,
+     "text_sha256": "f8500ea14b08eb38e4ab27c827e4d7733e3025946262e963c32ae864641f25ba",
+     "head": "Sparse attention significantly enhances long-context language models by reducing",
+     "tail": "iously computationally impossible for traditional dense attention architectures.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 54,
+     "acceptance_len": 2.2272727272727275,
+     "acceptance_histogram": [
+      16,
+      9,
+      12,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 17,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850729.943356353,
+     "ttft_s": 0.4540233389707282,
+     "decode_s": 3.2810819250298664,
+     "prompt_tokens": 28,
+     "completion_tokens": 78,
+     "chunks": 33,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.467868757741883,
+     "text_sha256": "7a4be52f26664f9d8426bdca6c14c4ab1147d95e80d7e4a8d8008c5b519b77ba",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "ion speed on flat terrain, allowing faster travel with less mechanical leverage.",
+     "spec_source": "server",
+     "steps": 32,
+     "accepted": 47,
+     "acceptance_len": 2.46875,
+     "acceptance_histogram": [
+      10,
+      6,
+      7,
+      9
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850729.943040656,
+     "ttft_s": 0.13405417290050536,
+     "decode_s": 1.3806956800399348,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 30.419447679292517,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850729.943460002,
+     "ttft_s": 0.23775926802773029,
+     "decode_s": 3.9229206619784236,
+     "prompt_tokens": 25,
+     "completion_tokens": 103,
+     "chunks": 40,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.00103565402185,
+     "text_sha256": "1ebf21fa54cfc1d568b4c96ed7aaf2f58d3b5f66a9ddaa09fac1b4cc44157c19",
+     "head": "The water cycle starts when the sun warms up water in oceans and lakes, turning ",
+     "tail": "ceans, ready to be heated by the sun and start the whole journey all over again.",
+     "spec_source": "server",
+     "steps": 39,
+     "accepted": 63,
+     "acceptance_len": 2.6153846153846154,
+     "acceptance_histogram": [
+      8,
+      10,
+      10,
+      11
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 36,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850729.943830579,
+     "ttft_s": 0.45401610690169036,
+     "decode_s": 2.8746504930313677,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.134706025946755,
+     "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 27,
+     "accepted": 75,
+     "acceptance_len": 3.7777777777777777,
+     "acceptance_histogram": [
+      0,
+      3,
+      0,
+      24
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850729.94311024,
+     "ttft_s": 0.453542920993641,
+     "decode_s": 0.7185889799147844,
+     "prompt_tokens": 29,
+     "completion_tokens": 17,
+     "chunks": 7,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.265857739562605,
+     "text_sha256": "5a881638e98d6caa6d815691ff1576bc1d21faf4439e19f047cab2e802e4de1d",
+     "head": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "tail": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "spec_source": "server",
+     "steps": 6,
+     "accepted": 11,
+     "acceptance_len": 2.833333333333333,
+     "acceptance_histogram": [
+      0,
+      3,
+      1,
+      2
+     ],
+     "ref_key": "d5",
+     "diverge_at_char": 63,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850729.943937092,
+     "ttft_s": 0.45436825207434595,
+     "decode_s": 2.781898677931167,
+     "prompt_tokens": 28,
+     "completion_tokens": 59,
+     "chunks": 27,
+     "finish_reason": "stop",
+     "decode_tok_s": 20.849069903269534,
+     "text_sha256": "b4cc67e428fcac001d8ddc21c17f486b8e2559ccaaeb5e1d03f9a99e39f92d6b",
+     "head": "1. Move plants away from cold drafts and heating vents to prevent temperature sh",
+     "tail": "y around foliage using a pebble tray or humidifier to counteract dry indoor air.",
+     "spec_source": "server",
+     "steps": 26,
+     "accepted": 32,
+     "acceptance_len": 2.230769230769231,
+     "acceptance_histogram": [
+      8,
+      8,
+      6,
+      4
+     ],
+     "ref_key": "d6",
+     "diverge_at_char": 3,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850729.942915087,
+     "ttft_s": 0.4547803340246901,
+     "decode_s": 1.7018491380149499,
+     "prompt_tokens": 37,
+     "completion_tokens": 49,
+     "chunks": 15,
+     "finish_reason": "stop",
+     "decode_tok_s": 28.204615161122668,
+     "text_sha256": "1e40d32ec80017a50979d92619aa1ec1879f56fbb72bb85dde42de1d9b704d21",
+     "head": "{\n  \"name\": \"Eiffel Tower\",\n  \"year\": 1889,\n  \"tags\": [\"Paris\", \"France\", \"Landm",
+     "tail": ": 1889,\n  \"tags\": [\"Paris\", \"France\", \"Landmark\", \"Iron Structure\", \"Tourism\"]\n}",
+     "spec_source": "server",
+     "steps": 15,
+     "accepted": 36,
+     "acceptance_len": 3.4,
+     "acceptance_histogram": [
+      2,
+      0,
+      3,
+      10
+     ],
+     "ref_key": "d7",
+     "diverge_at_char": 91,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n8-b2",
+   "kind": "distinct",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685534.6403646,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.2674708840204403,
+   "median_decode_tok_s": 25.355902304461715,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850737.48306372,
+     "ttft_s": 0.37174978794064373,
+     "decode_s": 4.14483561203815,
+     "prompt_tokens": 36,
+     "completion_tokens": 95,
+     "chunks": 46,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.678824638301432,
+     "text_sha256": "9b8c5a9247f6189413eb3b4889d7e5c88b4ae57183535f8525a3c3aba5aca292",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, creating",
+     "tail": "unlocking deeper reasoning capabilities without overwhelming hardware resources.",
+     "spec_source": "server",
+     "steps": 45,
+     "accepted": 50,
+     "acceptance_len": 2.111111111111111,
+     "acceptance_histogram": [
+      17,
+      12,
+      10,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850737.482610646,
+     "ttft_s": 0.372533151996322,
+     "decode_s": 3.0589069899870083,
+     "prompt_tokens": 28,
+     "completion_tokens": 74,
+     "chunks": 29,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.864733461644104,
+     "text_sha256": "5545a8aad639e9afb35b0433de011d406f534e70af9948a873c37de2d2ac7875",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "ng greater speed. This trade-off lets riders optimize power for varying terrain.",
+     "spec_source": "server",
+     "steps": 29,
+     "accepted": 47,
+     "acceptance_len": 2.6206896551724137,
+     "acceptance_histogram": [
+      7,
+      8,
+      3,
+      11
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850737.482688182,
+     "ttft_s": 0.3715921399416402,
+     "decode_s": 1.3109178360318765,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 32.03862122063516,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850737.482154916,
+     "ttft_s": 0.37253569590393454,
+     "decode_s": 3.4640650181099772,
+     "prompt_tokens": 25,
+     "completion_tokens": 94,
+     "chunks": 35,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.847071147279323,
+     "text_sha256": "206c7de3190c1237755629923620935b00dff2e65ee7d0f23a84b4240f76e3ad",
+     "head": "The water cycle starts when the sun heats up water in oceans and lakes, turning ",
+     "tail": "e water flows into rivers and oceans, ready to start the journey all over again.",
+     "spec_source": "server",
+     "steps": 34,
+     "accepted": 59,
+     "acceptance_len": 2.735294117647059,
+     "acceptance_histogram": [
+      7,
+      7,
+      8,
+      12
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 133,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850737.482465413,
+     "ttft_s": 0.37143949896562845,
+     "decode_s": 2.7882151659578085,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 26,
+     "finish_reason": "stop",
+     "decode_tok_s": 36.22389019080759,
+     "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 26,
+     "accepted": 78,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      26
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850737.482939239,
+     "ttft_s": 0.371974061941728,
+     "decode_s": 0.7226553880609572,
+     "prompt_tokens": 29,
+     "completion_tokens": 17,
+     "chunks": 7,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.14056694841992,
+     "text_sha256": "5a881638e98d6caa6d815691ff1576bc1d21faf4439e19f047cab2e802e4de1d",
+     "head": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "tail": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "spec_source": "server",
+     "steps": 6,
+     "accepted": 11,
+     "acceptance_len": 2.833333333333333,
+     "acceptance_histogram": [
+      0,
+      3,
+      1,
+      2
+     ],
+     "ref_key": "d5",
+     "diverge_at_char": 63,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850737.482283284,
+     "ttft_s": 0.37216707109473646,
+     "decode_s": 3.3856610109796748,
+     "prompt_tokens": 28,
+     "completion_tokens": 70,
+     "chunks": 34,
+     "finish_reason": "stop",
+     "decode_tok_s": 20.38006751893751,
+     "text_sha256": "6ed0508ab41c15390db79b6905f78dc0a2550c1f460c1c25dca99311d47e4a7e",
+     "head": "1. Reduce watering frequency significantly, as most plants enter a dormant phase",
+     "tail": "facing windows or supplementing with grow lights to compensate for shorter days.",
+     "spec_source": "server",
+     "steps": 33,
+     "accepted": 38,
+     "acceptance_len": 2.1515151515151514,
+     "acceptance_histogram": [
+      11,
+      9,
+      10,
+      3
+     ],
+     "ref_key": "d6",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850737.482074611,
+     "ttft_s": 0.10559830302372575,
+     "decode_s": 1.9890110769774765,
+     "prompt_tokens": 37,
+     "completion_tokens": 67,
+     "chunks": 18,
+     "finish_reason": "stop",
+     "decode_tok_s": 33.18231897445958,
+     "text_sha256": "c39be9b87ae01be2bef32f7b67f658af2b9308fe7ce33f64a38afc488bacb71a",
+     "head": "{\n  \"name\": \"Eiffel Tower\",\n  \"year\": 1889,\n  \"tags\": [\n    \"Paris\",\n    \"France",
+     "tail": "   \"France\",\n    \"Landmark\",\n    \"Iron\",\n    \"Architecture\",\n    \"Tourism\"\n  ]\n}",
+     "spec_source": "server",
+     "steps": 17,
+     "accepted": 51,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      17
+     ],
+     "ref_key": "d7",
+     "diverge_at_char": 55,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "distinct-n8-b3",
+   "kind": "distinct",
+   "n": 8,
+   "stagger_s": 0.0,
+   "t_start": 1790685542.1669126,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.27649079100228846,
+   "median_decode_tok_s": 24.802977057518135,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850745.010329445,
+     "ttft_s": 0.37741444795392454,
+     "decode_s": 3.8916693340288475,
+     "prompt_tokens": 36,
+     "completion_tokens": 88,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.35544506293738,
+     "text_sha256": "93950664bd88a0b4e9542f9063587ab851d079b16fad50516b83f624c2652859",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, creating",
+     "tail": "unlocking deeper reasoning capabilities without overwhelming hardware resources.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 47,
+     "acceptance_len": 2.1463414634146343,
+     "acceptance_histogram": [
+      15,
+      12,
+      7,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850745.01045439,
+     "ttft_s": 0.37710532604251057,
+     "decode_s": 3.5065334469545633,
+     "prompt_tokens": 28,
+     "completion_tokens": 81,
+     "chunks": 36,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.81455494727429,
+     "text_sha256": "b89fe7feda28c6f6e8cabd608a3ec11e025a4b301e7e9250035e9514fce6fe6d",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "ows riders to optimize power for either steep hills or flat, high-speed terrain.",
+     "spec_source": "server",
+     "steps": 35,
+     "accepted": 47,
+     "acceptance_len": 2.3428571428571425,
+     "acceptance_histogram": [
+      12,
+      8,
+      6,
+      9
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850745.011263209,
+     "ttft_s": 0.37613159499596804,
+     "decode_s": 1.2663764889584854,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 33.16549254206571,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850745.009606242,
+     "ttft_s": 0.3775084160733968,
+     "decode_s": 3.5832395090255886,
+     "prompt_tokens": 25,
+     "completion_tokens": 97,
+     "chunks": 37,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.79139916776198,
+     "text_sha256": "399d2109875f13226995412a9261dd515e699195f5c3d4d68e3765885d06de86",
+     "head": "The water cycle starts when the sun warms up water in oceans and lakes, turning ",
+     "tail": "e water flows into rivers and oceans, ready to start the journey all over again.",
+     "spec_source": "server",
+     "steps": 36,
+     "accepted": 60,
+     "acceptance_len": 2.666666666666667,
+     "acceptance_histogram": [
+      7,
+      9,
+      9,
+      11
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 36,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850745.00912008,
+     "ttft_s": 0.3780944669852033,
+     "decode_s": 2.834762644022703,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.62908528266577,
+     "text_sha256": "d3af644442cdab10c9f910f360c583e9643a3ec676117d2d1b64cea98d426e85",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 27,
+     "accepted": 74,
+     "acceptance_len": 3.740740740740741,
+     "acceptance_histogram": [
+      1,
+      2,
+      0,
+      24
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": 80,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850745.009349617,
+     "ttft_s": 0.10190348501782864,
+     "decode_s": 0.7415817340370268,
+     "prompt_tokens": 29,
+     "completion_tokens": 17,
+     "chunks": 7,
+     "finish_reason": "stop",
+     "decode_tok_s": 21.575504446285525,
+     "text_sha256": "5a881638e98d6caa6d815691ff1576bc1d21faf4439e19f047cab2e802e4de1d",
+     "head": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "tail": "La biblioth\u00e8que ouvre \u00e0 neuf heures et ferme \u00e0 dix-huit heures en semaine.",
+     "spec_source": "server",
+     "steps": 6,
+     "accepted": 11,
+     "acceptance_len": 2.833333333333333,
+     "acceptance_histogram": [
+      0,
+      3,
+      1,
+      2
+     ],
+     "ref_key": "d5",
+     "diverge_at_char": 63,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850745.009214368,
+     "ttft_s": 0.3776717931032181,
+     "decode_s": 3.188629419892095,
+     "prompt_tokens": 28,
+     "completion_tokens": 70,
+     "chunks": 32,
+     "finish_reason": "stop",
+     "decode_tok_s": 21.639391385385572,
+     "text_sha256": "6ed0508ab41c15390db79b6905f78dc0a2550c1f460c1c25dca99311d47e4a7e",
+     "head": "1. Reduce watering frequency significantly, as most plants enter a dormant phase",
+     "tail": "facing windows or supplementing with grow lights to compensate for shorter days.",
+     "spec_source": "server",
+     "steps": 31,
+     "accepted": 40,
+     "acceptance_len": 2.290322580645161,
+     "acceptance_histogram": [
+      9,
+      9,
+      8,
+      5
+     ],
+     "ref_key": "d6",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850745.008992159,
+     "ttft_s": 0.37800605094525963,
+     "decode_s": 1.583988722995855,
+     "prompt_tokens": 37,
+     "completion_tokens": 51,
+     "chunks": 15,
+     "finish_reason": "stop",
+     "decode_tok_s": 31.565881293291785,
+     "text_sha256": "5b10dffd94b8b9f652a6433339ecb624c6466639a056f704e52dfc166fe17f0b",
+     "head": "{\n  \"name\": \"Eiffel Tower\",\n  \"year\": 1889,\n  \"tags\": [\"Paris\", \"France\", \"Landm",
+     "tail": ",\n  \"tags\": [\"Paris\", \"France\", \"Landmark\", \"Iron\", \"Architecture\", \"Tourism\"]\n}",
+     "spec_source": "server",
+     "steps": 14,
+     "accepted": 36,
+     "acceptance_len": 3.5714285714285716,
+     "acceptance_histogram": [
+      1,
+      1,
+      1,
+      11
+     ],
+     "ref_key": "d7",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "staggered-identical-n2",
+   "kind": "identical",
+   "n": 2,
+   "stagger_s": 0.25,
+   "t_start": 1790685549.446354,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.3568186740158126,
+   "median_decode_tok_s": 36.839677039822966,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850752.287654015,
+     "ttft_s": 0.10012381197884679,
+     "decode_s": 2.422793762991205,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 38.385438092419925,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 57,
+     "acceptance_len": 2.5405405405405403,
+     "acceptance_histogram": [
+      9,
+      8,
+      11,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850752.537826481,
+     "ttft_s": 0.20677001995500177,
+     "decode_s": 2.5500145700061694,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.29391598722601,
+     "text_sha256": "29e1769e4e7d23c3b09770c011582a7fb11be0d0d079c14583265e3727db401c",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "cing speed, resource consumption, and contextual understanding in complex tasks.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 52,
+     "acceptance_len": 2.3,
+     "acceptance_histogram": [
+      13,
+      10,
+      9,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "staggered-distinct-n3",
+   "kind": "distinct",
+   "n": 3,
+   "stagger_s": 0.25,
+   "t_start": 1790685555.4598901,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.6015413020504639,
+   "median_decode_tok_s": 29.80087111559211,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850758.301538689,
+     "ttft_s": 0.09866198000963777,
+     "decode_s": 3.020045946002938,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.80087111559211,
+     "text_sha256": "f3e2c100314c0648a9e7d81dfbe8d98a6d246384383fe4ef6ff3c75deba5ac77",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "applications requiring extensive document analysis or extended dialogue history.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 50,
+     "acceptance_len": 2.1904761904761907,
+     "acceptance_histogram": [
+      14,
+      12,
+      10,
+      6
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850758.551936849,
+     "ttft_s": 0.2032180989626795,
+     "decode_s": 2.849567924044095,
+     "prompt_tokens": 28,
+     "completion_tokens": 76,
+     "chunks": 41,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.319779699639625,
+     "text_sha256": "f52163f0efec73c5db4dc2f2bbd6d55edec9fa092c4d7eb868b053532e382ccc",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. In ",
+     "tail": "flat terrain but demands greater force, effectively trading torque for velocity.",
+     "spec_source": "server",
+     "steps": 40,
+     "accepted": 37,
+     "acceptance_len": 1.925,
+     "acceptance_histogram": [
+      21,
+      9,
+      2,
+      8
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 77,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850758.801956239,
+     "ttft_s": 0.19978573196567595,
+     "decode_s": 0.8758922199485824,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 47.95110521984718,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "staggered-distinct-n5",
+   "kind": "distinct",
+   "n": 5,
+   "stagger_s": 0.25,
+   "t_start": 1790685561.7730968,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 1.1049981479300186,
+   "median_decode_tok_s": 32.50259327906991,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850764.615156601,
+     "ttft_s": 0.13445872708689421,
+     "decode_s": 3.127424955018796,
+     "prompt_tokens": 36,
+     "completion_tokens": 92,
+     "chunks": 36,
+     "finish_reason": "stop",
+     "decode_tok_s": 29.097420820271317,
+     "text_sha256": "63dd1d164c8364c646968d1515cf5bc926c09d02a407553fd58fb388196aa879",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "nce long-context understanding while maintaining essential contextual coherence.",
+     "spec_source": "server",
+     "steps": 35,
+     "accepted": 58,
+     "acceptance_len": 2.6571428571428575,
+     "acceptance_histogram": [
+      9,
+      6,
+      8,
+      12
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850764.865325221,
+     "ttft_s": 0.17935271305032074,
+     "decode_s": 2.743026921991259,
+     "prompt_tokens": 28,
+     "completion_tokens": 68,
+     "chunks": 30,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.425571423616347,
+     "text_sha256": "68027bd428883d18b057c819ba047b095c90f0c49189015ff232325f029b33fb",
+     "head": "A bicycle gear system uses mechanical advantage to balance speed and torque. Sma",
+     "tail": "yclists optimize performance for climbing hills or accelerating on flat terrain.",
+     "spec_source": "server",
+     "steps": 30,
+     "accepted": 40,
+     "acceptance_len": 2.333333333333333,
+     "acceptance_histogram": [
+      11,
+      7,
+      3,
+      9
+     ],
+     "ref_key": "d1",
+     "diverge_at_char": 78,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850765.115627794,
+     "ttft_s": 0.2371765640564263,
+     "decode_s": 1.1015053159790114,
+     "prompt_tokens": 27,
+     "completion_tokens": 43,
+     "chunks": 12,
+     "finish_reason": "stop",
+     "decode_tok_s": 38.12963895019485,
+     "text_sha256": "097672f987333761240467d03e62ee18afc5b65f57912f3a1d8460567baa5cb5",
+     "head": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "tail": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37",
+     "spec_source": "server",
+     "steps": 11,
+     "accepted": 33,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      11
+     ],
+     "ref_key": "d2",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850765.365500557,
+     "ttft_s": 0.2744786130497232,
+     "decode_s": 3.0766775789670646,
+     "prompt_tokens": 25,
+     "completion_tokens": 101,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 32.50259327906991,
+     "text_sha256": "354c29535a6d9d74e983dd0be04bb5f4663f0ac3610502104f4a3628dd184588",
+     "head": "The water cycle starts when the sun warms up water in oceans and lakes, turning ",
+     "tail": "ceans, ready to be heated by the sun and start the whole journey all over again.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 63,
+     "acceptance_len": 2.7027027027027026,
+     "acceptance_histogram": [
+      9,
+      6,
+      9,
+      13
+     ],
+     "ref_key": "d3",
+     "diverge_at_char": 36,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850765.615322327,
+     "ttft_s": 0.23929114895872772,
+     "decode_s": 2.3716860620770603,
+     "prompt_tokens": 29,
+     "completion_tokens": 102,
+     "chunks": 28,
+     "finish_reason": "stop",
+     "decode_tok_s": 42.585737469632406,
+     "text_sha256": "cb9c046d4e9a8cff94ae245138471eddf23c9bab59be9646d9999389d4c010c3",
+     "head": "```python\ndef fibonacci(n: int) -> int:\n    if n < 0:\n        raise ValueError(\"",
+     "tail": " b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+     "spec_source": "server",
+     "steps": 27,
+     "accepted": 75,
+     "acceptance_len": 3.7777777777777777,
+     "acceptance_histogram": [
+      0,
+      3,
+      0,
+      24
+     ],
+     "ref_key": "d4",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "staggered-identical-n8",
+   "kind": "identical",
+   "n": 8,
+   "stagger_s": 0.25,
+   "t_start": 1790685568.8823583,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 1.9323061569593847,
+   "median_decode_tok_s": 24.15346317833537,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850771.724491343,
+     "ttft_s": 0.10191698500420898,
+     "decode_s": 3.571683875983581,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.758158670933543,
+     "text_sha256": "f530235f9496469058993d64c7449ff58ade9f0be8e93b7174465cb55d790365",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "y bridging the gap between theoretical context limits and practical application.",
+     "spec_source": "server",
+     "steps": 38,
+     "accepted": 57,
+     "acceptance_len": 2.5,
+     "acceptance_histogram": [
+      10,
+      9,
+      9,
+      10
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850771.974817209,
+     "ttft_s": 0.21173126704525203,
+     "decode_s": 3.9692745020147413,
+     "prompt_tokens": 36,
+     "completion_tokens": 93,
+     "chunks": 42,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.178039199179157,
+     "text_sha256": "54b82b4c4fa0d6317cee7ed36302937b0e4fef1302500740b474ae45d67b257a",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ng the gap between theoretical context windows and practical application limits.",
+     "spec_source": "server",
+     "steps": 41,
+     "accepted": 53,
+     "acceptance_len": 2.2926829268292686,
+     "acceptance_histogram": [
+      12,
+      12,
+      10,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850772.225094051,
+     "ttft_s": 0.2096248579910025,
+     "decode_s": 3.622598172049038,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 38,
+     "finish_reason": "stop",
+     "decode_tok_s": 25.67218211436261,
+     "text_sha256": "ae36ad6fd27b4eb9ef9eb181d8fed8bb930edd1a18e31042d242645d91150ed7",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "e gap between theoretical context limits and practical application requirements.",
+     "spec_source": "server",
+     "steps": 37,
+     "accepted": 57,
+     "acceptance_len": 2.5405405405405403,
+     "acceptance_histogram": [
+      9,
+      8,
+      11,
+      9
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850772.475403165,
+     "ttft_s": 0.23076000506989658,
+     "decode_s": 4.128922723932192,
+     "prompt_tokens": 36,
+     "completion_tokens": 98,
+     "chunks": 44,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.492810712529337,
+     "text_sha256": "c8fd34d382e2c1c8189fabfb7bc3f2c611167fd9137daeb722108c8ed40880e4",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "ce across extensive documents while preserving essential contextual information.",
+     "spec_source": "server",
+     "steps": 43,
+     "accepted": 55,
+     "acceptance_len": 2.2790697674418605,
+     "acceptance_histogram": [
+      12,
+      14,
+      10,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850772.725271989,
+     "ttft_s": 0.26709248195402324,
+     "decode_s": 4.154122974025086,
+     "prompt_tokens": 36,
+     "completion_tokens": 94,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 22.387396950333613,
+     "text_sha256": "390cdfdb6edf450220ce479e9f0ff5d23b0a6485721a1e99df0b7f2cc3e81365",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "sis and extended dialogue systems without requiring exponential resource growth.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 51,
+     "acceptance_len": 2.159090909090909,
+     "acceptance_histogram": [
+      17,
+      11,
+      8,
+      8
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850772.974901963,
+     "ttft_s": 0.2376101469853893,
+     "decode_s": 3.29059111897368,
+     "prompt_tokens": 36,
+     "completion_tokens": 89,
+     "chunks": 35,
+     "finish_reason": "stop",
+     "decode_tok_s": 26.742915427136627,
+     "text_sha256": "85d5af064795e6d2e42ec5d3bf62e2716279de53cf25b4f4e54424802f11db3d",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, creating",
+     "tail": "ng extended context windows computationally feasible for practical applications.",
+     "spec_source": "server",
+     "steps": 34,
+     "accepted": 55,
+     "acceptance_len": 2.6176470588235294,
+     "acceptance_histogram": [
+      7,
+      6,
+      14,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850773.225295957,
+     "ttft_s": 0.3029763330705464,
+     "decode_s": 3.828466078033671,
+     "prompt_tokens": 36,
+     "completion_tokens": 96,
+     "chunks": 43,
+     "finish_reason": "stop",
+     "decode_tok_s": 24.814115644141406,
+     "text_sha256": "9954b81d8d981d67fcbdbce10fd6f9112c180c24f2c5bddc86384a76b11bd6f3",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "usly hindered effective long-range dependency modeling in large language models.",
+     "spec_source": "server",
+     "steps": 42,
+     "accepted": 53,
+     "acceptance_len": 2.261904761904762,
+     "acceptance_histogram": [
+      14,
+      10,
+      11,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    },
+    {
+     "t0": 850773.474768779,
+     "ttft_s": 0.28394570597447455,
+     "decode_s": 3.8457487269770354,
+     "prompt_tokens": 36,
+     "completion_tokens": 91,
+     "chunks": 45,
+     "finish_reason": "stop",
+     "decode_tok_s": 23.402465004713093,
+     "text_sha256": "6f55ae2d445c8d54d491d70dd5d03b34f762de8e6006797e3d30c11dd839ab77",
+     "head": "Standard attention mechanisms scale quadratically with sequence length, making l",
+     "tail": "es, thus facilitating more effective long-range reasoning and document analysis.",
+     "spec_source": "server",
+     "steps": 44,
+     "accepted": 48,
+     "acceptance_len": 2.090909090909091,
+     "acceptance_histogram": [
+      17,
+      13,
+      7,
+      7
+     ],
+     "ref_key": "d0",
+     "diverge_at_char": 1,
+     "gate_flags": [],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": [
+    "early_divergence"
+   ]
+  },
+  {
+   "name": "long-pair",
+   "kind": "long",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685577.7726386,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 2.255026987986639,
+   "median_decode_tok_s": 10.388653604070026,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850780.614052234,
+     "ttft_s": 5.2265034390147775,
+     "decode_s": 2.2546331949997693,
+     "prompt_tokens": 11965,
+     "completion_tokens": 6,
+     "chunks": 2,
+     "finish_reason": "stop",
+     "decode_tok_s": 2.2176556306758854,
+     "text_sha256": "83dab7f91bc119dc78626ca4fe910479c6972d1a162eb1621d4fcc2b2ef41d8c",
+     "head": "74354",
+     "tail": "74354",
+     "spec_source": "server",
+     "steps": 2,
+     "accepted": 6,
+     "acceptance_len": 4.0,
+     "acceptance_histogram": [
+      0,
+      0,
+      0,
+      2
+     ],
+     "ref_key": "long0",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": [
+      "slow"
+     ]
+    },
+    {
+     "t0": 850780.614006985,
+     "ttft_s": 7.481575676007196,
+     "decode_s": 13.739482066011988,
+     "prompt_tokens": 11965,
+     "completion_tokens": 256,
+     "chunks": 256,
+     "finish_reason": "length",
+     "decode_tok_s": 18.559651577464166,
+     "text_sha256": "95fa737d05b928f8cb1a4546ad7f3f777ee6b65d8561214e06d3d25c8f39773c",
+     "head": "duct Register Register Register Register Register Register Register Register Reg",
+     "tail": "Register Register Register Register Register Register Register Register Register",
+     "spec_source": "server",
+     "steps": 255,
+     "accepted": 0,
+     "acceptance_len": 1.0,
+     "acceptance_histogram": [
+      255,
+      0,
+      0,
+      0
+     ],
+     "ref_key": "long1",
+     "diverge_at_char": 0,
+     "gate_flags": [
+      "zero_acceptance",
+      "runaway"
+     ],
+     "report_flags": [
+      "early_divergence"
+     ]
+    }
+   ],
+   "gate_flags": [
+    "runaway",
+    "zero_acceptance"
+   ],
+   "report_flags": [
+    "early_divergence",
+    "slow"
+   ]
+  },
+  {
+   "name": "image-pair",
+   "kind": "image",
+   "n": 2,
+   "stagger_s": 0.0,
+   "t_start": 1790685602.0043666,
+   "running_before": 0.0,
+   "idle": true,
+   "coprefill": false,
+   "first_token_spread_s": 0.1561455309856683,
+   "median_decode_tok_s": 43.26294731465465,
+   "errors": [],
+   "streams": [
+    {
+     "t0": 850804.845678213,
+     "ttft_s": 0.145936238928698,
+     "decode_s": 0.2822682929690927,
+     "prompt_tokens": 91,
+     "completion_tokens": 11,
+     "chunks": 4,
+     "finish_reason": "stop",
+     "decode_tok_s": 35.42728761637766,
+     "text_sha256": "0e1c14c4131cc48d45d48cbd4d077b4de3d802b8a83efc6e2047a1c4f07c03be",
+     "head": "The image is filled with a solid red color.",
+     "tail": "The image is filled with a solid red color.",
+     "spec_source": "server",
+     "steps": 3,
+     "accepted": 7,
+     "acceptance_len": 3.3333333333333335,
+     "acceptance_histogram": [
+      0,
+      1,
+      0,
+      2
+     ],
+     "ref_key": "img_red",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    },
+    {
+     "t0": 850804.845630789,
+     "ttft_s": 0.30212919402401894,
+     "decode_s": 0.1957000510301441,
+     "prompt_tokens": 91,
+     "completion_tokens": 11,
+     "chunks": 4,
+     "finish_reason": "stop",
+     "decode_tok_s": 51.09860701293164,
+     "text_sha256": "705b4320e3b4b65b51ff2fe45566d6425780214e788963599aba597b911451af",
+     "head": "The image is filled with a solid blue color.",
+     "tail": "The image is filled with a solid blue color.",
+     "spec_source": "server",
+     "steps": 3,
+     "accepted": 7,
+     "acceptance_len": 3.3333333333333335,
+     "acceptance_histogram": [
+      0,
+      1,
+      0,
+      2
+     ],
+     "ref_key": "img_blue",
+     "diverge_at_char": null,
+     "gate_flags": [],
+     "report_flags": []
+    }
+   ],
+   "gate_flags": [],
+   "report_flags": []
+  }
+ ],
+ "totals": {
+  "bursts": 30,
+  "streams": 130,
+  "gate_flagged_bursts": 7,
+  "gate_flagged_streams": 7,
+  "zero_acceptance_streams": 7,
+  "runaway_streams": 7,
+  "early_divergence_streams": 103,
+  "first32_match_rate": 0.20769230769230773,
+  "coprefill_bursts": 2,
+  "busy_bursts": 0,
+  "long_prompt_tokens": [
+   11965,
+   11965
+  ],
+  "per_request_spec_metrics": true
+ },
+ "self_test": {
+  "k": 3,
+  "barrier_bursts": 24,
+  "non_first_flagged": 6,
+  "non_first_flagged_fraction": 0.2608695652173913,
+  "row0_always_healthy": true,
+  "max_zero_streams_allowed": {
+   "2": 1,
+   "3": 2,
+   "5": 3,
+   "8": 6
+  },
+  "pass": false
+ }
+}

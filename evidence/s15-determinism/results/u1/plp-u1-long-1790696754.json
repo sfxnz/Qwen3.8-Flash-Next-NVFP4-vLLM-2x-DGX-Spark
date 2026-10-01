@@ -1,0 +1,175 @@
+{
+ "mode": "plp",
+ "argv": [
+  "plp",
+  "--lens",
+  "2048,3072",
+  "--n",
+  "5",
+  "--tag",
+  "u1-long",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/s15/u1"
+ ],
+ "tag": "u1-long",
+ "t": "2026-09-29T15:45:44Z",
+ "model": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+ "results": {
+  "2048": {
+   "distinct_fingerprints": 5,
+   "pairs": [
+    {
+     "vs": 1,
+     "max_abs": 5.059104,
+     "mean_abs": 0.057577,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9814,
+     "n_pos_gt1e-3": 699,
+     "bucket_max": {
+      "0": 3.328,
+      "512": 4.9896,
+      "1024": 5.0591,
+      "1536": 3.9514
+     }
+    },
+    {
+     "vs": 2,
+     "max_abs": 5.047916,
+     "mean_abs": 0.046828,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9868,
+     "n_pos_gt1e-3": 690,
+     "bucket_max": {
+      "0": 4.4856,
+      "512": 5.0479,
+      "1024": 2.3694,
+      "1536": 3.8787
+     }
+    },
+    {
+     "vs": 3,
+     "max_abs": 3.554644,
+     "mean_abs": 0.046319,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9868,
+     "n_pos_gt1e-3": 720,
+     "bucket_max": {
+      "0": 2.8544,
+      "512": 3.5546,
+      "1024": 2.6727,
+      "1536": 2.6241
+     }
+    },
+    {
+     "vs": 4,
+     "max_abs": 3.945683,
+     "mean_abs": 0.050695,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9834,
+     "n_pos_gt1e-3": 731,
+     "bucket_max": {
+      "0": 3.4827,
+      "512": 3.9457,
+      "1024": 3.0294,
+      "1536": 2.8817
+     }
+    }
+   ],
+   "max_abs": 5.059104,
+   "first_pos_gt1e-3": 1,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "3072": {
+   "distinct_fingerprints": 5,
+   "pairs": [
+    {
+     "vs": 1,
+     "max_abs": 3.039742,
+     "mean_abs": 0.051539,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9821,
+     "n_pos_gt1e-3": 1119,
+     "bucket_max": {
+      "0": 3.0397,
+      "512": 2.6695,
+      "1024": 3.0366,
+      "1536": 1.9949,
+      "2048": 2.4066,
+      "2560": 2.6192
+     }
+    },
+    {
+     "vs": 2,
+     "max_abs": 4.247188,
+     "mean_abs": 0.050682,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.984,
+     "n_pos_gt1e-3": 1113,
+     "bucket_max": {
+      "0": 3.3009,
+      "512": 3.2848,
+      "1024": 4.0884,
+      "1536": 4.2472,
+      "2048": 2.3319,
+      "2560": 2.8232
+     }
+    },
+    {
+     "vs": 3,
+     "max_abs": 6.223736,
+     "mean_abs": 0.04617,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9847,
+     "n_pos_gt1e-3": 1080,
+     "bucket_max": {
+      "0": 2.3911,
+      "512": 2.4619,
+      "1024": 2.4499,
+      "1536": 6.2237,
+      "2048": 1.6394,
+      "2560": 2.5495
+     }
+    },
+    {
+     "vs": 4,
+     "max_abs": 4.308917,
+     "mean_abs": 0.04892,
+     "first_pos_gt0": 1,
+     "first_pos_gt1e-3": 1,
+     "top1_agree": 0.9834,
+     "n_pos_gt1e-3": 1142,
+     "bucket_max": {
+      "0": 2.092,
+      "512": 2.7124,
+      "1024": 3.786,
+      "1536": 1.9373,
+      "2048": 1.6407,
+      "2560": 4.3089
+     }
+    }
+   ],
+   "max_abs": 6.223736,
+   "first_pos_gt1e-3": 1,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

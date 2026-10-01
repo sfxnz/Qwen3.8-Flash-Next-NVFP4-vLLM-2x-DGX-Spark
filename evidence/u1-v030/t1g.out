@@ -1,0 +1,6 @@
+  t1g repeat 1/5 done, 51 s
+  t1g repeat 2/5 done, 101 s
+  t1g repeat 3/5 done, 153 s
+  t1g repeat 4/5 done, 203 s
+  t1g repeat 5/5 done, 255 s
+T1G captured 5 x 10 -> /home/sfxnz/projects/data/qwen38-evals/runs/session1/u1-v030/t1g/t1g.jsonl

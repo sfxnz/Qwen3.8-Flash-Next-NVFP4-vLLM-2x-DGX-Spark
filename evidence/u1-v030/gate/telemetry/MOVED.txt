@@ -1,0 +1,3 @@
+Moved to ~/projects/data/qwen38-evals/runs/session1/u1-v030/telemetry/
+3fe0647932e47daa96a087b27a04d0110b338d93868e09173e835087b423c415  spark1.csv
+344ab0a32038c33aaf82cdff8bcb3220619e72cbf9e342540e4688ce15a9a668  spark2.csv

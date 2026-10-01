@@ -1,0 +1,5 @@
+2026-09-29T19:37:32.528Z [b-lpt4800] memcheck ok before mixed: spark1 avail=17146MB swap_used spark1=8180MB spark2=4214MB
+2026-09-29T19:37:32.539Z [b-lpt4800] start mixed: python3 bench_mixed.py --url http://127.0.0.1:8000/v1/chat/completions --cells base A B --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/b-lpt4800/mixed.jsonl --label b-lpt4800
+2026-09-29T19:41:17.962Z [b-lpt4800] end mixed rc=0
+2026-09-29T19:41:18.299Z [b-lpt4800] start ruler-anchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 60.7 62.7 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/b-lpt4800/ruler-anchor.json
+2026-09-29T19:42:57.350Z [b-lpt4800] end ruler-anchor rc=0

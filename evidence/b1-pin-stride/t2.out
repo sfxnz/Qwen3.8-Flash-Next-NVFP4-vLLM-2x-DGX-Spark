@@ -1,0 +1,7 @@
+  tools: {"n": 60, "correct": 58, "acc": 0.9667, "errors": 0} (34 s)
+  json: {"n": 30, "correct": 30, "acc": 1.0, "errors": 0} (46 s)
+  rep4: {"n": 64, "correct": 64, "acc": 1.0, "errors": 0, "mean_repeat_4gram": 0.000538} (355 s)
+  effort: {"n": 5, "correct": 5, "acc": 1.0, "errors": 0} (356 s)
+  ifeval: {"n": 120, "correct": 105, "acc": 0.875, "errors": 0} (751 s)
+  gsm8k: {"n": 250, "correct": 240, "acc": 0.96, "errors": 0} (1318 s)
+T2 captured -> /home/sfxnz/projects/data/qwen38-evals/runs/session1/b1-pin-stride/t2/t2.jsonl

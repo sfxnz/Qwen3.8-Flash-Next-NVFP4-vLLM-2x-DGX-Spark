@@ -1,0 +1,95 @@
+{
+ "mode": "gen",
+ "argv": [
+  "gen",
+  "--lens",
+  "8192,16384",
+  "--n",
+  "5",
+  "--tag",
+  "u1-long",
+  "--out",
+  "/home/sfxnz/projects/data/qwen38-evals/runs/s15/u1"
+ ],
+ "tag": "u1-long",
+ "t": "2026-09-29T15:46:15Z",
+ "model": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+ "results": {
+  "8192": {
+   "distinct": 3,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": 7,
+     "first_tok_dlp": 0.002063,
+     "max_dlp_before_div": 0.002063
+    },
+    {
+     "vs": 2,
+     "first_div": null,
+     "first_tok_dlp": 0.0016,
+     "max_dlp_before_div": 0.387561
+    },
+    {
+     "vs": 3,
+     "first_div": 27,
+     "first_tok_dlp": 0.006935,
+     "max_dlp_before_div": 0.145863
+    },
+    {
+     "vs": 4,
+     "first_div": 27,
+     "first_tok_dlp": 0.009327,
+     "max_dlp_before_div": 0.120737
+    }
+   ],
+   "first_div_min": 7,
+   "first_tok_dlp_max": 0.009327,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "16384": {
+   "distinct": 5,
+   "pairs": [
+    {
+     "vs": 1,
+     "first_div": 54,
+     "first_tok_dlp": 0.002109,
+     "max_dlp_before_div": 0.526128
+    },
+    {
+     "vs": 2,
+     "first_div": 30,
+     "first_tok_dlp": 0.000759,
+     "max_dlp_before_div": 0.146526
+    },
+    {
+     "vs": 3,
+     "first_div": 57,
+     "first_tok_dlp": 0.001881,
+     "max_dlp_before_div": 0.582575
+    },
+    {
+     "vs": 4,
+     "first_div": 30,
+     "first_tok_dlp": 0.001904,
+     "max_dlp_before_div": 0.163797
+    }
+   ],
+   "first_div_min": 30,
+   "first_tok_dlp_max": 0.002109,
+   "running_before": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,25 @@
+2026-09-29T12:32:38.523Z session_gate: evidence dir /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/b0-pin/gate self_test=1
+2026-09-29T12:32:40.902Z session_gate: start smoke-thinking
+2026-09-29T12:32:42.094Z session_gate: end smoke-thinking rc=0
+2026-09-29T12:32:42.096Z session_gate: start smoke-tools
+2026-09-29T12:32:43.544Z session_gate: end smoke-tools rc=0
+2026-09-29T12:32:43.546Z session_gate: start smoke-vision
+2026-09-29T12:32:44.190Z session_gate: end smoke-vision rc=0
+2026-09-29T12:32:44.193Z session_gate: start smoke-count
+2026-09-29T12:32:58.238Z session_gate: end smoke-count rc=0
+2026-09-29T12:32:58.241Z session_gate: start ruler-historical
+2026-09-29T12:34:45.105Z session_gate: end ruler-historical rc=0
+2026-09-29T12:34:45.108Z session_gate: start probe-selftest
+2026-09-29T12:40:02.530Z session_gate: end probe-selftest rc=3
+2026-09-29T12:40:02.532Z session_gate: start bench-frozen
+2026-09-29T12:41:11.370Z session_gate: end bench-frozen rc=0
+finished_at=2026-09-29T12:41:12.093Z
+self_test=1
+smoke-thinking=0
+smoke-tools=0
+smoke-vision=0
+smoke-count=0
+ruler-historical=0
+probe-selftest=3
+bench-frozen=0
+GATE=FAIL

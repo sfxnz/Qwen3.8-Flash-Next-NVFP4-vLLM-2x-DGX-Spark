@@ -1,0 +1,69 @@
+{
+ "items": 24,
+ "items_with_other_traffic": 0,
+ "tokens": 18492,
+ "topk": 5,
+ "s": 9.8,
+ "by_domain": {
+  "code": {
+   "items": 2,
+   "tokens": 1812,
+   "mean_nll": 0.22461
+  },
+  "de": {
+   "items": 2,
+   "tokens": 1851,
+   "mean_nll": 1.23478
+  },
+  "es": {
+   "items": 2,
+   "tokens": 1882,
+   "mean_nll": 1.41628
+  },
+  "image": {
+   "items": 2,
+   "tokens": 30,
+   "mean_nll": 2.1222
+  },
+  "ja": {
+   "items": 2,
+   "tokens": 1658,
+   "mean_nll": 1.61774
+  },
+  "json": {
+   "items": 2,
+   "tokens": 1647,
+   "mean_nll": 0.6847
+  },
+  "long": {
+   "items": 2,
+   "tokens": 1921,
+   "mean_nll": 0.20488
+  },
+  "math": {
+   "items": 2,
+   "tokens": 1908,
+   "mean_nll": 0.28812
+  },
+  "multi": {
+   "items": 2,
+   "tokens": 1904,
+   "mean_nll": 1.55569
+  },
+  "prose": {
+   "items": 2,
+   "tokens": 1940,
+   "mean_nll": 0.22371
+  },
+  "tools": {
+   "items": 2,
+   "tokens": 209,
+   "mean_nll": 1.19451
+  },
+  "zh": {
+   "items": 2,
+   "tokens": 1730,
+   "mean_nll": 1.16289
+  }
+ }
+}

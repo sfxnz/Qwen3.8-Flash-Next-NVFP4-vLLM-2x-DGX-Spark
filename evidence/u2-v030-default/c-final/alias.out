@@ -1,0 +1,5 @@
+{"effort": "high", "http": 200, "reasoning_chars": 63, "content": "\n\n51", "error": null}
+{"effort": "max", "http": 200, "reasoning_chars": 63, "content": "\n\n51", "error": null}
+{"effort": "minimal", "http": 200, "reasoning_chars": 74, "content": "\n\n17 \u00d7 3 = **51**", "error": null}
+{"effort": "xhigh", "http": 200, "reasoning_chars": 63, "content": "\n\n51", "error": null}
+{"effort": "low", "http": 200, "reasoning_chars": 74, "content": "\n\n17 \u00d7 3 = **51**", "error": null}

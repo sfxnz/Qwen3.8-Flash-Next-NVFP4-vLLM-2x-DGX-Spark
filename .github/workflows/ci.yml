@@ -15,32 +15,68 @@ concurrency:
 jobs:
   validate-only:
     runs-on: ubuntu-latest
+    env:
+      # The pinned nightly rollback. Its MoE-backend and overlay guards are pin-only (F17: the pin's V2 runner
+      # ignores SPEC_CONFIG moe_backend); v0.30 honours it.
+      PIN_IMAGE: vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b
     steps:
       - uses: actions/checkout@v7
       - name: run.sh dry-run with the shipped defaults
         run: VALIDATE_ONLY=1 ./run.sh
+      - name: run.sh dry-run on the pin rollback
+        run: VALIDATE_ONLY=1 IMAGE="$PIN_IMAGE" ./run.sh
+      - name: run.sh refuses legacy pin overlays on v0.30
+        run: |
+          if VALIDATE_ONLY=1 OVERLAYS="docker/modelopt.py" ./run.sh; then
+            echo "run.sh mounted a pin-only overlay on the v0.30 image" >&2
+            exit 1
+          fi
       - name: run.sh refuses a window above 1M
         run: |
           if VALIDATE_ONLY=1 MAX_MODEL_LEN=2097152 ./run.sh; then
             echo "run.sh accepted MAX_MODEL_LEN=2097152 without FORCE_UNSAFE_CTX" >&2
             exit 1
           fi
-      - name: run.sh refuses marlin with in-band MTP
+      - name: run.sh refuses marlin on the pin
         run: |
-          if VALIDATE_ONLY=1 MOE_BACKEND=marlin ./run.sh; then
+          if VALIDATE_ONLY=1 IMAGE="$PIN_IMAGE" MOE_BACKEND=marlin ./run.sh; then
             echo "run.sh accepted MOE_BACKEND=marlin without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
-      - name: run.sh refuses flashinfer_cutlass
+      - name: run.sh refuses flashinfer_cutlass on the pin
         run: |
-          if VALIDATE_ONLY=1 MOE_BACKEND=flashinfer_cutlass ./run.sh; then
+          if VALIDATE_ONLY=1 IMAGE="$PIN_IMAGE" MOE_BACKEND=flashinfer_cutlass ./run.sh; then
             echo "run.sh accepted MOE_BACKEND=flashinfer_cutlass without FORCE_UNSAFE_MOE" >&2
             exit 1
           fi
-      - name: run.sh refuses seqs above 2
+      - name: run.sh refuses seqs above 8
         run: |
-          if VALIDATE_ONLY=1 MAX_NUM_SEQS=8 ./run.sh; then
-            echo "run.sh accepted MAX_NUM_SEQS=8 without FORCE_UNSAFE_CTX" >&2
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=16 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=16 without FORCE_UNSAFE_CTX" >&2
+            exit 1
+          fi
+      - name: run.sh refuses b12x
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=b12x ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=b12x without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses flashinfer_b12x
+        run: |
+          if VALIDATE_ONLY=1 MOE_BACKEND=flashinfer_b12x ./run.sh; then
+            echo "run.sh accepted MOE_BACKEND=flashinfer_b12x without FORCE_UNSAFE_MOE" >&2
+            exit 1
+          fi
+      - name: run.sh refuses zero-padded integers
+        run: |
+          if VALIDATE_ONLY=1 MAX_NUM_SEQS=010 ./run.sh; then
+            echo "run.sh accepted MAX_NUM_SEQS=010 (octal 8 to bash, 10 to vLLM)" >&2
+            exit 1
+          fi
+      - name: run.sh refuses a missing pin overlay
+        run: |
+          if VALIDATE_ONLY=1 IMAGE="$PIN_IMAGE" OVERLAYS="docker/ple_layer.py docker/modelopt.py" ./run.sh; then
+            echo "run.sh accepted the pin without docker/ple_ops.py" >&2
             exit 1
           fi
 
@@ -58,4 +94,6 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      # numpy: the quality/ scorer (tests/test_quality.py). Everything else is stdlib.
+      - run: python -m pip install numpy jinja2
       - run: python -m unittest discover -s tests -q

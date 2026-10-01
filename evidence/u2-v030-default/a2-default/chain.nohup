@@ -1,0 +1,15 @@
+2026-09-29T19:12:25.827Z [a2-default] gate rc=0
+2026-09-29T19:12:25.829Z [a2-default] start ruler-anchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 61.4 63.4 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a2-default/ruler-anchor.json
+2026-09-29T19:14:50.040Z [a2-default] end ruler-anchor rc=2
+2026-09-29T19:14:50.042Z [a2-default] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a2-default/t1g --limit 10 --repeats 5
+2026-09-29T19:18:50.820Z [a2-default] end t1g rc=0
+2026-09-29T19:18:50.822Z [a2-default] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session3/a2-default/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session3/a2-default/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a2-default/t1g-self.json
+2026-09-29T19:18:51.016Z [a2-default] end t1g-self rc=0
+2026-09-29T19:18:51.018Z [a2-default] start vision: python3 quality/vision_probes/run.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session3/a2-default/vision
+2026-09-29T19:19:05.766Z [a2-default] end vision rc=0
+2026-09-29T19:19:06.441Z [a2-default] memcheck ok before vbench: spark1 avail=15243MB swap_used spark1=7202MB spark2=4173MB
+2026-09-29T19:19:06.442Z [a2-default] start vbench: python3 bench_vision.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a2-default/vbench.jsonl --label a2-default
+2026-09-29T19:20:03.626Z [a2-default] end vbench rc=0
+2026-09-29T19:20:04.309Z [a2-default] memcheck ok before mixed: spark1 avail=14214MB swap_used spark1=6972MB spark2=4173MB
+2026-09-29T19:20:04.310Z [a2-default] start mixed: python3 bench_mixed.py --url http://127.0.0.1:8000/v1/chat/completions --cells base A B --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/u2-v030-default/a2-default/mixed.jsonl --label a2-default
+2026-09-29T19:23:47.185Z [a2-default] end mixed rc=0

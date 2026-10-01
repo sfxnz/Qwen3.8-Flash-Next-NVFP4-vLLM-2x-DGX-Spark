@@ -1,0 +1,4 @@
+== S1.1 microbench: OUT=/home/sfxnz/projects/data/qwen38-s11/session1 IMAGES=[pin] NCCL_IMAGES=[pin] STEPS=[moe] REPS=2
+== pin head: moe_nvfp4.py run
+== go/no-go table: /home/sfxnz/projects/data/qwen38-s11/session1/gonogo.md
+== results in /home/sfxnz/projects/data/qwen38-s11/session1

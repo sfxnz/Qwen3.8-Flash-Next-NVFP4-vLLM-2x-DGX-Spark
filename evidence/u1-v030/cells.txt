@@ -1,0 +1,23 @@
+-- gate/ruler.json: void=True refused=['boot void (sentinel failed)']
+-- ruler-noanchor.json: void=False refused=None
+  prose      c=1 ms/step med=59.91 min=59.70 decode tok/s med=41.4 agg med=41.4 acc=[2.14, 2.5, 2.56] ttft=0.145
+  prose      c=2 ms/step med=63.66 min=63.48 decode tok/s med=35.8 agg med=69.2 acc=[2.34, 2.21, 2.42] ttft=0.155
+  prose      c=8 ms/step med=92.08 min=91.76 decode tok/s med=24.9 agg med=177.7 acc=[2.27, 2.24, 2.42] ttft=0.219
+  structured c=1 ms/step med=60.97 min=60.51 decode tok/s med=65.3 agg med=65.3 acc=[4.0, 4.0, 4.0] ttft=0.142
+  structured c=2 ms/step med=62.58 min=62.40 decode tok/s med=63.6 agg med=127.1 acc=[4.0, 4.0, 4.0] ttft=0.142
+  structured c=8 ms/step med=81.03 min=80.83 decode tok/s med=49.1 agg med=392.7 acc=[4.0, 4.0, 4.0] ttft=0.232
+-- gate/bench-frozen.out (frozen bench_decode)
+  prose      c=1 decode=40.2 agg=40.2 ttft=0.161 acc=2.486
+  prose      c=2 decode=34.4 agg=68.0 ttft=0.171 acc=2.271
+  structured c=1 decode=65.2 agg=65.2 ttft=0.158 acc=4.000
+  structured c=2 decode=63.2 agg=126.3 ttft=0.171 acc=4.000
+-- diverse.jsonl
+  category=prose c=1 n=32 median_ms_per_step=59.745 p90_ms_per_step=65.934 median_tokens_per_step=2.237 acceptance_len=2.2384468143286846 median_ttft_s=0.145
+  category=prose c=8 n=32 median_ms_per_step=107.345 p90_ms_per_step=110.343 median_tokens_per_step=2.237 acceptance_len=2.2583402260821615 median_ttft_s=0.404
+  category=structured c=1 n=32 median_ms_per_step=59.694 p90_ms_per_step=64.529 median_tokens_per_step=3.643 acceptance_len=3.1444201312910285 median_ttft_s=0.131
+  category=structured c=8 n=32 median_ms_per_step=111.474 p90_ms_per_step=115.829 median_tokens_per_step=3.592 acceptance_len=3.1190276613579213 median_ttft_s=0.391
+-- sampled.jsonl
+  profile=A c=1 n=16 median_ms_per_step_prose=60.347 median_ms_per_step_structured=60.139 acceptance_len=2.642578125
+  profile=A c=8 n=16 median_ms_per_step_prose=116.882 median_ms_per_step_structured=109.205 acceptance_len=2.688267394270123
+  profile=T1 c=1 n=2 median_ms_per_step_prose=59.194 median_ms_per_step_structured=60.368 acceptance_len=2.952830188679245
+  profile=T1 c=8 n=2 median_ms_per_step_prose=69.528 median_ms_per_step_structured=69.529 acceptance_len=3.01

@@ -1,0 +1,10 @@
+finished_at=2026-09-29T12:41:12.093Z
+self_test=1
+smoke-thinking=0
+smoke-tools=0
+smoke-vision=0
+smoke-count=0
+ruler-historical=0
+probe-selftest=3
+bench-frozen=0
+GATE=FAIL

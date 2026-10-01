@@ -1,0 +1,39 @@
+{
+ "tools": {
+  "n": 60,
+  "correct": 59,
+  "acc": 0.9833,
+  "errors": 0
+ },
+ "json": {
+  "n": 30,
+  "correct": 30,
+  "acc": 1.0,
+  "errors": 0
+ },
+ "rep4": {
+  "n": 64,
+  "correct": 64,
+  "acc": 1.0,
+  "errors": 0,
+  "mean_repeat_4gram": 0.000694
+ },
+ "effort": {
+  "n": 5,
+  "correct": 5,
+  "acc": 1.0,
+  "errors": 0
+ },
+ "ifeval": {
+  "n": 120,
+  "correct": 108,
+  "acc": 0.9,
+  "errors": 0
+ },
+ "gsm8k": {
+  "n": 250,
+  "correct": 239,
+  "acc": 0.956,
+  "errors": 0
+ }
+}
