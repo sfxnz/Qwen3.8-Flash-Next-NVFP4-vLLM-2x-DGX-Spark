@@ -1,0 +1,12 @@
+note: FP8_DENSE=per_block ignored (needs the v0.30 digest and an overlay list; docker/v030/modelopt.py is generated against v0.30).
+note: GDN_LAZY=1 ignored (K3 overlays are generated against the v0.30 digest).
+note: DRAFT_LOCAL_ARGMAX / DRAFT_HEAD_FP8 / DRAFT_VOCAB ignored (needs the v0.30 digest and the docker/v030/mtp.py overlay).
+==> validate-only spec=mtp seqs=8 spec_tokens=3 eager=0 compilation={"mode":0,"cudagraph_mode":"FULL_DECODE_ONLY"} image=vllm/vllm-openai:nightly-aarch64@sha256:df871f170ee7070fbdce162bde08fb616e311570c948a620be0d4b33fe02f87b moe=auto ple=0 host=0.0.0.0 diagnostic=0
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/ple_layer.py -> /usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ple_layer.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/modelopt.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py
+==> overlay /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/docker/ple_ops.py -> /usr/local/lib/python3.12/dist-packages/vllm/models/qwen4_exp/nvidia/ops/ple.py
+==> chat-template /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/chat_template_alias.jinja
+==> long-prefill-token-threshold=4800
+==> fp8-dense=none 
+==> async-scheduling=1 mm-processor-kwargs={"images_kwargs":{"min_pixels":65536,"max_pixels":4194304},"videos_kwargs":{"cap_pixels_per_frame":true}} limit-mm-per-prompt={"image":8,"video":1} mm-processor-cache-gb=1
+==> spec-config {"method":"mtp","num_speculative_tokens":3,"moe_backend":"triton"}

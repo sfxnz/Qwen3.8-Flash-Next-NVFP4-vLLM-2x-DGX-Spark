@@ -62,7 +62,7 @@ DRAFT_MOE_CONFIG="${DRAFT_MOE_CONFIG:-1}"
 DRAFT_LOCAL_ARGMAX="${DRAFT_LOCAL_ARGMAX:-1}"
 DRAFT_HEAD_FP8="${DRAFT_HEAD_FP8:-1}"
 DRAFT_VOCAB="${DRAFT_VOCAB:-none}"
-FP8_DENSE="${FP8_DENSE:-none}"
+FP8_DENSE="${FP8_DENSE:-per_block}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 EXTRA_ENV="${EXTRA_ENV:-}"
 # END generated
@@ -99,7 +99,7 @@ for name in THROUGHPUT_PROFILE FORCE_UNSAFE_CTX FORCE_UNSAFE_MOE ENFORCE_EAGER D
   [[ "${!name}" =~ ^[01]$ ]] || die "$name=${!name} must be 0 or 1."
 done
 [[ "$OOM_SCORE_ADJ" =~ ^(-?[1-9][0-9]*|0)$ ]] && (( OOM_SCORE_ADJ >= -1000 && OOM_SCORE_ADJ <= 1000 )) || die "OOM_SCORE_ADJ=$OOM_SCORE_ADJ must be an integer in [-1000, 1000]."
-[[ "$FP8_DENSE" == none || "$FP8_DENSE" == per_block ]] || die "FP8_DENSE=$FP8_DENSE must be none or per_block (lab-fp8-dense profile, docker/v030/FP8_DENSE.md)."
+[[ "$FP8_DENSE" == none || "$FP8_DENSE" == per_block ]] || die "FP8_DENSE=$FP8_DENSE must be per_block (the default) or none (BF16 rollback; docker/v030/FP8_DENSE.md)."
 [[ "$DRAFT_VOCAB" == none || "$DRAFT_VOCAB" =~ ^[A-Za-z0-9_.-]+\.json$ ]] || die "DRAFT_VOCAB=$DRAFT_VOCAB must be none or a .json file name under \$HF_CACHE/qwen38-draft-vocab/."
 [[ "$UTIL" =~ ^0\.[0-9]+$ ]] || die "UTIL=$UTIL must be a decimal in (0, 1), e.g. 0.80."
 [[ "$MM_PROCESSOR_CACHE_GB" =~ ^(0|[1-9][0-9]*)(\.[0-9]+)?$ ]] || die "MM_PROCESSOR_CACHE_GB=$MM_PROCESSOR_CACHE_GB is not a non-negative decimal."
@@ -211,10 +211,15 @@ case "$OVERLAYS" in
   none) OVERLAYS="" ;;
 esac
 
-# --- lab-fp8-dense profile (plan P4-1, R8; opt-in, not the default: fails T1-B top-1, passes T1-D/T2/T3/V).
+# --- FP8 dense (plan P4-1; the default since session 8, evidence/fp8-default): online FP8 (Marlin W8A16) on the
+# 99 dense GDN/QSA/PLE-kv/MTP-attention linears. v0.30 digest only (the overlay is generated against it); the pin
+# rollback and OVERLAYS=none ignore it with a note, like GDN_LAZY. FP8_DENSE=none is the BF16 rollback.
 FP8_DENSE_OVERLAY=docker/v030/modelopt.py
+if [[ "$FP8_DENSE" != none && ( "$IMAGE_DIGEST" != "$V030_DIGEST" || -z "$OVERLAYS" ) ]]; then
+  echo "note: FP8_DENSE=$FP8_DENSE ignored (needs the v0.30 digest and an overlay list; $FP8_DENSE_OVERLAY is generated against v0.30)." >&2
+  FP8_DENSE=none
+fi
 if [[ "$FP8_DENSE" != none ]]; then
-  [[ "$IMAGE_DIGEST" == "$V030_DIGEST" ]] || die "FP8_DENSE=$FP8_DENSE needs the v0.30 digest ($FP8_DENSE_OVERLAY is generated against it)."
   # The head adds the overlay; the worker receives the head's resolved list.
   if [[ "${ROLE:-}" != worker && " $OVERLAYS " != *" $FP8_DENSE_OVERLAY "* ]]; then
     OVERLAYS="$OVERLAYS $FP8_DENSE_OVERLAY"

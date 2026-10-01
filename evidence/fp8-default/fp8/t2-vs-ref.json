@@ -1,0 +1,74 @@
+{
+ "ref": "/home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t2",
+ "cand": "/home/sfxnz/projects/data/qwen38-evals/runs/session8/fp8/t2",
+ "gate": "T2",
+ "verdict": "PASS",
+ "pass": true,
+ "checks": {
+  "effort": true,
+  "gsm8k": true,
+  "ifeval": true,
+  "json": true,
+  "rep4": true,
+  "tools": true
+ },
+ "tasks": {
+  "effort": {
+   "n": 5,
+   "ref_acc": 1.0,
+   "cand_acc": 1.0,
+   "drop_pp": 0.0,
+   "lost": 0,
+   "gained": 0,
+   "p": 1.0,
+   "rule": "5/5 must be all correct"
+  },
+  "gsm8k": {
+   "n": 250,
+   "ref_acc": 0.964,
+   "cand_acc": 0.952,
+   "drop_pp": 1.2,
+   "lost": 3,
+   "gained": 0,
+   "p": 0.25,
+   "rule": "McNemar p >= 0.05 and drop <= 2.0 pp"
+  },
+  "ifeval": {
+   "n": 120,
+   "ref_acc": 0.866667,
+   "cand_acc": 0.883333,
+   "drop_pp": -1.667,
+   "lost": 2,
+   "gained": 4,
+   "p": 0.6875,
+   "rule": "McNemar p >= 0.05 and drop <= 2.0 pp"
+  },
+  "json": {
+   "n": 30,
+   "ref_acc": 1.0,
+   "cand_acc": 1.0,
+   "drop_pp": 0.0,
+   "lost": 0,
+   "gained": 0,
+   "p": 1.0,
+   "rule": "30/30 must be all correct"
+  },
+  "rep4": {
+   "n": 64,
+   "ref": 0.000822,
+   "cand": 0.000522,
+   "abs_diff": 0.0003,
+   "tolerance": 0.005
+  },
+  "tools": {
+   "n": 60,
+   "ref_acc": 1.0,
+   "cand_acc": 1.0,
+   "drop_pp": 0.0,
+   "lost": 0,
+   "gained": 0,
+   "p": 1.0,
+   "rule": "60/60 must be all correct"
+  }
+ }
+}

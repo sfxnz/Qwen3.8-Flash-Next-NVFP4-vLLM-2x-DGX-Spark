@@ -532,24 +532,33 @@ class OverlayTests(unittest.TestCase):
         self.assertNotIn("draft-moe-config", proc.stdout)
         self.assertNotEqual(_run_sh(DRAFT_MOE_CONFIG="2").returncode, 0)
 
-    def test_fp8_dense_profile_is_opt_in(self) -> None:
-        self.assertIn('FP8_DENSE="${FP8_DENSE:-none}"', _read("run.sh"))
-        proc = _run_sh(IMAGE=V030_IMAGE)
+    def test_fp8_dense_is_default(self) -> None:
+        # Default since session 8 (evidence/fp8-default); FP8_DENSE=none is the BF16 rollback.
+        self.assertIn('FP8_DENSE="${FP8_DENSE:-per_block}"', _read("run.sh"))
+        self.assertIn("FP8_DENSE: per_block", _read("recipe.yaml"))
+        for extra in ({}, {"FP8_DENSE": "per_block"}):
+            proc = _run_sh(IMAGE=V030_IMAGE, **extra)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertIn("docker/v030/modelopt.py -> ", proc.stdout)
+            self.assertIn("VLLM_QWEN38_FP8_DENSE=per_block", proc.stdout)
+            self.assertIn('--kernel-config {"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}', proc.stdout)
+        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="none")
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertNotIn("quantization/modelopt.py", proc.stdout)
         self.assertNotIn("VLLM_QWEN38_FP8_DENSE", proc.stdout)
-        proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block")
-        self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertIn("docker/v030/modelopt.py -> ", proc.stdout)
-        self.assertIn('--kernel-config {"linear_backend_per_quant":{"fp8_block_w8a8":"marlin"}}', proc.stdout)
+        self.assertNotIn("--kernel-config", proc.stdout)
         # The worker gets the head's resolved overlay list and must not add the overlay a second time.
         proc = _run_sh(IMAGE=V030_IMAGE, FP8_DENSE="per_block", ROLE="worker",
                        OVERLAYS="docker/v030/modelopt.py")
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertNotIn("Two overlays target", proc.stderr)
-        proc = _run_sh(IMAGE=PINNED_IMAGE, FP8_DENSE="per_block")
-        self.assertNotEqual(proc.returncode, 0)
-        self.assertIn("needs the v0.30 digest", proc.stderr)
+        # The pin rollback and OVERLAYS=none ignore it (the overlay is generated against v0.30).
+        for extra in ({"IMAGE": PINNED_IMAGE}, {"IMAGE": V030_IMAGE, "OVERLAYS": "none"}):
+            proc = _run_sh(**extra)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertIn("FP8_DENSE=per_block ignored", proc.stderr)
+            self.assertNotIn("VLLM_QWEN38_FP8_DENSE", proc.stdout)
+            self.assertNotIn("v030/modelopt.py", proc.stdout)
         self.assertNotEqual(_run_sh(IMAGE=V030_IMAGE, FP8_DENSE="ptpc").returncode, 0)
         self.assertRegex(_read("run.sh"), r"FORWARD_VARS=\([^)]*\bFP8_DENSE\b")
 

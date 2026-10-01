@@ -144,3 +144,32 @@ Things to confirm on the first boot:
 - **The T1-B gate is saturated on this model:** FP8 on a single 65 MB layer already scores 94.6% top-1.
 
 **How it ships:** as the opt-in `lab-fp8-dense` profile. Set `FP8_DENSE=per_block ./run.sh`; `run.sh` then mounts this overlay and passes the env and the Marlin `--kernel-config`. It is not the default. Promotion needs owner sign-off plus T4.
+
+## Session 8: default flip attempted and stopped (`evidence/fp8-default/`)
+
+With owner sign-off to retire T1-B top-1 for precision levers, `per_block` was re-gated on top of K3 (`GDN_LAZY=1`).
+
+**Passes:**
+- Boot lines are present on both ranks.
+- K3 composes exactly: T1-G and T1-D are bit-identical to session 5's FP8 arm, which ran without K3.
+- Smokes 4/4 and T0 are clean.
+- T1-G self: 1.0 distinct.
+- T1-D: 17.0 (floor 14.25), KL 0.0041.
+- Paired T2 is identical to session 5.
+- T3: 24/24 to 64k. V: 16/16.
+- 15-minute soak: 0 errors.
+- Multilingual paired judge: 39 W / 61 T / 36 L, with no language significantly worse.
+
+**Blocker: long c=1 greedy is not reproducible run to run.** A 1578-token prompt run to 4096 tokens (`near1600` in `evidence/k3/soak.py`) gave the following:
+
+| Build | Runs | Distinct outputs |
+|---|---|---|
+| FP8 + K3 | 9 | 5 (first divergences at generated tokens 2432–3293) |
+| FP8 without K3 | 5 | 3 |
+| BF16 + K3 default | 13 | 2 |
+
+T1-G's 256-token outputs stay pinned. The default was not flipped; the drafted flip is `evidence/fp8-default/flip-draft-not-applied.patch`.
+
+## Default since 2026-10-01
+
+`FP8_DENSE: per_block` is the recipe default (owner decision after session 8, `evidence/fp8-default/SUMMARY.md`). `FP8_DENSE=none` restores BF16 dense linears. Known cost: long c=1 greedy generations can fork run to run at near-ties more often than on BF16. Short outputs repeat exactly.

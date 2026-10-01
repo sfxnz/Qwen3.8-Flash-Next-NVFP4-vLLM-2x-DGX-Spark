@@ -1,0 +1,16 @@
+2026-09-30T18:48:11.388Z [ref] start t1g: python3 quality/collect_t1g.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/t1g --limit 10 --repeats 5
+2026-09-30T18:51:41.252Z [ref] end t1g rc=0
+2026-09-30T18:51:41.255Z [ref] start t1g-self: python3 quality/score.py t1g /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/t1g /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/t1g --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/t1g-self.json
+2026-09-30T18:51:41.354Z [ref] end t1g-self rc=0
+2026-09-30T18:51:41.356Z [ref] start t1d: python3 quality/collect_t1d.py --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/t1d
+2026-09-30T18:55:02.718Z [ref] end t1d rc=0
+2026-09-30T18:55:02.720Z [ref] start t1d-s5: python3 quality/score.py t1d /home/sfxnz/projects/data/qwen38-evals/runs/session5/ref/t1d /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/t1d --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/t1d-vs-session5-ref.json
+2026-09-30T18:55:02.841Z [ref] end t1d-s5 rc=0
+2026-09-30T19:01:21.332Z [ref] gate rc=1 preemptions_delta=0
+2026-09-30T19:01:21.334Z [ref] start ruler-noanchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 0 0 --k 3 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/ruler-noanchor.json
+2026-09-30T19:04:13.573Z [ref] end ruler-noanchor rc=0
+2026-09-30T19:04:13.575Z [ref] start diverse: python3 bench_diverse.py --url http://127.0.0.1:8000/v1/chat/completions --concurrency 1 8 --out /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/diverse.jsonl --label ref
+2026-09-30T19:10:58.826Z [ref] end diverse rc=0
+2026-09-30T19:10:59.519Z [ref] memcheck ok before longid: spark1 avail=14098MB swap_used spark1=7136MB spark2=4266MB
+2026-09-30T19:10:59.521Z [ref] start longid-pre: python3 /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/k3/soak.py longid --out /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/longid-pre.jsonl
+2026-09-30T19:14:33.320Z [ref] end longid-pre rc=0

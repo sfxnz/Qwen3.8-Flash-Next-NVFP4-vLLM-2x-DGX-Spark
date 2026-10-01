@@ -1,0 +1,4 @@
+2026-09-30T19:25:28.781Z [ref] start ml: python3 quality/ml_judge.py collect --url http://127.0.0.1:8000/v1/chat/completions --out /home/sfxnz/projects/data/qwen38-evals/runs/session8/ref/ml
+2026-09-30T19:47:26.401Z [ref] end ml rc=0
+2026-09-30T19:47:26.405Z [ref] start ruler-anchor: python3 ruler_steps.py --url http://127.0.0.1:8000/v1/chat/completions --anchor-ms 52.8 54.8 --json /home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/ruler-anchor.json
+2026-09-30T19:48:51.737Z [ref] end ruler-anchor rc=0

@@ -1,0 +1,125 @@
+{
+ "ruler_steps_version": "1",
+ "argv": [
+  "--url",
+  "http://127.0.0.1:8000/v1/chat/completions",
+  "--model",
+  "nvidia/Qwen3.8-Flash-Next-NVFP4",
+  "--json",
+  "/home/sfxnz/projects/ai-lab/recipes/Qwen3.8-Flash-Next-NVFP4-vLLM-2x-DGX-Spark-plan/evidence/fp8-default/ref/gate/ruler.json",
+  "--anchor-ms",
+  "53.8",
+  "55.8",
+  "--k",
+  "3"
+ ],
+ "started_at": "2026-09-30T18:59:05.138+00:00",
+ "cells": [],
+ "warmup": {
+  "t_start": 1790794745.1551597,
+  "single": {
+   "ttft_s": 0.09835332201328129,
+   "total_s": 0.6801932180533186,
+   "prompt_tokens": 36,
+   "completion_tokens": 32,
+   "decode_tok_s": 53.2792615476936,
+   "chunks": 12
+  },
+  "staggered_pair": [
+   {
+    "ttft_s": 0.14427920093294233,
+    "total_s": 0.9113738699816167,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 40.41222192098556,
+    "chunks": 13
+   },
+   {
+    "ttft_s": 0.25496737204957753,
+    "total_s": 0.810156841063872,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 55.8367939778084,
+    "chunks": 10
+   }
+  ],
+  "simultaneous_pair": [
+   {
+    "ttft_s": 0.15973479906097054,
+    "total_s": 1.0362897620070726,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 35.36572298422562,
+    "chunks": 16
+   },
+   {
+    "ttft_s": 0.16022601700387895,
+    "total_s": 0.8192957900464535,
+    "prompt_tokens": 36,
+    "completion_tokens": 32,
+    "decode_tok_s": 47.03599113169686,
+    "chunks": 12
+   }
+  ],
+  "long": {
+   "ttft_s": 3.3173039599787444,
+   "total_s": 3.3975901850499213,
+   "prompt_tokens": 9999,
+   "completion_tokens": 2,
+   "decode_tok_s": 12.45543677154407,
+   "chunks": 1
+  },
+  "t_end": 1790794751.1834528
+ },
+ "t0_flagged_waves": [],
+ "cell_stats": [],
+ "sentinel": {
+  "runs": 9,
+  "excursions": 6,
+  "excursion_rate": 0.6666666666666666,
+  "excursion_rate_over_1_in_20": true,
+  "boot_min_ms": 53.28338016057387,
+  "clean_median_ms": 54.15969955967739,
+  "anchor_ms": [
+   53.8,
+   55.8
+  ],
+  "void": true,
+  "blocks": [
+   {
+    "where": "start",
+    "attempt": 1,
+    "ok": false,
+    "ms_per_step": [
+     53.61490953946486,
+     54.15969955967739,
+     56.3302513002418
+    ]
+   },
+   {
+    "where": "start",
+    "attempt": 2,
+    "ok": false,
+    "ms_per_step": [
+     53.39762544026598,
+     53.320334581658244,
+     53.57930202037096
+    ]
+   },
+   {
+    "where": "start",
+    "attempt": 3,
+    "ok": false,
+    "ms_per_step": [
+     54.25741893937811,
+     53.28338016057387,
+     54.065834819339216
+    ]
+   }
+  ]
+ },
+ "finished_at": "2026-09-30T19:00:46.786+00:00",
+ "summary_refused": [
+  "boot void (sentinel failed)"
+ ]
+}
